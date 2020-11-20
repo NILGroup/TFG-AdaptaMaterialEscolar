@@ -4,61 +4,61 @@
 %
 %---------------------------------------------------------------------
 %
-% Contiene la  definición de constantes  que determinan el modo  en el
-% que se compilará el documento.
+% Contiene la  definici\'on de constantes  que determinan el modo  en el
+% que se compilar\'a el documento.
 %
 %---------------------------------------------------------------------
 %
 % En concreto, podemos  indicar si queremos "modo release",  en el que
-% no  aparecerán  los  comentarios  (creados  mediante  \com{Texto}  o
+% no  aparecer\'an  los  comentarios  (creados  mediante  \com{Texto}  o
 % \comp{Texto}) ni los "por  hacer" (creados mediante \todo{Texto}), y
-% sí aparecerán los índices. El modo "debug" (o mejor dicho en modo no
-% "release" muestra los índices  (construirlos lleva tiempo y son poco
-% útiles  salvo  para   la  versión  final),  pero  sí   el  resto  de
+% s\'i aparecer\'an los \'indices. El modo "debug" (o mejor dicho en modo no
+% "release" muestra los \'indices  (construirlos lleva tiempo y son poco
+% \'utiles  salvo  para   la  versi\'on  final),  pero  s\'i   el  resto  de
 % anotaciones.
 %
-% Si se compila con LaTeX (no  con pdflatex) en modo Debug, también se
-% muestran en una esquina de cada página las entradas (en el índice de
-% palabras) que referencian  a dicha página (consulta TeXiS_pream.tex,
+% Si se compila con LaTeX (no  con pdflatex) en modo Debug, tambi\'en se
+% muestran en una esquina de cada p\'agina las entradas (en el \'indice de
+% palabras) que referencian  a dicha p\'agina (consulta TeXiS_pream.tex,
 % en la parte referente a show).
 %
-% El soporte para  el índice de palabras en  TeXiS es embrionario, por
-% lo  que no  asumas que  esto funcionará  correctamente.  Consulta la
-% documentación al respecto en TeXiS_pream.tex.
+% El soporte para  el \'indice de palabras en  TeXiS es embrionario, por
+% lo  que no  asumas que  esto funcionar\'a  correctamente.  Consulta la
+% documentaci\'on al respecto en TeXiS_pream.tex.
 %
 %
-% También  aquí configuramos  si queremos  o  no que  se incluyan  los
-% acrónimos  en el  documento final  en la  versión release.  Para eso
+% Tambi\'en  aqu\'i configuramos  si queremos  o  no que  se incluyan  los
+% acr\'onimos  en el  documento final  en la  versi\'on release.  Para eso
 % define (o no) la constante \acronimosEnRelease.
 %
-% Utilizando \compilaCapitulo{nombre}  podemos también especificar qué
-% capítulo(s) queremos que se compilen. Si no se pone nada, se compila
+% Utilizando \compilaCapitulo{nombre}  podemos tambi\'en especificar qu\'e
+% cap\'itulo(s) queremos que se compilen. Si no se pone nada, se compila
 % el documento  completo.  Si se pone, por  ejemplo, 01Introduccion se
-% compilará únicamente el fichero Capitulos/01Introduccion.tex
+% compilar\'a \'unicamente el fichero Capitulos/01Introduccion.tex
 %
-% Para compilar varios  capítulos, se separan sus nombres  con comas y
-% no se ponen espacios de separación.
+% Para compilar varios  cap\'itulos, se separan sus nombres  con comas y
+% no se ponen espacios de separaci\'on.
 %
-% En realidad  la macro \compilaCapitulo  está definida en  el fichero
+% En realidad  la macro \compilaCapitulo  est\'a definida en  el fichero
 % principal tesis.tex.
 %
 %---------------------------------------------------------------------
 
 
-% Comentar la línea si no se compila en modo release.
-% TeXiS hará el resto.
+% Comentar la l\'inea si no se compila en modo release.
+% TeXiS har\'a el resto.
 % ¡¡¡Si cambias esto, haz un make clean antes de recompilar!!!
 \def\release{1}
 
 
 % Descomentar la linea si se quieren incluir los
-% acrónimos en modo release (en modo debug
-% no se incluirán nunca).
+% acr\'onimos en modo release (en modo debug
+% no se incluir\'an nunca).
 % ¡¡¡Si cambias esto, haz un make clean antes de recompilar!!!
-\def\acronimosEnRelease{1}
+%\def\acronimosEnRelease{1}
 
 
-% Descomentar la línea para establecer el capítulo que queremos
+% Descomentar la l\'inea para establecer el cap\'itulo que queremos
 % compilar
 
 % \compilaCapitulo{01Introduccion}
@@ -71,7 +71,7 @@
 % \compilaApendice{01AsiSeHizo}
 
 % Variable local para emacs, para  que encuentre el fichero maestro de
-% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+% compilaci\'on y funcionen mejor algunas teclas r\'apidas de AucTeX
 %%%
 %%% Local Variables:
 %%% mode: latex

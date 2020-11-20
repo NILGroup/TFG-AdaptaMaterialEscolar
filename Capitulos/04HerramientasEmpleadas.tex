@@ -1,0 +1,58 @@
+%---------------------------------------------------------------------
+%
+%               Cap\'itulo 4 - Herramientas empleadas
+%
+%---------------------------------------------------------------------
+\setlength{\parskip}{\baselineskip}
+
+\chapter{Herramientas empleadas}
+
+\begin{resumen}
+	
+	En este cap\'itulo se explican las herramientas y librer\'ias que se han empleado en la creaci\'on de los prototipos. En la secci\'on 4.1 se introduce la herramienta online Moqups. En la secci\'on 4.2 se ense\~{n}a el ``framework`` que se ha utilizado.
+	
+\end{resumen}
+	
+	Para realizar el prototipado, algunos hemos optado por hacerlo en papel, y otros en formato digital. Para formato digital, se han usado diferentes herramientas.
+	
+%------Primera secci\'on: Moqups------%
+\section{Moqups}
+%-----------------------------------%
+\label{cap4:sec:moqups}
+
+	Moqups\footnote{https://moqups.com/} es una p\'agina web enfocada en la creaci\'on de bocetos, prototipos, diagramas, etc. Es bastante completa: puedes dise\~{n}ar una interfaz, o simplemente ver c\'omo es el flujo de un algoritmo, arrastrando los distintos elementos (o plantillas) que podemos encontrar en una aplicaci\'on (barras de progreso, etiquetas o \textit{labels}, enlaces, diferentes tipos de ventanas, etc.) desde men\'u lateral al espacio de trabajo. 
+	
+	Existe la posibilidad de a\~{n}adir comentarios e iconos, y poder crear diferentes p\'aginas en un mismo proyecto (por ejemplo, crear varias vistas de una aplicaci\'on), as\'i como a\~{n}adir interacci\'on a los elementos (como por ejemplo, cuando le des clic a un bot\'on, \'este realice una funci\'on espec\'ifica). Tambi\'en es colaborativo, es decir, puedes invitar a m\'as miembros para trabajar en equipo; y permite la gesti\'on de roles.
+	
+	En la Figura \ref{fig:interfazMoqups} se puede ver la interfaz de un proyecto en blanco. Se observa que en el men\'u lateral de la izquierda, se encuentran los apartados para la creaci\'on del prototipo (plantillas, p\'aginas que tiene el proyecto, comentarios, im\'agenes, iconos, etc). En la parte superior de la p\'agina, se pueden crear figuras geom\'etricas y a\~{n}adir notas, as\'i como poder agregar a otros usuarios, y la posibilidad de exportar el proyecto como una serie de im\'agenes en formato PNG o PDF; y a formato HTML. Por \'ultimo, en el men\'u lateral de la derecha, podemos encontrar el formato de las diferentes p\'aginas (o componentes), y las interacciones disponibles (Figura \ref{fig:interaccionesMoqups}).
+	
+	\figura{Bitmap/interfazMoqups}{width=1\textwidth}{fig:interfazMoqups}{Interfaz de Moqups}
+	
+	\figura{Bitmap/interaccionesMoqups}{width=1\textwidth}{fig:interaccionesMoqups}{Men\'u lateral de interacciones}
+	
+	
+%------Segunda secci\'on: React------%
+\section{React}
+%----------------------------------%
+\label{cap4:sec:react}
+
+	\textit{React}\footnote{https://es.reactjs.org/} es una librer\'ia de \textit{JavaScript}, creada por Facebook y de c\'odigo abierto, que permite crear interfaces de usuario interactivas de forma sencilla. Est\'a basada en la programaci\'on orientada a componentes, donde cada componente se puede ver como una funcionalidad distinta, es decir, como una ``pieza`` de un puzle.
+	
+	La ventaja de usar componentes es que, al ser independientes unos de otros, si en la carga de una p\'agina web falla uno en espec\'ifico, no afectar\'ia al resto de componentes, por lo que dicha p\'agina quedar\'ia cargada sin ese componente. As\'i mismo, al usar un DOM (Modelo de Objetos del Documento) virtual, deja que la propia librer\'ia actualice las partes que han cambiado, en lugar de actualizar todos los componentes.
+	
+	La sintaxis que emplea \textit{React} es muy parecida a la sintaxis HTML. Para definir los componentes, se emplean etiquetas definidas por el usuario dentro de c\'odigo \textit{Javascript}. Esta sintaxis se llama \textit{JSX}. No es obligatorio su uso, pero emple\'andolo facilita tanto la codificaci\'on como la lectura del c\'odigo. En la Figura \ref{fig:sinformatoJSX} se puede ver un ejemplo de una funcionalidad sin emplear el formato \textit{JSX}; y en la Figura \ref{fig:conformatoJSX}, la misma funcionalidad pero usando \textit{JSX}.
+	
+	\figura{Bitmap/reactSinJSX}{width=1\textwidth}{fig:sinformatoJSX}{Funcionalidad sin usar JSX}
+	
+	\figura{Bitmap/reactConJSX}{width=1\textwidth}{fig:conformatoJSX}{Funcionalidad empleando JSX}
+	
+	\textit{React} aporta rendimiento, flexibilidad y organizaci\'on de c\'odigo, frente a la creaci\'on de una p\'agina web de forma cl\'asica (es decir, sin usar ninguna librer\'ia o \textit{framework}).Tiene una documentaci\'on bastante completa, junto con un tutorial para aprender desde cero.
+	
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilaci\'on y funcionen mejor algunas teclas r\'apidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:
