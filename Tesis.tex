@@ -4,9 +4,9 @@
 %
 %----------------------------------------------------------------------
 %
-% Este fichero contiene el "documento maestro" del documento. Lo \'unico
+% Este fichero contiene el "documento maestro" del documento. Lo único
 % que hace es configurar el entorno LaTeX e incluir los ficheros .tex
-% que contienen cada secci\'on.
+% que contienen cada sección.
 %
 %----------------------------------------------------------------------
 %
@@ -14,16 +14,16 @@
 %
 %       TeXiS/* : ficheros de la plantilla TeXiS.
 %       Cascaras/* : ficheros con las partes del documento que no
-%          son cap\'itulos ni ap\'endices (portada, agradecimientos, etc.)
-%       Capitulos/*.tex : cap\'itulos de la tesis
-%       Apendices/*.tex: ap\'endices de la tesis
+%          son capítulos ni apéndices (portada, agradecimientos, etc.)
+%       Capitulos/*.tex : capítulos de la tesis
+%       Apendices/*.tex: apéndices de la tesis
 %       constantes.tex: constantes LaTeX
-%       config.tex : configuraci\'on de la "compilaci\'on" del documento
+%       config.tex : configuración de la "compilación" del documento
 %       guionado.tex : palabras con guiones
 %
-% Para la bibliograf\'ia, adem\'as, se necesitan:
+% Para la bibliografía, además, se necesitan:
 %
-%       *.bib : ficheros con la informaci\'on de las referencias
+%       *.bib : ficheros con la información de las referencias
 %
 % ---------------------------------------------------------------------
 
@@ -31,25 +31,25 @@
 
 %
 % Definimos  el   comando  \compilaCapitulo,  que   luego  se  utiliza
-% (opcionalmente) en config.tex. Quedar\'ia  mejor si tambi\'en se definiera
+% (opcionalmente) en config.tex. Quedaría  mejor si también se definiera
 % en  ese fichero,  pero por  el modo  en el  que funciona  eso  no es
-% posible. Puedes consultar la documentaci\'on de ese fichero para tener
-% m\'as  informaci\'on. Definimos tambi\'en  \compilaApendice, que  tiene el
-% mismo  cometido, pero  que se  utiliza para  compilar  \'unicamente un
-% ap\'endice.
+% posible. Puedes consultar la documentación de ese fichero para tener
+% más  información. Definimos también  \compilaApendice, que  tiene el
+% mismo  cometido, pero  que se  utiliza para  compilar  únicamente un
+% apéndice.
 %
 %
 % Si  queremos   compilar  solo   una  parte  del   documento  podemos
-% especificar mediante  \includeonly{...} qu\'e ficheros  son los \'unicos
-% que queremos  que se incluyan.  Esto  es \'util por  ejemplo para s\'olo
-% compilar un cap\'itulo.
+% especificar mediante  \includeonly{...} qué ficheros  son los únicos
+% que queremos  que se incluyan.  Esto  es útil por  ejemplo para sólo
+% compilar un capítulo.
 %
-% El problema es que todos aquellos  ficheros que NO est\'en en la lista
-% NO   se  incluir\'an...  y   eso  tambi\'en   afecta  a   ficheros  de
+% El problema es que todos aquellos  ficheros que NO estén en la lista
+% NO   se  incluirán...  y   eso  también   afecta  a   ficheros  de
 % la plantilla...
 %
 % Total,  que definimos  una constante  con los  ficheros  que siempre
-% vamos a querer compilar  (aquellos relacionados con configuraci\'on) y
+% vamos a querer compilar  (aquellos relacionados con configuración) y
 % luego definimos \compilaCapitulo.
 \newcommand{\ficherosBasicosTeXiS}{%
 TeXiS/TeXiS_pream,TeXiS/TeXiS_cab,TeXiS/TeXiS_bib,TeXiS/TeXiS_cover,%
@@ -67,12 +67,12 @@ constantes,guionado,Cascaras/bibliografia,config%
 }
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%            Pre\'ambulo del documento. Configuraciones varias
+%            Preámbulo del documento. Configuraciones varias
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-% Define  el  tipo  de  compilaci\'on que  estamos  haciendo.   Contiene
+% Define  el  tipo  de  compilación que  estamos  haciendo.   Contiene
 % definiciones  de  constantes que  cambian  el  comportamiento de  la
-% compilaci\'on. Debe incluirse antes del paquete TeXiS/TeXiS.sty
+% compilación. Debe incluirse antes del paquete TeXiS/TeXiS.sty
 \include{config}
 
 % Paquete de la plantilla
@@ -82,7 +82,7 @@ constantes,guionado,Cascaras/bibliografia,config%
 % Incluimos el fichero con comandos de constantes
 \include{constantes}
 
-% Sacamos en el log de la compilaci\'on el copyright
+% Sacamos en el log de la compilación el copyright
 \typeout{Copyright Marco Antonio and Pedro Pablo Gomez Martin}
 
 %
@@ -92,7 +92,7 @@ constantes,guionado,Cascaras/bibliografia,config%
     pdftitle = {\titulo},
     pdfsubject = {Plantilla de Tesis},
     pdfkeywords = {Plantilla, LaTeX, tesis, trabajo de
-      investigaci\'on, trabajo de Master},
+      investigación, trabajo de Master},
     pdfauthor = {\textcopyright\ \autor},
     pdfcreator = {\LaTeX\ con el paquete \flqq hyperref\frqq},
     pdfproducer = {pdfeTeX-0.\the\pdftexversion\pdftexrevision},
@@ -106,42 +106,44 @@ constantes,guionado,Cascaras/bibliografia,config%
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \begin{document}
 
-% Incluimos el  fichero de definici\'on de guionado  de algunas palabras
-% que LaTeX no ha dividido como deber\'ia
+% Incluimos el  fichero de definición de guionado  de algunas palabras
+% que LaTeX no ha dividido como debería
 \input{guionado}
 
-% Marcamos  el inicio  del  documento para  la  numeraci\'on de  p\'aginas
-% (usando n\'umeros romanos para esta primera fase).
+% Marcamos  el inicio  del  documento para  la  numeración de  páginas
+% (usando números romanos para esta primera fase).
 \frontmatter
 
 \include{Cascaras/cover}
 
-\include{Cascaras/dedicatoria}
+%\include{Cascaras/dedicatoria}
 
-\include{Cascaras/agradecimientos}
+%\include{Cascaras/agradecimientos}
 
-\include{Cascaras/resumen}
+%\include{Cascaras/resumen}
 
 \ifx\generatoc\undefined
 \else
 \include{TeXiS/TeXiS_toc}
 \fi
 
-% Marcamos el  comienzo de  los cap\'itulos (para  la numeraci\'on  de las
-% p\'aginas) y ponemos la cabecera normal
+% Marcamos el  comienzo de  los capítulos (para  la numeración  de las
+% páginas) y ponemos la cabecera normal
 \mainmatter
 \restauraCabecera
 
-%\include{Capitulos/Parte1}
-%\include{Capitulos/01Capitulo1}
+\include{Capitulos/01Introduccion}
+\include{Capitulos/02EstadoDelArte}
 \include{Capitulos/03MetodologiaDesarrollo}
 \include{Capitulos/04HerramientasEmpleadas}
 %\include{...}
 %\include{...}
 %\include{...}
+%\include{...}
+%\include{...}
 
-% Ap\'endices
-%\appendix
+% Apéndices
+\appendix
 %\include{Apendices/ParteApendices}
 %\include{Apendices/01ApendiceA}
 %\include{...}
@@ -151,34 +153,34 @@ constantes,guionado,Cascaras/bibliografia,config%
 \backmatter
 
 %
-% Bibliograf\'ia
+% Bibliografía
 %
 
-%\include{Cascaras/bibliografia}
+\include{Cascaras/bibliografia}
 
 %
-% \'indice de palabras
+% Índice de palabras
 %
 
-% S\'olo  la   generamos  si  est\'a   declarada  \generaindice.  Consulta
-% TeXiS.sty para m\'as informaci\'on.
+% Sólo  la   generamos  si  está   declarada  \generaindice.  Consulta
+% TeXiS.sty para más información.
 
-% En realidad, el soporte para la generaci\'on de \'indices de palabras
-% en TeXiS no est\'a documentada en el manual, porque no ha sido usada
-% "en producci\'on". Por tanto, el fichero que genera el \'indice
-% *no* se incluye aqu\'i (est\'a comentado). Consulta la documentaci\'on
-% en TeXiS_pream.tex para m\'as informaci\'on.
+% En realidad, el soporte para la generación de índices de palabras
+% en TeXiS no está documentada en el manual, porque no ha sido usada
+% "en producción". Por tanto, el fichero que genera el índice
+% *no* se incluye aquí (está comentado). Consulta la documentación
+% en TeXiS_pream.tex para más información.
 \ifx\generaindice\undefined
 \else
 %\include{TeXiS/TeXiS_indice}
 \fi
 
 %
-% Lista de acr\'onimos
+% Lista de acrónimos
 %
 
-% S\'olo  lo  generamos  si  est\'a declarada  \generaacronimos.  Consulta
-% TeXiS.sty para m\'as informaci\'on.
+% Sólo  lo  generamos  si  está declarada  \generaacronimos.  Consulta
+% TeXiS.sty para más información.
 
 
 \ifx\generaacronimos\undefined
