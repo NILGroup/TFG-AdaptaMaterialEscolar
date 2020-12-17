@@ -1,6 +1,6 @@
 %---------------------------------------------------------------------
 %
-%                          Cap\'itulo 5
+%                          Cap?tulo 1
 %
 %---------------------------------------------------------------------
 
@@ -8,118 +8,114 @@
 
 
 \begin{resumen}
-En este cap\'itulo se explicar\'a para qui\'en va a desarrollarse el proyecto de AdaptaMaterialEscolar, cu\'ando y c\'omo se comenz\'o a planificar y los requisitos para la aplicaci\'on web.
+En este capítulo se explicará para quién va a desarrollarse el proyecto de AdaptaMaterialEscolar, cuándo y cómo se comenzó a planificar y los requisitos para la aplicación web.
 \end{resumen}
 
 
 %-------------------------------------------------------------------
-\section{Centro educativo}
-%-------------------------------------------------------------------
+\section{Captura de requisitos}
 
-    El Trabajo de Fin de Grado de AdaptaMaterialEscolar es un proyecto para el IES Maestro Juan de \'avila de Ciudad Real y se ha desarrollado en conjunto con las profesoras del Aula TEA. 
+   El Trabajo de Fin de Grado de AdaptaMaterialEscolar es un proyecto sin ánimo de lucro que ha sido desarrollado con la colaboración de  las profesoras del Aula TEA del  IES Maestro Juan de Ávila de Ciudad Real.
 
-    La intenci\'on es crear una aplicaci\'on web bas\'andose en la experiencia y las necesidades de un centro educativo real, para que pueda ser utilizada por cualquier instituci\'on acad\'emica que cuente con alumnos que requieran adaptaciones curriculares.
+Para su implementación se realizó la captura de requisitos del proyecto, de forma que se pudieron conocer las necesidades reales de un centro educativo, siguiendo un diseño centrado en el usuario.
 
-\section{Entrevistas}
-\label{cap1:sec:entrevistas}
+Se realizaron una serie de reuniones con el usuario para obtener los requisitos de la aplicación.
 
-    El 25 de julio de 2019 se organiz\'o una primera reuni\'on presencial con las dos profesoras que forman parte del Aula TEA en el IES Maestro Juan de \'avila, Ana Mar\'ia Alonso Frades, especialista en PT (Pedagog\'ia Terap\'eutica) y Ana Mar\'ia D\'iaz Valle, especialista en AL (Audici\'on y Lenguaje). 
 
-    Durante la reuni\'on se trataron los siguientes temas:
+\subsection{Primera iteración}
 
-\subsection{Aplicaci\'on web o aplicaci\'on de escritorio}
+El 25 de julio de 2019 se organizó una primera reunión presencial con las dos profesoras que forman parte del Aula TEA en el IES Maestro Juan de Ávila, Ana María Alonso Frades, especialista en PT (Pedagogía Terapéutica) y Ana María Díaz Valle, especialista en AL (Audición y Lenguaje). 
 
-    Inicialmente las profesoras plantearon desarrollar una aplicaci\'on de escritorio que pudieran instalar tanto en los ordenadores del centro, como en los suyos propios, pero se tuvo en cuenta que probablemente no todo el profesorado contar\'ia con un ordenador personal con el que poder trabajar desde casa.
+Las profesoras nos hablaron sobre los diferentes perfiles de alumnos TEA con los que trabajaban en el centro y explicaron la importancia de contar con una aplicación especializada en adaptaciones curriculares, que fuera flexible y permitiera generar diferentes modelos de temario, actividades y exámenes con el menor esfuerzo posible. El proyecto debía poder convertir un mismo párrafo o ejercicio en otro más sencillo de comprender, asimilar o resolver, de forma que pudiera personalizarse para cada alumno de acuerdo a su capacidad cognitiva y así facilitarles el aprendizaje sin excluir temario.
 
-    Se tom\'o la decisi\'on de desarrollar el proyecto como aplicaci\'on web, de manera que se pudiera utilizar desde cualquier dispositivo de escritorio con acceso a Internet.
+A pesar de que hay unas pautas a seguir para adaptar el temario, las actividades y los exámenes, como por ejemplo usar letra grande e imágenes, no hay un estándar definido que sigan todos los profesores y a algunos alumnos les resulta confuso el cambio de una asignatura a otra.
 
-    Tambi\'en se prefiri\'o no tener que registrarse en la aplicaci\'on para poder trabajar con ella, ya que se consider\'o que no era conveniente almacenar usuarios ni contrase\~{n}as.
+Después de hablar con las profesoras y conocer a un alumno TEA que nos explicó su rutina en el instituto, vimos un ejemplo de tema y examen adaptado de Ciencias Naturales. 
 
-\subsection{Nivel de personalizaci\'on}
+Además de la captura de requisitos se tomaron las siguientes decisiones: 
 
-    Las profesoras nos hablaron sobre los diferentes perfiles de alumnos TEA con los que trabajaban en el centro y explicaron la importancia de contar con una aplicaci\'on especializada en adaptaciones curriculares, que fuera flexible y permitiera generar diferentes modelos de temario, actividades y ex\'amenes con el menor esfuerzo posible.
+\begin{itemize}
+	\item Tipo de aplicación: Inicialmente las profesoras plantearon desarrollar una aplicación de escritorio que pudieran instalar tanto en los ordenadores del centro, como en los suyos propios, pero se tuvo en cuenta que probablemente no todo el profesorado contaría con un ordenador personal con el que poder trabajar desde casa. Por ello, se tomó la decisión de desarrollar el proyecto como aplicación web, de manera que se pudiera utilizar desde cualquier dispositivo de escritorio con acceso a Internet.
+	\item Registro: Las profesoras indicaron que era mejor no tener que registrarse en la aplicación para poder trabajar con ella, ya que se consideró que no era conveniente almacenar usuarios ni contraseñas para evitar que los profesores tuvieran que utilizar datos personales con los que identificarse.
+\end{itemize}
 
-    El proyecto deb\'ia poder convertir un mismo p\'arrafo o ejercicio en otro m\'as sencillo de comprender, asimilar o resolver, de forma que pudiera personalizarse para cada alumno de acuerdo a su capacidad cognitiva y as\'i facilitarles el aprendizaje sin excluir temario.
+A partir de ahí, como resultado de la reunión, listamos las tareas que debería realizar la aplicación junto con las profesoras, para ser realmente útil y sintetizamos los requisitos necesarios para la realización del proyecto.
 
-\subsection{Usos fuera del Aula TEA}
+Adaptaciones para temario:
 
-    Aunque la aplicaci\'on web va a ser desarrollada espec\'ificamente para el Aula TEA, el trabajo que se realiza all\'i debe ser complementario al hecho por otros profesores, por lo que algunos se han interesado en el proyecto, debido a que por la Ley de Inclusi\'on tienen que adaptar tambi\'en el temario a las necesidades de los alumnos que lo precisen.
+La motivación de las adaptaciones de temario es conseguir, en el menor tiempo posible, una unidad didáctica teórica acorde al alumno de forma casi inmediata y automática, seleccionando el texto a convertir.
 
-    A pesar de que hay unas pautas a seguir para adaptar el temario, las actividades y los ex\'amenes, como por ejemplo usar letra grande e im\'agenes, no hay un est\'andar definido que sigan todos los profesores y a algunos alumnos les resulta confuso el cambio de una asignatura a otra.
-
-\subsection{Captaci\'on de requisitos}
-
-    Despu\'es de hablar con las profesoras y conocer a un alumno TEA que nos explic\'o su rutina en el instituto, vimos un ejemplo de tema y examen adaptado de Ciencias Naturales. A partir de ah\'i, listamos las tareas que deber\'ia realizar la aplicaci\'on para ser realmente \'util y sintetizamos los requisitos necesarios para la realizaci\'on del proyecto.
-
-\section{Captaci\'on de requisitos}
-\label{cap1:sec:capacionrequisitos}
-
-	El listado de requisitos recopilados se diferencia entre adaptaciones de temario, actividades y/o ex\'amenes y formato.
-	
-\subsection{Adaptaciones de temario}
-
-    La motivaci\'on de las adaptaciones de temario es conseguir, en el menor tiempo posible, una unidad did\'actica te\'orica acorde al alumno de forma casi inmediata y autom\'atica, seleccionando el texto a convertir.
+Los requisitos necesarios para realizar adaptaciones de temario fueron:
 
 \begin{itemize}
 	\item Generar un resumen a partir de un texto.
-	\item Reducir tiempo de trabajo al redactar res\'umenes de forma autom\'atica.
 	\item Crear esquemas seleccionando contenido de un texto.
-	\item Reducir tiempo de trabajo al definir esquemas de forma autom\'atica.
 	\item Crear tablas seleccionando contenido de un texto.
-	\item Reducir tiempo de trabajo al definir tablas de forma autom\'atica.
-	\item A\~{n}adir im\'agenes a tablas.
-	\item Facilitar la colocaci\'on de im\'agenes en los espacios de las tablas, sin que se descoloque el texto que contenga.
 \end{itemize}
 
-\subsection{Adaptaciones de actividades y/o ex\'amenes}
+Adaptaciones de actividades y/o exámenes:
 
-La motivaci\'on de las adaptaciones de actividades y/o temario es conseguir unidades did\'acticas pr\'acticas o actividades de forma f\'acil, seleccionando un ejercicio ya redactado y se adapte de forma autom\'atica al tipo de ejercicio que se quiere obtener.
+La motivación de las adaptaciones de actividades y/o temario es conseguir unidades didácticas prácticas o actividades de forma fácil, seleccionando un ejercicio ya redactado y se adapte de forma automática al tipo de ejercicio que se quiere obtener.
+
+Se obtuvieron los siguientes requisitos para realizar adaptaciones de actividades y/o exámenes:
 
 \begin{itemize}
 	\item Ejercicios de relacionar contenido mediante flechas.
-    \item Generar de manera sencilla y autom\'atica ejercicios de cualquier tipo seleccionando el texto.
+    \item Generar de manera sencilla y automática ejercicios de cualquier tipo seleccionando el texto.
     \item Ejercicios de sopa de letras.
     \item Ejercicios de completar espacios en un texto.
     \item Ejercicios de desarrollo en un espacio limitado para escribir.
     \item Ejercicios de verdadero o falso.
-    \item Ejercicios de relacionar conceptos con su definici\'on y viceversa.
+    \item Ejercicios de relacionar conceptos con su definición y viceversa.
     \item Ejercicios de completar los espacios en blanco en tablas.
     \item Ejercicios de completar los espacios en blanco en esquemas.
-    \item A\~{n}adir ejemplos (con o sin pictogramas) explicando c\'omo debe resolverse el ejercicio.
+    \item Añadir ejemplos (con o sin pictogramas) explicando cómo debe resolverse el ejercicio.
 \end{itemize}
 
-\subsection{Adaptaciones de formato}
+Adaptaciones de formato:
 
-La motivaci\'on de las adaptaciones de formato es conseguir estandarizar cualquier documento que se vaya a entregar al alumno, de manera que el cambio de una asignatura a otra no suponga un cambio visual y el aprendizaje sea menos costoso.
+La motivación de las adaptaciones de formato es conseguir estandarizar cualquier documento que se vaya a entregar al alumno, de manera que el cambio de una asignatura a otra no suponga un cambio visual y el aprendizaje sea menos costoso.
+
+Los requisitos para realizar adaptaciones de formato fueron:
 
 \begin{itemize}
 	\item Sustituir palabras por pictogramas.
-	\item Sustituir palabras por im\'agenes.
+	\item Sustituir palabras por imágenes.
 	\item Resaltar palabras con colores.
-	\item A\~{n}adir leyenda de colores con la categor\'ia de cada tipo de palabra resaltada.
-	\item A\~{n}adir leyenda de colores para diferenciar las asignaturas.
-	\item Estandarizar formato en textos (tipo de fuente y tama\~{n}o).
-	\item Estandarizar formato para t\'itulos e \'indices del temario.
-	\item A\~{n}adir im\'agenes buscando una palabra.
-	\item Aumentar el tama\~{n}o de un texto o palabras clave.
+	\item Añadir leyenda de colores con la categoría de cada tipo de palabra resaltada.
+	\item Añadir leyenda de colores para diferenciar las asignaturas.
+	\item Estandarizar formato en textos (tipo de fuente y tamaño).
+	\item Estandarizar formato para títulos e índices del temario.
+	\item Añadir imágenes buscando una palabra.
+	\item Aumentar el tamaño de un texto o palabras clave.
 	\item Subrayar un texto o palabras clave.
 	\item Poner en negrita un texto o palabras clave.
 \end{itemize}
 
-\subsection{Evaluaci\'on de los requisitos}
+Una vez recopilados los requisitos del proyecto redactamos una lista con éstos para que pudiéramos, tanto las profesoras como el equipo de desarrollo, evaluarlos.
 
-	Una vez recopilados los requisitos del proyecto redactamos una lista con \'estos para que pudi\'eramos, tanto las profesoras como el equipo de desarrollo, evaluarlos.
 
-	Las profesoras Ana Mar\'ia Alonso Frades y Ana Mar\'ia D\'iaz Valle deb\'ian puntuar los requisitos seg\'un la utilidad que pudieran aportar cada una de las tareas a su trabajo. Las posibles puntuaciones deb\'ian ir de uno a tres, siendo el uno poco importante, el dos importante y el tres imprescindible.
+\subsection{Segunda iteración}
 
-	Pr\'acticamente todas las tareas fueron puntuadas como muy importantes, por lo que qued\'o claro que el proyecto cubre una necesidad real.
+	La segunda reunión consistió en evaluar los requisitos de forma independiente entre el equipo de desarrollo y las profesoras, para no influir en la toma de decisiones sobre la importancia y dificultad de cada tarea.
 
-	Cada miembro del equipo de desarrollo puntu\'o los requisitos de manera individual para no influir en la decisi\'on de los compa\~{n}eros y seg\'un la dificultad que consideraban que tendr\'ia la implementaci\'on de cada tarea a nivel t\'ecnico. Las posibles puntuaciones deb\'ian ir de uno a tres, siendo el uno dif\'icil, el dos intermedio y el tres f\'acil.
+Enviamos el listado de tareas obtenidas como requisitos a las profesoras por correo electrónico, con la finalidad de que revisaran el contenido o añadieran nuevas tareas, en caso de necesitarlas, y evaluaran cada una de ellas.
 
-	La lista de tareas a evaluar por las profesoras fue enviada el d\'ia siguiente a la reuni\'on, 26 de junio de 2019, y se recibi\'o el resultado el 27 de junio de 2019 para comenzar cuanto antes con el proyecto; el equipo de desarrollo el 28 de junio de 2019.
+Las profesoras Ana María Alonso Frades y Ana María Díaz Valle debían puntuar los requisitos según la utilidad que pudieran aportar cada una de las tareas a su trabajo. Las posibles puntuaciones debían ir de uno a tres, siendo el uno poco importante, el dos importante y el tres imprescindible.
 
-	Hablar sobre por qu\'e se ha evaluado de esta forma.
-Se ha hecho independiente entre el equipo de desarrollo y las profesoras para no influir en la toma de decisiones sobre la importancia y dificultad de cada tarea.
+Prácticamente todas las tareas fueron puntuadas como muy importantes, por lo que quedó claro que el proyecto cubre una necesidad real y no añadieron ningún requisito más.
+
+Cada miembro del equipo de desarrollo puntuó los requisitos de manera individual para no influir en la decisión de los compañeros y según la dificultad que consideraban que tendría la implementación de cada tarea a nivel técnico. Las posibles puntuaciones debían ir de uno a tres, siendo el uno difícil, el dos intermedio y el tres fácil.
+
+La finalidad de evaluar por separado los requisitos era obtener de forma aproximada un listado con las tareas más importantes que debían realizarse con prioridad para aportar valor real al proyecto, maximizando su importancia y minimizando su dificultad. 
+
+Con la puntuación que asignaron las profesoras se obtuvo el indicador de importancia de cada tarea y, con la media de las puntuaciones del equipo de desarrollo, el indicador dificultad que se esperaba durante la implementación del requisito.
+
+El resultado obtenido se separó en dos tablas. La primera contiene las funcionalidades de la aplicación, las adaptaciones de temario (T) y actividades y/o exámenes (A), y la segunda, contiene las posibles opciones de personalización que serían necesarias en el proyecto, las adaptaciones de formato (F).
+
+Las tablas resultantes ordena en orden descendente las puntuaciones obtenidas entre la multiplicación de los indicadores de importancia y dificultad, siendo 9 la máxima calificación y 1 la mínima.
+
+Para establecer un orden en el desarrollo de los requisitos, se considera más importante la implementación de las tareas de la tabla de prioridades de las funcionalidades de la aplicación.
 
 \begin{table}
 \centering
@@ -127,177 +123,128 @@ Se ha hecho independiente entre el equipo de desarrollo y las profesoras para no
 \hline
 	\textbf{GRUPO} & \textbf{1} & \textbf{2} & \textbf{3} \\ \hline
 	\textbf{Profesoras Aula TEA} & Poco importante & Importante & Imprescindible \\ \hline
-	\textbf{Equipo de desarrollo} & Dif\'icil & Intermedio & F\'acil \\ \hline
+	\textbf{Equipo de desarrollo} & Difícil & Intermedio & Fácil \\ \hline
 \end{tabular}
 \caption{Leyenda de puntuaciones.}
 \end{table}
-
-\begin{table}
-\centering
-\scalebox{0.75}{
-\begin{tabular}{| c | c | c | c | c |}
-\hline
-	\multicolumn{2}{| c |}{\textbf{ADAPTACIONES DE TEMARIO (T)}} & \multicolumn{3}{| c |}{\textbf{Equipo de desarrollo}} \\ \hline
-	\textbf{Requisito} &\textbf{Profesoras Aula TEA} & \textbf{Jorge} & \textbf{Pablo}  & \textbf{Natalia}  \\ \hline
-Generar un resumen a partir de un texto & 3 & 2 & 2 & 2 \\ \hline
-Crear esquemas seleccionando contenido de un texto & 3 & 1 & 2 & 1 \\ \hline
-Crear tablas seleccionando contenido de un texto & 2 & 1 & 2 & 2 \\ \hline
-A\~{n}adir im\'agenes a esquemas & 3 & 3 & 3 & 3 \\ \hline
-A\~{n}adir im\'agenes a tablas & 2 & 3 & 3 & 3 \\ \hline
-\end{tabular}
-}
-\caption{Puntuaci\'on de los requisitos de adaptaci\'on de temario.}
-\end{table}
-
-\begin{table}
-\centering
-\scalebox{0.65}{
-\begin{tabular}{| c | c | c | c | c |}
-\hline
-	\multicolumn{2}{| c |}{\textbf{ADAPTACIONES DE ACTIVIDADES/EX\'aMENES (A)}} & \multicolumn{3}{| c |}{\textbf{Equipo de desarrollo}} \\ \hline
-	\textbf{Requisito} &\textbf{Profesoras Aula TEA} & \textbf{Jorge} & \textbf{Pablo}  & \textbf{Natalia}  \\ \hline
-Ejercicios de relacionar contenido mediante flechas & 3 & 2 & 2 & 2 \\ \hline
-Ejercicios de sopa de letras & 2 & 3 & 3 & 3 \\ \hline
-Ejercicios de completar espacios en un texto & 3 & 3 & 3 & 2 \\ \hline
-Ejercicios de desarrollo en un espacio limitado para escribir & 3 & 3 & 3 & 2 \\ \hline
-Ejercicios de verdadero o falso & 3 & 3 & 3 & 3 \\ \hline
-Ejercicios de relacionar conceptos con su definici\'on & 3 & 2 & 3 & 2 \\ \hline
-Ejercicios de relacionar definiciones con su concepto & 3 & 2 & 2 & 2 \\ \hline
-Ejercicios de completar los espacios en blanco en tablas & 3 & 1 & 3 & 2 \\ \hline
-Ejercicios de completar los espacios en blanco en esquemas & 3 & 1 & 2 & 1 \\ \hline
-A\~{n}adir ejemplos (con o sin pictogramas) sobre c\'omo resolver el ejercicio & 2 & 3 & 3 &  \\ \hline
-\end{tabular}
-}
-\caption{Puntuaci\'on de los requisitos de actividades y/o temario.}
-\end{table}
-
-\begin{table}
-\scalebox{0.65}{
-\begin{tabular}{| c | c | c | c | c |}
-\hline
-	\multicolumn{2}{| c |}{\textbf{ADAPTACIONES DE FORMATO (F)}} & \multicolumn{3}{| c |}{\textbf{Equipo de desarrollo}} \\ \hline
-	\textbf{Requisito} &\textbf{Profesoras Aula TEA} & \textbf{Jorge} & \textbf{Pablo}  & \textbf{Natalia}  \\ \hline
-Sustituir palabras por pictogramas & 2 & 3 & 3 & 2 \\ \hline
-Sustituir palabras por im\'agenes & 2 & 2 & 3 & 2 \\ \hline
-Resaltar palabras con colores & 3 & 3 & 3 & 3 \\ \hline
-A\~{n}adir leyenda de colores con la categor\'ia de cada tipo de palabra resaltada & 1 & 3 & 3 & 3 \\ \hline
-A\~{n}adir leyenda de colores para diferenciar las asignaturas & 1 & 3 & 3 & 3 \\ \hline
-Estandarizar formato en textos (tipo de fuente y tama\~{n}o) & 3 & 3 & 2 & 1 \\ \hline
-Estandarizar formato para t\'itulos e \'indices del temario & 3 & 3 & 2 & 1 \\ \hline
-A\~{n}adir im\'agenes buscando una palabra & 3 & 2 & 2 & 3 \\ \hline
-Aumentar el tama\~{n}o de un texto o palabras clave & 3 & 3 & 3 & 2 \\ \hline
-Subrayar un texto o palabras clave & 2 & 3 & 3 & 2 \\ \hline
-Poner en negrita un texto o palabras clave & 3 & 3 & 3 & 2 \\ \hline
-\end{tabular}
-}
-\caption{Puntuaci\'on de los requisitos de formato.}
-\end{table}
-
 \begin{table}
 \centering
 \scalebox{0.8}{
 \begin{tabular}{| c | c | c |}
 \hline
-	\textbf{Tipo de requisito} & \textbf{Requisito} & \textbf{Puntuaci\'on}\\ \hline
-\textbf{T} & A\~{n}adir im\'agenes a esquemas & \textbf{12} \\ \hline
-\textbf{F} & Resaltar palabras con colores & \textbf{12} \\ \hline
-\textbf{A} & Ejercicios de verdadero o falso & \textbf{12} \\ \hline
-\textbf{T} & A\~{n}adir im\'agenes a tablas & \textbf{11} \\ \hline
-\textbf{A} & Ejercicios de sopas de letras & \textbf{11} \\ \hline
-\textbf{A} & Ejercicios de completar espacios en un texto & \textbf{11} \\ \hline
-\textbf{A} & A\~{n}adir ejemplos (con o sin pictogramas) sobre c\'omo resolver el ejercicio & \textbf{11} \\ \hline
-\textbf{F} & Aumentar el tama\~{n}o de un texto o palabras clave & \textbf{11} \\ \hline
-\textbf{F} & Poner en negrita un texto o palabras clave & \textbf{11} \\ \hline
-\textbf{A} & Ejercicios de desarrollo en un espacio limitado para escribir & \textbf{11} \\ \hline
-\textbf{A} & Ejercicios de relacionar conceptos con su definici\'on & \textbf{10} \\ \hline
-\textbf{F} & Sustituir palabras por pictogramas & \textbf{10} \\ \hline
-\textbf{F} & A\~{n}adir leyenda de colores con la categor\'ia de cada tipo de palabra resaltada & \textbf{10} \\ \hline
-\textbf{F} & A\~{n}adir leyenda de colores para diferenciar las asignaturas & \textbf{10} \\ \hline
-\textbf{F} & A\~{n}adir im\'agenes buscando una palabra & \textbf{10} \\ \hline
-\textbf{F} & Subrayar un texto o palabras clave & \textbf{10} \\ \hline
-\textbf{T} & Generar un resumen a partir de un texto & \textbf{9} \\ \hline
-\textbf{A} & Ejercicios de completar los espacios en blanco en tablas & \textbf{9} \\ \hline
-\textbf{A} & Ejercicios de relacionar contenido mediante flechas & \textbf{9} \\ \hline
-\textbf{A} & Ejercicios de relacionar definiciones con su concepto & \textbf{9} \\ \hline
-\textbf{F} & Sustituir palabras por im\'agenes & \textbf{9} \\ \hline
-\textbf{F} & Estandarizar formato en textos (tipo de fuente y tama\~{n}o) & \textbf{9} \\ \hline
-\textbf{F} & Estandarizar formato para t\'itulos e \'indices del temario & \textbf{9} \\ \hline
-\textbf{T} & Crear esquemas seleccionando contenido de un texto & \textbf{7} \\ \hline
-\textbf{T} & Crear tablas seleccionando contenido de un texto & \textbf{7} \\ \hline
-\textbf{A} & Ejercicios de completar los espacios en blanco en esquemas & \textbf{7} \\ \hline
+	\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE TEMARIO (T)}} & \multicolumn{2}{| c |}{\textbf{Evaluación}} \\ \hline
+	\textbf{Requisito} &\textbf{Importancia} & \textbf{Dificultad}\\ \hline
+Generar un resumen a partir de un texto & 3 & 2\\ \hline
+Crear esquemas seleccionando contenido de un texto & 3 & 1,7 \\ \hline
+Crear tablas seleccionando contenido de un texto & 2 & 1,7 \\ \hline
+\hline
+	\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE ACIVIDADES Y/O TEMARIO (A)}} & \multicolumn{2}{| c |}{\textbf{Evaluación}} \\ \hline
+	\textbf{Requisito} &\textbf{Importancia} & \textbf{Dificultad}\\ \hline
+Ejercicios de relacionar contenido mediante flechas & 3 & 2 \\ \hline
+Ejercicios de sopa de letras & 2 & 3 \\ \hline
+Ejercicios de completar espacios en un texto & 3 & 2,7\\ \hline
+Ejercicios de desarrollo en un espacio limitado para escribir& 3 & 2,7\\ \hline
+Ejercicios de verdadero o falso & 3 & 3 \\ \hline
+Ejercicios de relacionar conceptos con su definición & 3 & 2,3 \\ \hline
+Ejercicios de relacionar definiciones con su concepto & 3 & 2 \\ \hline
+Ejercicios de completar los espacios en blanco en tablas & 3 & 2 \\ \hline
+Ejercicios de completar los espacios en blanco en esquemas & 3 & 1 \\ \hline
+Añadir ejemplos (con o sin pictogramas) sobre cómo resolver el ejercicio & 2 & 3 \\ \hline
+\hline
+	\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE FORMATO (F)}} & \multicolumn{2}{| c |}{\textbf{Evaluación}} \\ \hline
+	\textbf{Requisito} &\textbf{Importancia} & \textbf{Dificultad}\\ \hline
+Sustituir palabras por pictogramas & 2 & 2,7 \\ \hline
+Sustituir palabras por imágenes & 2 & 2,3 \\ \hline
+Resaltar palabras con colores & 3 & 3  \\ \hline
+Añadir leyenda de colores con la categoría de cada tipo de palabra resaltada & 1 & 3 \\ \hline
+Añadir leyenda de colores para diferenciar las asignaturas & 1 & 3 \\ \hline
+Estandarizar formato en textos (tipo de fuente y tamaño) & 3 & 2 \\ \hline
+Estandarizar formato para títulos e índices del temario & 3 & 2 \\ \hline
+Añadir imágenes buscando una palabra & 3 & 2,3 \\ \hline
+Aumentar el tamaño de un texto o palabras clave & 3 & 2,7 \\ \hline
+Subrayar un texto o palabras clave & 2 & 2,7 \\ \hline
+Poner en negrita un texto o palabras clave & 3 & 2,7 \\ \hline
 \end{tabular}
 }
-\caption{Lista de requisitos ordenada por prioridad.}
+\caption{Puntuación de los requisitos I.}
 \end{table}
-
-%-------------------------------------------------------------------
-\section{Workshop NIL}
-%-------------------------------------------------------------------
-
-    El mi\'ercoles 4 de diciembre de 2019, NIL (Natural Interaction based on Language) organiz\'o un congreso en la Facultad de Inform\'atica de la Universidad Complutense con docentes de otros centros y asociaciones, para mostrarles las herramientas tecnol\'ogicas inclusivas que se han desarrollado en los \'ultimos a\~{n}os para personas con discapacidad, siendo una de ellas nuestra aplicaci\'on web.
-
-    Un miembro del equipo de desarrollo, Jorge Velasco Conde, realiz\'o una presentaci\'on en la que explic\'o a los asistentes el funcionamiento y la finalidad de nuestro proyecto, con ejemplos visuales sobre posibles adaptaciones que podr\'ian llegar a realizarse.
-
-    Despu\'es de la presentaci\'on se realiz\'o una ronda de opiniones con todos los docentes, para que pudieran expresar qu\'e les hab\'ia parecido la aplicaci\'on web. Todos los comentarios fueron muy positivos y preguntaron cu\'ando estar\'ia disponible para uso p\'ublico.
-
-    Adem\'as de dar ``feedback`` positivo sobre el proyecto, tambi\'en propusieron el siguiente tipo de adaptaci\'on de formato, para mejorar las opciones de personalizaci\'on para los alumnos.
-
-La motivaci\'on de este requisito es facilitar a los alumnos con letra de mayor tama\~{n}o que puedan escribir en un espacio suficientemente grande para ellos.
-
-En este caso \'unicamente realizamos la evaluaci\'on del requisito los desarrolladores, ya que, al ser una petici\'on, se consider\'o que deb\'ia puntuarse con la m\'axima nota, 3, imprescindible, para poder aportar utilidad a un mayor n\'umero de centros y asociaciones.
-
 \begin{table}
 \centering
 \scalebox{0.8}{
-\begin{tabular}{| c | c | c | c |}
+\begin{tabular}{| c | c | c |}
 \hline
-	\multicolumn{2}{| c |}{\textbf{ADAPTACIONES DE FORMATO (F)}} & \multicolumn{2}{| c |}{\textbf{Equipo de desarrollo}} \\ \hline
-	\textbf{Requisito} & \textbf{Jorge} & \textbf{Pablo}  & \textbf{Natalia}  \\ \hline
-A\~{n}adir espacio extra entre l\'ineas para escribir & 3 & 3 & 3 \\ \hline
+	\textbf{Tipo de requisito} & \textbf{Requisito} & \textbf{Puntuación}\\ \hline
+\textbf{A} & Ejercicios de verdadero o falso & \textbf{9} \\ \hline
+\textbf{A} & Ejercicios de completar espacios en un texto & \textbf{8,1} \\ \hline
+\textbf{A} & Ejercicios de desarrollo en un espacio limitado para escribir & \textbf{8,1} \\ \hline
+\textbf{A} & Ejercicios de relacionar conceptos con su definición & \textbf{6,9} \\ \hline
+\textbf{T} & Generar un resumen a partir de un texto & \textbf{6} \\ \hline
+\textbf{A} & Ejercicios de relacionar contenido mediante flechas & \textbf{6} \\ \hline
+\textbf{A} & Ejercicios de sopas de letras & \textbf{6} \\ \hline
+\textbf{A} & Ejercicios de relacionar definiciones con su concepto & \textbf{6} \\ \hline
+\textbf{A} & Añadir ejemplos (con o sin pictogramas) sobre cómo resolver el ejercicio & \textbf{11} \\ \hline
+\textbf{A} & Ejercicios de completar los espacios en blanco en tablas & \textbf{6} \\ \hline
+\textbf{T} & Crear esquemas seleccionando contenido de un texto & \textbf{5,1} \\ \hline
+\textbf{T} & Crear tablas seleccionando contenido de un texto & \textbf{3,4} \\ \hline
+\textbf{A} & Ejercicios de completar los espacios en blanco en esquemas & \textbf{3} \\ \hline
 \end{tabular}
 }
-\caption{Puntuaci\'on de los requisitos de formato.}
+\caption{Lista de funcionalidades ordenada por prioridad.}
+\end{table}
+\begin{table}
+\centering
+\scalebox{0.8}{
+\begin{tabular}{| c | c | c |}
+\hline
+	\textbf{Tipo de requisito} & \textbf{Requisito} & \textbf{Puntuación}\\ \hline
+\textbf{F} & Resaltar palabras con colores & \textbf{9} \\ \hline
+\textbf{F} & Aumentar el tamaño de un texto o palabras clave & \textbf{8,1} \\ \hline
+\textbf{F} &Poner en negrita un texto o palabras clave & \textbf{8,1} \\ \hline
+\textbf{F} & Añadir imágenes buscando una palabra & \textbf{6,9} \\ \hline
+\textbf{F} & 
+Añadir ejemplos (con o sin pictogramas) sobre cómo resolver el ejercicio & \textbf{6} \\ \hline
+\textbf{F} & Estandarizar formato en textos (tipo de fuente y tamaño) & \textbf{6} \\ \hline
+\textbf{F} & Estandarizar formato para títulos e índices del temario, para diferenciarlos de texto normal & \textbf{6} \\ \hline
+\textbf{F} & Sustituir palabras por pictogramas & \textbf{5,4} \\ \hline
+\textbf{F} & Subrayar un texto o palabras clave & \textbf{5,4} \\ \hline
+\textbf{F} & Añadir leyenda de colores con la categoría de cada tipo de palabra resaltada & \textbf{3} \\ \hline
+\end{tabular}
+}
+\caption{Lista de opciones de personalización ordenada por prioridad.}
 \end{table}
 
-%-------------------------------------------------------------------
-\section{Dise\~{n}o de la aplicaci\'on web}
-%-------------------------------------------------------------------
-\label{cap5:sec:diseno_app_web}
 
-	Al principio del proyecto, \'eramos dos integrantes en el equipo. Comenzamos haciendo un dise\~{n}o, en papel, de c\'omo nos imagin\'abamos que era la aplicaci\'on. El resultado de este boceto se puede ver en la Figura \ref{fig:bocetoInicial}.
-	
-	\figura{Bitmap/bocetoInicial}{width=1\textwidth}{fig:bocetoInicial}{Boceto inicial}
-	
-	Posteriormente y hablando con Virginia, incluimos a otro miembro en el equipo, ya que este proyecto resultaba bastante ambicioso. A partir de aqu\'i, buscamos alguna herramienta online para el desarrollo del prototipo, y encontramos ``\textit{Moqups}``, que se explica en el apartado ``Herramientas empleadas``. En esta p\'agina pudimos crear, entre todos, algunas vistas de la aplicaci\'on: p\'agina principal (Figura \ref{fig:paginaInicialProtoConjunto}), el editor (Figura \ref{fig:editorProtoConjunto}), b\'usqueda de pictogramas (Figura \ref{fig:buscarPictoProtoConjunto}), edici\'on de actividades (Figura \ref{fig:edicionActividadesProtoConjunto}) y edici\'on de temario (Figura \ref{fig:edicionTemarioProtoConjunto}).
-	
-	\figura{Bitmap/paginaInicialProtoConjunto}{width=1\textwidth}{fig:paginaInicialProtoConjunto}{P\'agina principal del prototipo en conjunto}
-	\figura{Bitmap/editorProtoConjunto}{width=1\textwidth}{fig:editorProtoConjunto}{Editor del prototipo en conjunto}
-	\figura{Bitmap/buscarPictoProtoConjunto}{width=1\textwidth}{fig:buscarPictoProtoConjunto}{B\'usquda de pictogramas del prototipo en conjunto}
-	\figura{Bitmap/edicionActividadesProtoConjunto}{width=1\textwidth}{fig:edicionActividadesProtoConjunto}{Edici\'on de actividades del prototipo en conjunto}
-	\figura{Bitmap/edicionTemarioProtoConjunto}{width=1\textwidth}{fig:edicionTemarioProtoConjunto}{Edici\'on de temario del prototipo en conjunto}
-	
-	A partir de aqu\'i, Raquel se uni\'o como co-directora del proyecto. Tras reunirse el equipo y ambas tutoras, se propuso hacer una iteraci\'on competitiva: cada miembro realiza un prototipo de la aplicaci\'on de forma individual y sin influir en los dem\'as dise\~{n}os. Tras una puesta en com\'un, se ense\~{n}a uno de ellos al usuario final, para que nos pueda dar ``\textit{feedback}`` sobre las diferentes vistas, y si quiere a\~{n}adir o hacer cambios en las existentes.
+\subsection{Tercera iteración}
 
-	Jorge opt\'o por hacer el prototipo en papel. Cre\'o cuatro vistas de la aplicaci\'on, con algunos comentarios para aclarar el dise\~{n}o: la vista de subida de fichero (Figura \ref{fig:paginaInicialProtoJorge}), la p\'agina principal (Figura \ref{fig:editorProtoJorge}), un desplegable de uno de los tipos de adaptaci\'on (Figura \ref{fig:desplegableProtoJorge}) y una vista de c\'omo quedar\'ia la vista previa del documento editado (Figura \ref{fig:vistaPreviaProtoJorge}). 
+    El miércoles 4 de diciembre de 2019 NIL (Natural Interaction based on Language) organizó un congreso en la Facultad de Informática de la Universidad Complutense con docentes de otros centros y asociaciones, para mostrarles las herramientas tecnológicas inclusivas que se han desarrollado en los últimos años para personas con discapacidad, siendo una de ellas nuestra aplicación web.
 
-	\figura{Bitmap/paginaInicialProtoJorge}{width=1\textwidth}{fig:paginaInicialProtoJorge}{Vista de subir un fichero (Jorge)}
-	\figura{Bitmap/editorProtoJorge}{width=1\textwidth}{fig:editorProtoJorge}{Vista de la p\'agina principal de la aplicaci\'on (Jorge)}
-	\figura{Bitmap/desplegableProtoJorge}{width=1\textwidth}{fig:desplegableProtoJorge}{Vista de un desplegable de uno de los tipos de adaptaci\'on (Jorge)}
-	\figura{Bitmap/vistaPreviaProtoJorge}{width=1\textwidth}{fig:vistaPreviaProtoJorge}{Vista de la vista previa de lo escrito en el editor (Jorge)}
-	
-	Natalia sigui\'o usando la p\'agina de ``\textit{Moqups}`` para dise\~{n}ar su prototipo. Cre\'o dos vistas: la vista de subida de fichero (Figura \ref{fig:paginaInicialProtoNatalia}) y la p\'agina principal (Figura \ref{fig:editorProtoNatalia}).
-	
-	\figura{Bitmap/paginaInicialProtoNatalia}{width=1\textwidth}{fig:paginaInicialProtoNatalia}{Vista de subir un fichero (Natalia)}
-	\figura{Bitmap/editorProtoNatalia}{width=1\textwidth}{fig:editorProtoNatalia}{Vista de la p\'agina principal de la aplicaci\'on (Natalia)}
-	
-	Pablo prefiri\'o dise\~{n}arlo directamente como aplicaci\'on web, usando \textit{React} (explicado en el apartado de ``Herramientas empleadas``). La ventaja de hacerlo as\'i es que se puede ver si hay alg\'un requisito que no se pueda implementar con las tecnolog\'ias que se ha usado. Cre\'o la vista de subida de fichero (Figura \ref{fig:paginaInicialProtoPablo}) y la vista de la p\'agina principal de la aplicaci\'on (Figura \ref{fig:editorProtoPablo}).
-	
-	\figura{Bitmap/paginaInicialProtoPablo}{width=1\textwidth}{fig:paginaInicialProtoPablo}{Vista de subir un fichero (Pablo)}
-	\figura{Bitmap/editorProtoPablo}{width=1\textwidth}{fig:editorProtoPablo}{Vista de la p\'agina principal de la aplicaci\'on (Pablo)}
-	
-	En los dise\~{n}os realizados, llegamos a la conclusi\'on de que la similitud entre ellos era de, aproximadamente, un 90\%: la divisi\'on entre el editor y el documento subido; el \textit{header} con el logo de AdaptaMaterialEscolar en la parte izquierda; la posici\'on de ciertos elementos tales como la subida de fichero, etc. Salvo por algunos detalles:
-	
-	\begin{itemize}
-		\item En el prototipo de Jorge, se usa un \textit{footer} en el cual se incluyen los nombres y apellidos de los desarrolladores y tutoras, adem\'as de incluir algunos logos (ARAASAC, licencia CC y UCM). Natalia y Pablo no optaron por ese \textit{footer}, sino que ser\'ia mejor ponerlo en un bot\'on ``cr\'editos``, para que la p\'agina fuera m\'as limpia. Los tres coincidimos en que era una buena idea.
-		\item Tanto en el prototipo de Jorge como en el de Natalia, la barra de herramientas estaba en la parte superior. Pablo lo puso junto con el editor, lo cual pareci\'o tambi\'en una buena idea, ya que todas las adaptaciones iban a estar sobre el editor.
-	\end{itemize}
+Un miembro del equipo de desarrollo, Jorge Velasco Conde, realizó una presentación en la que explicó a los asistentes el funcionamiento y la finalidad de nuestro proyecto, con ejemplos visuales sobre posibles adaptaciones que podrían llegar a realizarse.
+
+Después de la presentación se realizó una ronda de opiniones con todos los docentes, para que pudieran expresar qué les había parecido la aplicación web. Todos los comentarios fueron muy positivos y preguntaron cuándo estaría disponible para uso público.
+
+Además de dar ?feedback? positivo sobre el proyecto, también propusieron el siguiente tipo de adaptación de formato, para mejorar las opciones de personalización para los alumnos.
+
+La motivación de este requisito es facilitar a los alumnos con letra de mayor tamaño que puedan escribir en un espacio suficientemente grande para ellos.
+
+\begin{table}
+\centering
+\begin{tabular}{| c | c | c | c |}
+\hline
+	\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE FORMATO (F)}} & \multicolumn{2}{| c |}{\textbf{Evaluación}} \\ \hline
+	\textbf{Requisito} &\textbf{Importancia} & \textbf{Dificultad}\\ \hline
+Añadir espacio extra entre líneas para escribir & 3 & 2 \\ \hline
+\end{tabular}
+\caption{Puntuación de los requisitos II.}
+\end{table}
+
+En este caso únicamente realizamos la evaluación del requisito los desarrolladores, ya que, al ser una petición, se consideró que el indicador de importancia debía tener la máxima puntuación, para poder aportar utilidad a un mayor número de centros y asociaciones y el indicador de dificultad volvió a calcularse de forma independiente entre el equipo, haciendo la media entre las puntuaciones.
+
+\begin{table}
+\centering
+\begin{tabular}{| c | c | c |}
+\hline
+	\textbf{Tipo de requisito} & \textbf{Requisito} & \textbf{Puntuación}\\ \hline
+\textbf{T} & Añadir espacio extra entre líneas para escribir & \textbf{6} \\ \hline
+\end{tabular}
+\caption{Lista de requisitos ordenada por prioridad.}
+\end{table}
