@@ -113,8 +113,8 @@
 \subsection{Pruebas de implementación}
 
 	Para las pruebas de implementación, se contempla dos tipos de pruebas: pruebas unitarias y pruebas de integración. Todas estas pruebas las haremos con \textit{Jest}\footnote{https://jestjs.io/es-ES/}, una librería de testing para \textit{Javascript}, que además es compatible con el \textit{framework} que hemos elegido (\textit{React}). \textit{Jest} tiene una instalación muy sencilla, de pocos pasos, y su configuración es mínima. La documentación es completa, y contiene lo necesario para poder desarrollar estos tipos de pruebas, junto con una serie de ejemplos, realizados paso a paso. Estas pruebas las desarrollará y realizará alguno de los miembros que no haya implementado esa parte del código, y las hará cuando la tarea correspondiente esté en la columna \textit{Ready to Testing}. La razón de esto es porque las personas que no han escrito el código pueden sacar más casos de pruebas que las personas que lo han escrito.
-
-\subsection{Pruebas unitarias}
+	
+	\subsubsection{Pruebas unitarias}
 
 	Una prueba unitaria se utiliza para comprobar que un método implementado funciona como se esperaba. Debe cumplir una serie de características:
 	
@@ -135,7 +135,7 @@
 	\end{itemize}
 	
 
-\subsection{Pruebas de integración}
+\subsubsection{Pruebas de integración}
 	Una prueba de integración se utiliza para comprobar que dos o más componentes, ya validados por las pruebas unitarias, son compatibles entre sí y funcionan correctamente. Hay varios tipos de pruebas de integración:
 	\begin{itemize}
 		\item \textbf{\textit{Top-Down}}: Es una estrategia de ``arriba a abajo'', se va probando los componentes que no son llamados por ningún otro, y se integran los componentes que son llamados desde la parte integrada.
