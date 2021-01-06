@@ -50,7 +50,7 @@
 % cambiar el título de forma que se especifiquen dónde se quieren
 % los retornos de carro cuando se utilizan fuentes grandes.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\tituloPortada{AdaptaMaterialEscolar: Herramienta para la adaptación de asignaturas a necesidades educativas especiales.
+\tituloPortada{AdaptaMaterialEscolar: Herramienta para la adaptación de asignaturas a necesidades educativas especiales
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,14 +59,14 @@
 % Se utiliza en la portada y en el valor por defecto del
 % primer subtítulo de la segunda portada.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\autorPortada{Pablo Miranda Torres\\Natalia Rodríguez-Peral Valiente\\Jorge Velasco Conde}
+\autorPortada{\autorYDirectores}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fecha de publicación:
 % \fechaPublicacion{Fecha}
 % Puede ser vacío. Aparece en la última línea de ambas portadas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fechaPublicacion{Junio 2020}
+\fechaPublicacion{Junio 2021}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Imagen de la portada (y escala)
@@ -104,7 +104,7 @@ Universidad Complutense de Madrid
 % se indica quién es el director del trabajo.
 % Si se fuerza un subtítulo distinto, no hace falta definirlo.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\directorPortada{Walterio Malatesta}
+\directorPortada{Virginia Francisco Gilmartín\\Raquel Hervás Ballesteros}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Texto del primer subtítulo de la segunda portada.
@@ -113,7 +113,10 @@ Universidad Complutense de Madrid
 % Si no se especifica se indica "Memoria que presenta para optar al
 % título de Doctor en Informática" seguido del \autorPortada.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\textoPrimerSubtituloPortada{%
+\textit{Memoria que presentan para optar al título de Grado en Ingeniería del Software} \\ [0.2em]
+\textbf{\autor}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Texto del segundo subtítulo de la segunda portada.
@@ -122,16 +125,18 @@ Universidad Complutense de Madrid
 % Si no se especifica se indica "Dirigida por el Doctor" seguido
 % del \directorPortada.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\textoSegundoSubtituloPortada{%
-%\textit{Versión \texisVer}
-%}
+\textoSegundoSubtituloPortada{%
+\textit{Dirigida por los Doctores} \\ [0.2em]
+\textbf{\directores}\\ [1.4em]
+\textit{Versión \texisVer}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \explicacionDobleCara
 % Si se utiliza, se aclara que el documento está preparado para la
 % impresión a doble cara.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\explicacionDobleCara
+\explicacionDobleCara
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \isbn
@@ -145,7 +150,7 @@ Universidad Complutense de Madrid
 % Si se utiliza, aparecerá información de los derechos de copyright
 % detrás de la segunda portada.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\copyrightInfo{\autor}
+%\copyrightInfo{\autor}
 
 
 %%
