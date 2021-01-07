@@ -16,44 +16,57 @@ Database file #2: biblioCap02.bib
 Database file #3: biblioCap03.bib
 Database file #4: biblioCap04.bib
 Database file #5: biblioCap05.bib
-You've used 1 entry,
+ptr=1, stack=
+ISSN DESCONOCIDO
+---the literal stack isn't empty for entry RevMetAgile
+while executing---line 3683 of file TeXiS/TeXiS.bst
+ptr=1, stack=
+ISBN 978-607-15-0314-5
+---the literal stack isn't empty for entry ISPressman
+while executing---line 3683 of file TeXiS/TeXiS.bst
+ptr=1, stack=
+ISBN 84-7829-074-5
+---the literal stack isn't empty for entry ISSommerville
+while executing---line 3683 of file TeXiS/TeXiS.bst
+You've used 11 entries,
             2962 wiz_defined-function locations,
-            1092 strings with 12664 characters,
-and the built_in function-call counts, 438 in all, are:
-= -- 30
-> -- 10
-< -- 1
-+ -- 4
-- -- 3
-* -- 22
-:= -- 75
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 5
-chr.to.int$ -- 1
-cite$ -- 1
-duplicate$ -- 36
-empty$ -- 42
-format.name$ -- 4
-if$ -- 86
+            1162 strings with 14504 characters,
+and the built_in function-call counts, 4664 in all, are:
+= -- 388
+> -- 126
+< -- 12
++ -- 50
+- -- 39
+* -- 257
+:= -- 778
+add.period$ -- 36
+call.type$ -- 11
+change.case$ -- 68
+chr.to.int$ -- 11
+cite$ -- 11
+duplicate$ -- 389
+empty$ -- 369
+format.name$ -- 52
+if$ -- 919
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 8
-newline$ -- 9
-num.names$ -- 4
-pop$ -- 19
+missing$ -- 75
+newline$ -- 62
+num.names$ -- 44
+pop$ -- 151
 preamble$ -- 1
-purify$ -- 5
+purify$ -- 57
 quote$ -- 0
-skip$ -- 18
+skip$ -- 160
 stack$ -- 0
-substring$ -- 11
-swap$ -- 12
-text.length$ -- 0
+substring$ -- 141
+swap$ -- 168
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 7
+type$ -- 104
 warning$ -- 0
-while$ -- 3
+while$ -- 35
 width$ -- 0
-write$ -- 15
+write$ -- 146
+(There were 3 error messages)

@@ -1,9 +1,74 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{11}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
-\bibitem[{Pressman(2005)}]{ISPressman}
+\bibitem[{Apiumhub(2017)}]{BeneficiosPruebasUnitarias}
+{\sc Apiumhub}.
+\newblock Beneficios de las pruebas unitarias.
+\newblock
+  \url{https://apiumhub.com/es/tech-blog-barcelona/beneficios-de-las-pruebas-unitarias/},
+  2017.
+
+\bibitem[{Cadavid et\ al.(2013)Cadavid, Martínez y Vélez}]{RevMetAgile}
+{\sc Cadavid, A.~N.}, {\sc Martínez, J. D.~F.} y {\sc Vélez, J.~M.}
+\newblock Revisión de metodologías ágiles para el desarrollo de software.
+\newblock {\em Prospectiva\/}, vol.\ 11, p\'aginas 30--32, 2013.
+\newblock Disponible en
+  \url{http://ojs.uac.edu.co/index.php/prospectiva/article/view/36}.
+
+\bibitem[{Demera(2018)}]{MetAgilevsTrad}
+{\sc Demera, R.}
+\newblock Metodologías... ¿tradicional vs ágil?
+\newblock
+  \url{https://tech.tribalyte.eu/blog-metodologias-tradicional-vs-agil}, 2018.
+
+\bibitem[{Garzas(2011)}]{JGReglasKanban}
+{\sc Garzas, J.}
+\newblock Kanban.
+\newblock \url{https://www.javiergarzas.com/2011/11/kanban.html}, 2011.
+
+\bibitem[{Herrera(2010)}]{TFMOrtizHerrera}
+{\sc Herrera, M.~O.}
+\newblock {\em Métodos y técnicas para la gestión de proyectos software\/}.
+\newblock {Trabajo de Fin de Máster}, Universidad de Sevilla, 2010.
+
+\bibitem[{IONOS(2019)}]{IonosKanban}
+{\sc IONOS}.
+\newblock Kanban.
+\newblock
+  \url{https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/que-es-kanban/},
+  2019.
+
+\bibitem[{Kanbanize(2020)}]{LeadCycleTime}
+{\sc Kanbanize}.
+\newblock Kanban: Tiempo de entrega vs. tiempo de ciclo.
+\newblock
+  \url{https://kanbanize.com/es/recursos-de-kanban/software-kanban/tiempo-de-entrega-vs-tiempo-de-ciclo},
+  2020.
+
+\bibitem[{Mesh(2020)}]{TrelloKanban}
+{\sc Mesh, J.}
+\newblock Metodología kanban: revoluciona tu manera de trabajar más ágil.
+\newblock \url{https://blog.trello.com/es/metodologia-kanban}, 2020.
+
+\bibitem[{Pressman(2010)}]{ISPressman}
 {\sc Pressman, R.~S.}
-\newblock {\em Ingenier\'{i}a del Software. Un enfoque pr\'{a}ctico\/}.
-\newblock McGraw-Hill, 2005.
+\newblock {\em Ingeniería del Software. Un enfoque práctico\/}.
+\newblock McGraw-Hill, 7ª edici\'on, 2010.
+\newblock Disponible en
+  \url{https://tesuva.edu.co/phocadownload/Ingenieria_del_Software._Un_Enfoque_Practico.pdf}.
+
+\bibitem[{Rodríguez(2015)}]{TFGNuria}
+{\sc Rodríguez, N.~G.}
+\newblock {\em Las Pruebas de Integración como Proceso de la Calidad del
+  Software en el Ámbito de las Telecomunicaciones\/}.
+\newblock {Proyecto de Fin de Carrera}, Escuela Politécnica Superior Carlos III
+  (Universidad Carlos III de Madrid), 2015.
+
+\bibitem[{Sommerville(2005)}]{ISSommerville}
+{\sc Sommerville, I.}
+\newblock {\em Ingeniería del Software\/}.
+\newblock Addison-Wesley, 7ª edici\'on, 2005.
+\newblock Disponible en
+  \url{https://emtinfoada.files.wordpress.com/2015/03/ingenierc3ada-del-software-ian-sommerville.pdf}.
 
 \end{thebibliography}
