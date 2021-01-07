@@ -7,15 +7,31 @@ A level-1 auxiliary file: Capitulos/01Introduccion.aux
 A level-1 auxiliary file: Capitulos/02EstadoDelArte.aux
 A level-1 auxiliary file: Capitulos/03HerramientasEmpleadas.aux
 A level-1 auxiliary file: Capitulos/04MetodologiaDesarrollo.aux
+Multiple inclusions of entire database
+---line 3 of file Capitulos/04MetodologiaDesarrollo.aux
+ : \citation{*
+ :            }
+I'm skipping whatever remains of this command
 A level-1 auxiliary file: Capitulos/05AdaptaMaterialEscolar.aux
 A level-1 auxiliary file: Capitulos/06TrabajoIndividual.aux
 A level-1 auxiliary file: Cascaras/bibliografia.aux
 The style file: TeXiS/TeXiS.bst
+I couldn't open database file biblioCap05.bib
+---line 4 of file Cascaras/bibliografia.aux
+ : \bibdata{biblioCap01,biblioCap02,biblioCap03,biblioCap04,biblioCap05
+ :                                                                     }
+I'm skipping whatever remains of this command
 Database file #1: biblioCap01.bib
 Database file #2: biblioCap02.bib
 Database file #3: biblioCap03.bib
 Database file #4: biblioCap04.bib
-Database file #5: biblioCap05.bib
+Warning--to sort, need author or key in EducaciónInclusiva
+Warning--to sort, need author or key in TiposDeAdaptaciones
+Warning--to sort, need author or key in EspectroAutista
+Warning--empty year in EspectroAutista; set to ????
+Warning--empty year in TiposDeAdaptaciones; set to ????
+Warning--empty year in EducaciónInclusiva; set to ????
+Warning--empty journal in BOE
 ptr=1, stack=
 ISSN DESCONOCIDO
 ---the literal stack isn't empty for entry RevMetAgile
@@ -28,45 +44,45 @@ ptr=1, stack=
 ISBN 84-7829-074-5
 ---the literal stack isn't empty for entry ISSommerville
 while executing---line 3683 of file TeXiS/TeXiS.bst
-You've used 11 entries,
+You've used 21 entries,
             2962 wiz_defined-function locations,
-            1162 strings with 14504 characters,
-and the built_in function-call counts, 4664 in all, are:
-= -- 388
-> -- 126
-< -- 12
-+ -- 50
-- -- 39
-* -- 257
-:= -- 778
-add.period$ -- 36
-call.type$ -- 11
-change.case$ -- 68
-chr.to.int$ -- 11
-cite$ -- 11
-duplicate$ -- 389
-empty$ -- 369
-format.name$ -- 52
-if$ -- 919
+            1210 strings with 16270 characters,
+and the built_in function-call counts, 8200 in all, are:
+= -- 699
+> -- 196
+< -- 19
++ -- 81
+- -- 60
+* -- 435
+:= -- 1348
+add.period$ -- 63
+call.type$ -- 21
+change.case$ -- 124
+chr.to.int$ -- 21
+cite$ -- 34
+duplicate$ -- 685
+empty$ -- 664
+format.name$ -- 80
+if$ -- 1624
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 75
-newline$ -- 62
-num.names$ -- 44
-pop$ -- 151
+missing$ -- 129
+newline$ -- 109
+num.names$ -- 72
+pop$ -- 296
 preamble$ -- 1
-purify$ -- 57
+purify$ -- 104
 quote$ -- 0
-skip$ -- 160
+skip$ -- 290
 stack$ -- 0
-substring$ -- 141
-swap$ -- 168
+substring$ -- 257
+swap$ -- 261
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 104
-warning$ -- 0
-while$ -- 35
+type$ -- 201
+warning$ -- 7
+while$ -- 56
 width$ -- 0
-write$ -- 146
-(There were 3 error messages)
+write$ -- 259
+(There were 5 error messages)

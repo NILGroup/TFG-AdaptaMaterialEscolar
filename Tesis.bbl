@@ -1,5 +1,21 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{21}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Esp()}]{EspectroAutista}
+Información básica sobre el trastorno del espectro autista.
+\newblock
+  \url{https://www.cdc.gov/ncbddd/spanish/autism/facts.html#:~:text=Los%20trastornos%20del%20espectro%20autista,sociales%2C%20comunicacionales%20y%20conductuales%20significativos.},
+  ????
+
+\bibitem[{Tip()}]{TiposDeAdaptaciones}
+Tipos de adaptaciones curriculares individualizadas (a.c.i.).
+\newblock
+  \url{https://www.fundacioncadah.org/web/articulo/tipos-de-adaptaciones-curriculares-individualizadas.html#:~:text=Suelen%20responder%20a%20las%20necesidades,Recursos%20espaciales%2C%20materiales%20y%20personales.},
+  ????
+
+\bibitem[{Edu()}]{EducaciónInclusiva}
+¿qué es la educación inclusiva?
+\newblock \url{http://www.inclusioneducativa.org/ise.php?id=1}, ????
 
 \bibitem[{Apiumhub(2017)}]{BeneficiosPruebasUnitarias}
 {\sc Apiumhub}.
@@ -8,6 +24,13 @@
   \url{https://apiumhub.com/es/tech-blog-barcelona/beneficios-de-las-pruebas-unitarias/},
   2017.
 
+\bibitem[{BOE(2005)}]{BOE}
+{\sc BOE}.
+\newblock Decreto 98/2005, de 18 de agosto, de ordenación de la atención a la
+  diversidad en las enseñanzas escolares y la educación preescolar en
+  cantabria.
+\newblock 2005.
+
 \bibitem[{Cadavid et\ al.(2013)Cadavid, Martínez y Vélez}]{RevMetAgile}
 {\sc Cadavid, A.~N.}, {\sc Martínez, J. D.~F.} y {\sc Vélez, J.~M.}
 \newblock Revisión de metodologías ágiles para el desarrollo de software.
@@ -15,21 +38,44 @@
 \newblock Disponible en
   \url{http://ojs.uac.edu.co/index.php/prospectiva/article/view/36}.
 
+\bibitem[{Campillo(2020)}]{React2}
+{\sc Campillo, A.}
+\newblock ¿\uppercase{D}e dónde sale \uppercase{R}eact?
+\newblock \url{https://www.drauta.com/que-es-react-y-para-que-sirve}, 2020.
+
 \bibitem[{Demera(2018)}]{MetAgilevsTrad}
 {\sc Demera, R.}
 \newblock Metodologías... ¿tradicional vs ágil?
 \newblock
   \url{https://tech.tribalyte.eu/blog-metodologias-tradicional-vs-agil}, 2018.
 
+\bibitem[{Dorantes(2015)}]{React3}
+{\sc Dorantes, C.~A.}
+\newblock Conceptos básicos de \uppercase{JSX} y
+  \uppercase{R}eact\uppercase{JS}.
+\newblock \url{https://platzi.com/blog/conceptos-basicos-reactjs/}, 2015.
+
 \bibitem[{Garzas(2011)}]{JGReglasKanban}
 {\sc Garzas, J.}
 \newblock Kanban.
 \newblock \url{https://www.javiergarzas.com/2011/11/kanban.html}, 2011.
 
+\bibitem[{González(2020)}]{SistemaEducativo}
+{\sc González, L.}
+\newblock ¿cómo se organiza el sistema educativo español?
+\newblock
+  \url{https://www.emagister.com/blog/se-organiza-sistema-educativo-espanol/},
+  2020.
+
 \bibitem[{Herrera(2010)}]{TFMOrtizHerrera}
 {\sc Herrera, M.~O.}
 \newblock {\em Métodos y técnicas para la gestión de proyectos software\/}.
 \newblock {Trabajo de Fin de Máster}, Universidad de Sevilla, 2010.
+
+\bibitem[{IllusionStudio(2019)}]{IllusionStudioKanban}
+{\sc IllusionStudio}.
+\newblock La metodología \uppercase{K}anban.
+\newblock \url{https://www.illusionstudio.es/metodologia-kanban}, 2019.
 
 \bibitem[{IONOS(2019)}]{IonosKanban}
 {\sc IONOS}.
@@ -40,15 +86,22 @@
 
 \bibitem[{Kanbanize(2020)}]{LeadCycleTime}
 {\sc Kanbanize}.
-\newblock Kanban: Tiempo de entrega vs. tiempo de ciclo.
+\newblock Kanban: Tiempo de entrega vs. \uppercase{T}iempo de ciclo.
 \newblock
   \url{https://kanbanize.com/es/recursos-de-kanban/software-kanban/tiempo-de-entrega-vs-tiempo-de-ciclo},
   2020.
 
 \bibitem[{Mesh(2020)}]{TrelloKanban}
 {\sc Mesh, J.}
-\newblock Metodología kanban: revoluciona tu manera de trabajar más ágil.
+\newblock Metodología \uppercase{K}anban: revoluciona tu manera de trabajar más
+  ágil.
 \newblock \url{https://blog.trello.com/es/metodologia-kanban}, 2020.
+
+\bibitem[{Orjales~Villa(1999)}]{Libro1}
+{\sc Orjales~Villa, I.}
+\newblock {\em Déficit de atención con hiperactividad. Manual para padres y
+  educadores.\/}.
+\newblock Editorial CEPE, Madrid, 1999.
 
 \bibitem[{Pressman(2010)}]{ISPressman}
 {\sc Pressman, R.~S.}
@@ -70,5 +123,12 @@
 \newblock Addison-Wesley, 7ª edici\'on, 2005.
 \newblock Disponible en
   \url{https://emtinfoada.files.wordpress.com/2015/03/ingenierc3ada-del-software-ian-sommerville.pdf}.
+
+\bibitem[{Ángel Álvarez(2019)}]{React1}
+{\sc Ángel Álvarez, M.}
+\newblock Qué es \uppercase{R}eact. \uppercase{P}or qué usar \uppercase{R}eact.
+\newblock
+  \url{https://desarrolloweb.com/articulos/que-es-react-motivos-uso.html},
+  2019.
 
 \end{thebibliography}
