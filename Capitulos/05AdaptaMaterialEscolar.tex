@@ -171,6 +171,7 @@
 	\end{tabular}
 	}
 	\caption{Puntuación de los requisitos I.}
+	\label{tabla:cap5:sec:segundaIteracionTablaRequisitos1}
 	\end{table}
 	\begin{table}
 	\centering
@@ -263,11 +264,13 @@
 	El diseño de la aplicación web se ha desarrollado en varias iteraciones o etapas.
 
 	\subsection{Primera etapa}
+	\label{cap5:sec:diseño:subsec:primera}
 		En esta primera etapa se creó un diseño, en papel, de cómo podría ser la página principal de la aplicación web (figura \ref{fig:bocetoInicial}). En la parte superior de este diseño, se observa que hay una barra de navegación (\textit{navbar} en inglés) con dos menús: ``Texto'' y ``Actividades''. Si se pasa el ratón por encima de alguno de estos menús, aparece un submenú con las diferentes adaptaciones disponibles para ese menú (en la sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones} se pueden ver las diferentes adaptaciones que hay en la aplicación). En la lado derecho encontramos otro menú, con dos zonas diferenciadas: en la parte superior tenemos los botones de ``Subir texto'' (que sube un fichero en formato \textit{.pdf} o \textit{.docx}) y ``Descargar'' (que descarga el documento adaptado en formato \textit{.pdf}). En la parte inferior del menú lateral, nos encontramos un ``Resaltar información'', el cual sirve para dar formato a los títulos, al cuerpo, etc. Por último, en el centro de la página, se encuentra el fichero subido con el que podremos seleccionar textos y poder adaptarlos conforme así se requiera.
 		
 		\figura{Bitmap/bocetoInicial}{width=1\textwidth}{fig:bocetoInicial}{Boceto inicial de la aplicación}
 		
 	\subsection{Segunda etapa}
+	\label{cap5:sec:diseño:subsec:segunda}
 		Partiendo del diseño inicial, y a través de la herramienta ``\textit{Moqups}'' (ver sección \ref{cap3:sec:moqups}), se creó un prototipo más amplio por vistas:
 		\begin{itemize}
 			\item \textbf{Página principal}: En la figura \ref{fig:paginaInicialProtoConjunto} se puede ver la página principal de la aplicación. Ésta es la página que se vería nada más entrar. En la parte superior, encontramos dos \textit{navbar} con diferentes menús. En el \textit{navbar} superior, podemos ver los menús relacionados con un editor de texto (es decir, tienen una funcionalidad similar a los que tendría, por ejemplo, \textit{Microsoft Word}\footnote{https://www.microsoft.com/es-es/microsoft-365/word}): ``Archivo'', ``Edición'', ``Formato'', ``Insertar'' y ``Ayuda''. En el \textit{navbar} inferior, se encuentra los menús correspondientes a las adaptaciones de ``Temario'' y ``Actividades'', además de la posibilidad de buscar imágenes libres\footnote{Las imágenes libres son aquellas imágenes que son de dominio público y que no tienen derechos reservados.} (también llamadas imágenes \textit{CC0} o \textit{Creative Commons Zero} \footnote{https://creativecommons.org/publicdomain/zero/1.0/deed.es}) y pictogramas. En el centro de la página web, podemos observar dos elementos: el logo de la aplicación ``AdaptaMaterialEscolar'' y una zona para poder subir el fichero en formato \textit{.pdf} o \textit{.docx}, ya sea seleccionándolo de una carpeta o arrastrando desde la carpeta a la zona de subida.
@@ -293,6 +296,7 @@
 		\end{itemize}
 	
 	\subsection{Tercera etapa}
+	\label{cap5:sec:diseño:subsec:tercera}
 		Una vez que se hizo la versión 1.0 del prototipo, se propuso hacer una iteración competitiva para ver si este prototipo se podía mejorar. Cada miembro del equipo realizó, de forma individual y sin influir los unos en los otros, un prototipo propio partiendo del inicial. Con esto se consigue tener diferentes puntos de vista sobre una misma funcionalidad. Una vez que todos los prototipos fueron hechos, se realizó una puesta en común para discutir cada uno, y sobre todo, el por qué de esa distribución. Los resultados fueron los siguientes:
 		\begin{itemize}
 			\item \textbf{Página principal}: En los tres diseños realizados, la página principal era prácticamente igual. Todos coincidimos en la manera de distribuir dicha página: Un \textit{header} con el logo de ``AdaptaMaterialEscolar'' en la parte de la izquierda; y en la parte de la derecha algún sistema que fuera útil para la aplicación. En el centro de la página estaría la funcionalidad de poner subir un fichero a la aplicación. En las figuras \ref{fig:paginaInicialProtoJorge}, \ref{fig:paginaInicialProtoNatalia} y \ref{fig:paginaInicialProtoPablo} se puede observar los resultados de los tres prototipos para la página principal. En el caso de la figura \ref{fig:paginaInicialProtoJorge}, en la parte inferior (\textit{footer}) están los créditos y los logotipos de ARASAAC\footnote{https://arasaac.org/}, la Universidad Complutense de Madrid\footnote{https://www.ucm.es} y la licencia de \textit{Creative Commons}\footnote{https://creativecommons.org/}. También se observa que en la parte de la derecha de la barra de navegación se propuso hacer un sistema de \textit{login} para poder guardar el trabajo realizado.  Ésto último no resultó debido a que los usuarios finales que usen la aplicación especificaron que no querían recordar ningún nombre de usuario y contraseña. También, la parte inferior de dicha figura, coincidimos que sería buena idea establecerla en un botón, tal y como ocurre en las figuras \ref{fig:paginaInicialProtoNatalia} (aquí se observa que hay dos botones: ``Créditos'', que es donde iría la parte inferior de la figura \ref{fig:paginaInicialProtoJorge}; y ``Ayuda'', por si el usuario necesita algún tipo de ayuda con la aplicación) y \ref{fig:paginaInicialProtoPablo} (en este caso se ve tres botones: ``Inicio'', que te llevaría a la página principal; ``Ayuda'', donde se incluiría también la parte de ``Créditos''; y ``Contacto'', por si el usuario tiene algún problema y/o sugerencia pueda contactar con los desarrolladores y proporcionarle una respuesta).

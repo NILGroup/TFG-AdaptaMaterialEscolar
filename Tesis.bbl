@@ -7,15 +7,15 @@ Información básica sobre el trastorno del espectro autista.
   \url{https://www.cdc.gov/ncbddd/spanish/autism/facts.html#:~:text=Los%20trastornos%20del%20espectro%20autista,sociales%2C%20comunicacionales%20y%20conductuales%20significativos.},
   ????
 
-\bibitem[{Edu()}]{EducaciónInclusiva}
-¿qué es la educación inclusiva?
-\newblock \url{http://www.inclusioneducativa.org/ise.php?id=1}, ????
-
 \bibitem[{Tip()}]{TiposDeAdaptaciones}
 Tipos de adaptaciones curriculares individualizadas (a.c.i.).
 \newblock
   \url{https://www.fundacioncadah.org/web/articulo/tipos-de-adaptaciones-curriculares-individualizadas.html#:~:text=Suelen%20responder%20a%20las%20necesidades,Recursos%20espaciales%2C%20materiales%20y%20personales.},
   ????
+
+\bibitem[{Edu()}]{EducaciónInclusiva}
+¿qué es la educación inclusiva?
+\newblock \url{http://www.inclusioneducativa.org/ise.php?id=1}, ????
 
 \bibitem[{Apiumhub(2017)}]{BeneficiosPruebasUnitarias}
 {\sc Apiumhub}.
@@ -91,13 +91,6 @@ Tipos de adaptaciones curriculares individualizadas (a.c.i.).
   \url{https://kanbanize.com/es/recursos-de-kanban/software-kanban/tiempo-de-entrega-vs-tiempo-de-ciclo},
   2020.
 
-\bibitem[{Ángel Álvarez(2019)}]{React1}
-{\sc Ángel Álvarez, M.}
-\newblock Qué es \uppercase{R}eact. \uppercase{P}or qué usar \uppercase{R}eact.
-\newblock
-  \url{https://desarrolloweb.com/articulos/que-es-react-motivos-uso.html},
-  2019.
-
 \bibitem[{Mesh(2020)}]{TrelloKanban}
 {\sc Mesh, J.}
 \newblock Metodología \uppercase{K}anban: revoluciona tu manera de trabajar más
@@ -130,5 +123,12 @@ Tipos de adaptaciones curriculares individualizadas (a.c.i.).
 \newblock Addison-Wesley, 7ª edici\'on, 2005.
 \newblock Disponible en
   \url{https://emtinfoada.files.wordpress.com/2015/03/ingenierc3ada-del-software-ian-sommerville.pdf}.
+
+\bibitem[{Ángel Álvarez(2019)}]{React1}
+{\sc Ángel Álvarez, M.}
+\newblock Qué es \uppercase{R}eact. \uppercase{P}or qué usar \uppercase{R}eact.
+\newblock
+  \url{https://desarrolloweb.com/articulos/que-es-react-motivos-uso.html},
+  2019.
 
 \end{thebibliography}
