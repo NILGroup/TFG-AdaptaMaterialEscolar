@@ -1,21 +1,41 @@
-This is BibTeX, Version 0.99d (TeX Live 2020/W32TeX)
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Tesis.aux
+Reallocating 'name_of_file' (item size: 1) to 19 items.
 A level-1 auxiliary file: Cascaras/cover.aux
+Reallocating 'name_of_file' (item size: 1) to 20 items.
 A level-1 auxiliary file: TeXiS/TeXiS_toc.aux
+Reallocating 'name_of_file' (item size: 1) to 29 items.
 A level-1 auxiliary file: Capitulos/01Introduccion.aux
+Reallocating 'name_of_file' (item size: 1) to 30 items.
 A level-1 auxiliary file: Capitulos/02EstadoDelArte.aux
+Multiple inclusions of entire database
+---line 3 of file Capitulos/02EstadoDelArte.aux
+ : \citation{*
+ :            }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 38 items.
 A level-1 auxiliary file: Capitulos/03HerramientasEmpleadas.aux
+Reallocating 'name_of_file' (item size: 1) to 38 items.
 A level-1 auxiliary file: Capitulos/04MetodologiaDesarrollo.aux
 Multiple inclusions of entire database
 ---line 3 of file Capitulos/04MetodologiaDesarrollo.aux
  : \citation{*
  :            }
 I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 38 items.
 A level-1 auxiliary file: Capitulos/05AdaptaMaterialEscolar.aux
+Reallocating 'name_of_file' (item size: 1) to 34 items.
 A level-1 auxiliary file: Capitulos/06TrabajoIndividual.aux
+Reallocating 'name_of_file' (item size: 1) to 26 items.
 A level-1 auxiliary file: Cascaras/bibliografia.aux
+Reallocating 'name_of_file' (item size: 1) to 12 items.
 The style file: TeXiS/TeXiS.bst
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+Reallocating 'name_of_file' (item size: 1) to 12 items.
 I couldn't open database file biblioCap05.bib
 ---line 4 of file Cascaras/bibliografia.aux
  : \bibdata{biblioCap01,biblioCap02,biblioCap03,biblioCap04,biblioCap05
@@ -23,27 +43,35 @@ I couldn't open database file biblioCap05.bib
 I'm skipping whatever remains of this command
 Database file #1: biblioCap01.bib
 Database file #2: biblioCap02.bib
+Repeated entry---line 1 of file biblioCap02.bib
+ : @article{BOE
+ :             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 8 of file biblioCap02.bib
+ : @misc{TiposDeAdaptaciones
+ :                          ,
+I'm skipping whatever remains of this entry
 Database file #3: biblioCap03.bib
 Database file #4: biblioCap04.bib
 Warning--to sort, need author or key in EducaciónInclusiva
 Warning--to sort, need author or key in TiposDeAdaptaciones
 Warning--to sort, need author or key in EspectroAutista
 Warning--empty year in EspectroAutista; set to ????
-Warning--empty year in TiposDeAdaptaciones; set to ????
 Warning--empty year in EducaciónInclusiva; set to ????
+Warning--empty year in TiposDeAdaptaciones; set to ????
 Warning--empty journal in BOE
 ptr=1, stack=
 ISSN DESCONOCIDO
 ---the literal stack isn't empty for entry RevMetAgile
-while executing---line 3683 of file TeXiS/TeXiS.bst
+while executing---line 1842 of file TeXiS/TeXiS.bst
 ptr=1, stack=
 ISBN 978-607-15-0314-5
 ---the literal stack isn't empty for entry ISPressman
-while executing---line 3683 of file TeXiS/TeXiS.bst
+while executing---line 1842 of file TeXiS/TeXiS.bst
 ptr=1, stack=
 ISBN 84-7829-074-5
 ---the literal stack isn't empty for entry ISSommerville
-while executing---line 3683 of file TeXiS/TeXiS.bst
+while executing---line 1842 of file TeXiS/TeXiS.bst
 You've used 21 entries,
             2962 wiz_defined-function locations,
             1210 strings with 16270 characters,
@@ -85,4 +113,4 @@ warning$ -- 7
 while$ -- 56
 width$ -- 0
 write$ -- 259
-(There were 5 error messages)
+(There were 8 error messages)
