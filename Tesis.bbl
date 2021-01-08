@@ -1,21 +1,13 @@
 \begin{thebibliography}{21}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
-\bibitem[{Esp()}]{EspectroAutista}
+\bibitem[{edu(2006)}]{eduInclusiva}
+¿\uppercase{Q}ué es la educación inclusiva?
+\newblock \url{http://www.inclusioneducativa.org/ise.php?id=1}, 2006.
+
+\bibitem[{Esp(2014)}]{EspectroAutista}
 Información básica sobre el trastorno del espectro autista.
-\newblock
-  \url{https://www.cdc.gov/ncbddd/spanish/autism/facts.html#:~:text=Los%20trastornos%20del%20espectro%20autista,sociales%2C%20comunicacionales%20y%20conductuales%20significativos.},
-  ????
-
-\bibitem[{Tip()}]{TiposDeAdaptaciones}
-Tipos de adaptaciones curriculares individualizadas (a.c.i.).
-\newblock
-  \url{https://www.fundacioncadah.org/web/articulo/tipos-de-adaptaciones-curriculares-individualizadas.html#:~:text=Suelen%20responder%20a%20las%20necesidades,Recursos%20espaciales%2C%20materiales%20y%20personales.},
-  ????
-
-\bibitem[{Edu()}]{EducaciónInclusiva}
-¿qué es la educación inclusiva?
-\newblock \url{http://www.inclusioneducativa.org/ise.php?id=1}, ????
+\newblock \url{https://www.cdc.gov/ncbddd/spanish/autism/facts.html}, 2014.
 
 \bibitem[{Apiumhub(2017)}]{BeneficiosPruebasUnitarias}
 {\sc Apiumhub}.
@@ -30,6 +22,13 @@ Tipos de adaptaciones curriculares individualizadas (a.c.i.).
   diversidad en las enseñanzas escolares y la educación preescolar en
   cantabria.
 \newblock 2005.
+
+\bibitem[{CADAH(2012)}]{TiposDeAdaptaciones}
+{\sc CADAH, F.}
+\newblock Tipos de adaptaciones curriculares individualizadas (a.c.i.).
+\newblock
+  \url{https://www.fundacioncadah.org/web/articulo/tipos-de-adaptaciones-curriculares-individualizadas.html},
+  2012.
 
 \bibitem[{Cadavid et\ al.(2013)Cadavid, Martínez y Vélez}]{RevMetAgile}
 {\sc Cadavid, A.~N.}, {\sc Martínez, J. D.~F.} y {\sc Vélez, J.~M.}
@@ -62,7 +61,7 @@ Tipos de adaptaciones curriculares individualizadas (a.c.i.).
 
 \bibitem[{González(2020)}]{SistemaEducativo}
 {\sc González, L.}
-\newblock ¿cómo se organiza el sistema educativo español?
+\newblock ¿\uppercase{C}ómo se organiza el sistema educativo español?
 \newblock
   \url{https://www.emagister.com/blog/se-organiza-sistema-educativo-espanol/},
   2020.
@@ -100,7 +99,7 @@ Tipos de adaptaciones curriculares individualizadas (a.c.i.).
 \bibitem[{Orjales~Villa(1999)}]{Libro1}
 {\sc Orjales~Villa, I.}
 \newblock {\em Déficit de atención con hiperactividad. Manual para padres y
-  educadores.\/}.
+  educadores\/}.
 \newblock Editorial CEPE, Madrid, 1999.
 
 \bibitem[{Pressman(2010)}]{ISPressman}

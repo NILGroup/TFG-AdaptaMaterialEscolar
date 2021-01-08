@@ -38,12 +38,8 @@ Repeated entry---line 15 of file biblioCap02.bib
 I'm skipping whatever remains of this entry
 Database file #3: biblioCap03.bib
 Database file #4: biblioCap04.bib
-Warning--to sort, need author or key in EducaciónInclusiva
-Warning--to sort, need author or key in TiposDeAdaptaciones
+Warning--to sort, need author or key in eduInclusiva
 Warning--to sort, need author or key in EspectroAutista
-Warning--empty year in EspectroAutista; set to ????
-Warning--empty year in TiposDeAdaptaciones; set to ????
-Warning--empty year in EducaciónInclusiva; set to ????
 Warning--empty journal in BOE
 ptr=1, stack=
 ISSN DESCONOCIDO
@@ -59,43 +55,43 @@ ISBN 84-7829-074-5
 while executing---line 3683 of file TeXiS/TeXiS.bst
 You've used 21 entries,
             2962 wiz_defined-function locations,
-            1210 strings with 16270 characters,
-and the built_in function-call counts, 8200 in all, are:
-= -- 699
-> -- 196
-< -- 19
-+ -- 81
-- -- 60
-* -- 435
-:= -- 1348
-add.period$ -- 63
+            1214 strings with 16080 characters,
+and the built_in function-call counts, 8266 in all, are:
+= -- 701
+> -- 206
+< -- 20
++ -- 84
+- -- 63
+* -- 431
+:= -- 1376
+add.period$ -- 64
 call.type$ -- 21
-change.case$ -- 124
+change.case$ -- 125
 chr.to.int$ -- 21
-cite$ -- 34
-duplicate$ -- 685
-empty$ -- 664
-format.name$ -- 80
-if$ -- 1624
+cite$ -- 28
+duplicate$ -- 691
+empty$ -- 665
+format.name$ -- 84
+if$ -- 1633
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 129
-newline$ -- 109
-num.names$ -- 72
-pop$ -- 296
+missing$ -- 130
+newline$ -- 110
+num.names$ -- 76
+pop$ -- 283
 preamble$ -- 1
-purify$ -- 104
+purify$ -- 105
 quote$ -- 0
-skip$ -- 290
+skip$ -- 298
 stack$ -- 0
-substring$ -- 257
-swap$ -- 261
+substring$ -- 255
+swap$ -- 267
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 201
-warning$ -- 7
-while$ -- 56
+warning$ -- 3
+while$ -- 59
 width$ -- 0
-write$ -- 259
+write$ -- 261
 (There were 8 error messages)
