@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{12}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{edu(2006)}]{eduInclusiva}
@@ -8,13 +8,6 @@
 \bibitem[{Esp(2014)}]{EspectroAutista}
 Información básica sobre el trastorno del espectro autista.
 \newblock \url{https://www.cdc.gov/ncbddd/spanish/autism/facts.html}, 2014.
-
-\bibitem[{Apiumhub(2017)}]{BeneficiosPruebasUnitarias}
-{\sc Apiumhub}.
-\newblock Beneficios de las pruebas unitarias.
-\newblock
-  \url{https://apiumhub.com/es/tech-blog-barcelona/beneficios-de-las-pruebas-unitarias/},
-  2017.
 
 \bibitem[{BOE(2005)}]{BOE}
 {\sc BOE}.
@@ -42,12 +35,6 @@ Información básica sobre el trastorno del espectro autista.
 \newblock ¿\uppercase{D}e dónde sale \uppercase{R}eact?
 \newblock \url{https://www.drauta.com/que-es-react-y-para-que-sirve}, 2020.
 
-\bibitem[{Demera(2018)}]{MetAgilevsTrad}
-{\sc Demera, R.}
-\newblock Metodologías... ¿tradicional vs ágil?
-\newblock
-  \url{https://tech.tribalyte.eu/blog-metodologias-tradicional-vs-agil}, 2018.
-
 \bibitem[{Dorantes(2015)}]{React3}
 {\sc Dorantes, C.~A.}
 \newblock Conceptos básicos de \uppercase{JSX} y
@@ -66,48 +53,11 @@ Información básica sobre el trastorno del espectro autista.
   \url{https://www.emagister.com/blog/se-organiza-sistema-educativo-espanol/},
   2020.
 
-\bibitem[{Herrera(2010)}]{TFMOrtizHerrera}
-{\sc Herrera, M.~O.}
-\newblock {\em Métodos y técnicas para la gestión de proyectos software\/}.
-\newblock {Trabajo de Fin de Máster}, Universidad de Sevilla, 2010.
-
-\bibitem[{IllusionStudio(2019)}]{IllusionStudioKanban}
-{\sc IllusionStudio}.
-\newblock La metodología \uppercase{K}anban.
-\newblock \url{https://www.illusionstudio.es/metodologia-kanban}, 2019.
-
-\bibitem[{IONOS(2019)}]{IonosKanban}
-{\sc IONOS}.
-\newblock Kanban.
-\newblock
-  \url{https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/que-es-kanban/},
-  2019.
-
-\bibitem[{Kanbanize(2020)}]{LeadCycleTime}
-{\sc Kanbanize}.
-\newblock Kanban: Tiempo de entrega vs. \uppercase{T}iempo de ciclo.
-\newblock
-  \url{https://kanbanize.com/es/recursos-de-kanban/software-kanban/tiempo-de-entrega-vs-tiempo-de-ciclo},
-  2020.
-
-\bibitem[{Mesh(2020)}]{TrelloKanban}
-{\sc Mesh, J.}
-\newblock Metodología \uppercase{K}anban: revoluciona tu manera de trabajar más
-  ágil.
-\newblock \url{https://blog.trello.com/es/metodologia-kanban}, 2020.
-
 \bibitem[{Orjales~Villa(1999)}]{Libro1}
 {\sc Orjales~Villa, I.}
 \newblock {\em Déficit de atención con hiperactividad. Manual para padres y
   educadores\/}.
 \newblock Editorial CEPE, Madrid, 1999.
-
-\bibitem[{Pressman(2010)}]{ISPressman}
-{\sc Pressman, R.~S.}
-\newblock {\em Ingeniería del Software. Un enfoque práctico\/}.
-\newblock McGraw-Hill, 7ª edici\'on, 2010.
-\newblock Disponible en
-  \url{https://tesuva.edu.co/phocadownload/Ingenieria_del_Software._Un_Enfoque_Practico.pdf}.
 
 \bibitem[{Rodríguez(2015)}]{TFGNuria}
 {\sc Rodríguez, N.~G.}
@@ -115,13 +65,6 @@ Información básica sobre el trastorno del espectro autista.
   Software en el Ámbito de las Telecomunicaciones\/}.
 \newblock {Proyecto de Fin de Carrera}, Escuela Politécnica Superior Carlos III
   (Universidad Carlos III de Madrid), 2015.
-
-\bibitem[{Sommerville(2005)}]{ISSommerville}
-{\sc Sommerville, I.}
-\newblock {\em Ingeniería del Software\/}.
-\newblock Addison-Wesley, 7ª edici\'on, 2005.
-\newblock Disponible en
-  \url{https://emtinfoada.files.wordpress.com/2015/03/ingenierc3ada-del-software-ian-sommerville.pdf}.
 
 \bibitem[{Ángel Álvarez(2019)}]{React1}
 {\sc Ángel Álvarez, M.}

@@ -8,7 +8,7 @@
 \chapter{Herramientas empleadas}
 
 \begin{resumen}
-	En este capítulo se explican las herramientas y librerías que se han empleado en el desarrollo de este proyecto. En la sección \ref{cap3:sec:moqups} se introduce la herramienta online Moqups. En la sección \ref{cap3:sec:react} se enseña el ``framework'' que se ha utilizado para la creación de la página web.
+	En este capítulo se explican las herramientas y librerías que se han empleado en el desarrollo de este proyecto. En la sección \ref{cap3:sec:moqups} se introduce la herramienta online Moqups. En la sección \ref{cap3:sec:react} se muestra el ``framework'' que se ha utilizado para la creación de la página web. En la sección \ref{cap3:sec:apiarasaac} se cuenta la API de ARASAAC usada para la búsqueda de pictogramas.
 \end{resumen}
 	
 %------Primera sección: Moqups------%
@@ -16,31 +16,99 @@
 %-----------------------------------%
 \label{cap3:sec:moqups}
 
-	Moqups\footnote{https://moqups.com/} es una página web para la creación de bocetos, prototipos, diagramas, etc. Permite diseñar una interfaz, o simplemente ver cómo es el flujo de un algoritmo, arrastrando, desde los menús al espacio de trabajo, los distintos elementos (llamados ``plantillas'') que podemos encontrar en una aplicación (barras de progreso, etiquetas o \textit{labels}, enlaces, diferentes tipos de ventanas, etc.).
+	Moqups\footnote{\url{https://moqups.com/}} es una página web para la creación de bocetos, prototipos, diagramas, etc. Permite diseñar una interfaz, o simplemente ver cómo es el flujo de un algoritmo, arrastrando desde los menús al espacio de trabajo los distintos elementos (llamados ``plantillas'') que podemos encontrar en una aplicación (barras de progreso, etiquetas o \textit{labels}, enlaces, diferentes tipos de ventanas, etc.).
 	
-	Existe la posibilidad de añadir comentarios e iconos, y poder crear diferentes páginas en un mismo proyecto (por ejemplo, crear varias vistas de una aplicación), así como añadir interacción a los elementos (como por ejemplo, cuando le des clic a un botón, éste realice una función específica). También es colaborativo, es decir, puedes invitar a más miembros para trabajar en equipo; y permite la gestión de roles.
+	Existe la posibilidad de añadir comentarios e iconos, y poder crear diferentes páginas en un mismo proyecto (por ejemplo, crear varias vistas de una aplicación), así como añadir interacción a los elementos (como por ejemplo, haciendo que un botón realice una función específica). También es colaborativo, es decir, puedes invitar a más miembros para trabajar en equipo; y permite la gestión de roles.
 	
-	En la Figura \ref{fig:interfazMoqups} se puede ver la interfaz de un proyecto en blanco. Se observa que en el menú lateral de la izquierda, se encuentran los apartados para la creación del prototipo (plantillas, páginas que tiene el proyecto, comentarios, imágenes, iconos, etc). En la parte superior de la página, se pueden crear figuras geométricas y añadir notas, así como poder agregar a otros usuarios, y la posibilidad de exportar el proyecto como una serie de imágenes en formato PNG o PDF; y a formato HTML. Por último, en el menú lateral de la derecha, podemos encontrar el formato de las diferentes páginas (o componentes), y las interacciones disponibles (Figura \ref{fig:interaccionesMoqups}).
+	En la figura \ref{fig:interfazMoqups} se puede ver la interfaz de un proyecto en blanco. En la parte superior de la página, se pueden crear figuras geométricas y añadir notas, así como poder agregar a otros usuarios, y la posibilidad de exportar el proyecto como una serie de imágenes en formato PNG o PDF y a formato HTML (figura \ref{fig:menuSuperiorMoqups}). Se observa que en el menú lateral de la izquierda se encuentran los apartados para la creación del prototipo (plantillas, páginas que tiene el proyecto, comentarios, imágenes, iconos, etc), como se puede ver en la figura \ref{fig:menuLateralIzdaMoqups}. Por último, en el menú lateral de la derecha, podemos encontrar el formato de las diferentes páginas (o componentes) (figura \ref{fig:menuLateralDchaMoqups}), y las interacciones disponibles (figura \ref{fig:menuLateralDchaInteraccionesMoqups}).
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/interfazMoqups}
+			\caption{Interfaz de Moqups}
+			\label{fig:interfazMoqups}
+		\end{center}
+	\end{figure}
 	
-	\figura{Bitmap/interfazMoqups}{width=1\textwidth}{fig:interfazMoqups}{Interfaz de Moqups}
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuSuperior}
+			\caption{Menú superior}
+			\label{fig:menuSuperiorMoqups}
+		\end{center}
+	\end{figure}
+
+	\begin{figure}[ht!]
+		\begin{center}
+			\subfloat[Menú lateral izquierda]{
+				\label{fig:menuLateralIzdaMoqups}
+				\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/menuLateralIzda}
+			}\vspace{10mm}
+			\subfloat[Menú lateral derecha (formato)]{
+				\label{fig:menuLateralDchaMoqups}
+				\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/menuLateralDcha}
+			}\vspace{10mm}
+			\subfloat[Menú lateral derecha (interacciones)]{
+				\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/menuLateralDchaInteraccion}
+				\label{fig:menuLateralDchaInteraccionesMoqups}
+			}
+		\end{center}
+		\caption{Menús laterales}
+		\label{fig:menusMoqups}
+	\end{figure}
 	
-	\figura{Bitmap/interaccionesMoqups}{width=1\textwidth}{fig:interaccionesMoqups}{Menú lateral de interacciones}
 	
+	En este proyecto se ha usado Moqups para la creación de la versión 1.0 del prototipo de la aplicación web (en la sección \ref{cap5:sec:diseño:subsec:segunda} se puede leer una explicación detallada de cómo se ha creado este prototipo y de las diferentes vistas del mismo).
 	
 %------Segunda sección: React------%
 \section{React}
 %----------------------------------%
 \label{cap3:sec:react}
 
-	\textit{React}\footnote{https://es.reactjs.org/} es una librería de \textit{JavaScript}, creada por Facebook y de código abierto\footnote{https://github.com/facebook/react}, que permite crear interfaces de usuario interactivas de forma sencilla. Está basada en la programación orientada a componentes, donde cada componente se puede ver como una funcionalidad distinta, es decir, como una ``pieza'' de un puzle. La ventaja de usar componentes es que, al ser independientes unos de otros, si en la carga de una página web falla uno, no afectaría al resto de componentes, por lo que dicha página quedaría cargada sin ese componente. Así mismo, al usar un DOM (Modelo de Objetos del Documento) virtual, deja que la propia librería actualice las partes que han cambiado, en lugar de actualizar todos los componentes.
+	\textit{React}\footnote{\url{https://es.reactjs.org/}} es una librería de \textit{JavaScript}, creada por Facebook y de código abierto\footnote{\url{https://github.com/facebook/react}}, que permite crear interfaces de usuario interactivas de forma sencilla. Está basada en la programación orientada a componentes, donde cada componente se puede ver como una funcionalidad distinta, es decir, como una ``pieza'' de un puzle. La ventaja de usar componentes es que, al ser independientes unos de otros, si en la carga de una página web falla uno, no afectaría al resto de componentes, por lo que dicha página quedaría cargada sin ese componente. Así mismo, al usar un DOM (Modelo de Objetos del Documento) virtual, deja que la propia librería actualice las partes que han cambiado, en lugar de actualizar todos los componentes.
 	
-	La sintaxis que emplea \textit{React} es muy parecida a la sintaxis HTML. Para definir los componentes, se emplean etiquetas definidas por el usuario dentro de código \textit{Javascript}. Esta sintaxis se llama \textit{JSX}. No es obligatorio su uso, pero empleándolo facilita tanto la codificación como la lectura del código. En la Figura \ref{fig:sinformatoJSX} se puede ver un ejemplo de una funcionalidad sin emplear el formato \textit{JSX}; y en la Figura \ref{fig:conformatoJSX}, la misma funcionalidad pero usando \textit{JSX}.
+	La sintaxis que emplea \textit{React} es muy parecida a la sintaxis HTML. Para definir los componentes, se emplean etiquetas definidas por el usuario dentro de código \textit{Javascript}. Esta sintaxis se llama \textit{JSX}. No es obligatorio su uso, pero facilita tanto la codificación como la lectura del código. En la figura \ref{fig:sinformatoJSX} se puede ver un ejemplo de una funcionalidad sin emplear el formato \textit{JSX} y en la figura \ref{fig:conformatoJSX} la misma funcionalidad pero usando \textit{JSX}.
 	
-	\figura{Bitmap/reactSinJSX}{width=1\textwidth}{fig:sinformatoJSX}{Funcionalidad sin usar JSX}
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/reactSinJSX}
+			\caption{Funcionalidad sin usar JSX}
+			\label{fig:sinformatoJSX}
+		\end{center}
+	\end{figure}
 	
-	\figura{Bitmap/reactConJSX}{width=1\textwidth}{fig:conformatoJSX}{Funcionalidad empleando JSX}
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/reactConJSX}
+			\caption{Funcionalidad empleando JSX}
+			\label{fig:conformatoJSX}
+		\end{center}
+	\end{figure}
 	
-	\textit{React} aporta rendimiento, flexibilidad y organización de código, frente a la creación de una página web de forma clásica (es decir, sin usar ninguna librería o \textit{framework}). Tiene una documentación bastante completa\footnote{https://es.reactjs.org/docs/getting-started.html}, junto con un tutorial para aprender desde cero\footnote{https://es.reactjs.org/tutorial/tutorial.html}.
+	
+	\textit{React} aporta rendimiento, flexibilidad y organización de código, frente a la creación de una página web de forma clásica (es decir, sin usar ninguna librería o \textit{framework}). Tiene una documentación bastante completa\footnote{\url{https://es.reactjs.org/docs/getting-started.html}}, junto con un tutorial para aprender desde cero\footnote{\url{https://es.reactjs.org/tutorial/tutorial.html}}.
+	
+	Esta librería la hemos usado en el proyecto para implementar los distintos tipos de adaptaciones en la aplicación web (ver sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones}).
+	
+
+%------Tercera sección: API ARASAAC------%
+\section{API de ARASAAC}
+%----------------------------------------%
+\label{cap3:sec:apiarasaac}
+	
+	El Centro Aragonés para la Comunicación Aumentativa y Alternativa (ARASAAC) pone a disposición una API pública\footnote{\url{https://arasaac.org/developers/api}} (\textit{Application Programming Interfaces}, en castellano ``interfaz de programación de aplicaciones'') , cuyo uso es gratuito siempre y cuando la aplicación a desarrollar sea no comercial\footnote{\url{https://arasaac.org/developers/}} (está bajo la licencia de \textit{Creative Commons BY-NC-SA}, es decir, ``Reconocimiento-NoComercial-CompartirIgual''\footnote{\url{https://creativecommons.org/licenses/by-nc-sa/4.0/}} en el que se debe dar crédito a los/as autores/as originales, no se puede usar para fines comerciales y en el caso de que se modifique o transforme ese material se debe distribuir bajo la misma licencia).
+	
+	La API de ARASAAC consta de cuatro apartados, cada uno de los cuales tiene una ruta web dependiendo de lo que se quiera consultar: ``materiales'', ``pictogramas'', ``palabras clave'' y ``usuarios''. Como en este proyecto usaremos solo la búsqueda de pictogramas, nos centraremos en el apartado de pictogramas. Dicho apartado consta de nueve rutas, todas ellas con el método de petición ``\textit{GET}'':
+	\begin{itemize}
+		\item \textbf{/pictograms/all/\{locale\}}:
+		\item \textbf{/pictograms/\{idPictogram\}}:
+		\item \textbf{/pictograms/\{locale\}/\{idPictogram\}}:
+		\item \textbf{/pictograms/\{idPictogram\/languages/\{languages\}}:
+		\item \textbf{/pictograms/\{locale\}/search/\{searchText\}}:
+		\item \textbf{/pictograms/\{locale\}/bestsearch/\{searchText\}}:
+		\item \textbf{/pictograms/\{locale\}/wordnet/\{wordnet\}/id/\{sysnet\}}:
+		\item \textbf{/pictograms/\{locale\}/days/\{days\}}:
+		\item \textbf{/pictograms/\{locale\}/new/\{newItems\}}:
+	\end{itemize}
 	
 
 % Variable local para emacs, para  que encuentre el fichero maestro de
