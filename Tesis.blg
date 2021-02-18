@@ -16,11 +16,6 @@ A level-1 auxiliary file: Capitulos/05AdaptaMaterialEscolar.aux
 A level-1 auxiliary file: Capitulos/06TrabajoIndividual.aux
 A level-1 auxiliary file: Cascaras/bibliografia.aux
 The style file: TeXiS/TeXiS.bst
-I couldn't open database file biblioCap05.bib
----line 4 of file Cascaras/bibliografia.aux
- : \bibdata{biblioCap01,biblioCap02,biblioCap03,biblioCap04,biblioCap05
- :                                                                     }
-I'm skipping whatever remains of this command
 Database file #1: biblioCap01.bib
 Database file #2: biblioCap02.bib
 Repeated entry---line 1 of file biblioCap02.bib
@@ -31,8 +26,7 @@ Repeated entry---line 15 of file biblioCap02.bib
  : @misc{TiposDeAdaptaciones
  :                          ,
 I'm skipping whatever remains of this entry
-Database file #3: biblioCap03.bib
-Database file #4: biblioCap04.bib
+Database file #3: biblioCap04.bib
 Warning--to sort, need author or key in eduInclusiva
 Warning--to sort, need author or key in EspectroAutista
 Warning--empty journal in BOE
@@ -40,45 +34,45 @@ ptr=1, stack=
 ISSN DESCONOCIDO
 ---the literal stack isn't empty for entry RevMetAgile
 while executing---line 3683 of file TeXiS/TeXiS.bst
-You've used 12 entries,
+You've used 9 entries,
             2962 wiz_defined-function locations,
-            1159 strings with 14596 characters,
-and the built_in function-call counts, 4763 in all, are:
-= -- 405
-> -- 116
-< -- 11
-+ -- 48
-- -- 36
-* -- 255
-:= -- 775
-add.period$ -- 35
-call.type$ -- 12
-change.case$ -- 71
-chr.to.int$ -- 12
-cite$ -- 19
-duplicate$ -- 399
-empty$ -- 382
-format.name$ -- 48
-if$ -- 944
+            1141 strings with 14111 characters,
+and the built_in function-call counts, 3674 in all, are:
+= -- 309
+> -- 86
+< -- 8
++ -- 36
+- -- 27
+* -- 204
+:= -- 580
+add.period$ -- 26
+call.type$ -- 9
+change.case$ -- 53
+chr.to.int$ -- 9
+cite$ -- 16
+duplicate$ -- 312
+empty$ -- 301
+format.name$ -- 36
+if$ -- 734
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 74
-newline$ -- 63
-num.names$ -- 40
-pop$ -- 168
+missing$ -- 59
+newline$ -- 48
+num.names$ -- 28
+pop$ -- 135
 preamble$ -- 1
-purify$ -- 60
+purify$ -- 45
 quote$ -- 0
-skip$ -- 176
+skip$ -- 137
 stack$ -- 0
-substring$ -- 156
-swap$ -- 155
+substring$ -- 123
+swap$ -- 125
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 117
+type$ -- 87
 warning$ -- 3
-while$ -- 32
+while$ -- 23
 width$ -- 0
-write$ -- 146
-(There were 5 error messages)
+write$ -- 110
+(There were 4 error messages)

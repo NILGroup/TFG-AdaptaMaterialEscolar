@@ -70,7 +70,7 @@
 	
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/reactSinJSX}
+			\includegraphics[width=0.95\textwidth]{Imagenes/Bitmap/reactSinJSX}
 			\caption{Funcionalidad sin usar JSX}
 			\label{fig:sinformatoJSX}
 		\end{center}
@@ -78,7 +78,7 @@
 	
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/reactConJSX}
+			\includegraphics[width=0.95\textwidth]{Imagenes/Bitmap/reactConJSX}
 			\caption{Funcionalidad empleando JSX}
 			\label{fig:conformatoJSX}
 		\end{center}
@@ -97,19 +97,11 @@
 	
 	El Centro Aragonés para la Comunicación Aumentativa y Alternativa (ARASAAC) pone a disposición una API pública\footnote{\url{https://arasaac.org/developers/api}} (\textit{Application Programming Interfaces}, en castellano ``interfaz de programación de aplicaciones'') , cuyo uso es gratuito siempre y cuando la aplicación a desarrollar sea no comercial\footnote{\url{https://arasaac.org/developers/}} (está bajo la licencia de \textit{Creative Commons BY-NC-SA}, es decir, ``Reconocimiento-NoComercial-CompartirIgual''\footnote{\url{https://creativecommons.org/licenses/by-nc-sa/4.0/}} en el que se debe dar crédito a los/as autores/as originales, no se puede usar para fines comerciales y en el caso de que se modifique o transforme ese material se debe distribuir bajo la misma licencia).
 	
-	La API de ARASAAC consta de cuatro apartados, cada uno de los cuales tiene una ruta web dependiendo de lo que se quiera consultar: ``materiales'', ``pictogramas'', ``palabras clave'' y ``usuarios''. Como en este proyecto usaremos solo la búsqueda de pictogramas, nos centraremos en el apartado de pictogramas. Dicho apartado consta de nueve rutas, todas ellas con el método de petición ``\textit{GET}'':
+	La API de ARASAAC consta de cuatro apartados, cada uno de los cuales tiene una ruta web dependiendo de lo que se quiera consultar: ``materiales'', ``pictogramas'', ``palabras clave'' y ``usuarios''. Como en este proyecto usaremos solo la búsqueda de pictogramas, nos centraremos en el apartado de pictogramas. Dicho apartado consta de un total de nueve rutas, todas ellas con el método de petición ``\textit{GET}'', pero solo usaremos una ruta para gestionar dicha búsqueda:
 	\begin{itemize}
-		\item \textbf{/pictograms/all/\{locale\}}:
-		\item \textbf{/pictograms/\{idPictogram\}}:
-		\item \textbf{/pictograms/\{locale\}/\{idPictogram\}}:
-		\item \textbf{/pictograms/\{idPictogram\/languages/\{languages\}}:
-		\item \textbf{/pictograms/\{locale\}/search/\{searchText\}}:
-		\item \textbf{/pictograms/\{locale\}/bestsearch/\{searchText\}}:
-		\item \textbf{/pictograms/\{locale\}/wordnet/\{wordnet\}/id/\{sysnet\}}:
-		\item \textbf{/pictograms/\{locale\}/days/\{days\}}:
-		\item \textbf{/pictograms/\{locale\}/new/\{newItems\}}:
+		\item \textbf{/pictograms/\{locale\}/search/\{searchText\}}: Devuelve una lista de pictogramas en el idioma \textit{\{locale\}}\footnote{Idiomas disponibles: an, ar, bg, br, ca, de, el, en, es, et, eu, fa, fr, gl, he, hr, hu, it, mk, nl, pl, pt, ro, ru, sk, sq, sv, sr, val, zh} que contenga la cadena de caracteres \textit{\{searchText\}} pasada como parámetro. Si tiene éxito, devolverá dicha lista con los datos de cada pictograma encontrado. En caso contrario no devolverá nada.
 	\end{itemize}
-	
+
 
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX
