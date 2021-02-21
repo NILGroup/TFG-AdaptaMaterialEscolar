@@ -1,5 +1,9 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{11}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Sis()}]{SistemasSignos}
+Sistemas de signos.
+\newblock \url{https://www.uv.es/bellochc/logopedia/NRTLogo8.wiki?7}, ????
 
 \bibitem[{edu(2006)}]{eduInclusiva}
 ¿\uppercase{Q}ué es la educación inclusiva?
@@ -29,6 +33,12 @@ Información básica sobre el trastorno del espectro autista.
 \newblock {\em Prospectiva\/}, vol.\ 11, p\'aginas 30--32, 2013.
 \newblock Disponible en
   \url{http://ojs.uac.edu.co/index.php/prospectiva/article/view/36}.
+
+\bibitem[{Óscar García~Muñoz()}]{ManualLecturaFacil}
+{\sc Óscar García~Muñoz}.
+\newblock Lectura fácil: Métodos de redacción y evaluación.
+\newblock Disponible en
+  \url{https://www.plenainclusion.org/sites/default/files/lectura-facil-metodos.pdf}.
 
 \bibitem[{Garzas(2011)}]{JGReglasKanban}
 {\sc Garzas, J.}
