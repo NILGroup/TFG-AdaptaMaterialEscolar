@@ -262,11 +262,11 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 %---------------------------------------------------%
 \label{cap5:sec:diseño}
 
-	El diseño de la aplicación web se ha desarrollado en varias iteraciones o etapas. En la primera etapa se creó un boceto de la aplicación en papel. En la segunda etapa se mejoró ese boceto, creando un prototipo por vistas a través de la herramienta online \textit{Moqups} (ver sección \ref{cap3:sec:moqups}). En la tercera etapa cada uno de los miembros del equipo creó su propio prototipo, sin influir los unos con los otros, para ver si el prototipo creado con \textit{Moqups} podía ser mejorado. En la última etapa se realizó el diseño final de la aplicación. En las siguientes secciones se dan más detalles sobre estos diseños.
+	El diseño de la aplicación web se ha desarrollado en varias iteraciones. En la primera iteración se creó un boceto de la aplicación en papel. En la segunda iteración se mejoró ese boceto, creando un prototipo por vistas a través de la herramienta online \textit{Moqups} (ver sección \ref{cap3:sec:moqups}). En la tercera iteración cada uno de los miembros del equipo creó su propio prototipo, sin influir los unos con los otros, para ver si el prototipo creado con \textit{Moqups} podía ser mejorado. En la última iteración se realizó el diseño final de la aplicación. En las siguientes secciones se dan más detalles sobre estas iteraciones.
 	
-	\subsection{Primera etapa: boceto inicial}
+	\subsection{Primera iteración: boceto inicial}
 	\label{cap5:sec:diseño:subsec:primera}
-		Para comenzar el proceso de diseño se creó un boceto en papel de la página principal de la aplicación (figura \ref{fig:bocetoInicial}). 
+		Para comenzar el proceso de diseño se creó un boceto en papel de la página principal de la aplicación (figura \ref{fig:bocetoInicial}). En la parte superior de este diseño, se observa que hay una barra de navegación con dos menús: Texto y Actividades. Cada uno de ellos tiene un submenú con las diferentes adaptaciones disponibles para dicho menú (en la sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones} se pueden ver las diferentes adaptaciones que habrá en la aplicación). En el lado derecho encontramos otro menú con dos zonas diferenciadas: en la parte superior tenemos los botones de`Subir texto (que sube un fichero en formato \textit{.pdf} o \textit{.docx}) y Descargar (que descarga el documento adaptado en formato \textit{.pdf}). En la parte inferior del menú lateral, nos encontramos un Resaltar información, el cual sirve para dar formato a los títulos, al cuerpo, etc. Por último, en el centro de la página, se encuentra el fichero subido con el que podremos seleccionar textos y poder adaptarlos conforme así se requiera.
 		
 		\begin{figure}[ht!]
 			\begin{center}
@@ -276,15 +276,11 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 			\end{center}
 		\end{figure}
 	
-		En la parte superior de este diseño, se observa que hay una barra de navegación (\textit{navbar} en inglés) con dos menús: ``Texto'' y ``Actividades''. Cada uno de ellos tiene un submenú con las diferentes adaptaciones disponibles para dicho menú (en la sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones} se pueden ver las diferentes adaptaciones que habrá en la aplicación). En el lado derecho encontramos otro menú, con dos zonas diferenciadas: en la parte superior tenemos los botones de ``Subir texto'' (que sube un fichero en formato \textit{.pdf} o \textit{.docx}) y ``Descargar'' (que descarga el documento adaptado en formato \textit{.pdf}). En la parte inferior del menú lateral, nos encontramos un ``Resaltar información'', el cual sirve para dar formato a los títulos, al cuerpo, etc. Por último, en el centro de la página, se encuentra el fichero subido con el que podremos seleccionar textos y poder adaptarlos conforme así se requiera.
-		
-		
-	
-	\subsection{Segunda etapa: versión 1.0 del prototipo}
+	\subsection{Segunda iteración: versión 1.0 del prototipo}
 	\label{cap5:sec:diseño:subsec:segunda}
-		Partiendo del diseño inicial, y a través de la herramienta ``\textit{Moqups}'' (ver sección \ref{cap3:sec:moqups}), se creó un prototipo más amplio por vistas:
+		Partiendo del diseño inicial, y a través de la herramienta \textit{Moqups} (ver sección \ref{cap3:sec:moqups}), se creó un prototipo más amplio por vistas:
 		\begin{itemize}
-			\item \textbf{Página principal}: En la figura \ref{fig:paginaInicialProtoConjunto} se puede ver la página principal de la aplicación. Ésta es la página que se vería nada más entrar. 
+			\item \textbf{Página principal}: En la figura \ref{fig:paginaInicialProtoConjunto} se puede ver la página principal de la aplicación. Ésta es la página que se vería nada más entrar. En la parte superior, encontramos dos barras de navegación con diferentes menús. En la barra de navegación superior, podemos ver los menús relacionados con un editor de texto: Archivo, Edición, Formato, Insertar y Ayuda. En la barra de navegación inferior se encuentran los menús correspondientes a las adaptaciones de Temario y Actividades, además de la posibilidad de buscar imágenes libres\footnote{Las imágenes libres son aquellas imágenes que son de dominio público y que no tienen derechos reservados.} (también llamadas imágenes \textit{CC0} o \textit{Creative Commons Zero} \footnote{https://creativecommons.org/publicdomain/zero/1.0/deed.es}) y pictogramas. En el centro de la página web, podemos observar dos elementos: el logo de la aplicación AdaptaMaterialEscolar y una zona para poder subir el fichero en formato \textit{.pdf} o \textit{.docx}, ya sea seleccionándolo de una carpeta o arrastrando desde la carpeta a la zona de subida.
 			
 			\begin{figure}[ht!]
 				\begin{center}
@@ -294,9 +290,7 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 				\end{center}
 			\end{figure}
 		
-			En la parte superior, encontramos dos \textit{navbar} con diferentes menús. En el \textit{navbar} superior, podemos ver los menús relacionados con un editor de texto: ``Archivo'', ``Edición'', ``Formato'', ``Insertar'' y ``Ayuda''. En el \textit{navbar} inferior se encuentran los menús correspondientes a las adaptaciones de ``Temario'' y ``Actividades'', además de la posibilidad de buscar imágenes libres\footnote{Las imágenes libres son aquellas imágenes que son de dominio público y que no tienen derechos reservados.} (también llamadas imágenes \textit{CC0} o \textit{Creative Commons Zero} \footnote{https://creativecommons.org/publicdomain/zero/1.0/deed.es}) y pictogramas. En el centro de la página web, podemos observar dos elementos: el logo de la aplicación ``AdaptaMaterialEscolar'' y una zona para poder subir el fichero en formato \textit{.pdf} o \textit{.docx}, ya sea seleccionándolo de una carpeta o arrastrando desde la carpeta a la zona de subida.
-			
-			\item \textbf{Editor}: Una vez subido el fichero, se pasa a la vista del editor. En la figura \ref{fig:editorProtoConjunto} se puede observar dicha vista. 
+			\item \textbf{Editor}: Una vez subido el fichero se pasa a la vista del editor. En la figura \ref{fig:editorProtoConjunto} se puede observar dicha vista. En ésta, encontramos en la parte superior las dos barras de navegación descritas en el punto anterior. En el centro de la página observamos dos elementos: el elemento de la izquierda es el fichero subido, donde se podrán seleccionar las partes del texto que se quieran adaptar. El elemento de la derecha es el editor donde se podrá, también, adaptar e insertar imágenes, pictogramas, dar formato, etc.
 
 			\begin{figure}[htp!]
 				\begin{center}
@@ -305,10 +299,8 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 					\label{fig:editorProtoConjunto}
 				\end{center}
 			\end{figure}
-		
-			En ésta, encontramos en la parte superior, las dos barras de navegación descritas en el punto anterior. En el centro de la página, observamos dos elementos: el elemento de la izquierda es el fichero subido, donde se podrán seleccionar las partes del texto que se quieran adaptar. El elemento de la derecha es el editor donde se podrá, también, adaptar e insertar imágenes, pictogramas, dar formato, etc.
 			
-			\item \textbf{Búsqueda de pictogramas}: En la figura \ref{fig:buscarPictoProtoConjunto} se puede ver la búsqueda de pictogramas. 
+			\item \textbf{Búsqueda de pictogramas}: En la figura \ref{fig:buscarPictoProtoConjunto} se puede ver la búsqueda de pictogramas. Se observa que se sigue en la página del editor, solo que en la parte superior derecha de la aplicación aparece una ventana con los diferentes pictogramas, resultado de buscar la palabra ``Perro''. Previamente, para poder realizar la búsqueda de pictogramas, se ha tenido que seleccionar el campo Pictos, que está a la izquierda de la barra de búsqueda. Si se hace clic en uno de ellos automáticamente se pondrá en el campo del editor.
 			
 			\begin{figure}[ht!]
 				\begin{center}
@@ -317,10 +309,8 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 					\label{fig:buscarPictoProtoConjunto}
 				\end{center}
 			\end{figure}
-		
-			Se observa que se sigue en la página del editor, solo que en la parte superior derecha de la aplicación aparece una ventana con los diferentes pictogramas, resultado de buscar la palabra ``Perro''. Previamente, para poder realizar la búsqueda de pictogramas, se ha tenido que seleccionar el campo ``Pictos'', que está a la izquierda de la barra de búsqueda. Si se hace clic en uno de ellos automáticamente se pondrá en el campo del editor.
 			
-			\item \textbf{Adaptación de actividades}: En la figura \ref{fig:edicionActividadesProtoConjunto} se puede ver un ejemplo de una adaptación de una actividad. En este caso, el ejercicio es ``Completar'', es decir, completar el texto rellenando los huecos en blanco. Para ello, se ha tenido que seleccionar el menú ``Actividades'' (figura \ref{fig:editorProtoConjunto}), y, de entre los distintos tipos de actividades que hay, seleccionar ``Completar''. Una vez elegido este apartado, habría que ir señalando en la parte de la izquierda las palabras en las que se quiera dejar el hueco, por lo que en la parte de la derecha (editor) saldría huecos en blanco en vez de la palabra señalada. Si se quiere cerrar este menú, bastaría con darle clic en la flecha que hay en la parte de la izquierda del menú.
+			\item \textbf{Adaptación de actividades}: En la figura \ref{fig:edicionActividadesProtoConjunto} se puede ver un ejemplo de una adaptación de una actividad. En este caso, el ejercicio es ``Completar'', es decir, completar el texto rellenando los huecos en blanco. Para ello, se ha tenido que seleccionar el menú Actividades (figura \ref{fig:editorProtoConjunto}) y, de entre los distintos tipos de actividades que hay, seleccionar ``Completar''. Una vez elegido este apartado, habría que ir señalando en la parte de la izquierda las palabras en las que se quiera dejar el hueco, por lo que en la parte de la derecha (editor) saldría huecos en blanco en vez de la palabra señalada. Si se quiere cerrar este menú, bastaría con darle clic en la flecha que hay en la parte de la izquierda del menú.
 			
 			\begin{figure}[ht!]
 				\begin{center}
@@ -338,15 +328,15 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 				\end{center}
 			\end{figure}
 		
-			\item \textbf{Adaptación de temario}: En la figura \ref{fig:edicionTemarioProtoConjunto} se puede encontrar un ejemplo de una adaptación de temario. En este caso, la adaptación es ``Resumir texto''. Para ello, se ha tenido que seleccionar el menú ``Temario'' (figura \ref{fig:editorProtoConjunto}). Una vez elegido este apartado, lo primero es seleccionar el texto que se quiera resumir en la parte izquierda y después habría que darle clic a ``Resumir texto'' para que salga, en la parte de la derecha, el texto resumido.
+			\item \textbf{Adaptación de temario}: En la figura \ref{fig:edicionTemarioProtoConjunto} se puede encontrar un ejemplo de una adaptación de temario. En este caso, la adaptación es ``Resumir texto''. Para ello, se ha tenido que seleccionar el menú Temario (figura \ref{fig:editorProtoConjunto}). Una vez elegido este apartado, lo primero es seleccionar el texto que se quiera resumir en la parte izquierda y después habría que darle clic a ``Resumir texto'' para que salga, en la parte de la derecha, el texto resumido.
 			
 		\end{itemize}
 	
-	\subsection{Tercera etapa: iteración competitiva}
+	\subsection{Tercera iteración: iteración competitiva}
 	\label{cap5:sec:diseño:subsec:tercera}
-		Una vez que se hizo la versión 1.0 del prototipo, se propuso hacer una iteración competitiva para ver si este prototipo se podía mejorar. Cada miembro del equipo realizó, de forma individual y sin influir los unos en los otros, un prototipo propio partiendo del inicial. Con esto se consigue tener diferentes puntos de vista sobre una misma funcionalidad. Una vez que todos los prototipos fueron hechos, los cuales dos fueron diseños de forma digital y el otro en papel, se realizó una puesta en común para discutir cada uno, y sobre todo, el por qué de esa distribución. Los resultados fueron los siguientes:
+		Una vez que se hizo la versión 1.0 del prototipo, se propuso hacer una iteración competitiva para ver si este prototipo se podía mejorar. Cada miembro del equipo realizó, de forma individual y sin influir los unos en los otros, un prototipo propio partiendo del inicial. Con esto se consigue tener diferentes puntos de vista sobre una misma funcionalidad. Una vez que todos los prototipos fueron diseñados (dos de forma digital y otro en papel) se realizó una puesta en común para analizar las distintas propuestas. Los resultados fueron los siguientes:
 		\begin{itemize}
-			\item \textbf{Página principal}: En los tres diseños realizados, la página principal era prácticamente igual. Todos coincidimos en la manera de distribuir dicha página: un \textit{header} con el logo de ``AdaptaMaterialEscolar'' en la parte de la izquierda; y en la parte de la derecha algún sistema que fuera útil para la aplicación. En el centro de la página estaría la funcionalidad de poder subir un fichero a la aplicación. En las figuras \ref{fig:paginaInicialProtoJorge}, \ref{fig:paginaInicialProtoNatalia} y \ref{fig:paginaInicialProtoPablo} se puede observar los resultados de los tres prototipos para la página principal. 
+			\item \textbf{Página principal}: En las figuras \ref{fig:paginaInicialProtoJorge}, \ref{fig:paginaInicialProtoNatalia} y \ref{fig:paginaInicialProtoPablo} se puede observar los resultados de los tres prototipos para la página principal. En el caso de la figura \ref{fig:paginaInicialProtoJorge}, en la parte inferior están los créditos y los logotipos de ARASAAC\footnote{https://arasaac.org/}, la Universidad Complutense de Madrid\footnote{https://www.ucm.es} y la licencia de \textit{Creative Commons}\footnote{https://creativecommons.org/}. También se observa que en la parte de la derecha de la barra de navegación se propuso hacer un sistema de \textit{login} para poder guardar el trabajo realizado.  Ésto último no resultó debido a que los usuarios finales que usen la aplicación especificaron que no querían recordar ningún nombre de usuario y contraseña. 
 			
 			\begin{figure}[ht!]
 				\begin{center}
@@ -355,8 +345,6 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 					\label{fig:paginaInicialProtoJorge}
 				\end{center}
 			\end{figure}
-		
-			En el caso de la figura \ref{fig:paginaInicialProtoJorge}, en la parte inferior (\textit{footer}) están los créditos y los logotipos de ARASAAC\footnote{https://arasaac.org/}, la Universidad Complutense de Madrid\footnote{https://www.ucm.es} y la licencia de \textit{Creative Commons}\footnote{https://creativecommons.org/}. También se observa que en la parte de la derecha de la barra de navegación se propuso hacer un sistema de \textit{login} para poder guardar el trabajo realizado.  Ésto último no resultó debido a que los usuarios finales que usen la aplicación especificaron que no querían recordar ningún nombre de usuario y contraseña. 
 			
 			\begin{figure}[ht!]
 				\begin{center}
@@ -366,8 +354,6 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 				\end{center}
 			\end{figure}
 		
-			También, en la parte inferior de dicha figura coincidimos que sería buena idea establecerla en un botón, tal y como ocurre en las figuras \ref{fig:paginaInicialProtoNatalia} (aquí se observa que hay dos botones: ``Créditos'', que es donde iría la parte inferior de la figura \ref{fig:paginaInicialProtoJorge}; y ``Ayuda'', por si el usuario necesita algún tipo de ayuda con la aplicación) y \ref{fig:paginaInicialProtoPablo} (en este caso se ve tres botones: ``Inicio'', que te llevaría a la página principal; ``Ayuda'', donde se incluiría también la parte de ``Créditos''; y ``Contacto'', por si el usuario tiene algún problema y/o sugerencia pueda contactar con los desarrolladores y proporcionarle una respuesta).
-			
 			\begin{figure}[ht!]
 				\begin{center}
 					\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/paginaInicialProtoPablo}
@@ -376,7 +362,9 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 				\end{center}
 			\end{figure}
 		
-			\item \textbf{Editor}: En el caso del editor, los tres prototipos eran bastante similares. La forma en cómo se ha distribuido el editor y el fichero subido era igual; en la mitad izquierda uno, y en la mitad derecha el otro. En las figuras \ref{fig:editorProtoJorge}, \ref{fig:editorProtoNatalia} y \ref{fig:editorProtoPablo} se pueden ver los resultados de la página del editor. 
+			También, en la parte inferior de dicha figura coincidimos que sería buena idea establecer algún botón, tal y como ocurre en las figuras \ref{fig:paginaInicialProtoNatalia} (aquí se observa que hay dos botones: Créditos, que es donde iría la parte inferior de la figura \ref{fig:paginaInicialProtoJorge}; y Ayuda, por si el usuario necesita algún tipo de ayuda con la aplicación) y \ref{fig:paginaInicialProtoPablo} (en este caso se ve tres botones: Inicio, que te llevaría a la página principal; Ayuda, donde se incluiría también la parte de Créditos; y Contacto, por si el usuario tiene algún problema y/o sugerencia pueda contactar con los desarrolladores y proporcionarle una respuesta).
+		
+			\item \textbf{Editor}: En las figuras \ref{fig:editorProtoJorge}, \ref{fig:editorProtoNatalia} y \ref{fig:editorProtoPablo} se pueden ver los resultados de la página del editor. En el caso de las figura \ref{fig:editorProtoJorge}, observamos una barra de navegación con diferentes menús, que representa los tipos de adaptaciones que tendrá en la aplicación (véase sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones}), junto con la búsqueda de imágenes y pictogramas. Si se pasa el ratón por encima de uno de estos menús saldrá un desplegable con los distintos tipos de actividades, temario y formato que hay, tal y como se puede ver en la figura \ref{fig:desplegableProtoJorge}. 
 			
 			\begin{figure}[ht!]
 				\begin{center}
@@ -385,9 +373,6 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 					\label{fig:editorProtoJorge}
 				\end{center}
 			\end{figure}
-		
-			
-			En el caso de las figura \ref{fig:editorProtoJorge}, observamos una barra de navegación con diferentes menús, que representa los tipos de adaptaciones que tendrá en la aplicación (véase sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones}), junto con la búsqueda de imágenes y pictogramas. Si se pasa el ratón por encima de uno de estos menús saldrá un desplegable con los distintos tipos de actividades, temario y formato que hay, tal y como se puede ver en la figura \ref{fig:desplegableProtoJorge}. 
 			
 			\begin{figure}[ht!]
 				\begin{center}
@@ -397,7 +382,8 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 				\end{center}
 			\end{figure}
 		
-			Así mismo, se ve dos elementos separados por un hueco: el elemento de la izquierda representa el fichero subido, y el de la derecha, el editor. Debajo de éste se encuentra un panel con unos botones para poder descargar, guardar y ver el documento editado, así como la posibilidad de poder borrar todo lo escrito en el editor (``Vista Previa'', que se puede ver en la figura \ref{fig:vistaPreviaProtoJorge}, donde la opacidad del fondo está ligeramente oscurecida, y, en el centro, cómo quedaría lo escrito en el editor; ``Descargar'', ``Guardar'', ``Borrar todo''). 
+			Así mismo, se ven dos elementos separados por un hueco: el elemento de la izquierda representa el fichero subido, y el de la derecha, el editor. Debajo de éste se encuentra un panel con unos botones para poder descargar, guardar y ver el documento editado, así como la posibilidad de poder borrar todo lo escrito en el editor (Vista Previa, que se puede ver en la figura \ref{fig:vistaPreviaProtoJorge}, donde la opacidad del fondo está ligeramente oscurecida, y, en el centro, cómo quedaría lo escrito en el editor; Descargar, Guardar y Borrar todo).
+			
 			\begin{figure}[ht!]
 				\begin{center}
 					\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/vistaPreviaProtoJorge}
@@ -406,7 +392,7 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 				\end{center}
 			\end{figure}
 			
-			En la figura \ref{fig:editorProtoNatalia}, también existe esa barra de navegación con esos menús, aunque se cambia el logo de ``AdaptaMaterialEscolar'' por dichos menús, añadiendo el de ``Archivo'' y ``Formato''. También tiene los dos elementos mencionados anteriormente: en la parte de la izquierda el documento subido, y en el de la derecha, el editor. En éste, se encuentra una barra de herramientas con la posibilidad de cambiar el formato de la letra, la posición del texto, y dos botones para descargar y borrar todo (representados por una cuadrado con una flecha apuntando hacia abajo, ``Descargar''; y una papelera con una cruz en ella, ``Borrar todo''). 
+			En la figura \ref{fig:editorProtoNatalia}, también existe esa barra de navegación con esos menús, aunque se cambia el logo de AdaptaMaterialEscolar por dichos menús, añadiendo el de Archivo y Formato. También tiene los dos elementos mencionados anteriormente: en la parte de la izquierda el documento subido, y en el de la derecha, el editor. En éste, se encuentra una barra de herramientas con la posibilidad de cambiar el formato de la letra, la posición del texto, y dos botones para descargar y borrar todo (representados por una cuadrado con una flecha apuntando hacia abajo, Descargar; y una papelera con una cruz en ella, Borrar todo). 
 			
 			\begin{figure}[ht!]
 				\begin{center}
@@ -416,8 +402,6 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 				\end{center}
 			\end{figure}
 		
-			En cambio, en la figura \ref{fig:editorProtoPablo}, se observa que esa barra de navegación no está, sino que está incluida en el propio editor (el elemento que se encuentra en la parte de la izquierda). En esta barra de herramientas se podrá dar formato al texto (ponerle forma de título, párrafo, color, negrita, cursiva, etc), así como deshacer y rehacer lo escrito, crear tablas, y unos botones con los distintos tipos de adaptaciones que hay.
-			
 			\begin{figure}[ht!]
 				\begin{center}
 					\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/editorProtoPablo}
@@ -425,12 +409,16 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 					\label{fig:editorProtoPablo}
 				\end{center}
 			\end{figure}
+		
+			En cambio, en la figura \ref{fig:editorProtoPablo}, se observa que esa barra de navegación no está, sino que está incluida en el propio editor (el elemento que se encuentra en la parte de la izquierda). En esta barra de herramientas se podrá dar formato al texto (ponerle forma de título, párrafo, color, negrita, cursiva, etc), así como deshacer y rehacer lo escrito, crear tablas, y unos botones con los distintos tipos de adaptaciones que hay.
+			
+			
 			
 		\end{itemize}
 	
-	\subsection{Cuarta etapa: diseño final}
+	\subsection{Cuarta iteración: diseño final}
 	\label{cap5:sec:diseño:subsec:cuarta}
-		Una vez hecho la puesta en común de los diseños realizados por cada miembro del equipo se procedió a hacer el diseño final. Este diseño tomaba como base la figura \ref{fig:editorProtoPablo}, debido a que estaba todo más limpio y claro visualmente, y a la que se le añadió un \textit{navbar} en la parte superior (tal y como aparece en las figuras \ref{fig:editorProtoJorge} y \ref{fig:editorProtoNatalia}) para los tipos de adaptaciones que habrá en la aplicación. Este \textit{navbar} surge porque algunas adaptaciones tienen un estilo de implementación distinto (algunas se podrán hacer sobre el propio editor pero otras abrirán nuevas ventanas para poder realizar la adaptación, sobre todo en las adaptaciones de actividades).
+		Una vez hecho la puesta en común de los diseños realizados por cada miembro del equipo se procedió a hacer el diseño final. Este diseño tomaba como base la figura \ref{fig:editorProtoPablo}, debido a que estaba todo más limpio y claro visualmente, y a la que se le añadió una barra de navegación en la parte superior (tal y como aparece en las figuras \ref{fig:editorProtoJorge} y \ref{fig:editorProtoNatalia}) para los tipos de adaptaciones que habrá en la aplicación. Esta barra de navegación surge porque algunas adaptaciones tienen un estilo de implementación distinto (algunas se podrán hacer sobre el propio editor pero otras abrirán nuevas ventanas para poder realizar la adaptación, sobre todo en las adaptaciones de actividades).
 		
-		Tras realizar este diseño, se envió un email a las profesoras del Aula TEA para que nos dieran \textit{feedback} sobre este diseño. La respuesta fue positiva: tanto la distribución de los elementos como los colores usados eran adecuados. Así mismo, nos propuso otro requisito que anteriormente no estaba en la lista: la posibilidad de realizar subrayados de tipo fluorescente.
+		Tras realizar este diseño, se envió un email a las profesoras del Aula TEA para que nos dieran \textit{feedback} sobre él. La respuesta fue positiva: tanto la distribución de los elementos como los colores usados eran adecuados. Así mismo, nos propusieron una nueva funcionalidad: permitir subrayar un texto con fluorescente.
 	
