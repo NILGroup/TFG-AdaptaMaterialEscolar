@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.space{
+    font-family: sans-serif;
+    font-size: medium;
+    margin-bottom: 1em;
+}
+.sentences{
+    margin-bottom: 1em;
+}
+.insertButton{
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+
+.modal-definitions{
+    background: white;
+    position: absolute;
+    z-index: 100;
+}

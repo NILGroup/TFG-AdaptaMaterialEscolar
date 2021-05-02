@@ -1,0 +1,33 @@
+header{
+    background: #7867ff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    border-bottom: 1px solid black;
+
+    h1{
+        /*background-image: linear-gradient(to left, violet, lightgreen ,yellow, orange, red);   
+        -webkit-background-clip: text;
+        color: transparent;
+        user-select: none; */
+        color: white;
+    }
+
+    .links-container{
+        display: flex;
+        justify-content: space-between;
+        width: 10%;
+        list-style-type: none;
+    }
+
+    li{
+        cursor: pointer;
+        color: white;
+        &:hover{
+            font-weight: bold;
+        }
+    }
+
+}

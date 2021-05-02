@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.statement{
+    font-family: sans-serif;
+    font-size: medium;
+    margin-bottom: 1em;
+}
+.space{
+    margin-bottom: 1em;
+}
+.insertButton{
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
