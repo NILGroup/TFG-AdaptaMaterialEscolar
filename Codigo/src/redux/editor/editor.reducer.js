@@ -1,20 +1,17 @@
+import EditorActionTypes from "./editor.types";
+
 const INITIAL_STATE = {
-    editor: null,
+    editorClass: null,
     content: ""
 }
 
 const editorReducer = (state = INITIAL_STATE, action) => {
     switch (action.type){
-       /* case DocumentActionTypes.LOAD_FILE: 
+        case EditorActionTypes.SET_EDITOR: 
            return {
                 ...state,
-                fileL: action.payload.fileL,
-                fileIsLoaded: true
+                editorClass: action.payload
             };
-        case DocumentActionTypes.GET_FILE: 
-            return {
-                 ...state
-             };*/
         default: 
             return state;
     }

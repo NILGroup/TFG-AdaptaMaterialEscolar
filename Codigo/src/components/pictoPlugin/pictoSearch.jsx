@@ -16,10 +16,6 @@ class PictoSearch extends React.Component{
         this.props.fetchPictograms(value);
     }
 
-    handleClick = url => {
-        this.fire('insertPictogram',url)
-    }
-
     render(){
         console.log(this.props.pictogramResults);
         return(<div className="pictoSearch">

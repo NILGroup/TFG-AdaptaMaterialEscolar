@@ -4,7 +4,7 @@ const selectEditor = state => state.editor;
 
 export const selectEditorClass = createSelector(
   [selectEditor],
-  editor => editor.editor
+  editor => editor.editorClass
 );
 
 export const selectEditorContent = createSelector(

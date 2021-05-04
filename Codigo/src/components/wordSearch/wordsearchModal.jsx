@@ -16,10 +16,11 @@ import { selectWordSearchModalRows, selectWordSearchModalCols, selectWordSearchM
     selectWordSearchModalBackwardsProbability, selectWordSearchModalError, selectWordSearchModalWordSearchContent} from "../../redux/wordSearch/wordsearch.selectors";
 
 import WordSearch from "../wordSearch/wordSearch";
+import { selectEditorClass } from "../../redux/editor/editor.selectors";
 //const WordSearch = require("@blex41/word-search");
 
 class WordSearchModal extends React.Component{
-    constructor(){
+    constructor(props){
         super();
         this.onChange = this.onChange.bind(this);
         this.initialState = {
@@ -27,7 +28,6 @@ class WordSearchModal extends React.Component{
             //preview: <tr><td></td></tr>, //init
             ready: false,
         };
-
         this.state = this.initialState;
         this.wordSearchCreated = false;
     }
@@ -39,11 +39,13 @@ class WordSearchModal extends React.Component{
         }*/
         
     }
-    accept(){
+    accept = () => {
         //document.getElementById("wordsearch-preview").hidden = true;
         //this.setState(this.initialState);
         //this.props.handleClose();
         //Falta que la sopa de letras creada se escriba en el editor
+        this.props.editor.execute( 'insertWordSearch', this.props.wordSearchContent);
+        this.props.editor.editing.view.focus();
     }
 
     reset(){
@@ -222,7 +224,7 @@ class WordSearchModal extends React.Component{
                     <div className="footer">
                         <button className="moreSpace" onClick={this.props.resetWordSearch}>Resetear</button>
                         <button onClick={this.props.createWordSearch} disabled={!this.props.rows || !this.props.cols || !this.props.dictionary || (!this.props.vertical && !this.props.horizontal && !this.props.diagonal)}>Vista previa</button>
-                        <button onClick={this.accept} disabled={!this.state.ready}>Aceptar</button>
+                        <button onClick={this.accept}>Aceptar</button>
                     </div>
                 </div>
             </div>
@@ -262,7 +264,8 @@ const mapStateToProps = createStructuredSelector({
     activateBackwards: selectWordSearchModalActivateBackwards,
     backwardsProbability: selectWordSearchModalBackwardsProbability,
     error: selectWordSearchModalError,
-    wordSearchContent: selectWordSearchModalWordSearchContent
+    wordSearchContent: selectWordSearchModalWordSearchContent,
+    editor: selectEditorClass
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WordSearchModal);

@@ -13,20 +13,26 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import ExportPdf from '@ckeditor/ckeditor5-export-pdf/src/exportpdf';
-
-import PictogramEditing from '../pictoPlugin/pictogramEditing';
+import {editorInstance} from '../../ckeditor/editor/CkEditor';
+import PictogramEditing from '../../ckeditor/plugins/pictograms/pictogramEditing';
+import { createStructuredSelector } from 'reselect';
+import { selectEditorClass } from '../../redux/editor/editor.selectors';
+import { connect } from 'react-redux';
+import { setEditor } from '../../redux/editor/editor.actions';
+import WordSearchActionTypes from '../../redux/wordSearch/wordsearch.types';
+import WordSearchPlugin from '../../ckeditor/plugins/wordSearch/wordSearchPlugin';
 //import FillWords from '../rellenarPalabrasPlugin/fillWords';
 class Editor extends React.Component{
     
-    constructor(){
+    constructor(props){
         super();
-        this.state = {editorData: "<p>Hola</p>"};
+        this.state = {editorData: "<p>Hola</p><hr>"};
         this.handleEditorDataChange = this.handleEditorDataChange.bind( this );
-        this.editor = null;
+        this.editor = props.editor;
         this.editorConfig = {
             language: 'es',
             plugins: [Essentials, Heading, Bold, Italic, Underline,
-                    Link, Paragraph, Table, TableToolbar, PictogramEditing, Alignment
+                    Link, Paragraph, Table, TableToolbar, PictogramEditing, Alignment, WordSearchPlugin
                 ],
             toolbar: [  'exportPdf', '|',
                         'heading',
@@ -73,17 +79,22 @@ class Editor extends React.Component{
                 onChange={this.handleEditorDataChange} 
                 onReady={ editor => {
                     console.log( 'Editor is ready to use!', editor );
-
-                    // Insert the toolbar before the editable area.
                     editor.ui.getEditableElement().parentElement.insertBefore(
                         editor.ui.view.toolbar.element,
                         editor.ui.getEditableElement()
                     );
-                    this.editor = editor;
+                    this.props.setEditor(editor);
             } }/>
         </div>
     </div>);
     }
 }
 
-export default Editor;
+const mapStateToProps = createStructuredSelector({
+    editor: selectEditorClass
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    setEditor: (editor) => dispatch(setEditor(editor))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Editor);
