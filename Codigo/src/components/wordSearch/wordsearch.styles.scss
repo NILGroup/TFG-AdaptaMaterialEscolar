@@ -13,19 +13,167 @@
     position: fixed;
     top: 0;
     left: 0;
-    width:100%;
-    height: 100%;
+    width:100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.6);
     z-index: 1000;
-}
+    padding-top: 2%;
+    &__content{
+        width: 90vw;
+        height: 90vh;
+        position: relative;
+        overflow: auto;
+        border-radius: 4px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        background: white;
 
-.modal-main {
-    position:absolute;
-    background: white;
-    width: 80%;
-    height: 85%;
-    top:10%;
-    left:10%;
+        .header{
+            min-height: 60px;
+            height: 60px;
+            color:white;
+            background-color: #7867ff;
+            padding-left: 14px;
+            align-items: center;
+            display: grid;
+            grid-template-columns: auto 60px;
+
+            h4{
+                margin:0;
+                text-align: center;
+                justify-content: center;
+            }
+
+            button{
+                align-items: right;
+                justify-content: right;
+                height: 50%;
+                cursor: pointer;
+                margin-right: 14px;
+                margin-left: 14px;
+            }
+        }
+    }
+    .modal-main {
+        flex: 1;
+        text-align: left;
+        overflow: auto;
+        padding: 14px;
+        display:flex;
+        flex-direction: row;
+
+        .pdf{
+            width: 100%;
+            height: 100%;
+            overflow:auto;
+        }
+
+        .wordsearch-container{
+            display:flex;
+            flex-direction: column;
+            margin-left: 14px;
+            margin-right: 14px;
+            width: 100%;
+            .container{
+                display:flex;
+                margin-bottom: 14px;
+                span{
+                    color: red;
+                    margin-right: 3px;
+                }
+                label{
+                    margin-right: 14px;
+                }
+                input[type=number]{
+                    width: 10%;
+                    min-width: 10%;
+                    margin-right: 14px;
+                }
+                textarea{
+                    width: 100%;
+                    height: 10em;
+                    resize: none;
+                }
+                input[type=checkbox]{
+                    margin-right: 3px;
+                }
+
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+            
+                th, td{
+                    padding: 5px;
+                }
+
+                &__info{
+                    @extend .container;
+                    font-size: 12px;
+                    font-style: italic;
+                }
+                &__searchWords{
+                    @extend .container;
+                    margin-bottom: 8px;
+
+                    &Options{
+                        @extend .container__searchWords;
+                        flex-direction: row;
+                    }
+                }
+                &__backwards{
+                    @extend .container;
+                    flex-direction: column;
+
+                    &__activateBackwards{
+                        @extend .container__backwards;
+                        flex-direction: row;
+                        margin-top: 7px;
+                        margin-left: 16px;
+
+                        &_hidden{
+                            display: none;
+                        }
+                    }
+                }
+
+                &__error{
+                    @extend .container;
+                    color:red;
+                    margin-top: 5px;
+                }
+
+                &__preview{
+                    @extend .container;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    justify-content: center;
+
+                    &_hidden{
+                        display: none;
+                    }
+                    
+                }
+                
+            }
+        }
+    }
+
+    .footer{
+        height: auto;
+        text-align: right;
+        border-top: solid 1px lightgray;
+        padding: 14px;
+        background-color: white;
+        button{
+            margin:0;
+            &:not(:last-child){
+                margin-right: 10px;
+            }
+        }
+    }
 }
 
 .display-block {
@@ -36,87 +184,10 @@
     display: none;
 }
 
-.wordSearchModal-pdf-file{
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-}
-
-.div-pdf{
-    float: left;
-    height: 100%;
-    width: 60%;
-}
-
-.close{
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin-top: 2px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
-
-.accept{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin-top: 2px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
-.accept > button{
-    margin-left: 5px;
-}
-
-.wordsearch-data{
-    display: flex;
-    margin-top: 10px;
-}
-
-.wordsearch-container{
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.container{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    input[type=number], select{
-        margin-left: 8px;
-        margin-right: 8px;
-    }
-
-    input[type=number]{
-        width: 10%;
-    }
-    textarea{
-        width: 95%;
-        height: 10em;
-        resize: none;
-    }
-
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-
-    th, td{
-        padding: 5px;
-    }
-}
-
-.center{
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-}
-
-.preview{
+.preview, .table{
     margin-bottom: 10px;
 }
 
-.error{
-    color: red;
+.moreSpace{
+    margin-right: 3em !important;
 }
