@@ -62,7 +62,22 @@ export const selectWordSearchModalError = createSelector(
   wordsearch => wordsearch.error
 );
 
-export const selectWordSearchModalWordSearchContent = createSelector(
+export const selectWordSearchModalReady = createSelector(
   [selectWordSearch],
-  wordsearch => wordsearch.wordSearchContent
-)
+  wordsearch => wordsearch.ready
+);
+
+export const selectWordSearchModalHiddenWords = createSelector(
+  [selectWordSearch],
+  wordsearch => wordsearch.hiddenWords
+);
+
+export const selectWordSearchModalWordSearchObj = createSelector(
+  [selectWordSearch],
+  wordsearch => wordsearch.wordSearchObject
+);
+
+export const selectWordSearchModalReadyToCreate = createSelector(
+  [selectWordSearch],
+  wordsearch => wordsearch.readyToCreate
+);

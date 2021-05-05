@@ -15,7 +15,10 @@ const INITIAL_STATE = {
     backwardsProbability: 0.0, //init to 0.3 when activateBackwards is true
     error: "",
     disabledDirections: ["N", "S", "W", "E", "NW", "NE", "SW", "SE"],
-    wordSearchContent: []
+    wordSearchObject: null,
+    hiddenWords: false,
+    readyToCreate: false,
+    ready: false
 }
 
 const wordSearchReducer = (state = INITIAL_STATE, action) => {
@@ -105,16 +108,32 @@ const wordSearchReducer = (state = INITIAL_STATE, action) => {
                 backwardsProbability: 0.0,
                 error: "",
                 disabledDirections: ["N", "S", "W", "E", "NW", "NE", "SW", "SE"],
-                wordSearchContent: []
+                wordSearchObject: null,
+                readyToCreate: false,
+                ready: false
             }
         case WordSearchActionTypes.CREATE_WORDSEARCH:
             return{
                 ...state,
-                wordSearchContent: createWordSearch(state.wordSearchContent, {rows: state.rows, cols: state.cols, dictionary: state.dictionary, disabledDirections: state.disabledDirections, 
+                wordSearchObject: createWordSearch(state.wordSearchObject, {rows: state.rows, cols: state.cols, dictionary: state.dictionary, disabledDirections: state.disabledDirections, 
                     maxWords: state.maxWords, backwardsProbability: state.backwardsProbability, diacritics:state.diacritics})
             }
+        case WordSearchActionTypes.UPDATE_WORDSEARCH_READY:
+            return{
+                ...state,
+                ready: action.payload
+            }
+        case WordSearchActionTypes.UPDATE_WORDSEARCH_HIDDENWORDS:
+            return{
+                ...state,
+                hiddenWords: action.payload
+            }
+        case WordSearchActionTypes.UPDATE_WORDSEARCH_READYTOCREATE:
+            return{
+                ...state,
+                readyToCreate: action.payload
+            }
         default: 
-            console.log(state);
             return state;
     }
 };

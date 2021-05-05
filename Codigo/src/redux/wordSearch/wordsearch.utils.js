@@ -49,7 +49,7 @@ export const diagonalDirs = (disabledDirections, diagonal) =>{
 }
 
 
-export const createWordSearch = (wordsearch, options) =>{
+export const createWordSearch = (wordSearchObject, options) =>{
     try{
         options ={
             ...options,
@@ -58,18 +58,16 @@ export const createWordSearch = (wordsearch, options) =>{
             dictionary: options.dictionary.split(",").map(item => item.trim()),
             maxWords: parseInt(options.maxWords)
         }
-        const ws = new WordSearch(options);
-        /*if(ws.words.length < options.dictionary.length){
-            error = "No todas las palabras introducidas están en la sopa de letras. Prueba a cambiar el valor de las filas, columnas y/o número máximo de palabras";
-        }*/
-        wordsearch = ws.grid;
-
-        return wordsearch;
+        if(options.rows > 0 && options.cols > 0){
+            const ws = new WordSearch(options);
+            wordSearchObject = ws;
+            
+            return wordSearchObject;
+        }
+        else return null;
+        
     }
-    catch(errors){
-        /*if(errors instanceof TypeError){
-            error = "Las filas y columnas deben tener un valor positivo mayor que 0";
-        }*/
-        return wordsearch;
+    catch(error){
+        return null;
     }
 }
