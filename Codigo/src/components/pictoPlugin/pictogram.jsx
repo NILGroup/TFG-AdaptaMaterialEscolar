@@ -1,7 +1,5 @@
 import React from 'react';
 import './pictogram.scss'
-import EmitterMixin from '@ckeditor/ckeditor5-utils/src/emittermixin';
-import mix from '@ckeditor/ckeditor5-utils/src/mix';
 import { createStructuredSelector } from 'reselect';
 import { selectEditorClass } from '../../redux/editor/editor.selectors';
 import { connect } from 'react-redux';
@@ -22,8 +20,6 @@ class Pictogram extends React.Component{
     </div>)
     }
 }
-
-mix( Pictogram, EmitterMixin );
 
 const mapStateToProps = createStructuredSelector({
     editor: selectEditorClass

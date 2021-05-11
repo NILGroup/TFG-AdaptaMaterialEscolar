@@ -13,13 +13,11 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import ExportPdf from '@ckeditor/ckeditor5-export-pdf/src/exportpdf';
-import {editorInstance} from '../../ckeditor/editor/CkEditor';
 import PictogramEditing from '../../ckeditor/plugins/pictograms/pictogramEditing';
 import { createStructuredSelector } from 'reselect';
 import { selectEditorClass } from '../../redux/editor/editor.selectors';
 import { connect } from 'react-redux';
 import { setEditor } from '../../redux/editor/editor.actions';
-import WordSearchActionTypes from '../../redux/wordSearch/wordsearch.types';
 import WordSearchPlugin from '../../ckeditor/plugins/wordSearch/wordSearchPlugin';
 //import FillWords from '../rellenarPalabrasPlugin/fillWords';
 class Editor extends React.Component{

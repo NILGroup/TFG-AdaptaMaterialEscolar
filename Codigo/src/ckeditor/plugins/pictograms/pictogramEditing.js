@@ -51,7 +51,7 @@ export default class PictogramEditing extends Plugin {
             model: ( viewElement, { writer: modelWriter } ) => {
                 // Read the "data-id" attribute from the view and set it as the "id" in the model.
                 return modelWriter.createElement( 'pictogramPreview', {
-                    id: parseInt( viewElement.getAttribute( 'data-id' ) )
+                    id: parseInt( viewElement.getAttribute( 'url' ) )
                 } );
             }
         } );
@@ -88,7 +88,6 @@ export default class PictogramEditing extends Plugin {
                     class: 'pictogram',
                     src: id
                 } );
-
                 // The inner <div class="product__react-wrapper"></div> element.
                 // This element will host a React <ProductPreview /> component.
                 const reactWrapper = viewWriter.createRawElement( 'div', {
