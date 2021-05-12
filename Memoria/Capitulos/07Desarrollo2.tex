@@ -9,7 +9,7 @@
 %------Primera sección: Introducción------%
 \section{Arquitectura - Redux}
 %-----------------------------------------%
-En el proyecto de este TFG se ha decidido aplicar una arquitectura Redux. Redux es un patrón de diseño Front-End que pretende desacoplar el estado de la aplicación, es decir, la información interna de los componentes y/o datos obtenidos de APIs externas, de los componentes. Esta arquitectura se basa en tres principios:
+En el proyecto de este TFG se ha decidido aplicar una arquitectura \textit{Redux}\footnote{\url{https://redux.js.org/}}. Redux es un patrón de diseño Front-End que pretende desacoplar el estado de la aplicación, es decir, la información interna de los componentes y/o datos obtenidos de APIs externas, de los componentes. Esta arquitectura se basa en tres principios:
 \begin{itemize}
 \item Única fuente de la verdad. El estado de la aplicación se guarda en un único store. Este store consistirá en un objeto árbol con toda la información necesaria para la aplicación.
 \item El estado es de sólo lectura. No podemos modificar el estado directamente, solo podremos leer de él para mostrarlo en la vista y si queremos modificarlo tendremos que ejecutar acciones. Las acciones son un objeto Javascript que incluye al menos un atributo type que indica el tipo de acción que estamos emitiendo y en caso de que haya datos asociados al cambio o modificación, un atributo payload con esos datos.
