@@ -1,4 +1,6 @@
 import React from 'react';
+import { createStructuredSelector } from 'reselect';
+import { closeTrueFalseModal, openTrueFalseModal } from '../../redux/trueFalse/trueFalse.actions';
 import './trueFalse.scss'
 
 class TrueFalse extends React.Component {
@@ -21,6 +23,7 @@ class TrueFalse extends React.Component {
 
     render() {
       return (
+        <div className="modal-develop">
         <form onSubmit={this.handleSubmit}>
             <div class = "statement">
                 <label>Inserte las oraciones del ejercicio de Verdadero o Falso, separadas por espacio: </label>
@@ -32,8 +35,15 @@ class TrueFalse extends React.Component {
                 <input type="submit" value="Insertar ejercicio"/>
             </div>
         </form>
+        </div>
       );
     }
   }
+
+  const mapDispatchToProps = (dispatch) => ({
+    openTrueFalseModal: () => dispatch(openTrueFalseModal),
+    closeTrueFalseModal: () => dispatch(closeTrueFalseModal)
+});
+
 
   export default TrueFalse;

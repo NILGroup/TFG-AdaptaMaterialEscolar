@@ -6,3 +6,13 @@ export const selectDefinitionsModalIsDisplayed = createSelector(
     [selectDefinitions],
     definitions => definitions.showDefinitionsModal
 );
+
+export const selectDefinitionsNumLines = createSelector(
+    [selectDefinitions],
+    definitions => definitions.numLines
+  );
+
+export const selectDefinitionsText = createSelector(
+    [selectDefinitions],
+    definitions => definitions.text
+  );
