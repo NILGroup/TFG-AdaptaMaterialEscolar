@@ -1,3 +1,4 @@
+import "./toolbar.styles.scss";
 import React from 'react';
 import {connect} from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -13,12 +14,13 @@ import WordSearchModal from '../wordSearch/wordsearchModal';
 class Toolbar extends React.Component{
     
     render(){
-        return (<div>
+        return (
+        <div className="toolbar">
             <div className="toolbar-self">
-                <button onClick={this.props.openPictogramFinder}>Pictogramas</button>
+                <button className={this.props.showPictogramsModal ? "pictograms-active" : null} onClick={this.props.openPictogramFinder}>Pictogramas</button>
                 <button >Rellenar huecos</button>
                 <button onClick={this.props.openDefinitionsModal}>Definiciones</button>
-                <button onClick={this.props.openWordSearchModal}>Sopa de letras</button>
+                <button className={this.props.showWordSearchModal ? "wordsearch-active" : null} onClick={this.props.openWordSearchModal}>Sopa de letras</button>
                 <button>V/F</button>
             </div>
             <div className="modal-box">

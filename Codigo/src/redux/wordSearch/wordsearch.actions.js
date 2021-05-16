@@ -43,11 +43,6 @@ export const updateWordSearchMaxWords = (maxWords) => ({
     payload: maxWords
 });
 
-export const updateWordSearchDiacritics = (diacritics) => ({
-    type: WordSearchActionTypes.UPDATE_WORDSEARCH_DIACRITICS,
-    payload: diacritics
-});
-
 export const updateWordSearchActivateBackwards = (activateBackwards) => ({
     type: WordSearchActionTypes.UPDATE_WORDSEARCH_ACTIVATEBACKWARDS,
     payload: activateBackwards

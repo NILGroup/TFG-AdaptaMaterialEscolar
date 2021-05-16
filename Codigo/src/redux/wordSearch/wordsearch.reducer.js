@@ -10,7 +10,6 @@ const INITIAL_STATE = {
     horizontal: false,
     diagonal: false,
     maxWords: 20,
-    diacritics: false,
     activateBackwards: false,
     backwardsProbability: 0.0, //init to 0.3 when activateBackwards is true
     error: "",
@@ -72,11 +71,6 @@ const wordSearchReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 maxWords: action.payload
             }
-        case WordSearchActionTypes.UPDATE_WORDSEARCH_DIACRITICS:
-            return{
-                ...state,
-                diacritics: action.payload
-            }
         case WordSearchActionTypes.UPDATE_WORDSEARCH_ACTIVATEBACKWARDS:
             return{
                 ...state,
@@ -103,7 +97,6 @@ const wordSearchReducer = (state = INITIAL_STATE, action) => {
                 horizontal: false,
                 diagonal: false,
                 maxWords: 20,
-                diacritics: false,
                 activateBackwards: false,
                 backwardsProbability: 0.0,
                 error: "",
@@ -116,7 +109,7 @@ const wordSearchReducer = (state = INITIAL_STATE, action) => {
             return{
                 ...state,
                 wordSearchObject: createWordSearch(state.wordSearchObject, {rows: state.rows, cols: state.cols, dictionary: state.dictionary, disabledDirections: state.disabledDirections, 
-                    maxWords: state.maxWords, backwardsProbability: state.backwardsProbability, diacritics:state.diacritics})
+                    maxWords: state.maxWords, backwardsProbability: state.backwardsProbability, diacritics:true})
             }
         case WordSearchActionTypes.UPDATE_WORDSEARCH_READY:
             return{

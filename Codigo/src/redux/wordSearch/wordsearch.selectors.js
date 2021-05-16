@@ -42,11 +42,6 @@ export const selectWordSearchModalMaxWords = createSelector(
   wordsearch => wordsearch.maxWords
 );
 
-export const selectWordSearchModalDiacritics = createSelector(
-  [selectWordSearch],
-  wordsearch => wordsearch.diacritics
-);
-
 export const selectWordSearchModalActivateBackwards = createSelector(
   [selectWordSearch],
   wordsearch => wordsearch.activateBackwards

@@ -71,7 +71,6 @@ class Editor extends React.Component{
     render() {
         return (
         <div className="document-editor">
-            <div className="document-editor__toolbar"></div>
             <div className="document-editor__editable-container">
             <CKEditor editor={DecoupledEditor} 
                 data={this.state.editorData} 
