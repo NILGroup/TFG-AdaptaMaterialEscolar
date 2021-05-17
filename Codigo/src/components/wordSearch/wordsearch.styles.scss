@@ -165,7 +165,7 @@
     }
 }
 
-.preview, .table{
+.preview, .board{
     margin-bottom: 10px;
     text-align: center;
 }
@@ -191,4 +191,10 @@
 .reset{
     float: right !important;
     background-color: red;
+}
+
+.showWords{
+    text-align: left;
+    margin-top: 1em;
+    width: 100%;
 }

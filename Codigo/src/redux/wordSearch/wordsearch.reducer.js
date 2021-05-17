@@ -103,7 +103,8 @@ const wordSearchReducer = (state = INITIAL_STATE, action) => {
                 disabledDirections: ["N", "S", "W", "E", "NW", "NE", "SW", "SE"],
                 wordSearchObject: null,
                 readyToCreate: false,
-                ready: false
+                ready: false,
+                hiddenWords: false
             }
         case WordSearchActionTypes.CREATE_WORDSEARCH:
             return{

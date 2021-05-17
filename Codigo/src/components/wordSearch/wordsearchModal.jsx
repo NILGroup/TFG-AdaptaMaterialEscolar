@@ -58,7 +58,7 @@ class WordSearchModal extends React.Component{
                 }
                 this.props.updateReady(true);
                 return(
-                    <WordSearch data={this.props.wordSearchObject.grid}/>
+                    <WordSearch data={this.props.wordSearchObject}/>
                 );
             }
             else{
@@ -71,7 +71,7 @@ class WordSearchModal extends React.Component{
     }
 
     accept = () => {
-        this.props.editor.execute( 'insertWordSearch', this.props.wordSearchObject.grid);
+        this.props.editor.execute( 'insertWordSearch', {grid: this.props.wordSearchObject.grid, words: this.props.wordSearchObject.words, showWords: this.props.hiddenWords});
         this.props.editor.editing.view.focus();
         this.props.closeModal();
         this.props.resetWordSearch();
@@ -143,7 +143,7 @@ class WordSearchModal extends React.Component{
                                 <div className="container__searchWords">
                                     <label><span>*</span>Buscar palabras en:</label>
                                     <div className="container__searchWordsOptions">
-                                        <label ><input id="vertical" type="checkbox" name="vertical" onChange={this.onChange} checked={this.props.vertical}/>Vertical</label> 
+                                        <label><input id="vertical" type="checkbox" name="vertical" onChange={this.onChange} checked={this.props.vertical}/>Vertical</label> 
                                         <label><input id="horizontal" type="checkbox" name="horizontal" onChange={this.onChange} checked={this.props.horizontal}/>Horizontal</label> 
                                         <label><input id="diagonal" type="checkbox" name="diagonal" onChange={this.onChange} checked={this.props.diagonal}/>Diagonal</label>
                                     </div>
@@ -176,7 +176,7 @@ class WordSearchModal extends React.Component{
                                 {this.props.wordSearchObject !== null ?
                                 <div id="wordsearch-preview" className="container__preview">
                                     <div className="preview">Vista previa</div>
-                                    <div className="table">
+                                    <div className="board">
                                         {this.generateTable()}
                                     </div>
                                 </div>
@@ -184,9 +184,7 @@ class WordSearchModal extends React.Component{
                                 null}
                                 {this.props.ready ? 
                                     <div className="container">
-                                    <label><input id="hiddenWords" type="checkbox" name="hiddenWords" onChange={this.onChange} checked={this.props.hiddenWords}/>Mostrar palabras a buscar <FaInfoCircle data-tip data-for="hiddenWordsTip"/><ReactTooltip id="hiddenWordsTip" place="top" effect="solid">
-                                        Muestra en el ejercicio las palabras que hay que buscar en la sopa de letras
-                                        </ReactTooltip></label>
+                                    <label><input id="hiddenWords" type="checkbox" name="hiddenWords" onChange={this.onChange} checked={this.props.hiddenWords}/>Mostrar en el ejercicio las palabras a buscar</label>
                                     </div>
                                 :
                                 null}

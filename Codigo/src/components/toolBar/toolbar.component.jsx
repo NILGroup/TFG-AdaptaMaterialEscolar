@@ -8,7 +8,7 @@ import { selectModalIsDisplayed } from '../../redux/pictograms/pictogram.selecto
 import {openPictogramFinder} from '../../redux/pictograms/pictograms.actions';
 import { openWordSearchModal } from '../../redux/wordSearch/wordsearch.actions';
 import { selectWordSearchModalIsDisplayed } from '../../redux/wordSearch/wordsearch.selectors';
-import Definitions from '../exerciseDefinitions/definitions';
+import DefinitionsModal from '../exerciseDefinitions/definitionsModal';
 import PictoSearch from '../pictoPlugin/pictoSearch';
 import WordSearchModal from '../wordSearch/wordsearchModal';
 class Toolbar extends React.Component{
@@ -19,14 +19,14 @@ class Toolbar extends React.Component{
             <div className="toolbar-self">
                 <button className={this.props.showPictogramsModal ? "pictograms-active" : null} onClick={this.props.openPictogramFinder}>Pictogramas</button>
                 <button >Rellenar huecos</button>
-                <button onClick={this.props.openDefinitionsModal}>Definiciones</button>
+                <button className={this.props.showDefinitionsModal ? "definitions-active" : null} onClick={this.props.openDefinitionsModal}>Definiciones</button>
                 <button className={this.props.showWordSearchModal ? "wordsearch-active" : null} onClick={this.props.openWordSearchModal}>Sopa de letras</button>
                 <button>V/F</button>
             </div>
             <div className="modal-box">
                 { this.props.showPictogramsModal ? <PictoSearch/> : null}
                 { this.props.showWordSearchModal ? <WordSearchModal/> : null}
-                { this.props.showDefinitionsModal ? <Definitions/> : null}
+                { this.props.showDefinitionsModal ? <DefinitionsModal/> : null}
             </div>
         </div>)
     }

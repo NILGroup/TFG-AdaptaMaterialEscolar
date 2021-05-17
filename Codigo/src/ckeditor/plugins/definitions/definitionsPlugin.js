@@ -5,10 +5,10 @@ import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 import { store } from '../../../redux/store';
-import InsertWordSearchCommand from './insertWordSearchCommand';
-import WordSearch from '../../../components/wordSearch/wordSearch';
+import InsertDefinitionsCommand from './insertDefinitionsCommand';
+import Definitions from '../../../components/exerciseDefinitions/definitions';
 
-export default class WordSearchPlugin extends Plugin {
+export default class DefinitionsPlugin extends Plugin {
     static get requires() {
         return [ Widget ];
     }
@@ -17,24 +17,24 @@ export default class WordSearchPlugin extends Plugin {
         this._defineSchema();
         this._defineConverters();
 
-        this.editor.commands.add( 'insertWordSearch', new InsertWordSearchCommand( this.editor ) );
+        this.editor.commands.add( 'insertDefinitions', new InsertDefinitionsCommand( this.editor ) );
     }
 
     _defineSchema() {
         const schema = this.editor.model.schema;
 
-        schema.register( 'wordSearchPreview', {
+        schema.register( 'definitionsPreview', {
             // Behaves like a self-contained object (e.g. an image).
             isObject: true,
 
             // Allow in places where other blocks are allowed (e.g. directly in the root).
-            allowWhere: '$text',
+            allowWhere: '$block',
 
-            isInline: true,
+            isInline: false,
 
             // Each product preview has an ID. A unique ID tells the application which
             // product it represents and makes it possible to render it inside a widget.
-            allowAttributes: [ 'characters' ]
+            allowAttributes: [ 'definitions' ]
         } );
     }
 
@@ -50,7 +50,7 @@ export default class WordSearchPlugin extends Plugin {
             },
             model: ( viewElement, { writer: modelWriter } ) => {
                 // Read the "data-id" attribute from the view and set it as the "id" in the model.
-                return modelWriter.createElement( 'wordSearchPreview', {
+                return modelWriter.createElement( 'definitionsPreview', {
                     id: parseInt( viewElement.getAttribute( 'data-characters' ) )
                 } );
             }
@@ -58,7 +58,7 @@ export default class WordSearchPlugin extends Plugin {
 
         // <productPreview> converters (model → data view)
         conversion.for( 'dataDowncast' ).elementToElement( {
-            model: 'wordSearchPreview',
+            model: 'definitionsPreview',
             view: ( modelElement, { writer: viewWriter } ) => {
                 // In the data view, the model <productPreview> corresponds to:
                 //
@@ -71,7 +71,7 @@ export default class WordSearchPlugin extends Plugin {
 
         // <productPreview> converters (model → editing view)
         conversion.for( 'editingDowncast' ).elementToElement( {
-            model: 'wordSearchPreview',
+            model: 'definitionsPreview',
             view: ( modelElement, { writer: viewWriter } ) => {
                 // In the editing view, the model <productPreview> corresponds to:
                 //
@@ -80,17 +80,17 @@ export default class WordSearchPlugin extends Plugin {
                 //         <ProductPreview /> (React component)
                 //     </div>
                 // </section>
-                const id = modelElement.getAttribute( 'characters' );
+                const id = modelElement.getAttribute( 'definitions' );
 
                 // The outermost <section class="product" data-id="..."></section> element.
                 const section = viewWriter.createContainerElement( 'div', {
-                    class: 'table board'
+                    class: ''
                 } );
 
                 // The inner <div class="product__react-wrapper"></div> element.
                 // This element will host a React <ProductPreview /> component.
                 const reactWrapper = viewWriter.createRawElement( 'div', {
-                    class: 'wordSearch__react-wrapper'
+                    class: 'definitions__react-wrapper'
                 }, function( domElement ) {
                     // This the place where React renders the actual product preview hosted
                     // by a UIElement in the view. You are using a function (renderer) passed
@@ -98,15 +98,7 @@ export default class WordSearchPlugin extends Plugin {
                     console.log(id);
                     ReactDOM.render(
                         <Provider store={ store }>
-                            <WordSearch data={id}/>
-                            {id.showWords ?
-                            <div className="showWords">
-                                {id.words.map((value, i) =>
-                                    i !== id.words.length - 1 ? value.clean + ", " : value.clean
-                                )}
-                            </div>
-                            : null
-                            }
+                            <Definitions data={id}/>
                         </Provider>
                         ,
                         domElement
@@ -115,7 +107,7 @@ export default class WordSearchPlugin extends Plugin {
 
                 viewWriter.insert( viewWriter.createPositionAt( section, 0 ), reactWrapper );
 
-                return toWidget( section, viewWriter, { label: 'wordsearch preview widget' } );
+                return toWidget( section, viewWriter, { label: 'pictogram preview widget' } );
             }
         } );
     }

@@ -25,6 +25,10 @@
     }
 }
 
+.modal-box{
+    display: flex;
+}
+
 .wordsearch-active{
     background-color: #978fe2 !important;
     color: white;
@@ -32,5 +36,10 @@
 
 .pictograms-active{
     background-color:rgb(156, 200, 214) !important;
+    color: white;
+}
+
+.definitions-active{
+    background-color: #fa9f66 !important;
     color: white;
 }
