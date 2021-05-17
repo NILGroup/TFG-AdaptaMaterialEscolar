@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 import { store } from '../../../redux/store';
 import InsertDevelopCommand from './insertDevelopCommand';
-import Develop from '../../../components/exerciseDevelop/developModal';
+import Develop from '../../../components/exerciseDevelop/develop';
 
 export default class DevelopPlugin extends Plugin {
     static get requires() {
@@ -51,7 +51,7 @@ export default class DevelopPlugin extends Plugin {
             model: ( viewElement, { writer: modelWriter } ) => {
                 // Read the "data-id" attribute from the view and set it as the "id" in the model.
                 return modelWriter.createElement( 'developPreview', {
-                    id: parseInt( viewElement.getAttribute( 'data-characters' ) )
+                    id: parseInt( viewElement.getAttribute( 'data-develop' ) )
                 } );
             }
         } );

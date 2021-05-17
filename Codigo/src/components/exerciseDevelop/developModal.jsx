@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from "react-redux";
-import { openDevelopModal, closeDevelopModal, resetDevelopModal, updateDevelopExtraSpace, updateDevelopNumLines, updateDevelopText } from '../../redux/develop/develop.actions';
+import { closeDevelopModal, resetDevelopModal, updateDevelopExtraSpace, updateDevelopNumLines, updateDevelopText } from '../../redux/develop/develop.actions';
 import { selectDevelopExtraSpace, selectDevelopNumLines, selectDevelopText} from "../../redux/develop/develop.selectors";
 import './develop.scss'
 import { selectEditorClass } from '../../redux/editor/editor.selectors';
@@ -9,7 +9,7 @@ import ReactTooltip from "react-tooltip";
 import Draggable from "react-draggable";
 import { GrFormClose } from "react-icons/gr";
 
-class Develop extends React.Component {
+class DevelopModal extends React.Component {
    constructor(props) {
       super();
       this.handleChange = this.handleChange.bind(this);
@@ -88,7 +88,6 @@ handleChange(e) {
   }
 
   const mapDispatchToProps = (dispatch) => ({
-    openDevelopModal: () => dispatch(openDevelopModal),
     closeDevelopModal: () => dispatch(closeDevelopModal),
     updateDevelopNumLines: (numLines) => dispatch(updateDevelopNumLines(numLines)),
     updateDevelopText: (text) => dispatch(updateDevelopText(text)),
@@ -97,10 +96,10 @@ handleChange(e) {
   });
   
   const mapStateToProps = createStructuredSelector({
-    space: selectDevelopNumLines,
+    numLines: selectDevelopNumLines,
     text: selectDevelopText,
     extraspace: selectDevelopExtraSpace,
     editor: selectEditorClass
   });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Develop);
+export default connect(mapStateToProps, mapDispatchToProps)(DevelopModal);
