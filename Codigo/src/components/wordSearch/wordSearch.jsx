@@ -7,7 +7,7 @@ class WordSearch extends React.Component{
         return(
             <table>
                 <tbody>
-                {this.props.data.map((i, id1) =>
+                {this.props.data.grid.map((i, id1) =>
                     <tr key={"tr-" + id1}>
                     {i.map((j, id2) =>
                         <td key={"td-" + id1 + id2}>{j}</td>

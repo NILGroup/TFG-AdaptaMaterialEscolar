@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from "react-redux";
-import { closeTrueFalseModal, openTrueFalseModal, updateTrueFalseText, resetTrueFalseModal } from '../../redux/trueFalse/trueFalse.actions';
+import { closeTrueFalseModal, updateTrueFalseText, resetTrueFalseModal } from '../../redux/trueFalse/trueFalse.actions';
 import { selectTrueFalseText} from "../../redux/trueFalse/trueFalse.selectors";
 import './trueFalse.scss'
 import { selectEditorClass } from '../../redux/editor/editor.selectors';
@@ -9,46 +9,46 @@ import ReactTooltip from "react-tooltip";
 import Draggable from "react-draggable";
 import { GrFormClose } from "react-icons/gr";
 
-class TrueFalse extends React.Component {
-     constructor(props) {
+class TrueFalseModal extends React.Component {
+    constructor(props) {
       super();
       this.handleChange = this.handleChange.bind(this);
       this.state ={
         disableTip: false,
         disableDrag: true
     }
-}
+  }
   
-    disableTip = () =>{
-      this.setState({
-          disableTip: true
-      });
+  disableTip = () =>{
+    this.setState({
+        disableTip: true
+    });
   }
 
   toggleDisableDrag = () =>{
-      this.setState({
-          disableDrag: !this.state.disableDrag
-      });
+    this.setState({
+        disableDrag: !this.state.disableDrag
+    });
   }
     
-    accept = () => {
-      this.props.editor.execute( 'insertTrueFalse', this.props.text);
-      this.props.editor.editing.view.focus();
-      this.props.resetTrueFalseModal();
-      this.props.closeTrueFalseModal();
-    }
+  accept = () => {
+    this.props.editor.execute( 'insertTrueFalse', this.props.text);
+    this.props.editor.editing.view.focus();
+    this.props.resetTrueFalseModal();
+    this.props.closeTrueFalseModal();
+  }
     
-    handleChange(e) {
-      switch(e.target.name){
-        case "text":
-          this.props.updateTrueFalseText(e.target.value);
-          break;
-        default:
-          break;
-      }
+  handleChange(e) {
+    switch(e.target.name){
+      case "text":
+        this.props.updateTrueFalseText(e.target.value);
+        break;
+      default:
+        break;
     }
+  }
 
-     render() {
+    render() {
       return (
       <Draggable bounds="body" disabled={this.state.disableDrag}>
         <div className="modal-truefalse">
@@ -77,8 +77,7 @@ class TrueFalse extends React.Component {
   }
 
   const mapDispatchToProps = (dispatch) => ({
-    openTrueFalseModal: () => dispatch(openTrueFalseModal),
-    closeTrueFalseModal: () => dispatch(closeTrueFalseModal),
+    closeTrueFalseModal: () => dispatch(closeTrueFalseModal()),
     updateTrueFalseText: (text) => dispatch(updateTrueFalseText(text)),
     resetTrueFalseModal: () => dispatch(resetTrueFalseModal())
   });
@@ -88,4 +87,4 @@ class TrueFalse extends React.Component {
     editor: selectEditorClass
   });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrueFalse);
+export default connect(mapStateToProps, mapDispatchToProps)(TrueFalseModal);

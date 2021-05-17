@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 import { store } from '../../../redux/store';
 import InsertTrueFalseCommand from './insertTrueFalseCommand';
-import TrueFalse from '../../../components/exerciseTrueFalse/trueFalseModal';
+import TrueFalse from '../../../components/exerciseTrueFalse/trueFalse';
 
 export default class TrueFalselugin extends Plugin {
     static get requires() {
@@ -34,7 +34,7 @@ export default class TrueFalselugin extends Plugin {
 
             // Each product preview has an ID. A unique ID tells the application which
             // product it represents and makes it possible to render it inside a widget.
-            allowAttributes: [ 'trueFalse' ]
+            allowAttributes: [ 'truefalse' ]
         } );
     }
 
@@ -80,7 +80,7 @@ export default class TrueFalselugin extends Plugin {
                 //         <ProductPreview /> (React component)
                 //     </div>
                 // </section>
-                const id = modelElement.getAttribute( 'trueFalse' );
+                const id = modelElement.getAttribute( 'truefalse' );
 
                 // The outermost <section class="product" data-id="..."></section> element.
                 const section = viewWriter.createContainerElement( 'div', {

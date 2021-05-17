@@ -42,11 +42,6 @@ export const selectWordSearchModalMaxWords = createSelector(
   wordsearch => wordsearch.maxWords
 );
 
-export const selectWordSearchModalDiacritics = createSelector(
-  [selectWordSearch],
-  wordsearch => wordsearch.diacritics
-);
-
 export const selectWordSearchModalActivateBackwards = createSelector(
   [selectWordSearch],
   wordsearch => wordsearch.activateBackwards
@@ -62,7 +57,27 @@ export const selectWordSearchModalError = createSelector(
   wordsearch => wordsearch.error
 );
 
-export const selectWordSearchModalWordSearchContent = createSelector(
+export const selectWordSearchModalReady = createSelector(
   [selectWordSearch],
-  wordsearch => wordsearch.wordSearchContent
+  wordsearch => wordsearch.ready
+);
+
+export const selectWordSearchModalHiddenWords = createSelector(
+  [selectWordSearch],
+  wordsearch => wordsearch.hiddenWords
+);
+
+export const selectWordSearchModalWordSearchObj = createSelector(
+  [selectWordSearch],
+  wordsearch => wordsearch.wordSearchObject
+);
+
+export const selectWordSearchModalReadyToCreate = createSelector(
+  [selectWordSearch],
+  wordsearch => wordsearch.readyToCreate
+);
+
+export const selectWordSearchModalWords = createSelector(
+  [selectWordSearch],
+  wordsearch => wordsearch.words
 )

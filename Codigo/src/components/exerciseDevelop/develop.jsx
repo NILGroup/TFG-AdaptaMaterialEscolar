@@ -1,6 +1,4 @@
 import React from 'react';
-import { createStructuredSelector } from 'reselect';
-import { closeDevelopModal, openDevelopModal } from '../../redux/develop/develop.actions';
 import './develop.scss'
 
 class Develop extends React.Component {
@@ -23,8 +21,7 @@ class Develop extends React.Component {
 
     render() {
       return (
-      <div className="modal-develop">
-          <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
             <div class = "statement">
                 <label>Enunciado: </label>
             </div>
@@ -41,15 +38,8 @@ class Develop extends React.Component {
                 <input type="submit" value="Insertar ejercicio"/>
             </div>
         </form>
-        </div>
       );
     }
   }
-
-  
-  const mapDispatchToProps = (dispatch) => ({
-    openDevelopModal: () => dispatch(openDevelopModal),
-    closeDevelopModal: () => dispatch(closeDevelopModal)
-});
 
   export default Develop;

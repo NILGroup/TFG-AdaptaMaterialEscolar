@@ -1,10 +1,10 @@
 import DefinitionsActionTypes from "./definitions.types";
 
-
 const INITIAL_STATE = {
     showDefinitionsModal: false,
     numLines: '',
-    text: ''
+    text: '',
+    extraspace: false
 }
 
 const definitionsReducer = (state = INITIAL_STATE, action) => {
@@ -33,8 +33,14 @@ const definitionsReducer = (state = INITIAL_STATE, action) => {
             return {
                  ...state,
                 numLines: '',
-                text: ''
+                text: '',
+                extraspace: false
              };
+        case DefinitionsActionTypes.UPDATE_DEFINITIONS_EXTRASPACE:
+            return{
+                ...state,
+                extraspace: action.payload
+            }
         default: 
             return state;
     }
