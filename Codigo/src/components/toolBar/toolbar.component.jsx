@@ -12,8 +12,8 @@ import { openPictogramFinder} from '../../redux/pictograms/pictograms.actions';
 import { openWordSearchModal } from '../../redux/wordSearch/wordsearch.actions';
 import { selectWordSearchModalIsDisplayed } from '../../redux/wordSearch/wordsearch.selectors';
 import Definitions from '../exerciseDefinitions/definitions';
-import Develop from '../exerciseDevelop/develop';
-import TrueFalse from '../exerciseTrueFalse/trueFalse';
+import DevelopModal from '../exerciseDevelop/developModal';
+import TrueFalseModal from '../exerciseTrueFalse/trueFalseModal';
 import PictoSearch from '../pictoPlugin/pictoSearch';
 import WordSearchModal from '../wordSearch/wordsearchModal';
 class Toolbar extends React.Component{
@@ -32,8 +32,8 @@ class Toolbar extends React.Component{
                 { this.props.showPictogramsModal ? <PictoSearch/> : null}
                 { this.props.showWordSearchModal ? <WordSearchModal/> : null}
                 { this.props.showDefinitionsModal ? <Definitions/> : null}
-                { this.props.showDevelopModal ? <Develop/> : null}
-                { this.props.showTrueFalseModal ? <TrueFalse/> : null}
+                { this.props.showDevelopModal ? <DevelopModal/> : null}
+                { this.props.showTrueFalseModal ? <TrueFalseModal/> : null}
             </div>
         </div>)
     }
