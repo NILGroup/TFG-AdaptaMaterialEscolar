@@ -17,7 +17,8 @@ const INITIAL_STATE = {
     wordSearchObject: null,
     hiddenWords: false,
     readyToCreate: false,
-    ready: false
+    ready: false,
+    words: []
 }
 
 const wordSearchReducer = (state = INITIAL_STATE, action) => {
@@ -104,7 +105,8 @@ const wordSearchReducer = (state = INITIAL_STATE, action) => {
                 wordSearchObject: null,
                 readyToCreate: false,
                 ready: false,
-                hiddenWords: false
+                hiddenWords: false,
+                words: []
             }
         case WordSearchActionTypes.CREATE_WORDSEARCH:
             return{
@@ -126,6 +128,11 @@ const wordSearchReducer = (state = INITIAL_STATE, action) => {
             return{
                 ...state,
                 readyToCreate: action.payload
+            }
+        case WordSearchActionTypes.UPDATE_WORDSEARCH_WORDS:
+            return{
+                ...state,
+                words: state.dictionary.split(",").map(item => item.trim())
             }
         default: 
             return state;

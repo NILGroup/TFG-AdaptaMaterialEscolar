@@ -79,4 +79,8 @@ export const updateWordSearchHiddenWords = (hiddenWords) => ({
 export const updateWordSearchReadyToCreate = (readyToCreate) => ({
     type: WordSearchActionTypes.UPDATE_WORDSEARCH_READYTOCREATE,
     payload: readyToCreate
+});
+
+export const updateWordSearchWords = () => ({
+    type: WordSearchActionTypes.UPDATE_WORDSEARCH_WORDS
 })

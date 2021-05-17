@@ -76,3 +76,8 @@ export const selectWordSearchModalReadyToCreate = createSelector(
   [selectWordSearch],
   wordsearch => wordsearch.readyToCreate
 );
+
+export const selectWordSearchModalWords = createSelector(
+  [selectWordSearch],
+  wordsearch => wordsearch.words
+)

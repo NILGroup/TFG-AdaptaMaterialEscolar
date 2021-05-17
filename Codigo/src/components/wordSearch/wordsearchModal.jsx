@@ -10,10 +10,10 @@ import { selectCurrentDocument } from "../../redux/document/document.selectors";
 import { closeWordSearchModal, updateWordSearchRows, updateWordSearchCols, updateWordSearchDictionary, updateWordSearchDiagonal, updateWordSearchHorizontal, 
     updateWordSearchVertical, updateWordSearchMaxWords, updateWordSearchActivateBackwards,
     updateWordSearchBackWardsProbability, resetWordSearch, createWordSearch, updateWordSearchError, updateWordSearchReady,
-    updateWordSearchHiddenWords, updateWordSearchReadyToCreate} from "../../redux/wordSearch/wordsearch.actions";
+    updateWordSearchHiddenWords, updateWordSearchReadyToCreate, updateWordSearchWords} from "../../redux/wordSearch/wordsearch.actions";
 import { selectWordSearchModalRows, selectWordSearchModalCols, selectWordSearchModalDictionary, selectWordSearchModalVertical, selectWordSearchModalHorizontal, 
     selectWordSearchModalDiagonal, selectWordSearchModalMaxWords, selectWordSearchModalActivateBackwards, 
-    selectWordSearchModalBackwardsProbability, selectWordSearchModalError, selectWordSearchModalReady, selectWordSearchModalHiddenWords, selectWordSearchModalWordSearchObj, selectWordSearchModalReadyToCreate} from "../../redux/wordSearch/wordsearch.selectors";
+    selectWordSearchModalBackwardsProbability, selectWordSearchModalError, selectWordSearchModalReady, selectWordSearchModalHiddenWords, selectWordSearchModalWordSearchObj, selectWordSearchModalReadyToCreate, selectWordSearchModalWords} from "../../redux/wordSearch/wordsearch.selectors";
 
 import WordSearch from "../wordSearch/wordSearch";
 import { selectEditorClass } from "../../redux/editor/editor.selectors";
@@ -42,6 +42,7 @@ class WordSearchModal extends React.Component{
 
     handleClick = () => {
         this.props.createWordSearch();
+        this.props.updateWords();
         if(!this.props.readyToCreate){
             this.props.updateReadyToCreate(true);
         }
@@ -50,7 +51,7 @@ class WordSearchModal extends React.Component{
     generateTable = () =>{
         if(this.props.readyToCreate){
             if(this.props.wordSearchObject !== null){
-                if(this.props.wordSearchObject.words.length < this.props.dictionary.split(",").map(item => item.trim()).length){
+                if(this.props.wordSearchObject.words.length < this.props.words.length){
                     this.props.updateError("No todas las palabras introducidas están en la sopa de letras. Prueba a cambiar el valor de las filas, columnas y/o número máximo de palabras");
                 }
                 else{
@@ -221,7 +222,8 @@ const mapDispatchToProps = (dispatch) => ({
     updateError: (error) => dispatch(updateWordSearchError(error)),
     updateHiddenWords: (hiddenWords) => dispatch(updateWordSearchHiddenWords(hiddenWords)),
     updateReady: (ready) => dispatch(updateWordSearchReady(ready)),
-    updateReadyToCreate: (readyToCreate) => dispatch(updateWordSearchReadyToCreate(readyToCreate))
+    updateReadyToCreate: (readyToCreate) => dispatch(updateWordSearchReadyToCreate(readyToCreate)),
+    updateWords: () => dispatch(updateWordSearchWords())
 });
 
 //datos (lectura)
@@ -241,7 +243,8 @@ const mapStateToProps = createStructuredSelector({
     hiddenWords: selectWordSearchModalHiddenWords,
     ready: selectWordSearchModalReady,
     readyToCreate: selectWordSearchModalReadyToCreate,
-    editor: selectEditorClass
+    editor: selectEditorClass,
+    words: selectWordSearchModalWords
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WordSearchModal);
