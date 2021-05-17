@@ -62,7 +62,7 @@ handleChange(e) {
               <ReactTooltip id="modalDevelopTip" place="top" effect="solid" delayHide={1500} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>Si me mantienes pulsado, ¡puedes arrastrarme a cualquier posición de la página!</ReactTooltip>
                 <button onClick={this.props.closeDevelopModal}><GrFormClose size="1.3em"/></button>
             </div>
-            <div className="modal-develop__content">
+            <div className="modal-develop__content__main">
               <div className="modal-develop__content__main__container">
                 <div className="container__text">
                   <label>Inserte el enunciado del ejercicio de desarrollo: </label>
@@ -88,7 +88,7 @@ handleChange(e) {
   }
 
   const mapDispatchToProps = (dispatch) => ({
-    closeDevelopModal: () => dispatch(closeDevelopModal),
+    closeDevelopModal: () => dispatch(closeDevelopModal()),
     updateDevelopNumLines: (numLines) => dispatch(updateDevelopNumLines(numLines)),
     updateDevelopText: (text) => dispatch(updateDevelopText(text)),
     updateDevelopExtraSpace: (extraspace) => dispatch(updateDevelopExtraSpace(extraspace)),
