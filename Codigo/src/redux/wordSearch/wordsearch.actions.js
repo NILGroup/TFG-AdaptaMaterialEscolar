@@ -1,4 +1,3 @@
-import wordsearchModal from '../../components/wordSearch/wordsearchModal';
 import WordSearchActionTypes from './wordsearch.types';
 
 export const openWordSearchModal = () => ({
@@ -44,11 +43,6 @@ export const updateWordSearchMaxWords = (maxWords) => ({
     payload: maxWords
 });
 
-export const updateWordSearchDiacritics = (diacritics) => ({
-    type: WordSearchActionTypes.UPDATE_WORDSEARCH_DIACRITICS,
-    payload: diacritics
-});
-
 export const updateWordSearchActivateBackwards = (activateBackwards) => ({
     type: WordSearchActionTypes.UPDATE_WORDSEARCH_ACTIVATEBACKWARDS,
     payload: activateBackwards
@@ -66,8 +60,27 @@ export const updateWordSearchError = (error) => ({
 
 export const resetWordSearch = () =>({
     type: WordSearchActionTypes.RESET_WORDSEARCH
-})
+});
 
 export const createWordSearch = () => ({
     type: WordSearchActionTypes.CREATE_WORDSEARCH
+});
+
+export const updateWordSearchReady = (ready) => ({
+    type: WordSearchActionTypes.UPDATE_WORDSEARCH_READY,
+    payload: ready
+});
+
+export const updateWordSearchHiddenWords = (hiddenWords) => ({
+    type: WordSearchActionTypes.UPDATE_WORDSEARCH_HIDDENWORDS,
+    payload: hiddenWords
+});
+
+export const updateWordSearchReadyToCreate = (readyToCreate) => ({
+    type: WordSearchActionTypes.UPDATE_WORDSEARCH_READYTOCREATE,
+    payload: readyToCreate
+});
+
+export const updateWordSearchWords = () => ({
+    type: WordSearchActionTypes.UPDATE_WORDSEARCH_WORDS
 })

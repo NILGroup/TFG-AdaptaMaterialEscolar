@@ -17,9 +17,28 @@ header{
 
     .links-container{
         display: flex;
-        justify-content: space-between;
-        width: 10%;
+        float: right;
+        //justify-content: space-between;
+        //width: 10%;
         list-style-type: none;
+    }
+
+    .links-container > a{
+        text-decoration: none;
+        background-color: #5d53bb;
+        color: white;
+        border-radius: 15px;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        &:not(:last-child){
+            margin-right: 10px;
+        }
+    }
+
+    .links-container > a:hover{
+        background-color: #a499f5;
     }
 
     li{
@@ -29,5 +48,8 @@ header{
             font-weight: bold;
         }
     }
+}
 
+.link-active{
+    background-color:#1d2aa1 !important;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './editor.styles.scss'
+//import './editor.styles.scss'
 //import FillWords from '../rellenarPalabrasPlugin/fillWords';
 import Toolbar from '../toolBar/toolbar.component';
 import FillGapsButton from '../fillGapsButton/fillGapsButton';
@@ -9,11 +9,14 @@ class EditorWorkplace extends React.Component{
 
     render() {
         return (<div className='editor-container'>
-        <div className='editor-half'>
-        <Toolbar/>
-        <Editor/>
+        <div className="editor-container__pdf">
+            <Document/>
         </div>
-        <Document/>
+        <div className='editor-half'>
+            <Toolbar/>
+            <Editor/>
+        </div>
+        
     </div>);
     }
 }
