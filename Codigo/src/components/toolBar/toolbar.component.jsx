@@ -11,6 +11,9 @@ import { selectWordSearchModalIsDisplayed } from '../../redux/wordSearch/wordsea
 import DefinitionsModal from '../exerciseDefinitions/definitionsModal';
 import PictoSearch from '../pictoPlugin/pictoSearch';
 import WordSearchModal from '../wordSearch/wordsearchModal';
+import { openTrueFalseModal } from "../../redux/trueFalse/trueFalse.actions";
+import { selectTrueFalseModalIsDisplayed } from "../../redux/trueFalse/trueFalse.selectors";
+import TrueFalseModal from "../exerciseTrueFalse/trueFalseModal";
 class Toolbar extends React.Component{
     
     render(){
@@ -21,12 +24,13 @@ class Toolbar extends React.Component{
                 <button >Rellenar huecos</button>
                 <button className={this.props.showDefinitionsModal ? "definitions-active" : null} onClick={this.props.openDefinitionsModal}>Definiciones</button>
                 <button className={this.props.showWordSearchModal ? "wordsearch-active" : null} onClick={this.props.openWordSearchModal}>Sopa de letras</button>
-                <button>V/F</button>
+                <button className={this.props.showTrueFalseModal ? "truefalse-active" : null} onClick={this.props.openTrueFalseModal}>V/F</button>
             </div>
             <div className="modal-box">
                 { this.props.showPictogramsModal ? <PictoSearch/> : null}
                 { this.props.showWordSearchModal ? <WordSearchModal/> : null}
                 { this.props.showDefinitionsModal ? <DefinitionsModal/> : null}
+                { this.props.showTrueFalseModal ? <TrueFalseModal/> : null}
             </div>
         </div>)
     }
@@ -35,13 +39,15 @@ class Toolbar extends React.Component{
 const mapDispatchToProps = (dispatch) => ({
     openPictogramFinder: () => dispatch(openPictogramFinder()),
     openWordSearchModal: () => dispatch(openWordSearchModal()),
-    openDefinitionsModal: () => dispatch(openDefinitionsModal())
+    openDefinitionsModal: () => dispatch(openDefinitionsModal()),
+    openTrueFalseModal: () => dispatch(openTrueFalseModal())
 });
 
 const mapStateToProps = createStructuredSelector({
     showPictogramsModal: selectModalIsDisplayed,
     showWordSearchModal: selectWordSearchModalIsDisplayed,
-    showDefinitionsModal: selectDefinitionsModalIsDisplayed
+    showDefinitionsModal: selectDefinitionsModalIsDisplayed,
+    showTrueFalseModal: selectTrueFalseModalIsDisplayed
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);

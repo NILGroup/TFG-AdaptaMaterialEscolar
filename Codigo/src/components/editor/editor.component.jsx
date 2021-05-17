@@ -22,6 +22,7 @@ import { setEditor } from '../../redux/editor/editor.actions';
 import WordSearchActionTypes from '../../redux/wordSearch/wordsearch.types';
 import WordSearchPlugin from '../../ckeditor/plugins/wordSearch/wordSearchPlugin';
 import DefinitionsPlugin from '../../ckeditor/plugins/definitions/definitionsPlugin';
+import TrueFalsePlugin from '../../ckeditor/plugins/trueFalse/trueFalsePlugin';
 //import FillWords from '../rellenarPalabrasPlugin/fillWords';
 class Editor extends React.Component{
     
@@ -33,7 +34,7 @@ class Editor extends React.Component{
         this.editorConfig = {
             language: 'es',
             plugins: [Essentials, Heading, Bold, Italic, Underline,
-                    Link, Paragraph, Table, TableToolbar, PictogramEditing, Alignment, WordSearchPlugin, DefinitionsPlugin
+                    Link, Paragraph, Table, TableToolbar, PictogramEditing, Alignment, WordSearchPlugin, DefinitionsPlugin, TrueFalsePlugin
                 ],
             toolbar: [  'exportPdf', '|',
                         'heading',

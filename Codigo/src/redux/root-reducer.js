@@ -4,6 +4,7 @@ import documentReducer from './document/document.reducer';
 import editorReducer from './editor/editor.reducer';
 
 import pictogramReducer from './pictograms/pictograms.reducer';
+import trueFalseReducer from './trueFalse/trueFalse.reducer';
 import wordSearchReducer from './wordSearch/wordsearch.reducer';
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
   pictogram: pictogramReducer,
   wordsearch: wordSearchReducer,
   definitions: definitionsReducer,
-  editor: editorReducer
+  editor: editorReducer,
+  trueFalse: trueFalseReducer
 });
