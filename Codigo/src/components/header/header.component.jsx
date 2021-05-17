@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './header.styles.scss';
 
 const Header = () => (<header>
     <h1>AdaptaMaterialEscolar</h1>
     <ul className='links-container'>
-        <Link to="/">Inicio</Link>
-        <Link to="/help">Ayuda</Link>
-        <Link to="/contact">Contacto</Link>
+        <NavLink exact activeClassName="link-active" to="/">Inicio</NavLink>
+        <NavLink exact activeClassName="link-active" to="/help">Ayuda</NavLink>
+        <NavLink exact activeClassName="link-active" to="/contact">Contacto</NavLink>
     </ul>
 </header>);
 

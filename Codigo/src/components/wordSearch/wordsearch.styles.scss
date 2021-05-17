@@ -1,57 +1,40 @@
-.navbar-adapTypes{
-    display: flex;
-    margin: 10px 20px;
-
-    .adapt{
-        background: #7867ff;
-        color: white;
-        border-radius: 5px;
-    }
-}
-
 .wordsearchModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width:100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    position: absolute;
     z-index: 1000;
-    padding-top: 2%;
+    border: 1px solid grey;
+    border-radius: 4px;
     &__content{
-        width: 90vw;
-        height: 90vh;
-        position: relative;
         overflow: auto;
         border-radius: 4px;
-        margin: 0 auto;
         display: flex;
         flex-direction: column;
-        background: white;
+        background: #ffffff;
 
         .header{
-            min-height: 60px;
-            height: 60px;
+            min-height: 40px;
+            height: 40px;
             color:white;
-            background-color: #7867ff;
             padding-left: 14px;
             align-items: center;
-            display: grid;
-            grid-template-columns: auto 60px;
-
-            h4{
-                margin:0;
-                text-align: center;
-                justify-content: center;
-            }
+            display: flex;
+            flex-direction: row;
+            background-color: #dcd8fd;
+            cursor: grab;
 
             button{
-                align-items: right;
-                justify-content: right;
-                height: 50%;
+                position: absolute;
+                top: 0;
+                right: 0;
                 cursor: pointer;
+                margin-top: 7px;
                 margin-right: 14px;
                 margin-left: 14px;
+                text-decoration: none;
+                border: none;
+                font-size: 20px;
+                background: transparent;
+                font-weight: bold;
             }
         }
     }
@@ -63,18 +46,11 @@
         display:flex;
         flex-direction: row;
 
-        .pdf{
-            width: 100%;
-            height: 100%;
-            overflow:auto;
-        }
-
         .wordsearch-container{
             display:flex;
             flex-direction: column;
             margin-left: 14px;
             margin-right: 14px;
-            width: 100%;
             .container{
                 display:flex;
                 margin-bottom: 14px;
@@ -89,14 +65,22 @@
                     width: 10%;
                     min-width: 10%;
                     margin-right: 14px;
+                    border: 1px solid black;
+                    border-radius: 4px;
+                    padding-left: 4px;
                 }
                 textarea{
                     width: 100%;
                     height: 10em;
                     resize: none;
+                    border: 1px solid black;
+                    border-radius: 4px;
+                    padding: 4px;
                 }
                 input[type=checkbox]{
                     margin-right: 3px;
+                    border-radius: 4px;
+                    border: 1px solid black;
                 }
 
                 table, th, td {
@@ -131,17 +115,19 @@
                         flex-direction: row;
                         margin-top: 7px;
                         margin-left: 16px;
-
-                        &_hidden{
-                            display: none;
-                        }
                     }
                 }
 
                 &__error{
                     @extend .container;
-                    color:red;
+                    color:olive;
                     margin-top: 5px;
+                    background:rgb(236, 236, 193);
+                    flex-direction: row;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    padding-top: 7px;
+                    padding-bottom: 7px;
                 }
 
                 &__preview{
@@ -150,13 +136,7 @@
                     align-items: center;
                     text-align: center;
                     justify-content: center;
-
-                    &_hidden{
-                        display: none;
-                    }
-                    
                 }
-                
             }
         }
     }
@@ -164,11 +144,20 @@
     .footer{
         height: auto;
         text-align: right;
-        border-top: solid 1px lightgray;
         padding: 14px;
-        background-color: white;
+        background: #dcd8fd;
+        padding-left: 14px;
         button{
             margin:0;
+            border-radius: 30px;
+            border: none;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+            cursor: pointer;
+            color: white;
+            float: left;
             &:not(:last-child){
                 margin-right: 10px;
             }
@@ -176,19 +165,36 @@
     }
 }
 
-.display-block {
-    display: block;
-}
-
-.display-none {
-    display: none;
-}
-
-.preview, .table{
+.preview, .board{
     margin-bottom: 10px;
     text-align: center;
 }
 
-.moreSpace{
-    margin-right: 3em !important;
+.accept{
+    background-color: #3e64ff;
+}
+
+.accept:disabled{
+    background-color:#94aaff;
+    cursor: default !important;
+}
+
+.previewView{
+    background-color: #6dab3c;
+}
+
+.previewView:disabled{
+    background-color: #92a881;
+    cursor: default !important;
+}
+
+.reset{
+    float: right !important;
+    background-color: red;
+}
+
+.showWords{
+    text-align: left;
+    margin-top: 1em;
+    width: 100%;
 }

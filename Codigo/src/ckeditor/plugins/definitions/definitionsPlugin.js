@@ -30,11 +30,11 @@ export default class DefinitionsPlugin extends Plugin {
             // Allow in places where other blocks are allowed (e.g. directly in the root).
             allowWhere: '$block',
 
-            isInline: true,
+            isInline: false,
 
             // Each product preview has an ID. A unique ID tells the application which
             // product it represents and makes it possible to render it inside a widget.
-            allowAttributes: [ 'characters' ]
+            allowAttributes: [ 'definitions' ]
         } );
     }
 
@@ -80,11 +80,11 @@ export default class DefinitionsPlugin extends Plugin {
                 //         <ProductPreview /> (React component)
                 //     </div>
                 // </section>
-                const id = modelElement.getAttribute( 'characters' );
+                const id = modelElement.getAttribute( 'definitions' );
 
                 // The outermost <section class="product" data-id="..."></section> element.
-                const section = viewWriter.createContainerElement( 'table', {
-                    class: 'table'
+                const section = viewWriter.createContainerElement( 'div', {
+                    class: ''
                 } );
 
                 // The inner <div class="product__react-wrapper"></div> element.
@@ -107,7 +107,7 @@ export default class DefinitionsPlugin extends Plugin {
 
                 viewWriter.insert( viewWriter.createPositionAt( section, 0 ), reactWrapper );
 
-                return toWidget( section, viewWriter, { label: 'definitions preview widget' } );
+                return toWidget( section, viewWriter, { label: 'pictogram preview widget' } );
             }
         } );
     }
