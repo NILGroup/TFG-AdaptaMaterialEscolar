@@ -149,32 +149,6 @@
 %-----------------------------------%
 	
 	\subsection{Sopa de letras}
-	La sopa de letras es un paquete NPM (\textit{Node Package Manager}) disponible en \url{https://www.npmjs.com/package/@blex41/word-search}. Dado un objeto de opciones devuelve, o bien un array de caracteres donde cada posición es un carácter de la sopa de letras generada; o bien un array de strings donde cada posición es una fila de dicha sopa. Las opciones que tiene disponible este paquete son las siguientes:
-	\begin{itemize}
-		\item cols: Es un número entero que representa las columnas que tendrá la sopa de letras. Por defecto tiene un valor de diez.
-		\item rows: Es un número entero que representa las filas que tendrá la sopa de letras. Por defecto tiene un valor de diez.
-		\item disabledDirections: Es un array de strings que representa las direcciones cardinales (``N'', ``S'', ``E'', ``W'', ``NE'', ``NW'', ``SE'', ``SW'') donde no se quiere colocar una palabra en la sopa de letras. Por defecto tiene un valor vacío, es decir, todas las direcciones están permitidas.
-		\item dictionary: Es un array de strings que representa las palabras a buscar en la sopa de letras. Por defecto tiene un valor vacío.
-		\item maxWords: Es un número entero que representa el número de palabras máximo que se insertarán en la sopa de letras. Por defecto tiene un valor de veinte. En el caso de que se sobrepase este número, no se insertarán más palabras.
-		\item backwardsProbability: Es un número decimal que representa la probabilidad que tiene cada palabra de escribirse al revés. Solo funciona si no se deshabilita, en una dirección cardinal, uno de los extremos (por ejemplo, si se quiere escribir una palabra al revés en la dirección vertical, se debe tener las direcciones cardinales ``N'' y ``S'' habilitadas, no solo una de ellas. Lo mismo pasa con las direcciones horizontal y diagonal). Por defecto tiene un valor de 0.3, y puede oscilar entre cero y uno.
-		\item upperCase: Es un booleano que indica si las letras se quieren en mayúscula (\textit{true}) o no (\textit{false}) en la sopa de letras. Por defecto tiene el valor \textit{true}.
-		\item diacritics: Es un booleano que indica si las letras deberían mantener las tildes en la sopa de letras. Por defecto tiene el valor \textit{false}, es decir, no mantener las tildes en la sopa de letras.
-	\end{itemize}
-	En el caso de que alguna de estas opciones no se modificasen, no daría ningún error, sino que cogería el valor por defecto que tuvieran.
-	Así mismo, este paquete dispone de una serie de funciones accesibles cuando se crea la estancia de la sopa de letras:
-	\begin{itemize}
-		\item grid(): Devuelve un array de caracteres donde cada posición representa una letra de la sopa de letras.
-		\item toString(): Devuelve un array de strings donde cada posición representa una fila de la sopa de letras.
-		\item words(): Devuelve un array de objetos con las palabras que se han insertado correctamente en la sopa de letras. Cada objeto tiene tres campos:
-		\begin{itemize}
-			\item word: la palabra que está en el campo \textit{dictionary}.
-			\item clean: este campo depende de las opciones de \textit{upperCase} y \textit{diacritics}, es decir, se escribirá la palabra del campo \textit{word} con o sin mayúsculas y con o sin tildes (dependiendo si los valores de dichas opciones están a \textit{true} o \textit{false}).
-			\item path: contiene un array de objetos con las posiciones de cada letra de la palabra en la sopa de letras.
-		\end{itemize}
-		\item dump(): Devuelve un objeto que representa el estado de la sopa de letras (es una \textit{snapshot} del tablero).
-		\item load(backup): Carga el parámetro \textit{backup} que representa un estado de la sopa de letras generado previamente con \textit{dump()}.
-		\item read(start, end): Devuelve un string con las letras que se forman al leer las posiciones de \textit{start} a \textit{end}.
-	\end{itemize}
 	
 	En la figura \ref{fig:wordsearch} se puede ver la interfaz de la generación de la sopa de letras que hemos implementado. Para poder crearla, se tienen que rellenar, como mínimo, lo siguientes campos:
 	\begin{itemize}
