@@ -13,31 +13,34 @@
 \end{resumen}
 
 %-----------------------------------%
-\section{Arquitectura - Redux}
+\section{Arquitectura}
 %-----------------------------------%
 \label{cap7:sec:arquitectura}
-	En el proyecto de este TFG se ha decidido aplicar una arquitectura \textit{Redux}\footnote{\url{https://redux.js.org/}}. Redux es un patrón de diseño Front-End que pretende desacoplar el estado de la aplicación, es decir, la información interna de los componentes y/o datos obtenidos de APIs externas, de los componentes. Esta arquitectura se basa en tres principios:
+	En el proyecto de este TFG se ha decidido aplicar una arquitectura \textit{Redux}\footnote{\url{https://redux.js.org/}}. Redux es un patrón de arquitectura de datos que pretende disminuir el número de relaciones entre los componentes de la aplicación. Se trata de un patrón que se adapta a todo tipo de librería o framework del lado del cliente. La figura \ref{fig:flujoRedux} muestra un diagrama mostrando el flujo de una aplicación Redux.
+	\figura{Bitmap/flujoRedux}{width=.9\textwidth}{fig:flujoRedux}{Muestra de flujo }
+	
+	Esta arquitectura se basa en tres principios:
 	\begin{itemize}
-		\item Única fuente de la verdad. El estado de la aplicación se guarda en un único store. Este store consistirá en un objeto árbol con toda la información necesaria para la aplicación.
+		\item Única fuente de la verdad. El estado de la aplicación se guarda en un único store y cuando los componentes necesiten conocer el estado lo cogeran del store. Este store es un objeto Javascript y está estructurado en forma de árbol con todos los datos necesarios para la aplicación.
 		\item El estado es de sólo lectura. No podemos modificar el estado directamente, solo podremos leer de él para mostrarlo en la vista y si queremos modificarlo tendremos que ejecutar acciones. Las acciones son un objeto Javascript que incluye al menos un atributo type que indica el tipo de acción que estamos emitiendo y en caso de que haya datos asociados al cambio o modificación, un atributo payload con esos datos.
 		\begin{verbatim}
 			export const loadDocument = (document) => ({
-				type: DocumentActionTypes.LOAD_FILE,
-				payload: document
+			    type: DocumentActionTypes.LOAD_FILE,
+			    payload: document
 			});
 		\end{verbatim}
 		\item Cambios con funciones puras. Ya que el estado no se puede modificar directamente y está almacenado en un store, tenemos que ejecutar acciones puras llamadas reducers para modificarlo. Un reducer es una función que recibe dos parámetros, el estado inicial y una acción. Dentro contendrá un switch-case que, en base a la acción que reciba, ejecutará los cambios necesarios en el store.
 		\begin{verbatim}
 			const documentReducer = (state = INITIAL_STATE, action) => {
-				switch (action.type){
-					case DocumentActionTypes.LOAD_FILE: 
-					return {
-						...state,
-						file: action.payload.file,
-						fileIsLoaded: true
-					};
-					default: 
-					return state;
+			    switch (action.type){
+			        case DocumentActionTypes.LOAD_FILE: 
+			        return {
+				        ...state,
+				        file: action.payload.file,
+				        fileIsLoaded: true
+				    };
+				    default: 
+				        return state;
 				}
 				
 			};
@@ -93,8 +96,6 @@
 		\end{verbatim}
 		\item El store de redux invoca a la función reductora solicitada por la acción. El store le pasará dos argumentos a la función: estado actual y acción. El switch dentro del reductor encontrará la acción solicitada y actualizará los datos en base a ella. Los selectores detectarán el cambio y actualizarán las vistas.
 	\end{itemize}
-	La figura \ref{fig:flujoRedux} muestra el flujo unidireccional de una aplicación redux.
-	\figura{Bitmap/flujoRedux}{width=.9\textwidth}{fig:flujoRedux}{Muestra de flujo }
 
 %-----------------------------------%
 \section{Front-End}
