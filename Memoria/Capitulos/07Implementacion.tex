@@ -185,6 +185,41 @@
 	
 	Al finalizar , y si no ha habido errores, se mostrará una vista previa de la sopa de letras en dicho modal y se activará el botón "Aceptar", el cual si se le da clic se escribirá en el editor la sopa de letras.
 	
+\subsection{Definiciones}
+
+El componente Definiciones inicialmente fue pensado para permitir añadir ejercicios para que los alumnos pudieran definir conceptos, pero durante la implementación vimos la opción de aumentar la funcionalidad planteando otros tipos de ejercicios, como, por ejemplo, preguntas cortas para que el alumnado tenga que responder argumentando.
+
+La interfaz del tipo de ejercicio se puede ver en la Figura \ref{fig:imgdefiniciones} y consta de apartados para insertar o redactar el enunciado, añadir los conceptos o preguntas, indicar el número de líneas para la respuesta del alumno y aumentar el interlineado en caso de que sea necesario facilita la escritura de quienes necesitan espacio extra, por tener una letra de mayor tamaño o cualquier otra causa.
+
+\figura{BitMap/imgdefiniciones}{width=0.8\textwidth}{fig:imgdefiniciones}{Interfaz del componente Definiciones}
+
+El ejemplo del resultado de la doble funcionalidad del ejercicio de Definiciones se puede ver en las Figuras \ref{fig:imgdef1} y \ref{fig:imgdef2} .
+
+\figura{BitMap/imgdef1}{width=0.8\textwidth}{fig:imgdef1}{Ejemplo 1 del componente Definiciones}
+\figura{BitMap/imgdef2}{width=0.9\textwidth}{fig:imgdef2}{Ejemplo 2 del componente Definiciones}
+
+\subsection{Desarrollo}
+
+El componente Desarrollo tiene como finalidad permitir que se inserte en el editor de texto un enunciado que pregunte al alumno sobre teoría, de forma que tenga que argumentar su respuesta de manera más extensa.
+
+La interfaz del tipo de ejercicio se puede ver en la Figura \ref{fig:imgdesarrollo} y consta de apartados para insertar o redactar el enunciado, indicar el número de líneas para la respuesta del alumno y aumentar el interlineado en caso de que sea necesario facilita la escritura de quienes necesitan espacio extra, por tener una letra de mayor tamaño o cualquier otra causa.
+
+\figura{BitMap/imgdesarrollo}{width=0.8\textwidth}{fig:imgdesarrollo}{Interfaz del componente Desarrollo}
+
+A diferencia del componente Definiciones, únicamente hay un espacio de escritura para los alumnos, en el que deben escribir su respuesta.
+
+El ejemplo del resultado de la funcionalidad del ejercicio de Desarrollo se puede ver en la Figura \ref{fig:imgdes1}:
+
+\figura{BitMap/imgdes1}{width=0.8\textwidth}{fig:imgdes1}{Ejemplo del componente Desarrollo}
+
+\subsection{Verdadero o Falso}
+
+El componente Verdadero o Falso sirve para plantear ejercicios en los que el alumnado tenga que indicar si un predicado es verdadero o falso, escribiendo en el recuadro su respuesta.
+
+La interfaz del tipo de ejercicio se puede ver en la Figura \ref{fig:imgvf} y consta de apartados para insertar o redactar los predicados que se tienen que analizar. En este tipo de ejercicio no es necesario añadir enunciado, debido a que la funcionalidad es la misma para cualquier actividad. 
+
+\figura{BitMap/imgvf}{width=0.8\textwidth}{fig:imgvf}{Ejemplo del componente Verdadero o Falso}
+
 \section{Estructura del código}
 %-----------------------------------%
 \label{cap7:sec:estructura}
