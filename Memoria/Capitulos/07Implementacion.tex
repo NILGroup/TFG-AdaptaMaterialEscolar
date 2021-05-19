@@ -191,12 +191,30 @@ El componente Definiciones inicialmente fue pensado para permitir añadir ejercic
 
 La interfaz del tipo de ejercicio se puede ver en la Figura \ref{fig:imgdefiniciones} y consta de apartados para insertar o redactar el enunciado, añadir los conceptos o preguntas, indicar el número de líneas para la respuesta del alumno y aumentar el interlineado en caso de que sea necesario facilita la escritura de quienes necesitan espacio extra, por tener una letra de mayor tamaño o cualquier otra causa.
 
-\figura{BitMap/imgdefiniciones}{width=0.8\textwidth}{fig:imgdefiniciones}{Interfaz del componente Definiciones}
+\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgdefiniciones}
+			\caption{Interfaz del componente Definiciones}
+			\label{fig:imgdefiniciones}
+		\end{center}
+	\end{figure}
 
 El ejemplo del resultado de la doble funcionalidad del ejercicio de Definiciones se puede ver en las Figuras \ref{fig:imgdef1} y \ref{fig:imgdef2} .
 
-\figura{BitMap/imgdef1}{width=0.8\textwidth}{fig:imgdef1}{Ejemplo 1 del componente Definiciones}
-\figura{BitMap/imgdef2}{width=0.9\textwidth}{fig:imgdef2}{Ejemplo 2 del componente Definiciones}
+\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgdef1}
+			\caption{Ejemplo 1 del componente Definiciones}
+			\label{fig:imgdef1}
+		\end{center}
+	\end{figure}
+\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgdef2}
+			\caption{Ejemplo 2 del componente Definiciones}
+			\label{fig:imgdef2}
+		\end{center}
+	\end{figure}
 
 \subsection{Desarrollo}
 
@@ -204,13 +222,25 @@ El componente Desarrollo tiene como finalidad permitir que se inserte en el edit
 
 La interfaz del tipo de ejercicio se puede ver en la Figura \ref{fig:imgdesarrollo} y consta de apartados para insertar o redactar el enunciado, indicar el número de líneas para la respuesta del alumno y aumentar el interlineado en caso de que sea necesario facilita la escritura de quienes necesitan espacio extra, por tener una letra de mayor tamaño o cualquier otra causa.
 
-\figura{BitMap/imgdesarrollo}{width=0.8\textwidth}{fig:imgdesarrollo}{Interfaz del componente Desarrollo}
+\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgdesarrollo}
+			\caption{Interfaz del componente Desarrollo}
+			\label{fig:imgdesarrollo}
+		\end{center}
+	\end{figure}
 
 A diferencia del componente Definiciones, únicamente hay un espacio de escritura para los alumnos, en el que deben escribir su respuesta.
 
 El ejemplo del resultado de la funcionalidad del ejercicio de Desarrollo se puede ver en la Figura \ref{fig:imgdes1}:
 
-\figura{BitMap/imgdes1}{width=0.8\textwidth}{fig:imgdes1}{Ejemplo del componente Desarrollo}
+\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgdes1}
+			\caption{Ejemplo del componente Desarrollo}
+			\label{fig:imgdes1}
+		\end{center}
+	\end{figure}
 
 \subsection{Verdadero o Falso}
 
@@ -218,13 +248,19 @@ El componente Verdadero o Falso sirve para plantear ejercicios en los que el alu
 
 La interfaz del tipo de ejercicio se puede ver en la Figura \ref{fig:imgvf} y consta de apartados para insertar o redactar los predicados que se tienen que analizar. En este tipo de ejercicio no es necesario añadir enunciado, debido a que la funcionalidad es la misma para cualquier actividad. 
 
-\figura{BitMap/imgvf}{width=0.8\textwidth}{fig:imgvf}{Ejemplo del componente Verdadero o Falso}
+\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgvf}
+			\caption{Ejemplo del componente Verdadero o Falso}
+			\label{fig:imgvf}
+		\end{center}
+	\end{figure}
 
 \section{Estructura del código}
 %-----------------------------------%
 \label{cap7:sec:estructura}
 
-La organización de directorios del proyecto gira en torno al patrón de diseño Redux, como se ha explicado en el apartado \ref{cap7:sec:redux} de este mismo capítulo.
+La organización de directorios del proyecto gira en torno al patrón de diseño Redux, como se ha explicado en el apartado \ref{cap7:sec:arquitectura} de este mismo capítulo.
 
 El código de la funcionalidad de la aplicación se estructura principalmente en cuatro carpetas: components, pages, ckeditor y redux; además, contamos con el fichero App, que supone el punto de inicio del programa.
 
@@ -239,6 +275,14 @@ El contenido de cada carpeta es el siguiente:
 		\end{itemize}
 \end{itemize}
 
+\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/srcComponents}
+			\caption{Ejemplo de organización de Components}
+			\label{fig:srcComponents}
+		\end{center}
+	\end{figure}
+
 \begin{itemize}
 	\item \textbf{Pages:} Representado en la Figura \ref{fig:srcPages}, contiene la página del editor, que permite cargar un fichero inicial para comenzar la adaptación, y la página de ayuda, que muestra información relevante sobre la aplicación y su uso. En los dos casos se cuenta con:
 		\begin{itemize}
@@ -246,6 +290,14 @@ El contenido de cada carpeta es el siguiente:
 		\item Fichero de estilo de la página.
 		\end{itemize}
 \end{itemize}
+
+\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/srcPages}
+			\caption{Ejemplo de organización de Pages}
+			\label{fig:srcPages}
+		\end{center}
+	\end{figure}
 
 \begin{itemize}
 	\item \textbf{Redux:} Representado en la Figura \ref{fig:srcRedux}, contiene la implementación del patrón de diseño que se ha aplicado a toda la aplicación, basado en el almacenamiento de los datos que necesita cada componente. La carpeta consta del store y el reducer, elementos necesarios para el desarrollo del mismo. Además, se incluye también cada componente principal con los siguientes ficheros:
@@ -257,6 +309,14 @@ El contenido de cada carpeta es el siguiente:
 		\end{itemize}
 \end{itemize}
 
+\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.5\textwidth]{Imagenes/Bitmap/srcRedux}
+			\caption{Ejemplo de organización de Redux}
+			\label{fig:srcRedux}
+		\end{center}
+	\end{figure}
+	
 \begin{itemize}
 	\item \textbf{CKEditor:} Representado en la Figura \ref{fig:srcCkeditor},contiene todos componentes software o plugins que se han desarrollado para la aplicación, permitiendo la interacción a partir de comandos que controlan las diferentes funcionalidades. Consta de un fichero que devuelve la instancia del editor CKeditor5 y una carpeta para cada plugin, con los siguientes archivos:
 		\begin{itemize}
@@ -265,10 +325,14 @@ El contenido de cada carpeta es el siguiente:
 		\end{itemize}
 \end{itemize}
 
-\figura{BitMap/srcComponents}{width=0.3\textwidth}{fig:srcComponents}{Ejemplo de organización de Components}
-\figura{BitMap/srcRedux}{width=0.5\textwidth}{fig:srcRedux}{Ejemplo de organización de Redux}
-\figura{BitMap/srcPages}{width=0.25\textwidth}{fig:srcPages}{Ejemplo de organización de Pages}
-\figura{BitMap/srcCkeditor}{width=0.5\textwidth}{fig:srcCkeditor}{Ejemplo de organización de CKEditor}
+\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.5\textwidth]{Imagenes/Bitmap/srcCkeditor}
+			\caption{Ejemplo de organización de CKEditor}
+			\label{fig:srcCkeditor}
+		\end{center}
+	\end{figure}
+	
 
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX
