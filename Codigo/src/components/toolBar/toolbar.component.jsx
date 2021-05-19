@@ -10,7 +10,7 @@ import { selectModalIsDisplayed } from '../../redux/pictograms/pictogram.selecto
 import {openPictogramFinder} from '../../redux/pictograms/pictograms.actions';
 import { openWordSearchModal } from '../../redux/wordSearch/wordsearch.actions';
 import { selectWordSearchModalIsDisplayed } from '../../redux/wordSearch/wordsearch.selectors';
-import PictoSearch from '../pictoPlugin/pictoSearch';
+import PictogramSearchModal from '../pictogramSearchModal/pictogramSearchModal';
 import DefinitionsModal from '../exerciseDefinitions/definitionsModal';
 import DevelopModal from '../exerciseDevelop/developModal';
 import WordSearchModal from '../wordSearch/wordsearchModal';
@@ -31,7 +31,7 @@ class Toolbar extends React.Component{
                 <button className={this.props.showDevelopModal ? "develop-active" : null} onClick={this.props.openDevelopModal}>Desarrollo</button>
             </div>
             <div className="modal-box">
-                { this.props.showPictogramsModal ? <PictoSearch/> : null}
+                { this.props.showPictogramsModal ? <PictogramSearchModal/> : null}
                 { this.props.showWordSearchModal ? <WordSearchModal/> : null}
                 { this.props.showDefinitionsModal ? <DefinitionsModal/> : null}
                 { this.props.showTrueFalseModal ? <TrueFalseModal/> : null}

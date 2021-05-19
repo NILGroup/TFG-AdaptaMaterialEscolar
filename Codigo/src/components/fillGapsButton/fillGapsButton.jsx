@@ -6,7 +6,6 @@ class FillGapsButton extends React.Component{
     constructor(props){
         super(props);
         this.state = {opened: false}
-        console.log(this.props.searchFunc)
     }
 
     buttonClicked = ( ) => {

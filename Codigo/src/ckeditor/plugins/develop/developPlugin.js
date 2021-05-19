@@ -45,8 +45,8 @@ export default class DevelopPlugin extends Plugin {
         // <productPreview> converters ((data) view → model)
         conversion.for( 'upcast' ).elementToElement( {
             view: {
-                name: 'table',
-                classes: 'table'
+                name: 'div',
+                classes: 'div'
             },
             model: ( viewElement, { writer: modelWriter } ) => {
                 // Read the "data-id" attribute from the view and set it as the "id" in the model.
@@ -63,8 +63,8 @@ export default class DevelopPlugin extends Plugin {
                 // In the data view, the model <productPreview> corresponds to:
                 //
                 // <section class="product" data-id="..."></section>
-                return viewWriter.createEmptyElement( 'table', {
-                    class: 'table',
+                return viewWriter.createEmptyElement( 'div', {
+                    class: 'develop'
                 } );
             }
         } );
@@ -84,7 +84,7 @@ export default class DevelopPlugin extends Plugin {
 
                 // The outermost <section class="product" data-id="..."></section> element.
                 const section = viewWriter.createContainerElement( 'div', {
-                    class: ''
+                    class: 'develop'
                 } );
 
                 // The inner <div class="product__react-wrapper"></div> element.
@@ -94,8 +94,6 @@ export default class DevelopPlugin extends Plugin {
                 }, function( domElement ) {
                     // This the place where React renders the actual product preview hosted
                     // by a UIElement in the view. You are using a function (renderer) passed
-                    
-                    console.log(id);
                     ReactDOM.render(
                         <Provider store={ store }>
                             <Develop data={id}/>

@@ -3,15 +3,13 @@ import {connect} from 'react-redux';
 import { selectPictogramSearchResults } from '../../redux/pictograms/pictogram.selectors';
 import {searchPictograms, fetchPictograms, closePictogramFinder} from '../../redux/pictograms/pictograms.actions';
 import { createStructuredSelector } from 'reselect';
-import Pictogram from './pictogram';
-import "./pictoSearch.scss";
-import EmitterMixin from '@ckeditor/ckeditor5-utils/src/emittermixin';
-import mix from '@ckeditor/ckeditor5-utils/src/mix';
+import Pictogram from '../pictogram/pictogram';
+import "./pictogramSearchModal.scss";
 import ReactTooltip from "react-tooltip";
 import Draggable from "react-draggable";
 import { GrFormClose } from "react-icons/gr";
 
-class PictoSearch extends React.Component{
+class PictogramSearchModal extends React.Component{
     constructor(props){
         super();
         this.state ={
@@ -38,7 +36,6 @@ class PictoSearch extends React.Component{
     }
 
     render(){
-        console.log(this.props.pictogramResults);
         return(
             <Draggable bounds="body" disabled={this.state.disableDrag}>
                 <div className="pictoSearch">
@@ -73,5 +70,4 @@ const mapDispatchToProps = (dispatch) => ({
     closeModal: () => dispatch(closePictogramFinder())
 });
 
-mix( PictoSearch, EmitterMixin );
-export default connect(mapStateToProps, mapDispatchToProps)(PictoSearch);
+export default connect(mapStateToProps, mapDispatchToProps)(PictogramSearchModal);
