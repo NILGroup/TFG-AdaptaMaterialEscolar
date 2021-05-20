@@ -71,6 +71,7 @@
                 }
                 textarea{
                     width: 100%;
+                    margin-top: 5px;
                     height: 10em;
                     resize: none;
                     border: 1px solid black;
@@ -90,6 +91,11 @@
             
                 th, td{
                     padding: 5px;
+                }
+
+                &__words{
+                    @extend .container;
+                    flex-direction: column;
                 }
 
                 &__info{

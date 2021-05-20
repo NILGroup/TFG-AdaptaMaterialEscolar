@@ -52,7 +52,7 @@ class WordSearchModal extends React.Component{
         if(this.props.readyToCreate){
             if(this.props.wordSearchObject !== null){
                 if(this.props.wordSearchObject.words.length < this.props.words.length){
-                    this.props.updateError("No todas las palabras introducidas están en la sopa de letras. Prueba a cambiar el valor de las filas, columnas y/o número máximo de palabras");
+                    this.props.updateError("No todas las palabras introducidas están en la sopa de letras. Prueba a cambiar el valor de las filas, columnas y/o número máximo de palabras, y vuelve a hacer clic en Vista Previa para generar otra");
                 }
                 else{
                     this.props.updateError("");
@@ -137,9 +137,9 @@ class WordSearchModal extends React.Component{
                                         </ReactTooltip></label> <input name="maxWords" type="number" min="1" value={this.props.maxWords} onChange={this.onChange}/>
                                 </div>
                                 
-                                <div className="container">
-                                    <span>*</span><textarea id="dictionary" name="dictionary" placeholder="Escribe las palabras a buscar separadas por comas (ejemplo: perro, lobo, gallina):" 
-                                    onChange={this.onChange} value={this.props.dictionary}></textarea>
+                                <div className="container__words">
+                                    <label><span>*</span>Escribe las palabras a buscar separadas por comas:</label>
+                                    <textarea id="dictionary" name="dictionary"onChange={this.onChange} value={this.props.dictionary}></textarea>
                                 </div>
                                 <div className="container__searchWords">
                                     <label><span>*</span>Buscar palabras en:</label>
