@@ -9,7 +9,6 @@ const INITIAL_STATE = {
 }
 
 const pictogramReducer = (state = INITIAL_STATE, action) => {
-    console.log(state);
     switch (action.type){
         case PictogramsActionTypes.SEARCH_PICTOGRAMS: 
            return {

@@ -4,7 +4,7 @@ import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 import InsertPictogramCommand from './insertPictogramCommand';
 import ReactDOM from "react-dom";
-import Pictogram from '../../../components/pictoPlugin/pictogram';
+import Pictogram from '../../../components/pictogram/pictogram';
 import { Provider } from 'react-redux';
 import { store } from '../../../redux/store';
 
@@ -96,8 +96,7 @@ export default class PictogramEditing extends Plugin {
                 }, function( domElement ) {
                     // This the place where React renders the actual product preview hosted
                     // by a UIElement in the view. You are using a function (renderer) passed
-                    
-                    console.log(id);
+
                     ReactDOM.render(
                         <Provider store={ store }>
                             <Pictogram url={id} />

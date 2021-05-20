@@ -1,0 +1,249 @@
+  
+%---------------------------------------------------------------------%
+%																	  %
+%               Capítulo 7 - Implementación				  		  %
+%																	  %
+%---------------------------------------------------------------------%
+\setlength{\parskip}{\baselineskip}
+
+\chapter{Implementación}
+
+\begin{resumen}
+		En este capítulo se explica cómo se ha implementado la aplicación de AdaptaMaterialEscolar. En la sección \ref{cap7:sec:arquitectura} se explica la arquitectura utilizada. En la sección \ref{cap7:sec:frontend} se cuenta qué principios de diseño se han seguido para su creación. En la sección \ref{cap7:sec:componentes} se presentan los componentes que se han usado en la aplicación. Por último, en la sección \ref{cap7:sec:estructura} se muestra la estructura del código que se ha seguido.
+\end{resumen}
+
+%-----------------------------------%
+\section{Arquitectura - Redux}
+%-----------------------------------%
+\label{cap7:sec:arquitectura}
+	En el proyecto de este TFG se ha decidido aplicar una arquitectura \textit{Redux}\footnote{\url{https://redux.js.org/}}. Redux es un patrón de diseño Front-End que pretende desacoplar el estado de la aplicación, es decir, la información interna de los componentes y/o datos obtenidos de APIs externas, de los componentes. Esta arquitectura se basa en tres principios:
+	\begin{itemize}
+		\item Única fuente de la verdad. El estado de la aplicación se guarda en un único store. Este store consistirá en un objeto árbol con toda la información necesaria para la aplicación.
+		\item El estado es de sólo lectura. No podemos modificar el estado directamente, solo podremos leer de él para mostrarlo en la vista y si queremos modificarlo tendremos que ejecutar acciones. Las acciones son un objeto Javascript que incluye al menos un atributo type que indica el tipo de acción que estamos emitiendo y en caso de que haya datos asociados al cambio o modificación, un atributo payload con esos datos.
+		\begin{verbatim}
+			export const loadDocument = (document) => ({
+				type: DocumentActionTypes.LOAD_FILE,
+				payload: document
+			});
+		\end{verbatim}
+		\item Cambios con funciones puras. Ya que el estado no se puede modificar directamente y está almacenado en un store, tenemos que ejecutar acciones puras llamadas reducers para modificarlo. Un reducer es una función que recibe dos parámetros, el estado inicial y una acción. Dentro contendrá un switch-case que, en base a la acción que reciba, ejecutará los cambios necesarios en el store.
+		\begin{verbatim}
+			const documentReducer = (state = INITIAL_STATE, action) => {
+				switch (action.type){
+					case DocumentActionTypes.LOAD_FILE: 
+					return {
+						...state,
+						file: action.payload.file,
+						fileIsLoaded: true
+					};
+					default: 
+					return state;
+				}
+				
+			};
+		\end{verbatim}
+	\end{itemize}
+	Al externalizar toda la información en un store, facilitamos el acceso y modificación de datos en la aplicación. En la figura \ref{fig:reduxVs} se muestran las diferencias de flujo de información en los componentes de una aplicación web sin redux con una aplicación que sí lo implementa.
+	\figura{Bitmap/reduxvsnoredux}{width=.9\textwidth}{fig:reduxVs}{Comparación de flujo de información de componentes sin y con redux. Fuente: https://blog.codecentric.de/en/2017/12/developing-modern-offline-apps-reactjs-redux-electron-part-3-reactjs-redux-basics/}
+	
+	
+	En redux, el flujo de datos es unidireccional. Se siguen los siguientes pasos:
+	\begin{itemize} 
+		\item Los componentes se suscriben a los datos del store mediante selectores. Estos selectores actúan como getters, es decir, funciones de sólo lectura de datos. Cuando el store modifique uno de esos valores, los componentes a los que estén suscritos se actualizarán automáticamente. Se recurre a una librería denominada de npm denominada \textit{reselect}\footnote{\url{https://www.npmjs.com/package/reselect}} que simplifica estas implementaciones. Mediante reselect ejecutamos una función denominada createSelector, que internamente realiza la suscripción al dato del store que queramos:
+		\begin{verbatim}
+			const selectDocumentStore = (store) => store.document;
+			
+			export const selectDocumentFile = createSelector(
+			[selectDocumentStore],
+			documentStore => documentStore.file
+			);
+		\end{verbatim}
+		En los componentes se inyectarán los selectors necesarios mediante una función llamada createStructuredSelector. Por ejemplo, en el componente que muestra un documento:
+		\begin{verbatim}
+			const mapStateToProps = createStructuredSelector({
+				document: selectDocumentFile
+			});
+		\end{verbatim}
+		\item Los componentes ejecutan acciones. Esto lo realizan ejecutando un método dispatch y añadiendo de parámetro la acción a ejecutar. Por ejemplo, si tenemos una acción de cargar un documento:
+		\begin{verbatim}
+			export const closePictogramSearchModal = () => ({
+				type: PictogramsActionTypes.CLOSE_PICTOGRAMS_MODAL
+			});
+		\end{verbatim}
+		
+		\item Se ejecutan middlewares en caso de necesitar acciones asíncronas. Estos middlewares permiten ejecutar llamadas a API REST y posteriormente "despachar" otras acciones según el resultado. El siguiente ejemplo muestra cómo se ejecuta un middleware de buscar pictogramas llamando a la API de ARASAAC:
+		\begin{verbatim}
+			export const fetchPictograms = (searchInput) => {
+				return dispatch => {
+					fetch(`https://api.arasaac.org/api/pictograms/es/search/${searchInput}`)
+					.then((response) => response.json())
+					.then(data => {
+						let items = [];
+						for(let i = 0; i < data.length && i < 20; i++){
+							items.push(`https://static.arasaac.org/pictograms/${data[i]._id}/${data[i]._id}_500.png`)
+						}
+						dispatch(fetchPictogramsSuccess(items));
+					})
+					.catch(error){
+						dispatch(fetchPictogramsFailure(error))        
+					};
+					
+				}
+			}
+		\end{verbatim}
+		\item El store de redux invoca a la función reductora solicitada por la acción. El store le pasará dos argumentos a la función: estado actual y acción. El switch dentro del reductor encontrará la acción solicitada y actualizará los datos en base a ella. Los selectores detectarán el cambio y actualizarán las vistas.
+	\end{itemize}
+	La figura \ref{fig:flujoRedux} muestra el flujo unidireccional de una aplicación redux.
+	\figura{Bitmap/flujoRedux}{width=.9\textwidth}{fig:flujoRedux}{Muestra de flujo }
+
+%-----------------------------------%
+\section{Front-End}
+%-----------------------------------%
+\label{cap7:sec:frontend}	
+	
+	Para la parte Font-End se ha optado por un diseño simple, limpio y lo más ordenado posible, usando HTML y CSS para la creación de los componentes y Javascript para la funcionalidad de éstos. Así mismo, nos hemos apoyado en estos principios de diseño:
+	\begin{itemize}
+		\item Principio de proximidad. Este principio establece que si hay dos o más elementos que están próximos, entonces están relacionados. Al estar agrupados, el usuario sabe que están relacionados y, por lo tanto, facilita su aprendizaje. En nuestro caso, en la figura \ref{fig:Prinprox1} se puede ver que los elementos de la barra de herramientas del editor, al estar sus elementos agrupados y próximos, están relacionados (el formato de texto, la alineación del mismo...). Además, el usuario sabe que los elementos que se encuentran en la parte superior del editor también lo están, ya que son los diferentes tipos de adaptaciones y ejercicios que soporta la aplicación.
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/Prinprox1}
+				\caption{Ejemplo de principio de proximidad en nuestra interfaz}
+				\label{fig:Prinprox1}
+			\end{center}
+		\end{figure}
+		
+		\item Principio de consistencia externa. Este principio establece que las aplicaciones desarrolladas deben ser consistentes con las expresiones habituales dentro de un sistema específico, es decir, mantener los clics, los menús contextuales, los mismos atajos de teclado... En nuestro caso, este principio se cumple ya que se pueden seguir usando los atajos de teclado, como copiar (ctrl+c), pegar (ctrl+v), cortar (ctrl+x), seleccionar todo (ctrl+a), etc., dentro de los distintos componentes de la aplicación.
+		
+		\item Principio de visibilidad y feedback. Este principio establece, por un lado, cómo la interfaz emplea distintos mecanismos para saber su estado actual, y también qué acciones se pueden hacer en un determinado momento; y por el otro, la información que le proporcionamos al usuario de lo que está sucediendo. En nuestro caso, en la figura \ref{fig:PrinVisFeedback} se puede ver qué opciones hay disponibles al subir un fichero: puede empezar a escribir en el editor, usar los diferentes ejercicios y adaptaciones... 
+		
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=1\textwidth]{Imagenes/Bitmap/PrinVisFeedback}
+				\caption{Ejemplo de principio de visibilidad y feedback en nuestra interfaz}
+				\label{fig:PrinVisFeedback}
+			\end{center}
+		\end{figure}
+		
+		Así mismo, en ciertos componentes mostramos al usuario información adicional para que sepa lo que está sucediendo, como ocurre en la sopa de letras (figura \ref{fig:prinVisFeedbackWordsearch}), donde al poner un número inferior a uno en las filas o en las columnas se le muestra un mensaje de información en el que dicho valor debe ser superior a cero, e incluso qué campos debe rellenar como mínimo para poder crear la sopa de letras o el significado de ciertas opciones en dicho componente (figura \ref{fig:prinVisFeedbackInfo}).
+		
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/prinVisFeedbackWordsearch}
+				\caption{Ejemplo de feedback en la sopa de letras (I)}
+				\label{fig:prinVisFeedbackWordsearch}
+			\end{center}
+		\end{figure}
+		
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/prinVisFeedbackInfo}
+				\caption{Ejemplo de feedback en la sopa de letras (II)}
+				\label{fig:prinVisFeedbackInfo}
+			\end{center}
+		\end{figure}
+	\end{itemize}
+
+%-----------------------------------%
+\section{Componentes}
+\label{cap7:sec:componentes}
+%-----------------------------------%
+	
+	\subsection{Sopa de letras}
+	
+	En la figura \ref{fig:wordsearch} se puede ver la interfaz de la generación de la sopa de letras que hemos implementado. Para poder crearla, se tienen que rellenar, como mínimo, lo siguientes campos:
+	\begin{itemize}
+		\item Filas: El número de filas que tendrá la sopa de letras. 
+		\item Columnas: El número de columnas que tendrá la sopa de letras.
+		\item Palabras: Las palabras que se insertarán en la sopa de letras, separadas mediante comas.
+		\item Dirección: Las direcciones en las que se quiere insertar la palabra. Como mínimo se debe activar una dirección para poder generar la sopa de letras.
+	\end{itemize}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/wordsearch}
+			\caption{Interfaz de generación de la sopa de letras}
+			\label{fig:wordsearch}
+		\end{center}
+	\end{figure}
+	
+	También se han añadido otras opciones que están disponibles en el paquete, explicadas al principio de esta sección, y que no son obligatorias:
+	\begin{itemize}
+		\item Activar escritura al revés: Activa la probabilidad de escribir cada palabra al revés. En el caso de que esta opción no se active, la probabilidad será cero. Si se activa, aparecerá una barra deslizante para establecer dicha probabilidad.
+		\item Mantener tildes: Si se activa, las tildes que tengan las palabras se mantendrán cuando se genere la sopa de letras. Hay que tener en cuenta que este paquete usa el alfabeto inglés, por lo que si se quiere poner alguna palabra que contenga la ``Ñ'', se deberá activar esta opción.
+	\end{itemize}
+	Así como un botón para resetear los campos de la sopa de letras y una opción para escribir en el editor las palabras que debe buscar el usuario.
+	
+	Una vez que se han rellenado las opciones mínimas se activará el botón ``Vista previa''. La funcionalidad de este botón se puede ver en la figura \ref{fig:wordsearchSequence} . Al darle clic a dicho botón, se llama a la función ``handleClick'', en cuyo cuerpo se hace una llamada al despachador pasándole como acción \textit{createWordSearch}. En el fichero \textit{wordsearch.actions.js} se buscará la acción que corresponde con el parámetro pasado, en este caso es \textit{createWordSearch}, donde buscará el tipo correspondiente en el fichero \textit{worsearch.types.js} y lo devolverá. Una vez buscado este tipo de acción, que en este caso es \textit{WordSearchActionTypes.CREATE\_WORDSEARCH}, el despachador llamará al reductor (que se encuentra en \textit{wordsearch.reducer.js}) y buscará la opción \textit{CREATE\_WORDSEARCH}. Una vez encontrado, devolverá el estado actual junto con la creación de la sopa de letras en el campo \textit{wordSearchObject}, el cual se crea gracias a una llamada a la función \textit{createWordSearch(wordSearch, options)} que se encuentra en el fichero \textit{wordsearch.utils.js}, pasándole como parámetro el campo \textit{wordSearchObject}, y el objeto opciones mencionado al principio de esta sección (\textit{cols, rows, dictionary, maxWords, disabledDirections, backwardsProbability, diacritics}). Esta función primero transforma a entero las opciones \textit{rows, cols} y \textit{maxWords}, y creará el array de palabras (\textit{dictionary}) llamando a la función \textit{split(``,'')} de la librería String, y para cada palabra, quitará sus espacios llamando a \textit{trim()}. Una vez hecho esto, se comprobará si las filas y las columnas son mayores que cero. En caso afirmativo, se procederá a crear el objeto \textit{wordsearch} pasándole como parámetro esas opciones y devolviéndolo. En caso de que haya algún error, se devolverá null. Tras devolver el estado modificado, el componente \textit{WordSearchModal} llama a la función \textit{generateTable()}. Esta función devuelve el componente de la sopa de letras \textit{WordSearch}, pasándole como datos la función \textit{grid()} descrita anteriormente, en el caso de que el objeto \textit{wordSearchObject} sea distinto de null (este objeto lo lee a través del selector \textit{selectWordSearchModalWordSearchObj}, el cual devuelve el campo \textit{wordSearchObject} del estado actual que se encuentra en el reductor), o directamente devuelve null en el caso de que \textit{wordSearchObject} también lo sea. Así mismo, esta función actualiza los mensajes de error a través de \textit{updateError(error)}, que llamará al despachador y hará el mismo proceso que con \textit{createWordSearch()}.
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchSequence}
+			\caption{Diagrama de secuencia de la generación de la sopa de letras}
+			\label{fig:wordsearchSequence}
+		\end{center}
+	\end{figure}
+	
+	Al finalizar , y si no ha habido errores, se mostrará una vista previa de la sopa de letras en dicho modal y se activará el botón "Aceptar", el cual si se le da clic se escribirá en el editor la sopa de letras.
+	
+\section{Estructura del código}
+%-----------------------------------%
+\label{cap7:sec:estructura}
+
+La organización de directorios del proyecto gira en torno al patrón de diseño Redux, como se ha explicado en el apartado \ref{cap7:sec:redux} de este mismo capítulo.
+
+El código de la funcionalidad de la aplicación se estructura principalmente en cuatro carpetas: components, pages, ckeditor y redux; además, contamos con el fichero App, que supone el punto de inicio del programa.
+
+El contenido de cada carpeta es el siguiente:
+
+\begin{itemize}
+	\item \textbf{Components:} Representado en la Figura \ref{fig:srcComponents}, contiene cada componente que representa una funcionalidad para la aplicación, o parte de ella, y todos cuentan, como mínimo, con los siguientes ficheros:
+		\begin{itemize}
+		\item Fichero modal de la funcionalidad del componente.
+		\item Fichero que realiza las modificaciones pertinentes para ejecutar la funcionalidad.
+		\item Fichero de estilo del componente.
+		\end{itemize}
+\end{itemize}
+
+Uno de los componentes más importantes es el de la barra de herramientas (toolbar), que sirve como hilo conductor de la selección de los diferentes tipos de adaptaciones que pueden agregarse al documento, mediante el patrón de diseño del despachador (dispatcher).
+
+\figura{BitMap/srcComponents}{width=0.3\textwidth}{fig:srcComponents}{Ejemplo de organización de Components}
+
+\begin{itemize}
+	\item \textbf{Pages:} Representado en la Figura \ref{fig:srcPages}, contiene la página del editor, que permite cargar un fichero inicial para comenzar la adaptación, y la página de ayuda, que muestra información relevante sobre la aplicación y su uso. En los dos casos se cuenta con:
+		\begin{itemize}
+		\item Fichero de funcionalidad de la página.
+		\item Fichero de estilo de la página.
+		\end{itemize}
+\end{itemize}
+
+\figura{BitMap/srcPages}{width=0.25\textwidth}{fig:srcPages}{Ejemplo de organización de Pages}
+
+\begin{itemize}
+	\item \textbf{Redux:} Representado en la Figura \ref{fig:srcRedux}, contiene la implementación del patrón de diseño que se ha aplicado a toda la aplicación, basado en el almacenamiento de los datos que necesita cada componente. La carpeta consta del store y el reducer, elementos necesarios para el desarrollo del mismo. Además, se incluye también cada componente principal con los siguientes ficheros:
+		\begin{itemize}
+		\item Fichero action: controla las diferentes acciones que puede ejecutar cada componente.
+		\item Fichero reducer: controla el estado de los componentes según el tipo de acción que realicen, partiendo de un estado inicial.
+		\item Fichero selectors: devuelve el valor de los atributos de cada componente.
+		\item Fichero types: contiene un listado de acciones posibles para cada componente. 
+		\end{itemize}
+\end{itemize}
+
+\figura{BitMap/srcRedux}{width=0.5\textwidth}{fig:srcRedux}{Ejemplo de organización de Redux}
+
+\begin{itemize}
+	\item \textbf{CKEditor:} Representado en la Figura \ref{fig:srcCkeditor}X,contiene todos componentes software o plugins que se han desarrollado para la aplicación, permitiendo la interacción a partir de comandos que controlan las diferentes funcionalidades. Consta de un fichero que devuelve la instancia del editor CKeditor5 y una carpeta para cada plugin, con los siguientes archivos:
+		\begin{itemize}
+		\item Fichero de implementación del plugin.
+		\item Fichero de inserción del plugin mediante el patrón de diseño de comando (command).
+		\end{itemize}
+\end{itemize}
+
+\figura{BitMap/srcCkeditor}{width=0.5\textwidth}{fig:srcCkeditor}{Ejemplo de organización de CKEditor}
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:

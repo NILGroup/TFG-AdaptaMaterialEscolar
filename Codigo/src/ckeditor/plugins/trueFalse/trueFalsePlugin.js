@@ -94,8 +94,7 @@ export default class TrueFalselugin extends Plugin {
                 }, function( domElement ) {
                     // This the place where React renders the actual product preview hosted
                     // by a UIElement in the view. You are using a function (renderer) passed
-                    
-                    console.log(id);
+
                     ReactDOM.render(
                         <Provider store={ store }>
                             <TrueFalse data={id}/>
