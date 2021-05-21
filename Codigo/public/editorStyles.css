@@ -1,0 +1,46 @@
+/**pictograms
+*/
+.pictogram{
+    width: 80px;
+    height:80px;
+}
+/**
+Definitions
+*/
+
+.line{
+    width: 100%;
+    border-bottom: 1px solid black;
+    margin-top: 1.2em;
+    display: inline-flex;
+}
+    
+ol { 
+    padding-left: 0em;
+}
+    
+li{
+    overflow:hidden;
+    margin-bottom: 0.5em;
+}
+    
+li:after {
+    content:"";
+    display: inline-flex;
+    vertical-align: bottom;
+    width: 100%;
+    margin-right: -100%;
+    margin-left: 5px;
+    border-bottom: 1px solid black;
+}
+    
+.defi{
+    margin-bottom: 0.75em;
+}
+
+.extraspace-lines{
+    margin-top: 2em;
+}
+
+
+/*TODO Wordsearch*/

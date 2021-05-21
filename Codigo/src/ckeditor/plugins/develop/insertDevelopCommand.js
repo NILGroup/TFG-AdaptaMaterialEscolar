@@ -1,11 +1,11 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
 
 export default class InsertDevelopCommand extends Command {
-    execute( url ) {
+    execute( develop ) {
         this.editor.model.change( writer => {
             // Insert <productPreview id="...">*</productPreview> at the current selection position
             // in a way which will result in creating a valid model structure.
-            this.editor.model.insertContent( writer.createElement( 'developPreview', { url } ) );
+            this.editor.model.insertContent( writer.createElement( 'developPreview', { develop } ) );
         } );
     }
 

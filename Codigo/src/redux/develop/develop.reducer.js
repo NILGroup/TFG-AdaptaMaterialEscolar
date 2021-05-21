@@ -1,8 +1,10 @@
 import DevelopActionTypes from "./develop.types";
 
-
 const INITIAL_STATE = {
-    showDevelopModal: false
+    showDefinitionsModal: false,
+    numLines: '',
+    text: '',
+    extraspace: false
 }
 
 const developReducer = (state = INITIAL_STATE, action) => {
@@ -17,10 +19,32 @@ const developReducer = (state = INITIAL_STATE, action) => {
                  ...state,
                  showDevelopModal: false
              };
-        default: 
-            return state;
-    }
-    
-};
+        case DevelopActionTypes.UPDATE_DEVELOP_NUMLINES: 
+             return {
+                  ...state,
+                 numLines: action.payload
+              };
+         case DevelopActionTypes.UPDATE_DEVELOP_TEXT: 
+             return {
+                  ...state,
+                  text: action.payload
+              };     
+         case DevelopActionTypes.RESET_DEVELOP_MODAL: 
+             return {
+                  ...state,
+                 numLines: '',
+                 text: '',
+                 extraspace: false
+              };
+        case DevelopActionTypes.UPDATE_DEVELOP_EXTRASPACE:
+            return{
+                ...state,
+                extraspace: action.payload
+            }
+         default: 
+             return state;
+     }
+ };
+ 
 
 export default developReducer;
