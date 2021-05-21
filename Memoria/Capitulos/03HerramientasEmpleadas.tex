@@ -8,7 +8,7 @@
 \chapter{Herramientas empleadas}
 
 \begin{resumen}
-	En este capítulo se explican las herramientas y librerías que se han empleado en el desarrollo de este proyecto. En la sección \ref{cap3:sec:moqups} se introduce la herramienta online Moqups. En la sección \ref{cap3:sec:react} se muestra el \textit{framework} que se ha utilizado para la creación de la página web. En la sección \ref{cap3:sec:apiarasaac} se cuenta la API de ARASAAC usada para la búsqueda de pictogramas. En la sección \ref{cap3:sec:jest} se presenta la librería \textit{Jest} usada para la realización de pruebas. En la sección \ref{cap3:sec:ckeditor} se explica el editor de texto que hemos usado para realizar las distintas adaptaciones de la aplicación.
+	En este capítulo se explican las herramientas y librerías que se han empleado en el desarrollo de este proyecto. En la sección \ref{cap3:sec:moqups} se introduce la herramienta online Moqups. En la sección \ref{cap3:sec:react} se muestra el \textit{framework} que se ha utilizado para la creación de la página web. En la sección \ref{cap3:sec:apiarasaac} se habla de la API de ARASAAC usada para la búsqueda de pictogramas. En la sección \ref{cap3:sec:jest} se presenta la librería \textit{Jest} usada para la realización de pruebas. En la sección \ref{cap3:sec:ckeditor} se explica el editor de texto que hemos usado para realizar las distintas adaptaciones de la aplicación. En la sección \ref{cap3:sec:wordsearch} se explica el paquete NPM usado para la generación de las sopas de letras.
 \end{resumen}
 	
 %------Primera sección: Moqups------%
@@ -39,21 +39,32 @@
 
 	\begin{figure}[ht!]
 		\begin{center}
-			\subfloat[Menú lateral izquierda]{
-				\label{fig:menuLateralIzdaMoqups}
-				\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/menuLateralIzda}
-			}\vspace{10mm}
-			\subfloat[Menú lateral derecha (formato)]{
-				\label{fig:menuLateralDchaMoqups}
-				\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/menuLateralDcha}
-			}\vspace{10mm}
-			\subfloat[Menú lateral derecha (interacciones)]{
-				\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/menuLateralDchaInteraccion}
-				\label{fig:menuLateralDchaInteraccionesMoqups}
-			}
+			\begin{minipage}{.3\textwidth}
+				\vspace{12mm}
+				\begin{center}
+					\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuLateralIzda}
+					\captionof{figure}{Menú lateral izquierda}
+					\label{fig:menuLateralIzdaMoqups}
+				\end{center}
+			\end{minipage}
+			\hspace{2mm}
+			\begin{minipage}{.3\textwidth}
+				\begin{center}
+					\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuLateralDcha}
+					\captionof{figure}{Menú lateral derecha (formato)}
+					\label{fig:menuLateralDchaMoqups}
+				\end{center}
+			\end{minipage}
+			\hspace{2mm}
+			\begin{minipage}{.3\textwidth}
+				\vspace{20mm}
+				\begin{center}
+					\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuLateralDchaInteraccion}
+					\captionof{figure}{Menú lateral derecha (interacciones)}
+					\label{fig:menuLateralDchaInteraccionesMoqups}
+				\end{center}
+			\end{minipage}
 		\end{center}
-		\caption{Menús laterales}
-		\label{fig:menusMoqups}
 	\end{figure}
 	
 	
@@ -95,9 +106,20 @@
 %----------------------------------------%
 \label{cap3:sec:apiarasaac}
 	
-	El Centro Aragonés para la Comunicación Aumentativa y Alternativa (ARASAAC) proporciona una API pública\footnote{\url{https://arasaac.org/developers/api}} (\textit{Application Programming Interfaces}, en castellano ``interfaz de programación de aplicaciones'') , cuyo uso es gratuito siempre y cuando la aplicación a desarrollar sea no comercial\footnote{\url{https://arasaac.org/developers/}} (está bajo la licencia de \textit{Creative Commons BY-NC-SA}, es decir, ``Reconocimiento-NoComercial-CompartirIgual''\footnote{\url{https://creativecommons.org/licenses/by-nc-sa/4.0/}} en el que se debe dar crédito a los/as autores/as originales, no se puede usar para fines comerciales y en el caso de que se modifique o transforme ese material se debe distribuir bajo la misma licencia).
+	El Centro Aragonés para la Comunicación Aumentativa y Alternativa (ARASAAC) proporciona una API pública\footnote{\url{https://arasaac.org/developers/api}} (\textit{Application Programming Interfaces}, en castellano ``interfaz de programación de aplicaciones''), cuyo uso es gratuito siempre y cuando la aplicación a desarrollar sea no comercial\footnote{\url{https://arasaac.org/developers/}} (está bajo la licencia de \textit{Creative Commons BY-NC-SA}, es decir, ``Reconocimiento-NoComercial-CompartirIgual''\footnote{\url{https://creativecommons.org/licenses/by-nc-sa/4.0/}} en el que se debe dar crédito a los/as autores/as originales, no se puede usar para fines comerciales y en el caso de que se modifique o transforme ese material se debe distribuir bajo la misma licencia).
 	
-	La API de ARASAAC consta de cuatro apartados, cada uno de los cuales tiene una ruta web dependiendo de lo que se quiera consultar: materiales, pictogramas, palabras clave y usuarios. Como en este proyecto usaremos solo la búsqueda de pictogramas, nos centraremos en el apartado de pictogramas. La API de ARASAAC proporciona ocho servicios web para pictogramas (obtener los datos de todos los pictogramas en un idioma dado, obtener un pictograma en formato imagen dado su identificador, obtener los datos de un pictograma en un idioma dado su identificador, obtener los datos de un pictograma en uno o más idiomas dado su identificador,  obtener en una lista los datos de los pictogramas en un idioma dado que contenga la cadena de caracteres proporcionada, obtener en una lista los datos de los pictogramas en un idioma dado que contenga exactamente la cadena de caracteres proporcionada, obtener los datos de los pictogramas que se han creado o actualizado en los últimos días desde la fecha actual en un idioma dado y obtener los datos de los últimos pictogramas que se han publicado o modificado en un idioma dado), todos ellos con el método de petición \textit{GET} y cuyo formato de salida se basa en \textit{JSON\footnote{\url{https://es.wikipedia.org/wiki/JSON}}}. De los ocho servicios web proporcionados se usarán los siguientes:
+	La API de ARASAAC consta de cuatro apartados, cada uno de los cuales tiene una ruta web dependiendo de lo que se quiera consultar: materiales, pictogramas, palabras clave y usuarios. Como en este proyecto usaremos solo la búsqueda de pictogramas, nos centraremos en el apartado de pictogramas. La API de ARASAAC proporciona ocho servicios web para pictogramas:
+	\begin{enumerate}
+		\item Obtener los datos de todos los pictogramas en un idioma dado.
+		\item Obtener un pictograma en formato imagen dado su identificador.
+		\item Obtener los datos de un pictograma, en un idioma, dado su identificador.
+		\item Obtener los datos de un pictograma, en uno o más idiomas, dado su identificador.
+		\item Obtener en una lista los datos de los pictogramas en un idioma dado que contenga la cadena de caracteres proporcionada.
+		\item Obtener en una lista los datos de los pictogramas en un idioma dado que contenga \textbf{exactamente} la cadena de caracteres proporcionada.
+		\item Obtener los datos de los pictogramas que se han creado o actualizado en los últimos días desde la fecha actual en un idioma dado.
+		\item Obtener los datos de los últimos pictogramas que se han publicado o modificado en un idioma dado.
+	\end{enumerate}
+	Todos ellos se usan con el método de petición \textit{GET} y con formato de salida en \textit{JSON}. De los ocho servicios web proporcionados se usarán los siguientes:
 	\begin{itemize}
 		\item \textbf{/pictograms/\{idPictogram\}}: Devuelve el pictograma en formato imagen dado su identificador \textit{\{idPictogram\}}. Si tiene éxito devolverá la imagen del pictograma en formato png. En caso contrario devolverá un mensaje de error.
 		\item \textbf{/pictograms/\{locale\}/\{idPictogram\}}: Devuelve los datos de un pictograma dado su identificador \textit{\{idPictogram\}} e idioma \textit{\{locale\}}\footnote{\label{lang}Idiomas disponibles: an, ar, bg, br, ca, de, el, en, es, et, eu, fa, fr, gl, he, hr, hu, it, mk, nl, pl, pt, ro, ru, sk, sq, sv, sr, val, zh}. Si tiene éxito devolverá una lista en formato \textit{JSON} con los datos de cada pictograma. En caso contrario devolverá un error 404.
@@ -111,7 +133,7 @@
 %----------------------------------------%
 \label{cap3:sec:jest}
 	
-	\textit{Jest}\footnote{\url{https://jestjs.io/es-ES/}} es una librería para \textit{Javascript}, creada por Facebook, que permite realizar distintos tipos de pruebas y es compatible con muchos \textit{framework} incluyendo el que hemos elegido (\textit{React}). \textit{Jest} tiene una instalación muy sencilla, de pocos pasos, y su configuración es mínima. La documentación\footnote{\url{https://jestjs.io/es-ES/docs/getting-started}} es completa, y contiene lo necesario para poder desarrollar estos tipos de pruebas, junto con una serie de ejemplos realizados paso a paso.
+	\textit{Jest}\footnote{\url{https://jestjs.io/es-ES/}} es una librería para \textit{Javascript}, creada por Facebook, que permite realizar distintos tipos de pruebas y es compatible con muchos \textit{frameworks} incluyendo el que hemos elegido (\textit{React}). \textit{Jest} tiene una instalación muy sencilla, de pocos pasos, y su configuración es mínima. La documentación\footnote{\url{https://jestjs.io/es-ES/docs/getting-started}} es completa, y contiene lo necesario para poder desarrollar estos tipos de pruebas, junto con una serie de ejemplos realizados paso a paso.
 	
 	Esta librería la hemos usado en el proyecto para realizar las pruebas unitarias y de integración de las distintas partes de la aplicación.
 
@@ -121,14 +143,121 @@
 %----------------------------------------------%
 \label{cap3:sec:ckeditor}
 
-	\textit{CKEditor}\footnote{\url{https://ckeditor.com/}} es un editor de código abierto de tipo ``WYSIWYG''\footnote{\textbf{WYSIWYG}, acrónimo de \textit{What You See Is What You Get} (en español, ``lo que ves es lo que obtienes''), es una frase aplicada a los procesadores de texto y otros editores con formato, que permiten escribir un documento mostrando directamente el resultado final, frecuentemente el resultado impreso. \url{https://es.wikipedia.org/wiki/WYSIWYG}} y es totalmente customizable. \textit{CKEditor} tiene dos tipos de versión:
+	\textit{CKEditor}\footnote{\url{https://ckeditor.com/}} es un editor de código abierto de tipo ``WYSIWYG''\footnote{\textbf{WYSIWYG}, acrónimo de \textit{What You See Is What You Get} (en español, ``lo que ves es lo que obtienes''), es una frase aplicada a los procesadores de texto y otros editores con formato, que permiten escribir un documento mostrando directamente el resultado final, frecuentemente el resultado impreso. \url{https://es.wikipedia.org/wiki/WYSIWYG}} y es totalmente personalizable. \textit{CKEditor} tiene dos versiones diferentes:
 	\begin{itemize}
-		\item \textbf{CKEditor 4}: Es la versión antigua compatible con la mayoría de los navegadores. Con ella se puede tener tres tipos de editor: \textit{Article Editor} (editor para artículos), \textit{Document Editor} (editor para documentos) e \textit{Inline Editor} (editor en línea). La documentación\footnote{\url{https://ckeditor.com/docs/ckeditor4/latest/}} es muy completa: contiene una guía de instalación paso a paso, además de bastantes ejemplos para diferentes propósitos (insertar contenido, customizar la interfaz de usuario...). También tiene una demo online que muestra los diferentes editores para esta versión.
-		\item \textbf{CKEditor 5}: Es la versión más moderna con un rediseño y mejora de la interfaz y la introducción de un nuevo modelo de datos. A diferencia de la versión anterior, esta versión tiene más tipos de editor: \textit{Classic} (el editor clásico), \textit{Balloon} (editor de globo, que permite insertar contenido directamente en la ubicación que se esta señalando), \textit{Balloon Block} (el mismo que el anterior pero se edita por bloques), \textit{Inline} (el mismo que en \textit{CKEditor 4}), \textit{Document} (el mismo que en \textit{CKEditor 4}) y \textit{Pagination} (el editor de paginación, que permite ver las líneas de salto de página que coincidirían con los límites de la página cuando el documento se exporta a PDF o Word). También tiene una demo de los diferentes tipos de editor para esta versión, y un constructor online\footnote{\url{https://ckeditor.com/ckeditor-5/online-builder/}} donde se puede elegir el tipo de editor y los complementos que tendrá. La documentación\footnote{\url{https://ckeditor.com/docs/ckeditor5/latest/}} en esta versión también es bastante completa: tiene una guía de instalación paso a paso, ejemplos de los editores, además de una guía de cómo trabajar con el \textit{framework} de este editor.
+		\item \textbf{CKEditor 4}: Es la versión antigua compatible con la mayoría de los navegadores. Con ella se puede tener tres tipos de editor: \textit{Article Editor} (editor para artículos), \textit{Document Editor} (editor para documentos) e \textit{Inline Editor} (editor en línea). La documentación\footnote{\url{https://ckeditor.com/docs/ckeditor4/latest/}} es muy completa: contiene una guía de instalación paso a paso, además de bastantes ejemplos para diferentes propósitos (insertar contenido, personalizar la interfaz de usuario...). También tiene una demo online\footnote{\url{https://ckeditor.com/ckeditor-4/demo/}} que muestra los diferentes editores para esta versión. Gracias al programa LTS (\textit{Long Term Support}) tanto el desarrollo como el soporte de esta versión están garantizados hasta 2023.
+		\item \textbf{CKEditor 5}: Es la versión más moderna con un rediseño y mejora de la interfaz y la introducción de un nuevo modelo de datos. A diferencia de la versión anterior, esta versión tiene más tipos de editor: \textit{Classic} (el editor clásico), \textit{Balloon} (editor de globo, que permite insertar contenido directamente en la ubicación que se esta señalando), \textit{Balloon Block} (el mismo que el anterior pero se edita por bloques), \textit{Inline} (el mismo que en \textit{CKEditor 4}), \textit{Document} (el mismo que en \textit{CKEditor 4}) y \textit{Pagination} (el editor de paginación, que permite ver las líneas de salto de página que coincidirían con los límites de la página cuando el documento se exporta a PDF o Word). También tiene una demo online\footnote{\url{https://ckeditor.com/ckeditor-5/demo/}} de los diferentes tipos de editor para esta versión, y un constructor online\footnote{\url{https://ckeditor.com/ckeditor-5/online-builder/}} donde se puede elegir el tipo de editor y los complementos que tendrá. La documentación\footnote{\url{https://ckeditor.com/docs/ckeditor5/latest/}} en esta versión también es bastante completa: tiene una guía de instalación paso a paso, ejemplos de los editores, además de una guía de cómo trabajar con el \textit{framework} de este editor.
 	\end{itemize}
 
-	En este proyecto hemos usado la versión \textit{CKEditor 5} para realizar los diferentes tipos de adaptaciones de la aplicación.
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.9\textwidth]{Imagenes/Bitmap/ejemploCKEditor5}
+			\caption{Ejemplo de CKEditor 5}
+			\label{fig:ejemploCKEditor5}
+		\end{center}
+	\end{figure}
 
+	En este proyecto hemos usado la versión \textit{CKEditor 5} para crear un documento editable, en el que el usuario puede realizar los diferentes tipos de adaptaciones de la aplicación, y poder descargarlo en formato PDF. En la figura \ref{fig:ejemploCKEditor5} se puede ver un ejemplo de la versión \textit{CKEditor 5}\footnote{Fuente: \url{https://ckeditor.com/ckeditor-5/demo/\#document}}. En la parte superior se muestra una barra de navegación con los diferentes ejemplos de tipos de editor mencionados anteriormente, y en la inferior, el editor junto con su barra de herramientas (donde el primer elemento de ésta barra es la exportación a formato PDF).
+	
+	
+	
+%----------Sexta sección: Word-search----------%
+\section{Word-search}
+%----------------------------------------------%
+\label{cap3:sec:wordsearch}
+
+	Para la creación de las sopas de letras empleamos el paquete NPM (\textit{Node Package Manager}) \textit{word-search}\footnote{\url{https://www.npmjs.com/package/@blex41/word-search}}. Para crearlas, se necesitan unas opciones de configuración, que están encapsuladas en un objeto, y devuelve la sopa de letras en un array. Las opciones de configuración son las siguientes:
+	\begin{itemize}
+		\item cols: Es un número entero que representa el número de columnas que tendrá la sopa de letras. Por defecto tiene un valor de 10.
+		\item rows: Es un número entero que representa el número de filas que tendrá la sopa de letras. Por defecto tiene un valor de 10.
+		\item disabledDirections: Es un array de strings que representa las direcciones cardinales (``N'', ``S'', ``E'', ``W'', ``NE'', ``NW'', ``SE'', ``SW'') no válidas para colocar las palabras en la sopa de letras. Por defecto tiene un valor vacío, es decir, todas las direcciones están permitidas.
+		\item dictionary: Es un array de strings que representa las palabras a buscar en la sopa de letras. Por defecto tiene un valor vacío.
+		\item maxWords: Es un número entero que representa el número de palabras máximo que se insertarán en la sopa de letras. Por defecto tiene un valor de 20. Aunque la longitud del array \textit{dictionary} supere este valor, solo se insertará ese número de palabras en la sopa de letras.
+		\item backwardsProbability: Es un número decimal entre 0 y 1 que representa la probabilidad que tiene cada palabra de escribirse al revés. Solo funciona si no se deshabilita, en una dirección cardinal, uno de los extremos. Por ejemplo, para poder escribir una palabra al revés en vertical, se deben tener las direcciones cardinales ``N'' y ``S'' habilitadas, no solo una de ellas. Por defecto tiene un valor de 0.3.
+		\item upperCase: Es un booleano que indica si las letras de la sopa de letras se quieren en mayúscula (\textit{true}) o no (\textit{false}). Por defecto tiene el valor \textit{true}.
+		\item diacritics: Es un booleano que indica si las letras deberían mantener las tildes en la sopa de letras. Por defecto tiene el valor \textit{false}, es decir, no mantener las tildes en la sopa de letras.
+	\end{itemize}
+	En el caso de que alguna de estas opciones no se modificasen, no daría ningún error, sino que cogería el valor por defecto que tuvieran.
+	En la figura \ref{fig:wordsearchoptions} se puede ver un ejemplo de las opciones de configuración de este paquete, donde se ha establecido un tablero de 8x9, se han habilitado todas las direcciones, la probabilidad que tiene cada palabra se ha fijado a 0.5 (cada palabra tiene un 50\% de probabilidad de escribirse al revés), el número máximo de palabras que se insertarán es 20, se quieren mantener las tildes, las letras se quieren en mayúscula y hay que buscar las palabras perro, gata, flamenco y avestruz.
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/wordsearchoptions}
+			\caption{Ejemplo de las opciones de configuración de Word-search}
+			\label{fig:wordsearchoptions}
+		\end{center}
+	\end{figure}
+	
+	Una vez creada la sopa de letras, el paquete proporciona las siguientes funciones\footnote{Para cada ejemplo, se han usado las opciones de configuración de la figura \ref{fig:wordsearchoptions}. Así mismo, se han dichas funciones una sola vez y seguidas, dando como resultado el mismo tablero}:
+	\begin{itemize}
+		\item grid(): Devuelve un array de caracteres donde cada posición representa una letra de la sopa de letras. En la figura \ref{fig:wordsearchgrid} se puede ver un ejemplo del resultado de la sopa de letras cuando se usa esta función.
+		
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/wordsearchgrid}
+				\caption{Ejemplo de resultado de sopa de letras usando grid()}
+				\label{fig:wordsearchgrid}
+			\end{center}
+		\end{figure}
+	
+		\item toString(): Devuelve un array de strings donde cada posición representa una fila de la sopa de letras. En la figura \ref{fig:wordsearchtostring} se puede ver un ejemplo del resultado de la sopa de letras cuando se usa esta función.
+		
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/wordsearchtostring}
+				\caption{Ejemplo de resultado de sopa de letras usando toString()}
+				\label{fig:wordsearchtostring}
+			\end{center}
+		\end{figure}
+		
+		\item words(): Devuelve un array de objetos con las palabras que se han insertado correctamente en la sopa de letras. Cada objeto tiene tres campos:
+		\begin{itemize}
+			\item word: la palabra que está en el campo \textit{dictionary}.
+			\item clean: este campo depende de las opciones de \textit{upperCase} y \textit{diacritics}, es decir, se escribirá la palabra del campo \textit{word} con o sin mayúsculas y con o sin tildes (dependiendo si los valores de dichas opciones están a \textit{true} o \textit{false}).
+			\item path: contiene un array de objetos con las posiciones ``x'' e ``y'' de cada letra de la palabra en la sopa de letras.
+		\end{itemize}
+		En la figura \ref{fig:wordsearchwords} se puede ver un ejemplo del resultado cuando se usa la función words().
+		
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.9\textwidth]{Imagenes/Bitmap/wordsearchwords}
+				\caption{Ejemplo de las palabras insertadas al usar words()}
+				\label{fig:wordsearchwords}
+			\end{center}
+		\end{figure}
+		
+		\item dump(): Devuelve un objeto que representa el estado de la sopa de letras (es una \textit{snapshot} del tablero). Esto puede resultar útil si se quiere guardar el juego y usarlo después con la siguiente función. En la figura \ref{fig:wordsearchdump} se puede ver un ejemplo del objeto resultante cuando se usa esta función.
+		
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchdump}
+				\caption{Ejemplo del objeto resultante al usar dump()}
+				\label{fig:wordsearchdump}
+			\end{center}
+		\end{figure}
+		
+		\item load(backup): Carga el parámetro \textit{backup} que representa un estado de la sopa de letras generado previamente con \textit{dump()}.
+		
+		\item read(start, end): Devuelve un string con las letras que se forman al leer las posiciones de \textit{start} a \textit{end}. En la figura \ref{fig:wordsearchreadcall} se puede ver la forma en la que se llama a esta función, pasándole los objetos posición \textit{start} y \textit{end} y, en la figura \ref{fig:wordsearchread}, un ejemplo del string formado al leer dichas posiciones.
+		
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/wordsearchreadcall}
+				\caption{Ejemplo de llamada a la función read()}
+				\label{fig:wordsearchreadcall}
+			\end{center}
+		\end{figure}
+	
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/wordsearchread}
+				\caption{Ejemplo del string formado cuando se usan los parámetros de la figura \ref{fig:wordsearchreadcall}}
+				\label{fig:wordsearchread}
+			\end{center}
+		\end{figure}
+	
+	\end{itemize}
+	
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX
 %%%

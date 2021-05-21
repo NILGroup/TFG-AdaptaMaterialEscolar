@@ -1,0 +1,98 @@
+%---------------------------------------------------------------------%
+%																	  %
+%               Capítulo 6 - Implementacion				  %
+%																	  %
+%---------------------------------------------------------------------%
+
+\chapter{Implementación}
+
+%------Primera sección: Introducción------%
+\section{Arquitectura - Redux}
+%-----------------------------------------%
+En el proyecto de este TFG se ha decidido aplicar una arquitectura \textit{Redux}\footnote{\url{https://redux.js.org/}}. Redux es un patrón de diseño Front-End que pretende desacoplar el estado de la aplicación, es decir, la información interna de los componentes y/o datos obtenidos de APIs externas, de los componentes. Esta arquitectura se basa en tres principios:
+\begin{itemize}
+\item Única fuente de la verdad. El estado de la aplicación se guarda en un único store. Este store consistirá en un objeto árbol con toda la información necesaria para la aplicación.
+\item El estado es de sólo lectura. No podemos modificar el estado directamente, solo podremos leer de él para mostrarlo en la vista y si queremos modificarlo tendremos que ejecutar acciones. Las acciones son un objeto Javascript que incluye al menos un atributo type que indica el tipo de acción que estamos emitiendo y en caso de que haya datos asociados al cambio o modificación, un atributo payload con esos datos.
+\begin{verbatim}
+export const loadDocument = (document) => ({
+	type: DocumentActionTypes.LOAD_FILE,
+	payload: document
+});
+\end{verbatim}
+\item Cambios con funciones puras. Ya que el estado no se puede modificar directamente y está almacenado en un store, tenemos que ejecutar acciones puras llamadas reducers para modificarlo. Un reducer es una función que recibe dos parámetros, el estado inicial y una acción. Dentro contendrá un switch-case que, en base a la acción que reciba, ejecutará los cambios necesarios en el store.
+\begin{verbatim}
+const documentReducer = (state = INITIAL_STATE, action) => {
+    switch (action.type){
+        case DocumentActionTypes.LOAD_FILE: 
+           return {
+                ...state,
+                file: action.payload.file,
+                fileIsLoaded: true
+            };
+        default: 
+            return state;
+    }
+    
+};
+\end{verbatim}
+\end{itemize}
+ Al externalizar toda la información en un store, facilitamos el acceso y modificación de datos en la aplicación. En la figura \ref{fig:reduxVs} se muestran las diferencias de flujo de información en los componentes de una aplicación web sin redux con una aplicación que sí lo implementa.
+\figura{Bitmap/reduxvsnoredux}{width=.9\textwidth}{fig:reduxVs}{Comparación de flujo de información de componentes sin y con redux. Fuente: https://blog.codecentric.de/en/2017/12/developing-modern-offline-apps-reactjs-redux-electron-part-3-reactjs-redux-basics/}
+
+
+En redux, el flujo de datos es unidireccional. Se siguen los siguientes pasos:
+\begin{itemize} 
+\item Los componentes se suscriben a los datos del store mediante selectores. Estos selectores actúan como getters, es decir, funciones de sólo lectura de datos. Cuando el store modifique uno de esos valores, los componentes a los que estén suscritos se actualizarán automáticamente. Se recurre a una librería denominada de npm denominada \textit{reselect}\footnote{\url{https://www.npmjs.com/package/reselect}} que simplifica estas implementaciones. Mediante reselect ejecutamos una función denominada createSelector, que internamente realiza la suscripción al dato del store que queramos:
+\begin{verbatim}
+const selectDocumentStore = (store) => store.document;
+
+export const selectDocumentFile = createSelector(
+    [selectDocumentStore],
+    documentStore => documentStore.file
+);
+\end{verbatim}
+En los componentes se inyectarán los selectors necesarios mediante una función llamada createStructuredSelector. Por ejemplo, en el componente que muestra un documento:
+\begin{verbatim}
+const mapStateToProps = createStructuredSelector({
+    document: selectDocumentFile
+});
+\end{verbatim}
+\item Los componentes ejecutan acciones. Esto lo realizan ejecutando un método dispatch y añadiendo de parámetro la acción a ejecutar. Por ejemplo, si tenemos una acción de cargar un documento:
+\begin{verbatim}
+export const closePictogramSearchModal = () => ({
+    type: PictogramsActionTypes.CLOSE_PICTOGRAMS_MODAL
+});
+\end{verbatim}
+
+\item Se ejecutan middlewares en caso de necesitar acciones asíncronas. Estos middlewares permiten ejecutar llamadas a API REST y posteriormente "despachar" otras acciones según el resultado. El siguiente ejemplo muestra cómo se ejecuta un middleware de buscar pictogramas llamando a la API de ARASAAC:
+\begin{verbatim}
+export const fetchPictograms = (searchInput) => {
+    return dispatch => {
+        fetch(`https://api.arasaac.org/api/pictograms/es/search/${searchInput}`)
+        .then((response) => response.json())
+        .then(data => {
+            let items = [];
+            for(let i = 0; i < data.length && i < 20; i++){
+                items.push(`https://static.arasaac.org/pictograms/${data[i]._id}/${data[i]._id}_500.png`)
+            }
+            dispatch(fetchPictogramsSuccess(items));
+        })
+        .catch(error){
+			dispatch(fetchPictogramsFailure(error))        
+        };
+        
+    }
+}
+\end{verbatim}
+\item El store de redux invoca a la función reductora solicitada por la acción. El store le pasará dos argumentos a la función: estado actual y acción. El switch dentro del reductor encontrará la acción solicitada y actualizará los datos en base a ella. Los selectores detectarán el cambio y actualizarán las vistas.
+\end{itemize}
+La figura \ref{fig:flujoRedux} muestra el flujo unidireccional de una aplicación redux.
+\figura{Bitmap/flujoRedux}{width=.9\textwidth}{fig:flujoRedux}{Muestra de flujo }
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:

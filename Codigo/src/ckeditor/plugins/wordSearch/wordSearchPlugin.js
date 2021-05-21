@@ -28,7 +28,7 @@ export default class WordSearchPlugin extends Plugin {
             isObject: true,
 
             // Allow in places where other blocks are allowed (e.g. directly in the root).
-            allowWhere: '$block',
+            allowWhere: '$text',
 
             isInline: true,
 
@@ -83,8 +83,8 @@ export default class WordSearchPlugin extends Plugin {
                 const id = modelElement.getAttribute( 'characters' );
 
                 // The outermost <section class="product" data-id="..."></section> element.
-                const section = viewWriter.createContainerElement( 'table', {
-                    class: 'table'
+                const section = viewWriter.createContainerElement( 'div', {
+                    class: 'table board'
                 } );
 
                 // The inner <div class="product__react-wrapper"></div> element.
@@ -94,11 +94,17 @@ export default class WordSearchPlugin extends Plugin {
                 }, function( domElement ) {
                     // This the place where React renders the actual product preview hosted
                     // by a UIElement in the view. You are using a function (renderer) passed
-                    
-                    console.log(id);
                     ReactDOM.render(
                         <Provider store={ store }>
                             <WordSearch data={id}/>
+                            {id.showWords ?
+                            <div className="showWords">
+                                {id.words.map((value, i) =>
+                                    i !== id.words.length - 1 ? value.clean + ", " : value.clean
+                                )}
+                            </div>
+                            : null
+                            }
                         </Provider>
                         ,
                         domElement
@@ -107,7 +113,7 @@ export default class WordSearchPlugin extends Plugin {
 
                 viewWriter.insert( viewWriter.createPositionAt( section, 0 ), reactWrapper );
 
-                return toWidget( section, viewWriter, { label: 'pictogram preview widget' } );
+                return toWidget( section, viewWriter, { label: 'wordsearch preview widget' } );
             }
         } );
     }

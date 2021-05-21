@@ -10,16 +10,18 @@ const INITIAL_STATE = {
     horizontal: false,
     diagonal: false,
     maxWords: 20,
-    diacritics: false,
     activateBackwards: false,
     backwardsProbability: 0.0, //init to 0.3 when activateBackwards is true
     error: "",
     disabledDirections: ["N", "S", "W", "E", "NW", "NE", "SW", "SE"],
-    wordSearchContent: []
+    wordSearchObject: null,
+    hiddenWords: false,
+    readyToCreate: false,
+    ready: false,
+    words: []
 }
 
 const wordSearchReducer = (state = INITIAL_STATE, action) => {
-    console.log(state);
     switch (action.type){
         case WordSearchActionTypes.OPEN_WORDSEARCH_MODAL:
             return{
@@ -69,11 +71,6 @@ const wordSearchReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 maxWords: action.payload
             }
-        case WordSearchActionTypes.UPDATE_WORDSEARCH_DIACRITICS:
-            return{
-                ...state,
-                diacritics: action.payload
-            }
         case WordSearchActionTypes.UPDATE_WORDSEARCH_ACTIVATEBACKWARDS:
             return{
                 ...state,
@@ -100,21 +97,43 @@ const wordSearchReducer = (state = INITIAL_STATE, action) => {
                 horizontal: false,
                 diagonal: false,
                 maxWords: 20,
-                diacritics: false,
                 activateBackwards: false,
                 backwardsProbability: 0.0,
                 error: "",
                 disabledDirections: ["N", "S", "W", "E", "NW", "NE", "SW", "SE"],
-                wordSearchContent: []
+                wordSearchObject: null,
+                readyToCreate: false,
+                ready: false,
+                hiddenWords: false,
+                words: []
             }
         case WordSearchActionTypes.CREATE_WORDSEARCH:
             return{
                 ...state,
-                wordSearchContent: createWordSearch(state.wordSearchContent, {rows: state.rows, cols: state.cols, dictionary: state.dictionary, disabledDirections: state.disabledDirections, 
-                    maxWords: state.maxWords, backwardsProbability: state.backwardsProbability, diacritics:state.diacritics})
+                wordSearchObject: createWordSearch(state.wordSearchObject, {rows: state.rows, cols: state.cols, dictionary: state.dictionary, disabledDirections: state.disabledDirections, 
+                    maxWords: state.maxWords, backwardsProbability: state.backwardsProbability, diacritics:true})
+            }
+        case WordSearchActionTypes.UPDATE_WORDSEARCH_READY:
+            return{
+                ...state,
+                ready: action.payload
+            }
+        case WordSearchActionTypes.UPDATE_WORDSEARCH_HIDDENWORDS:
+            return{
+                ...state,
+                hiddenWords: action.payload
+            }
+        case WordSearchActionTypes.UPDATE_WORDSEARCH_READYTOCREATE:
+            return{
+                ...state,
+                readyToCreate: action.payload
+            }
+        case WordSearchActionTypes.UPDATE_WORDSEARCH_WORDS:
+            return{
+                ...state,
+                words: state.dictionary.split(",").map(item => item.trim())
             }
         default: 
-            console.log(state);
             return state;
     }
 };

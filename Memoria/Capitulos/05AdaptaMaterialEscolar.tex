@@ -8,7 +8,7 @@
 
 
 \begin{resumen}
-	En este capítulo se explicará, en la sección \ref{cap5:sec:capturaRequisitos}, para quién va a desarrollarse el proyecto de AdaptaMaterialEscolar, cuándo y cómo comenzó el proceso de captura de los requisitos para la aplicación. En la sección \ref{cap5:sec:diseño}, se explicará cómo se diseñó la aplicación.
+	En este capítulo se explicará, en la sección \ref{cap5:sec:capturaRequisitos}, para quién va a desarrollarse el proyecto de AdaptaMaterialEscolar y el proceso de captura de los requisitos para la aplicación. En la sección \ref{cap5:sec:diseño}, se explicará cómo se diseñó la aplicación.
 \end{resumen}
 
 
@@ -21,15 +21,15 @@ El Trabajo de Fin de Grado de AdaptaMaterialEscolar es un proyecto sin ánimo de 
 
 Para su implementación, debido a que se pretende que el proyecto sea útil para el máximo número de docentes posibles, se hizo una amplia captura de requisitos con los usuarios finales, de forma que se pudieron conocer las necesidades reales de un centro educativo, siguiendo un Diseño Centrado en el Usuario.
 
-Se realizaron una serie de reuniones, tanto presenciales como online, con los usuarios finales para obtener los requisitos de la aplicación; además, se mantuvo el contacto con ellos durante todo el proceso de diseño e implementación, para irles enseñando la evolución.	
+Se realizaron una serie de reuniones con los usuarios finales, tanto presenciales como online, para obtener los requisitos de la aplicación; además, se mantuvo el contacto con ellos durante todo el proceso de diseño e implementación, para irles enseñando la evolución de la aplicación.	
 
 \subsection{Captura de requisitos}
 
-El 25 de julio de 2019 se organizó una primera reunión presencial con las dos profesoras que forman parte del Aula TEA en el IES Maestro Juan de Ávila: Ana María Alonso Frades, especialista en Pedagogía Terapéutic y Ana María Díaz Valle, especialista en Audición y Lenguaje. 
+El 25 de julio de 2019 se organizó una primera reunión presencial con las dos profesoras que forman parte del Aula TEA en el IES Maestro Juan de Ávila: Ana María Alonso Frades, especialista en Pedagogía Terapéutica y Ana María Díaz Valle, especialista en Audición y Lenguaje. 
 
 Las profesoras nos hablaron sobre los diferentes perfiles de alumnos TEA con los que trabajaban en el centro y explicaron la importancia de contar con una aplicación especializada en adaptaciones curriculares, que fuera flexible y permitiera generar diferentes modelos de temario, actividades y exámenes con el menor esfuerzo posible. El proyecto debía poder convertir un mismo párrafo o ejercicio en otro más sencillo de comprender, asimilar o resolver, de forma que pudiera personalizarse para cada alumno de acuerdo a su capacidad cognitiva y así facilitarles el aprendizaje sin excluir temario.
 
-A pesar de que hay unas pautas a seguir para adaptar el temario, las actividades y los exámenes, (por ejemplo usar letra grande e imágenes) no hay un estándar definido que sigan todos los profesores y a algunos alumnos les resulta confuso el cambio de una asignatura a otra.
+A pesar de que hay unas pautas a seguir para adaptar el temario, las actividades y los exámenes (por ejemplo usar letra grande e imágenes), no hay un estándar definido que sigan todos los profesores, y a algunos alumnos les resulta confuso el cambio de una asignatura a otra.
 
 Después de hablar con las profesoras y conocer a un alumno TEA que nos explicó su rutina en el instituto, vimos un ejemplo de tema y examen adaptado de Ciencias Naturales. 
 
@@ -45,7 +45,7 @@ A partir de ahí, como resultado de la reunión, obtuvimos las funcionalidades de 
 
 \label{cap5:sec:capturaRequisitos:tiposAdaptaciones}
 
-\underline{Adaptaciones para temario}
+\underline{Adaptaciones de temario}
 
 La motivación de las adaptaciones de temario es conseguir, en el menor tiempo posible, una unidad didáctica teórica adaptada al alumno de forma casi inmediata y automática, seleccionando el texto a convertir. En este sentido, la aplicación debe ofrecer al usuario la posibilidad de:
 
@@ -57,7 +57,7 @@ La motivación de las adaptaciones de temario es conseguir, en el menor tiempo po
 
 \underline{Adaptaciones de actividades y/o exámenes}:
 
-La motivación de las adaptaciones de actividades y/o exámenes es conseguir unidades didácticas prácticas o actividades de forma fácil, seleccionando texto o un ejercicio ya redactado y adaptándolo de forma automática al tipo de ejercicio que se quiere obtener. La aplicación debe permitir crear los siguientes tipos de ejercicios:
+La motivación de las adaptaciones de actividades y/o exámenes es conseguir unidades didácticas prácticas o actividades de forma fácil, seleccionando texto o un ejercicio ya redactado y adaptándolo de forma automática al tipo de ejercicio que se quiere obtener, añadiendo enunciados y ejemplos (con o sin pictogramas), siempre que sea posible, donde se explique cómo debe resolverse el ejercicio. La aplicación debe permitir crear los siguientes tipos de ejercicios:
 
 \begin{itemize}
 	\item Ejercicios de relacionar contenido mediante flechas.
@@ -67,14 +67,11 @@ La motivación de las adaptaciones de actividades y/o exámenes es conseguir unida
 	\item Ejercicios de verdadero o falso.
 	\item Ejercicios de completar los espacios en blanco en tablas.
 	\item Ejercicios de completar los espacios en blanco en esquemas.
-	\item Añadir enunciados y ejemplos (con o sin pictogramas), donde se explique cómo debe resolverse el ejercicio.
 \end{itemize}
 
 \underline{Adaptaciones de formato}:
 
-Las adaptaciones de formato deben permitir estandarizar cualquier documento que se vaya a entregar al alumno, de manera que el cambio de una asignatura a otra no suponga un cambio visual y el aprendizaje sea menos costoso. Nuestra aplicación debe permitir al usuario final que pueda:
-
-Los requisitos para realizar adaptaciones de formato fueron:
+Las adaptaciones de formato deben permitir estandarizar cualquier documento que se vaya a entregar al alumno, de manera que el cambio de una asignatura a otra no suponga un cambio visual y el aprendizaje sea menos costoso. Nuestra aplicación debe permitir al usuario final que pueda:s
 
 \begin{itemize}
 	\item Sustituir una palabra por un pictograma.
@@ -87,22 +84,23 @@ Los requisitos para realizar adaptaciones de formato fueron:
 	\item Aumentar el tamaño de la fuente de una parte del texto.
 	\item Subrayar una parte del texto.
 	\item Poner en negrita una parte del texto.
-	\item Añadir imágenes buscando una palabra.
+	\item Añadir imágenes buscando una palabra en bases de datos de imágenes libres.
 \end{itemize}
 
 \subsection{Análisis de requisitos}
 
-Una vez recopilados los requisitos del proyecto redactamos una lista con éstos para que pudiéramos, tanto las profesoras del Aula TEA, como el equipo de desarrollo, analizarlas.
+Una vez recopilados los requisitos del proyecto, redactamos una lista con éstos para que pudiéramos, tanto las profesoras del Aula TEA como el equipo de desarrollo, analizarlos de forma independiente, para no influir en la toma de decisiones sobre la importancia y dificultad de cada funcionalidad.
 
-En esta segunda etapa los requisitos fueron analizados de forma independiente por el equipo de desarrollo y las profesoras del Aula TEA, para no influir en la toma de decisiones sobre la importancia y dificultad de cada funcionalidad.
+Enviamos el listado de requisitos a las profesoras por correo electrónico, con la finalidad de que revisaran el contenido o añadieran nuevas funcionalidades si fuera necesario y evaluaran cada uno de ellos. Las profesoras Ana María Alonso Frades y Ana María Díaz Valle debían puntuar los requisitos según la utilidad que pudieran aportar cada una de ellas a su trabajo. Las posibles puntuaciones debían ir de uno a tres, siendo el uno poco importante, el dos importante y el tres imprescindible. Prácticamente todos los requisitos fueron puntuadas como imprescindible, por lo que quedó claro que el proyecto cubre una necesidad real y no añadieron ningún requisito más.
 
-Enviamos el listado de requisitos a las profesoras por correo electrónico, con la finalidad de que revisaran el contenido o añadieran nuevas funcionalidades si fuera necesario y evaluaran cada una de ellas. Las profesoras Ana María Alonso Frades y Ana María Díaz Valle debían puntuar los requisitos según la utilidad que pudieran aportar cada una de ellas a su trabajo. Las posibles puntuaciones debían ir de uno a tres, siendo el uno poco importante, el dos importante y el tres imprescindible. Prácticamente todos los requisitos fueron puntuadas como muy importantes, por lo que quedó claro que el proyecto cubre una necesidad real y no añadieron ningún requisito más.
+Por otro lado, cada miembro del equipo de desarrollo puntuó los requisitos de manera individual, para no influir en la decisión de los compañeros, según la dificultad que consideraban que tendría la implementación de cada requisito a nivel técnico. Las posibles puntuaciones debían ir de uno a tres, siendo el uno difícil, el dos intermedio y el tres fácil. La finalidad de este análisis de los requisitos era obtener un listado con las funcionalidades ordenadas por dificultad e importancia. 
 
-Por otro lado, cada miembro del equipo de desarrollo puntuó los requisitos de manera individual, para no influir en la decisión de los compañeros, según la dificultad que consideraban que tendría la implementación de cada requisito a nivel técnico. Las posibles puntuaciones debían ir de uno a tres, siendo el uno difícil, el dos intermedio y el tres fácil. La finalidad de este analisis de los requisitos era obtener un listado con las funcionalidades ordenadas por dificultad e importancia. 
+Con la puntuación que asignaron las profesoras de forma conjunta, se obtuvo el indicador de importancia de cada tarea y, con la media de las puntuaciones del equipo de desarrollo, el indicador de dificultad.
 
-Con la puntuación que asignaron las profesoras se obtuvo el indicador de importancia de cada tarea y, con la media de las puntuaciones del equipo de desarrollo, el indicador de dificultad. El resultado obtenido se separó en dos tablas. La primera contiene las funcionalidades de la aplicación, las adaptaciones de temario (T) y actividades y/o exámenes (A), y la segunda, contiene las adaptaciones de formato (F) que serían necesarias en el proyecto.
+La tabla resultante ordena, de forma descendente, las puntuaciones obtenidas entre la multiplicación de los indicadores de importancia y dificultad, siendo 9 la máxima calificación y 1 la mínima. Para establecer un orden en el desarrollo de los requisitos, se considera más prioritaria la implementación de las funcionalidades con puntuación 9 (imprescindibles y fáciles de implementar) y las menos prioritarias serán aquellas con puntuación 1 (funcionalidades poco importantes y difíciles de implementar). En la Tabla \ref{tabla:cap5:sec:segundaIteracionTablaRequisitos1} se muestra el listado final de las funcionalidades, agrupadas por tipo de adaptación, con la media de las puntuaciones obtenidas.
 
-Las tablas resultantes ordenan, de forma descendente, las puntuaciones obtenidas entre la multiplicación de los indicadores de importancia y dificultad, siendo 9 la máxima calificación y 1 la mínima. Para establecer un orden en el desarrollo de los requisitos, se considera más prioritaria la implementación de las funcionalidades con puntuación 9 (imprescindibles y fáciles de implementar) y las menos prioritarias serán aquellas con puntuación 1 (funcionalidades poco importantes y difíciles de implementar). En la Tabla \ref{tabla:cap5:sec:segundaIteracionTablaRequisitos1} se muestra el listado final de las funcionalidades, agrupadas por tipo de adaptación, con la media de las puntuaciones obtenidas.
+El resultado final se separó en dos tablas. La primera, la Tabla \ref{tabla:cap5:sec:segundaIteracionTablaOrdenFuncionalidades}, contiene las funcionalidades de la aplicación: las adaptaciones de temario (T) y actividades y/o exámenes (A), y la segunda, la Tabla \ref{tabla:cap5:sec:segundaIteracionTablaOrdenPersonalizacion}, contiene las adaptaciones de formato (F) que serían necesarias en el proyecto.
+
 
 \begin{table}
 	\begin{adjustbox}{center}
@@ -139,7 +137,7 @@ Las tablas resultantes ordenan, de forma descendente, las puntuaciones obtenidas
 			Aumentar el tamaño de la fuente de una parte del texto & 3 & 2,7 \\ \hline
 			Subrayar una parte del texto & 2 & 2,7 \\ \hline
 			Poner en negrita una parte del texto & 3 & 2,7 \\ \hline
-			Añadir imágenes buscando una palabra & 3 & 2,3 \\ \hline
+			Añadir imágenes buscando una palabra en bases de datos de imágenes libres & 3 & 2,3 \\ \hline
 		\end{tabular}
 	}
 	\end{adjustbox}
@@ -170,6 +168,7 @@ Las tablas resultantes ordenan, de forma descendente, las puntuaciones obtenidas
 	}
 	\end{adjustbox}
 	\caption{Lista de funcionalidades ordenada por prioridad.}
+	\label{tabla:cap5:sec:segundaIteracionTablaOrdenFuncionalidades}
 \end{table}
 
 \begin{table}
@@ -181,8 +180,8 @@ Las tablas resultantes ordenan, de forma descendente, las puntuaciones obtenidas
 				\textbf{Tipo de requisito} & \textbf{Requisito} & \textbf{Puntuación}\\ \hline
 				\textbf{F} & Resaltar una palabra con un color & \textbf{9} \\ \hline
 				\textbf{F} & Aumentar el tamaño de la fuente de una parte del texto & \textbf{8,1} \\ \hline
-				\textbf{F} &Poner en negrita una parte del texto & \textbf{8,1} \\ \hline
-				\textbf{F} & Añadir imágenes buscando una palabra & \textbf{6,9} \\ \hline
+				\textbf{F} & Poner en negrita una parte del texto & \textbf{8,1} \\ \hline
+				\textbf{F} & Añadir imágenes buscando una palabra en bases de datos de imágenes libres & \textbf{6,9} \\ \hline
 				\textbf{F} & 
 				Añadir enunciados y ejemplos (con o sin pictogramas), donde se explique cómo debe resolverse el ejercicio & \textbf{6} \\ \hline
 				\textbf{F} & Estandarizar formato para títulos e índices del temario, generando de forma automática una plantilla del color de la asignatura & \textbf{6} \\ \hline
@@ -194,7 +193,7 @@ Las tablas resultantes ordenan, de forma descendente, las puntuaciones obtenidas
 		}
 	\end{adjustbox}
 	\caption{Lista de opciones de personalización ordenada por prioridad.}
-	\label{tabla:cap5:sec:segundaIteracion-nuevaAdaptacionFormato}
+	\label{tabla:cap5:sec:segundaIteracionTablaOrdenPersonalizacion}
 \end{table}
 
 
@@ -202,7 +201,7 @@ Las tablas resultantes ordenan, de forma descendente, las puntuaciones obtenidas
 
 El miércoles 4 de diciembre de 2019, el grupo de investigación NIL (Natural Interaction based on Language) organizó un workshop en la Facultad de Informática de la Universidad Complutense con docentes de otros centros y asociacione. Durante este workshop se mostraron las herramientas tecnológicas inclusivas que se habían desarrollado o que se encontraban en desarrollo, siendo una de las presentadas AdaptaMaterialEscolar.
 
-Un miembro del equipo de desarrollo, Jorge Velasco Conde, realizó una presentación en la que explicó a los asistentes el funcionamiento y la finalidad de nuestro proyecto, con ejemplos visuales sobre posibles adaptaciones que podrían llegar a realizarse. Después de la presentación se realizó una ronda de opiniones con todos los docentes y expertos, para que pudieran expresar qué les había parecido la aplicación web. Todos los comentarios fueron muy positivos y preguntaron cuándo estaría disponible para uso público. Además de dar un feedback positivo sobre el proyecto, también propusieron un tipo de adaptación de formato , para mejorar las opciones de personalización para los alumnos. El requisito consiste en facilitar a los alumnos con letra de mayor tamaño que puedan escribir en un espacio suficientemente grande para ellos, ampliando la distancia entre renglones cuando sea necesario.
+Un miembro del equipo de desarrollo, Jorge Velasco Conde, realizó una presentación en la que explicó a los asistentes el funcionamiento y la finalidad de nuestro proyecto, con ejemplos visuales sobre posibles adaptaciones que podrían llegar a realizarse. Después de la presentación se realizó una ronda de opiniones con todos los docentes y expertos, para que pudieran expresar qué les había parecido la aplicación web. Todos los comentarios fueron muy positivos y preguntaron cuándo estaría disponible para uso público. Además de dar un feedback positivo sobre el proyecto, también propusieron un nuevo tipo de adaptación de formato, para mejorar las opciones de personalización para los alumnos. El requisito consiste en facilitar a los alumnos con letra de mayor tamaño que puedan escribir en un espacio suficientemente grande para ellos, ampliando la distancia entre renglones cuando sea necesario.
 
 \begin{table}
 	\begin{adjustbox}{center}

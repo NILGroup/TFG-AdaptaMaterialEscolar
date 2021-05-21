@@ -19,18 +19,21 @@ import { selectEditorClass } from '../../redux/editor/editor.selectors';
 import { connect } from 'react-redux';
 import { setEditor } from '../../redux/editor/editor.actions';
 import WordSearchPlugin from '../../ckeditor/plugins/wordSearch/wordSearchPlugin';
+import DefinitionsPlugin from '../../ckeditor/plugins/definitions/definitionsPlugin';
+import TrueFalsePlugin from '../../ckeditor/plugins/trueFalse/trueFalsePlugin';
+import DevelopPlugin from '../../ckeditor/plugins/develop/developPlugin';
 //import FillWords from '../rellenarPalabrasPlugin/fillWords';
 class Editor extends React.Component{
     
     constructor(props){
         super();
-        this.state = {editorData: "<p>Hola</p><hr>"};
+        this.state = {editorData: ""};
         this.handleEditorDataChange = this.handleEditorDataChange.bind( this );
         this.editor = props.editor;
         this.editorConfig = {
             language: 'es',
-            plugins: [Essentials, Heading, Bold, Italic, Underline,
-                    Link, Paragraph, Table, TableToolbar, PictogramEditing, Alignment, WordSearchPlugin
+            plugins: [ExportPdf, Essentials, Heading, Bold, Italic, Underline,
+                    Link, Paragraph, Table, TableToolbar, PictogramEditing, Alignment, WordSearchPlugin, DefinitionsPlugin, TrueFalsePlugin, DevelopPlugin
                 ],
             toolbar: [  'exportPdf', '|',
                         'heading',
@@ -47,6 +50,22 @@ class Editor extends React.Component{
                     'tableRow',
                     'mergeTableCells'
                 ]
+            },
+            exportPdf: {
+                stylesheets: [
+                    './path/to/fonts.css',
+                    'EDITOR_STYLES',
+                    'editorStyles.css'
+                ],
+                fileName: 'my-file.pdf',
+                converterOptions: {
+                    format: 'A4',
+                    margin_top: '20mm',
+                    margin_bottom: '20mm',
+                    margin_right: '12mm',
+                    margin_left: '12mm',
+                    page_orientation: 'portrait'
+                }
             }
         }
     }
@@ -60,16 +79,9 @@ class Editor extends React.Component{
         } );
     }
 
-
-    searchFunc = (url) => {
-            this.editor.execute( 'insertPictogram', url );
-            this.editor.editing.view.focus();
-    }
-
     render() {
         return (
         <div className="document-editor">
-            <div className="document-editor__toolbar"></div>
             <div className="document-editor__editable-container">
             <CKEditor editor={DecoupledEditor} 
                 data={this.state.editorData} 
