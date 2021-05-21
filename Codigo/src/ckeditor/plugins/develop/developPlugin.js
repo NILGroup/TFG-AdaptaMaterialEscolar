@@ -30,11 +30,11 @@ export default class DevelopPlugin extends Plugin {
             // Allow in places where other blocks are allowed (e.g. directly in the root).
             allowWhere: '$block',
 
-            isInline: true,
+            isInline: false,
 
             // Each product preview has an ID. A unique ID tells the application which
             // product it represents and makes it possible to render it inside a widget.
-            allowAttributes: [ 'characters' ]
+            allowAttributes: [ 'develop' ]
         } );
     }
 
@@ -45,13 +45,13 @@ export default class DevelopPlugin extends Plugin {
         // <productPreview> converters ((data) view → model)
         conversion.for( 'upcast' ).elementToElement( {
             view: {
-                name: 'table',
-                classes: 'table'
+                name: 'div',
+                classes: 'div'
             },
             model: ( viewElement, { writer: modelWriter } ) => {
                 // Read the "data-id" attribute from the view and set it as the "id" in the model.
                 return modelWriter.createElement( 'developPreview', {
-                    id: parseInt( viewElement.getAttribute( 'data-characters' ) )
+                    id: parseInt( viewElement.getAttribute( 'data-develop' ) )
                 } );
             }
         } );
@@ -63,8 +63,8 @@ export default class DevelopPlugin extends Plugin {
                 // In the data view, the model <productPreview> corresponds to:
                 //
                 // <section class="product" data-id="..."></section>
-                return viewWriter.createEmptyElement( 'table', {
-                    class: 'table',
+                return viewWriter.createEmptyElement( 'div', {
+                    class: 'develop'
                 } );
             }
         } );
@@ -80,11 +80,11 @@ export default class DevelopPlugin extends Plugin {
                 //         <ProductPreview /> (React component)
                 //     </div>
                 // </section>
-                const id = modelElement.getAttribute( 'characters' );
+                const id = modelElement.getAttribute( 'develop' );
 
                 // The outermost <section class="product" data-id="..."></section> element.
-                const section = viewWriter.createContainerElement( 'table', {
-                    class: 'table'
+                const section = viewWriter.createContainerElement( 'div', {
+                    class: 'develop'
                 } );
 
                 // The inner <div class="product__react-wrapper"></div> element.
@@ -94,8 +94,6 @@ export default class DevelopPlugin extends Plugin {
                 }, function( domElement ) {
                     // This the place where React renders the actual product preview hosted
                     // by a UIElement in the view. You are using a function (renderer) passed
-                    
-                    console.log(id);
                     ReactDOM.render(
                         <Provider store={ store }>
                             <Develop data={id}/>
