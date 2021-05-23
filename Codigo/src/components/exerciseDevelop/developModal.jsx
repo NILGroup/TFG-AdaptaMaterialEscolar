@@ -59,7 +59,7 @@ handleChange(e) {
         <div className="modal-develop">
           <div className="modal-develop__content">
             <div className="header" onMouseEnter={this.toggleDisableDrag} onMouseLeave={this.toggleDisableDrag} data-tip data-for="modalDevelopTip">
-              <ReactTooltip id="modalDevelopTip" place="top" effect="solid" delayHide={1500} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>Si me mantienes pulsado, ¡puedes arrastrarme a cualquier posición de la página!</ReactTooltip>
+              <ReactTooltip id="modalDevelopTip" place="top" effect="solid" delayHide={2000} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>¡Puedes arrastrar esta ventana a cualquier parte si mantienes pulsada la parte superior de la ventana!</ReactTooltip>
                 <button onClick={this.props.closeDevelopModal}><GrFormClose size="1.3em"/></button>
             </div>
             <div className="modal-develop__content__main">
