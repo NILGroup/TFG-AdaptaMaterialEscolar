@@ -4,6 +4,7 @@
     z-index: 1000;
     border: 1px solid grey;
     border-radius: 4px;
+    max-height: 800px;
 
     &__content{
         overflow: auto;
@@ -58,17 +59,16 @@
     
                     &__text{
                         @extend .container;
-                        flex-direction: column;
+                        flex-direction: row;
     
-                        textarea{
+                        input[type=text]{
                             width: 100%;
-                            font-family: sans-serif;
-                            font-size: medium;
-                            height: 10em;
-                            resize: none;
-                            border: 1px solid black;
-                            border-radius: 4px;
-                            padding: 4px;
+                            margin-top: 7px;
+                        }
+
+                        button{
+                            margin-left: 10px;
+                            margin-top: 7px;
                         }
                     }
 
