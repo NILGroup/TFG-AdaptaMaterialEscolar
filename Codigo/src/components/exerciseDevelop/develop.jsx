@@ -6,7 +6,7 @@ class Develop extends React.Component{
         return(
                 <div className="dev">
                     {this.props.data.text}
-                    {Array.from(Array(this.props.data.numLines - 1), () =>{
+                    {Array.from(Array(this.props.data.numLines), () =>{
                         if(this.props.data.extraspace){
                             return <div className="line extraspace-lines"></div>
                         }
