@@ -7,11 +7,14 @@ import pictogramReducer from './pictograms/pictograms.reducer';
 import trueFalseReducer from './trueFalse/trueFalse.reducer';
 import wordSearchReducer from './wordSearch/wordsearch.reducer';
 
+import developReducer from './develop/develop.reducer';
+
 export default combineReducers({
   document: documentReducer,
   pictogram: pictogramReducer,
   wordsearch: wordSearchReducer,
   definitions: definitionsReducer,
   editor: editorReducer,
-  trueFalse: trueFalseReducer
+  trueFalse: trueFalseReducer,
+  develop: developReducer
 });

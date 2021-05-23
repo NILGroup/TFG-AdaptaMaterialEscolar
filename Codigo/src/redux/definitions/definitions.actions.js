@@ -13,9 +13,9 @@ export const updateDefinitionsNumLines = (numLines) => ({
     payload: numLines
 });
 
-export const updateDefinitionsText = (text) => ({
+export const updateDefinitionsText = (text, i) => ({
     type: DefinitionsActionTypes.UPDATE_DEFINITIONS_TEXT,
-    payload: text
+    payload: {text: text, index: i}
 });
 
 export const resetDefinitionsModal = () => ({
@@ -25,4 +25,14 @@ export const resetDefinitionsModal = () => ({
 export const updateDefinitionsExtraSpace = (extraspace) => ({
     type: DefinitionsActionTypes.UPDATE_DEFINITIONS_EXTRASPACE,
     payload: extraspace
-})
+});
+
+export const addMoreDefinitions = (index) =>({
+    type: DefinitionsActionTypes.ADD_MORE_DEFINITIONS,
+    payload: index
+});
+
+export const deleteDefinition = (index) =>({
+    type: DefinitionsActionTypes.DELETE_DEFINITION,
+    payload: index
+});
