@@ -52,16 +52,32 @@
                 margin-left: 14px;
                 margin-right: 14px;
 
+                span{
+                    color: red;
+                    margin-right: 3px;
+                    font-size: 12px;
+                }
+
                 .container{
                     display:flex;
                     margin-bottom: 14px;
+
+                    &__info{
+                        @extend .container;
+                        font-size: 12px;
+                        font-style: italic;
+                        margin-bottom: 5px;
+                    }
     
                     &__text{
                         @extend .container;
                         flex-direction: column;
+
+                        label{
+                            margin-bottom: 5px;
+                        }
     
                         textarea{
-                            width: 100%;
                             font-family: sans-serif;
                             font-size: medium;
                             height: 10em;
@@ -69,6 +85,7 @@
                             border: 1px solid black;
                             border-radius: 4px;
                             padding: 4px;
+                            margin-left: 3px;
                         }
                     }
 
@@ -88,6 +105,13 @@
                         border: 1px solid black;
                         border-radius: 4px;
                         padding-left: 4px;
+                    }
+
+                    &__addHowToSolve{
+                        @extend .container;
+                        input[type=checkbox]{
+                            margin-left: 0px;
+                        }
                     }
                 }
             }
@@ -133,36 +157,27 @@
     background-color: red;
 }
 
-.line{
+.lineDev{
     width: 100%;
     border-bottom: 1px solid black;
-    margin-top: 1.2em;
+    height: 20px;
     display: inline-flex;
-}
-    
-ol { 
-    padding-left: 0em;
-}
-    
-li{
-    overflow:hidden;
-    margin-bottom: 0.5em;
-}
-    
-li:after {
-    content:"";
-    display: inline-flex;
-    vertical-align: bottom;
-    width: 100%;
-    margin-right: -100%;
-    margin-left: 5px;
-    border-bottom: 1px solid black;
 }
     
 .dev{
-    margin-bottom: 0.75em;
+    margin-bottom: 1.5em;
 }
 
-.extraspace-lines{
-    margin-top: 2em;
+.extraspace-linesDev{
+    height: 35px;
+}
+
+.answersDev{
+    margin-top: 10px;
+}
+
+.howToResolveExampleDev{
+    margin-top: 1em;
+    width: 100%;
+    text-align: left;
 }

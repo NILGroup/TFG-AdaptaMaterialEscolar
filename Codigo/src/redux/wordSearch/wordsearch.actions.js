@@ -18,9 +18,9 @@ export const updateWordSearchCols = (cols) => ({
     payload: cols
 });
 
-export const updateWordSearchDictionary = (dictionary) => ({
+export const updateWordSearchDictionary = (dictionary, index) => ({
     type: WordSearchActionTypes.UPDATE_WORDSEARCH_DICTIONARY,
-    payload: dictionary
+    payload: {dictionary: dictionary, index: index}
 });
 
 export const updateWordSearchVertical = (vertical) => ({
@@ -53,9 +53,8 @@ export const updateWordSearchBackWardsProbability = (backwardsProbability) => ({
     payload: backwardsProbability
 });
 
-export const updateWordSearchError = (error) => ({
-    type: WordSearchActionTypes.UPDATE_WORDSEARCH_ERROR,
-    payload: error
+export const updateWordSearchError = () => ({
+    type: WordSearchActionTypes.UPDATE_WORDSEARCH_ERROR
 });
 
 export const resetWordSearch = () =>({
@@ -66,21 +65,30 @@ export const createWordSearch = () => ({
     type: WordSearchActionTypes.CREATE_WORDSEARCH
 });
 
-export const updateWordSearchReady = (ready) => ({
-    type: WordSearchActionTypes.UPDATE_WORDSEARCH_READY,
-    payload: ready
-});
-
 export const updateWordSearchHiddenWords = (hiddenWords) => ({
     type: WordSearchActionTypes.UPDATE_WORDSEARCH_HIDDENWORDS,
     payload: hiddenWords
 });
 
-export const updateWordSearchReadyToCreate = (readyToCreate) => ({
-    type: WordSearchActionTypes.UPDATE_WORDSEARCH_READYTOCREATE,
-    payload: readyToCreate
+export const updateWordSearchReadyToPreview = () => ({
+    type: WordSearchActionTypes.UPDATE_WORDSEARCH_READYTOPREVIEW
 });
 
-export const updateWordSearchWords = () => ({
-    type: WordSearchActionTypes.UPDATE_WORDSEARCH_WORDS
+export const addMoreDictionary = () =>({
+    type: WordSearchActionTypes.ADD_MORE_DICTIONARY
+});
+
+export const deleteDictionary = (index) =>({
+    type: WordSearchActionTypes.DELETE_DICTIONARY,
+    payload: index
+});
+
+export const updateAddHowToSolve = (add) =>({
+    type: WordSearchActionTypes.UPDATE_WORDSEARCH_ADDHOWTOSOLVE,
+    payload: add
+});
+
+export const updateWordSearchReadyToPreviewForce = (force) =>({
+    type: WordSearchActionTypes.UPDATE_WORDSEARCH_READYTOPREVIEW,
+    payload: force
 })

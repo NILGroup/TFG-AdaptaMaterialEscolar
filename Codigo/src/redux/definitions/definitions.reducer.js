@@ -5,7 +5,9 @@ const INITIAL_STATE = {
     showDefinitionsModal: false,
     numLines: '',
     text: [""],
-    extraspace: false
+    extraspace: false,
+    addHowToSolve: false,
+    listType: false
 }
 
 const definitionsReducer = (state = INITIAL_STATE, action) => {
@@ -35,7 +37,9 @@ const definitionsReducer = (state = INITIAL_STATE, action) => {
                  ...state,
                 numLines: '',
                 text: [""],
-                extraspace: false
+                extraspace: false,
+                addHowToSolve: false,
+                listType: false
              };
         case DefinitionsActionTypes.UPDATE_DEFINITIONS_EXTRASPACE:
             return{
@@ -51,6 +55,16 @@ const definitionsReducer = (state = INITIAL_STATE, action) => {
             return{
                 ...state,
                 text: [...state.text.slice(0,action.payload), ...state.text.slice(action.payload + 1)]
+            }
+        case DefinitionsActionTypes.UPDATE_DEFINITIONS_ADDHOWTOSOLVE:
+            return{
+                ...state,
+                addHowToSolve: action.payload
+            };
+        case DefinitionsActionTypes.UPDATE_DEFINITIONS_CHOOSELISTTYPE:
+            return{
+                ...state,
+                listType: action.payload
             }
         default: 
             return state;

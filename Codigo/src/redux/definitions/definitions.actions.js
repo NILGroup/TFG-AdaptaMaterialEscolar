@@ -27,12 +27,21 @@ export const updateDefinitionsExtraSpace = (extraspace) => ({
     payload: extraspace
 });
 
-export const addMoreDefinitions = (index) =>({
-    type: DefinitionsActionTypes.ADD_MORE_DEFINITIONS,
-    payload: index
+export const addMoreDefinitions = () =>({
+    type: DefinitionsActionTypes.ADD_MORE_DEFINITIONS
 });
 
 export const deleteDefinition = (index) =>({
     type: DefinitionsActionTypes.DELETE_DEFINITION,
     payload: index
+});
+
+export const updateAddHowToSolve = (add) =>({
+    type: DefinitionsActionTypes.UPDATE_DEFINITIONS_ADDHOWTOSOLVE,
+    payload: add
+});
+
+export const updateChooseListType = (type) =>({
+    type: DefinitionsActionTypes.UPDATE_DEFINITIONS_CHOOSELISTTYPE,
+    payload: type
 });

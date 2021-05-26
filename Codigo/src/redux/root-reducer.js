@@ -8,6 +8,8 @@ import trueFalseReducer from './trueFalse/trueFalse.reducer';
 import wordSearchReducer from './wordSearch/wordsearch.reducer';
 
 import developReducer from './develop/develop.reducer';
+import definitionsDevelopReducer from './definitionsDevelopModal/definitionsDevelopModal.reducer';
+import toolbarReducer from './toolbar/toolbar.reducer';
 
 export default combineReducers({
   document: documentReducer,
@@ -16,5 +18,7 @@ export default combineReducers({
   definitions: definitionsReducer,
   editor: editorReducer,
   trueFalse: trueFalseReducer,
-  develop: developReducer
+  develop: developReducer,
+  definitionsDevelopModal: definitionsDevelopReducer,
+  toolbar: toolbarReducer
 });

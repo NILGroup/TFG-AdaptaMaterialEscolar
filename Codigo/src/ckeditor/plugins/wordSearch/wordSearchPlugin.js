@@ -1,4 +1,3 @@
-
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
@@ -96,15 +95,25 @@ export default class WordSearchPlugin extends Plugin {
                     // by a UIElement in the view. You are using a function (renderer) passed
                     ReactDOM.render(
                         <Provider store={ store }>
-                            <WordSearch data={id}/>
                             {id.showWords ?
                             <div className="showWords">
+                                <p>Busca en la sopa de letras las siguientes palabras: 
                                 {id.words.map((value, i) =>
-                                    i !== id.words.length - 1 ? value.clean + ", " : value.clean
+                                    i !== id.words.length - 1 ? " " + value.clean + ", " : " " + value.clean
                                 )}
+                                </p>
                             </div>
-                            : null
+                            : <div className="showWords">
+                                <p>Encuentra {id.words.length} {id.words.length === 1 ? "palabra escondida" : "palabras escondidas"} en la sopa de letras.</p>
+                            </div>
                             }
+                            <WordSearch data={id}/>
+                            {id.addHowToSolve ?
+                            <div className="howToResolveExampleWordSearch">
+                                <p><u>Cómo resolver el ejercicio:</u> Primero busca una de las palabras en la sopa de letras. Ten en cuenta que las palabras pueden estar escondidas en vertical, horizontal y/o diagonal, y es posible que algunas estén escritas al revés. Cuando hayas encontrado la palabra, rodéala.</p>
+                            </div>
+                            : null}
+                            <br/>
                         </Provider>
                         ,
                         domElement

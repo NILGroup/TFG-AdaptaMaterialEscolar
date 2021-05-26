@@ -7,7 +7,7 @@ import Pictogram from '../pictogram/pictogram';
 import "./pictogramSearchModal.scss";
 import ReactTooltip from "react-tooltip";
 import Draggable from "react-draggable";
-import { GrFormClose } from "react-icons/gr";
+import { IoMdClose } from "react-icons/io";
 
 class PictogramSearchModal extends React.Component{
     constructor(props){
@@ -41,8 +41,8 @@ class PictogramSearchModal extends React.Component{
                 <div className="pictoSearch">
                     <div className="pictoSearch__content">
                         <div className="header" onMouseEnter={this.toggleDisableDrag} onMouseLeave={this.toggleDisableDrag} data-tip data-for="modalPictoTip">
-                            <ReactTooltip className="tooltip" id="modalPictoTip" place="top" effect="solid" delayHide={1500} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>Si me mantienes pulsado, ¡puedes arrastrarme a cualquier posición de la página!</ReactTooltip>
-                                <button onClick={this.props.closeModal}><GrFormClose size="1.3em"/></button>
+                            <ReactTooltip className="tooltip" id="modalPictoTip" place="top" effect="solid" delayHide={2000} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>¡Puedes arrastrar esta ventana a cualquier parte si mantienes pulsada la parte superior de la misma!</ReactTooltip>
+                                <button onClick={this.props.closeModal}><IoMdClose size="1.2em"/></button>
                         </div>
                         <div className="pictoSearch__content__main">
                             <input type="text" className="searchInput" onChange={this.handleChange}/>

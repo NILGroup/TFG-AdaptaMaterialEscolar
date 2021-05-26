@@ -4,7 +4,8 @@ const INITIAL_STATE = {
     showDefinitionsModal: false,
     numLines: '',
     text: '',
-    extraspace: false
+    extraspace: false,
+    addHowToSolve: false
 }
 
 const developReducer = (state = INITIAL_STATE, action) => {
@@ -16,31 +17,37 @@ const developReducer = (state = INITIAL_STATE, action) => {
             };
         case DevelopActionTypes.CLOSE_DEVELOP_MODAL: 
             return {
-                 ...state,
-                 showDevelopModal: false
-             };
+                ...state,
+                showDevelopModal: false
+            };
         case DevelopActionTypes.UPDATE_DEVELOP_NUMLINES: 
-             return {
-                  ...state,
-                 numLines: action.payload
-              };
+            return {
+                ...state,
+                numLines: action.payload
+            };
          case DevelopActionTypes.UPDATE_DEVELOP_TEXT: 
-             return {
-                  ...state,
-                  text: action.payload
-              };     
+            return {
+                ...state,
+                text: action.payload
+            };     
          case DevelopActionTypes.RESET_DEVELOP_MODAL: 
-             return {
-                  ...state,
-                 numLines: '',
-                 text: '',
-                 extraspace: false
-              };
+            return {
+                ...state,
+                numLines: '',
+                text: '',
+                extraspace: false,
+                addHowToSolve: false
+            };
         case DevelopActionTypes.UPDATE_DEVELOP_EXTRASPACE:
             return{
                 ...state,
                 extraspace: action.payload
-            }
+            };
+        case DevelopActionTypes.UPDATE_DEVELOP_ADDHOWTOSOLVE:
+            return{
+                ...state,
+                addHowToSolve: action.payload
+            };
          default: 
              return state;
      }

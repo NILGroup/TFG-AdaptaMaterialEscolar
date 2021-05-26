@@ -4,19 +4,37 @@ import './definitions.scss'
 class Definitions extends React.Component{
     render(){
         return(
-            <ol>
-                {this.props.data.text.split(",").map((value) => 
+            <div className="exerciseDef">
+                {this.props.data.listType === "ul" ?
+                <ul>
+                {this.props.data.text.map((value) => 
                     <div className="defi">
                         <li>{value}</li>
-                        {Array.from(Array(this.props.data.numLines - 1), () =>{
+                        {Array.from(Array(parseInt(this.props.data.numLines) - 1), () =>{
                             if(this.props.data.extraspace){
-                                return <div className="line extraspace-lines"></div>
+                                return <div className="lineDefi extraspace-linesDefi"></div>
                             }
-                            else return <div className="line"></div>
+                            else return <div className="lineDefi"></div>
                         })}
                     </div>
                 )}
-            </ol>
+                </ul>
+                :
+                <ol>
+                {this.props.data.text.map((value) => 
+                    <div className="defi">
+                        <li>{value}</li>
+                        {Array.from(Array(parseInt(this.props.data.numLines) - 1), () =>{
+                            if(this.props.data.extraspace){
+                                return <div className="lineDefi extraspace-linesDefi"></div>
+                            }
+                            else return <div className="lineDefi"></div>
+                        })}
+                    </div>
+                )}
+                </ol>
+                }
+            </div>
         );
     }
 }

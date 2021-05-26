@@ -1,4 +1,3 @@
-
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
@@ -28,7 +27,7 @@ export default class DevelopPlugin extends Plugin {
             isObject: true,
 
             // Allow in places where other blocks are allowed (e.g. directly in the root).
-            allowWhere: '$block',
+            allowWhere: '$text',
 
             isInline: false,
 
@@ -97,6 +96,12 @@ export default class DevelopPlugin extends Plugin {
                     ReactDOM.render(
                         <Provider store={ store }>
                             <Develop data={id}/>
+                            {id.addHowToSolve ?
+                            <div className="howToResolveExampleDev">
+                                <p><u>Cómo resolver el ejercicio:</u> Tienes que escribir lo que pide el enunciado usando como máximo {id.numLines} {parseInt(id.numLines) === 1 ? "línea" : "líneas"} (no es necesario rellenar {parseInt(id.numLines) === 1 ? "toda la línea" : "todas las líneas"})</p>
+                            </div>
+                            : null}
+                            <br/>
                         </Provider>
                         ,
                         domElement

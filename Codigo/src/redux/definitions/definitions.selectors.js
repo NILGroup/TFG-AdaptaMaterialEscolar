@@ -21,3 +21,13 @@ export const selectDefinitionsExtraSpace = createSelector(
   [selectDefinitions],
   definitions => definitions.extraspace
 );
+
+export const selectDefinitionsAddHowToSolve = createSelector(
+    [selectDefinitions],
+    definitions => definitions.addHowToSolve
+);
+
+export const selectDefinitionsChooseListType = createSelector(
+    [selectDefinitions],
+    definitions => definitions.listType
+);

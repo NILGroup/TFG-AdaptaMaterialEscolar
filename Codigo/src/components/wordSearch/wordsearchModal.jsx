@@ -2,21 +2,24 @@ import "./wordsearch.styles.scss";
 import React from 'react';
 import ReactTooltip from "react-tooltip";
 import Draggable from "react-draggable";
-import { FaInfoCircle } from "react-icons/fa";
-import { GrFormClose } from "react-icons/gr";
 import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 import { selectCurrentDocument } from "../../redux/document/document.selectors";
 import { closeWordSearchModal, updateWordSearchRows, updateWordSearchCols, updateWordSearchDictionary, updateWordSearchDiagonal, updateWordSearchHorizontal, 
     updateWordSearchVertical, updateWordSearchMaxWords, updateWordSearchActivateBackwards,
-    updateWordSearchBackWardsProbability, resetWordSearch, createWordSearch, updateWordSearchError, updateWordSearchReady,
-    updateWordSearchHiddenWords, updateWordSearchReadyToCreate, updateWordSearchWords} from "../../redux/wordSearch/wordsearch.actions";
+    updateWordSearchBackWardsProbability, resetWordSearch, createWordSearch, updateWordSearchError,
+    updateWordSearchHiddenWords, updateWordSearchReadyToPreview, addMoreDictionary, deleteDictionary, updateAddHowToSolve, updateWordSearchReadyToPreviewForce} from "../../redux/wordSearch/wordsearch.actions";
 import { selectWordSearchModalRows, selectWordSearchModalCols, selectWordSearchModalDictionary, selectWordSearchModalVertical, selectWordSearchModalHorizontal, 
     selectWordSearchModalDiagonal, selectWordSearchModalMaxWords, selectWordSearchModalActivateBackwards, 
-    selectWordSearchModalBackwardsProbability, selectWordSearchModalError, selectWordSearchModalReady, selectWordSearchModalHiddenWords, selectWordSearchModalWordSearchObj, selectWordSearchModalReadyToCreate, selectWordSearchModalWords} from "../../redux/wordSearch/wordsearch.selectors";
+    selectWordSearchModalBackwardsProbability, selectWordSearchModalError, selectWordSearchModalHiddenWords, selectWordSearchModalWordSearchObj, selectWordSearchModalReadyToPreview, selectWordSearchModalAddHowToSolve} from "../../redux/wordSearch/wordsearch.selectors";
 
 import WordSearch from "../wordSearch/wordSearch";
 import { selectEditorClass } from "../../redux/editor/editor.selectors";
+
+//Icons
+import { IoMdClose } from "react-icons/io";
+import {GoPlus, GoDash} from 'react-icons/go';
+import { FcInfo } from 'react-icons/fc';
 
 class WordSearchModal extends React.Component{
     constructor(props){
@@ -40,42 +43,37 @@ class WordSearchModal extends React.Component{
         });
     }
 
-    handleClick = () => {
+    async generateWordSearch(){
         this.props.createWordSearch();
-        this.props.updateWords();
-        if(!this.props.readyToCreate){
-            this.props.updateReadyToCreate(true);
-        }
+        this.props.updateError();
     }
 
-    generateTable = () =>{
-        if(this.props.readyToCreate){
-            if(this.props.wordSearchObject !== null){
-                if(this.props.wordSearchObject.words.length < this.props.words.length){
-                    this.props.updateError("No todas las palabras introducidas están en la sopa de letras. Prueba a cambiar el valor de las filas, columnas y/o número máximo de palabras, y vuelve a hacer clic en Vista Previa para generar otra");
-                }
-                else{
-                    this.props.updateError("");
-                }
-                this.props.updateReady(true);
-                return(
-                    <WordSearch data={this.props.wordSearchObject}/>
-                );
-            }
-            else{
-                this.props.updateError("Las filas y columnas deben tener un valor positivo mayor que 0");
-                this.props.updateReady(false);
-                this.props.updateReadyToCreate(false);
-                return null;
-            }
-        }
+    preview = () =>{
+        this.generateWordSearch();
+        this.props.updateReadyToPreview();
     }
 
-    accept = () => {
-        this.props.editor.execute( 'insertWordSearch', {grid: this.props.wordSearchObject.grid, words: this.props.wordSearchObject.words, showWords: this.props.hiddenWords});
-        this.props.editor.editing.view.focus();
-        this.props.closeModal();
-        this.props.resetWordSearch();
+    accept = async () => {
+        this.props.updateForceReadyToPreview(false);
+        if(this.props.wordSearchObject !== null){
+            if(this.props.error !== ''){
+                await this.generateWordSearch();
+            }
+        }
+        else{
+            await this.generateWordSearch();
+        }
+
+        this.writeInEditor();
+    }
+
+    writeInEditor(){
+        if(this.props.wordSearchObject !== null && this.props.error === ''){
+            this.props.editor.execute( 'insertWordSearch', {grid: this.props.wordSearchObject.grid, words: this.props.wordSearchObject.words, showWords: this.props.hiddenWords, addHowToSolve: this.props.addHowToSolve});
+            this.props.editor.editing.view.focus();
+            this.props.closeModal();
+            this.props.resetWordSearch();
+        }
     }
 
     onChange(e){
@@ -85,9 +83,6 @@ class WordSearchModal extends React.Component{
                 break;
             case "cols":
                 this.props.updateCols(e.target.value);
-                break;
-            case "dictionary":
-                this.props.updateDictionary(e.target.value);
                 break;
             case "vertical":
                 this.props.updateVertical(e.target.checked);
@@ -110,9 +105,35 @@ class WordSearchModal extends React.Component{
             case "hiddenWords":
                 this.props.updateHiddenWords(e.target.checked);
                 break;
+            case "addHowToSolve":
+                this.props.updateAddHowToSolve(e.target.checked);
+                break;
             default:
                 break;
         }
+    }
+
+    handleChangeDictionary(e, i){
+        this.props.updateDictionary(e.target.value, i);
+    }
+
+    handleKeyDown = (e) =>{
+        if(e.keyCode === 13){ //enter
+            this.props.addMoreDictionary();
+        }
+    }
+    
+    componentDidUpdate(prevProps){
+        if(this.props.dictionary !== prevProps.dictionary && this.props.dictionary.length > 1){
+            this.nameInput.focus();
+        }
+        if(this.props.rows !== prevProps.rows && this.props.rows === ""){
+            this.nameRows.focus();
+        }
+    }
+
+    componentDidMount(){
+        this.nameRows.focus();
     }
 
     render(){
@@ -121,25 +142,36 @@ class WordSearchModal extends React.Component{
                 <div className="wordsearchModal">
                     <div className="wordsearchModal__content">
                         <div className="header" onMouseEnter={this.toggleDisableDrag} onMouseLeave={this.toggleDisableDrag} data-tip data-for="modalWordSearchTip">
-                        <ReactTooltip id="modalWordSearchTip" place="top" effect="solid" delayHide={1500} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>Si me mantienes pulsado, ¡puedes arrastrarme a cualquier posición de la página!</ReactTooltip>
-                            <button onClick={this.props.closeModal}><GrFormClose size="1.3em"/></button>
+                        <ReactTooltip id="modalWordSearchTip" place="top" effect="solid" delayHide={2000} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>¡Puedes arrastrar esta ventana a cualquier parte si mantienes pulsada la parte superior de la misma!</ReactTooltip>
+                            <button onClick={this.props.closeModal}><IoMdClose size="1.2em"/></button>
                         </div>
-                        <div className="modal-main">
-                            <div className="wordsearch-container">
+                        <div className="wordsearchModal__content__main">
+                            <div className="wordsearchModal__content__main__container">
                                 <div className="container__info">
                                     <span>* Campos obligatorios</span>
                                 </div>
-                                <div className="container">
-                                    <label><span>*</span>Filas</label> <input name="rows" type="number" min="1" onChange={this.onChange} value={this.props.rows}/>
+                                <div className="container__configTable">
+                                    <label><span>*</span>Filas</label> <input ref={(input) => {this.nameRows = input;}} name="rows" type="number" min="1" onChange={this.onChange} value={this.props.rows}/>
                                     <label><span>*</span>Columnas</label> <input name="cols" type="number" min="1" onChange={this.onChange} value={this.props.cols}/>
-                                    <label>Número máximo de palabras <FaInfoCircle data-tip data-for="maxWordsTip"/><ReactTooltip id="maxWordsTip" place="top" effect="solid">
+                                    <label>Palabras máximas <FcInfo data-tip data-for="maxWordsTip"/><ReactTooltip id="maxWordsTip" place="top" effect="solid">
                                         Número máximo de palabras que se insertarán en la sopa de letras. Por defecto es 20.
-                                        </ReactTooltip></label> <input name="maxWords" type="number" min="1" value={this.props.maxWords} onChange={this.onChange}/>
+                                        </ReactTooltip></label> <input name="maxWords" type="number" min="1" onChange={this.onChange} value={this.props.maxWords}/>
                                 </div>
-                                
                                 <div className="container__words">
-                                    <label><span>*</span>Escribe las palabras a buscar separadas por comas:</label>
-                                    <textarea id="dictionary" name="dictionary"onChange={this.onChange} value={this.props.dictionary}></textarea>
+                                    <label><span>*</span>Escribe las palabras a buscar (una por recuadro):<FcInfo data-tip data-for="dictionaryTip"/><ReactTooltip id="dictionaryTip" place="top" effect="solid">
+                                        Puedes añadir más filas pulsando la tecla enter dentro de los recuadros
+                                        </ReactTooltip></label>
+                                    <div className="container__words__inputs">
+                                    {this.props.dictionary.map((el, i) =>{
+                                        return(
+                                        <div key={"ws-" + i} className="container__words__text">
+                                            <input ref={(input) => {this.nameInput = input;}} type="text" autoComplete="off" name="text" value={el} onChange={(e) =>{ this.handleChangeDictionary(e, i)}} onKeyDown={this.handleKeyDown}/>
+                                            <button data-tip data-for="addTip" className="add" onClick={this.props.addMoreDictionary}><GoPlus color="white" size="1.3em"/><ReactTooltip id="addTip" place="top" effect="solid">Añadir más palabras</ReactTooltip></button>
+                                            {<button data-tip data-for="deleteTip" className="delete" disabled={this.props.dictionary.length === 1} onClick={() => {this.props.deleteDictionary(i)}}><GoDash color="white" size="1.3em"/><ReactTooltip id="deleteTip" place="top" effect="solid">Quitar palabra</ReactTooltip></button>}
+                                        </div>
+                                    )})}
+                                    </div>
+                                    
                                 </div>
                                 <div className="container__searchWords">
                                     <label><span>*</span>Buscar palabras en:</label>
@@ -150,43 +182,44 @@ class WordSearchModal extends React.Component{
                                     </div>
                                 </div>
                                 <div className="container__backwards">
-                                    <label><input id="activateBackwards" type="checkbox" name="activateBackwards" onChange={this.onChange} checked={this.props.activateBackwards}/>Activar escritura al revés <FaInfoCircle data-tip data-for="activateBackwardsProbTip"/><ReactTooltip id="activateBackwardsProbTip" place="top" effect="solid">
+                                    <label><input id="activateBackwards" type="checkbox" name="activateBackwards" onChange={this.onChange} checked={this.props.activateBackwards}/>Activar escritura al revés <FcInfo data-tip data-for="activateBackwardsProbTip"/><ReactTooltip id="activateBackwardsProbTip" place="top" effect="solid">
                                         Activa la probabilidad que tiene cada palabra de escribirse al revés
                                         </ReactTooltip></label>
                                         {this.props.activateBackwards ?
                                         <div className="container__backwards__activateBackwards">
-                                            <label>Probabilidad de escribir cada palabra al revés <FaInfoCircle data-tip data-for="backwardsProbTip"/><ReactTooltip id="backwardsProbTip" place="top" effect="solid">
+                                            <label>Probabilidad de escribir cada palabra al revés <FcInfo data-tip data-for="backwardsProbTip"/><ReactTooltip id="backwardsProbTip" place="top" effect="solid">
                                             Esta probabilidad es independiente para cada palabra. Por defecto es 0,3.
                                             </ReactTooltip></label>
-                                            <div>
-                                                <input type="range" min="0.0" max="1.0" value={this.props.backwardsProbability} step="0.1" id="backwardsProbability" name="backwardsProbability" onChange={this.onChange}/>{this.props.backwardsProbability}
-                                            </div>
+                                            <input type="range" min="0.1" max="1.0" value={this.props.backwardsProbability} step="0.1" id="backwardsProbability" name="backwardsProbability" onChange={this.onChange}/>{this.props.backwardsProbability}
                                         </div>
                                         :
                                         null
                                         }
                                 </div>
+                                <div className="container__showWords">
+                                    <label><input id="hiddenWords" type="checkbox" name="hiddenWords" onChange={this.onChange} checked={this.props.hiddenWords}/>Mostrar en el ejercicio las palabras a buscar</label>
+                                </div>
+                                <div className="container__addHowToSolve">
+                                    <label><input id="addHowToSolve" type="checkbox" name="addHowToSolve" onChange={this.onChange} checked={this.props.addHowToSolve}/>Añadir ejemplo de cómo resolver el ejercicio</label>
+                                </div>
 
-                                {this.props.error !== "" ?
+                                {this.props.error !== '' ?
                                     <div id="errorMessages" className="container__error">
                                         {this.props.error}
                                     </div>
                                 :
                                 null}   
                                 
-                                {this.props.wordSearchObject !== null ?
+                                {this.props.readyToPreview ?
                                 <div id="wordsearch-preview" className="container__preview">
                                     <div className="preview">Vista previa</div>
                                     <div className="board">
-                                        {this.generateTable()}
+                                        {this.props.wordSearchObject !== null ?
+                                         <WordSearch data={this.props.wordSearchObject}/>
+                                        :
+                                        null}
                                     </div>
                                 </div>
-                                :
-                                null}
-                                {this.props.ready ? 
-                                    <div className="container">
-                                    <label><input id="hiddenWords" type="checkbox" name="hiddenWords" onChange={this.onChange} checked={this.props.hiddenWords}/>Mostrar en el ejercicio las palabras a buscar</label>
-                                    </div>
                                 :
                                 null}
                                 
@@ -194,8 +227,8 @@ class WordSearchModal extends React.Component{
                         </div>
                         <div className="footer">
                             <button className="reset" onClick={this.props.resetWordSearch}>Resetear</button>
-                            <button className="previewView" onClick={this.handleClick} disabled={!this.props.rows || !this.props.cols || !this.props.dictionary || (!this.props.vertical && !this.props.horizontal && !this.props.diagonal)}>Vista previa</button>
-                            <button className="accept" onClick={this.accept} disabled={!this.props.ready}>Aceptar</button>
+                            <button className="previewView" onClick={this.preview} disabled={!this.props.rows || !this.props.cols || this.props.dictionary.filter(def => def === "").length > 0 || (!this.props.vertical && !this.props.horizontal && !this.props.diagonal)}>Vista previa</button>
+                            <button className="accept" onClick={this.accept} disabled={!this.props.rows || !this.props.cols || this.props.dictionary.filter(def => def === "").length > 0 || (!this.props.vertical && !this.props.horizontal && !this.props.diagonal)}>Aceptar</button>
                         </div>
                     </div>
                 </div>
@@ -210,7 +243,7 @@ const mapDispatchToProps = (dispatch) => ({
     closeModal: () => dispatch(closeWordSearchModal()),
     updateRows: (rows) => dispatch(updateWordSearchRows(rows)),
     updateCols: (cols) => dispatch(updateWordSearchCols(cols)),
-    updateDictionary: (dictionary) => dispatch(updateWordSearchDictionary(dictionary)),
+    updateDictionary: (dictionary, index) => dispatch(updateWordSearchDictionary(dictionary, index)),
     updateVertical: (vertical) => dispatch(updateWordSearchVertical(vertical)),
     updateHorizontal: (horizontal) => dispatch(updateWordSearchHorizontal(horizontal)),
     updateDiagonal: (diagonal) => dispatch(updateWordSearchDiagonal(diagonal)),
@@ -219,11 +252,13 @@ const mapDispatchToProps = (dispatch) => ({
     updateBackwardsProbability: (backwardsProbability) => dispatch(updateWordSearchBackWardsProbability(backwardsProbability)),
     resetWordSearch: () => dispatch(resetWordSearch()),
     createWordSearch: () => dispatch(createWordSearch()),
-    updateError: (error) => dispatch(updateWordSearchError(error)),
+    updateError: () => dispatch(updateWordSearchError()),
     updateHiddenWords: (hiddenWords) => dispatch(updateWordSearchHiddenWords(hiddenWords)),
-    updateReady: (ready) => dispatch(updateWordSearchReady(ready)),
-    updateReadyToCreate: (readyToCreate) => dispatch(updateWordSearchReadyToCreate(readyToCreate)),
-    updateWords: () => dispatch(updateWordSearchWords())
+    updateReadyToPreview: () => dispatch(updateWordSearchReadyToPreview()),
+    addMoreDictionary: () => dispatch(addMoreDictionary()),
+    deleteDictionary: (index) => dispatch(deleteDictionary(index)),
+    updateAddHowToSolve: (add) => dispatch(updateAddHowToSolve(add)),
+    updateForceReadyToPreview: (force) => dispatch(updateWordSearchReadyToPreviewForce(force))
 });
 
 //datos (lectura)
@@ -241,10 +276,9 @@ const mapStateToProps = createStructuredSelector({
     error: selectWordSearchModalError,
     wordSearchObject: selectWordSearchModalWordSearchObj,
     hiddenWords: selectWordSearchModalHiddenWords,
-    ready: selectWordSearchModalReady,
-    readyToCreate: selectWordSearchModalReadyToCreate,
+    readyToPreview: selectWordSearchModalReadyToPreview,
+    addHowToSolve: selectWordSearchModalAddHowToSolve,
     editor: selectEditorClass,
-    words: selectWordSearchModalWords
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WordSearchModal);

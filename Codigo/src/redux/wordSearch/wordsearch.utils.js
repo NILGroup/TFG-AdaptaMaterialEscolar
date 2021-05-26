@@ -55,7 +55,7 @@ export const createWordSearch = (wordSearchObject, options) =>{
             ...options,
             rows: parseInt(options.rows),
             cols: parseInt(options.cols),
-            dictionary: options.dictionary.split(",").map(item => item.trim()),
+            dictionary: options.dictionary.map(item => item.trim()),
             maxWords: parseInt(options.maxWords)
         }
         if(options.rows > 0 && options.cols > 0){
@@ -70,4 +70,31 @@ export const createWordSearch = (wordSearchObject, options) =>{
     catch(error){
         return null;
     }
+}
+
+export const manageError = (error, wordSearchObject, dictionaryLength) =>{
+    if(wordSearchObject !== null){
+        if(wordSearchObject.words.length < dictionaryLength){
+            error = "No todas las palabras introducidas están en la sopa de letras. Prueba a cambiar el valor de las filas, columnas y/o número máximo de palabras";
+        }
+        else {
+            error = "";
+        }
+    }
+    else{
+        error = "Las filas y columnas deben tener un valor positivo mayor que 0";
+    }
+
+    return error;
+}
+
+export const manageReadyToPreview = (readyToPreview, wordSearchObject, error) =>{
+    if((error === '' || error.startsWith('N')) && wordSearchObject !== null){
+        readyToPreview = true;
+    }
+    else{
+        readyToPreview = false;
+    }
+
+    return readyToPreview;
 }
