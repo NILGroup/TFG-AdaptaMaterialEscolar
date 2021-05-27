@@ -53,7 +53,6 @@ class Editor extends React.Component{
             },
             exportPdf: {
                 stylesheets: [
-                    './path/to/fonts.css',
                     'EDITOR_STYLES',
                     'editorStyles.css'
                 ],

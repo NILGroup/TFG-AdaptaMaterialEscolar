@@ -42,5 +42,9 @@ li:after {
     margin-top: 2em;
 }
 
-
+.definitions-line{
+    width: 200px;
+    border-bottom: 2px solid black;
+    height: 20px;
+}
 /*TODO Wordsearch*/

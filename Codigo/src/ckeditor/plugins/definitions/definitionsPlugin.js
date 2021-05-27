@@ -35,83 +35,80 @@ export default class DefinitionsPlugin extends Plugin {
             // product it represents and makes it possible to render it inside a widget.
             allowAttributes: [ 'definitions' ]
         } );
+
+        schema.register( 'definitionsText', {
+            // Behaves like a self-contained object (e.g. an image).
+            isObject: true,
+
+            // Allow in places where other blocks are allowed (e.g. directly in the root).
+            allowWhere: '$text',
+
+            isBlock: true
+
+            // Each product preview has an ID. A unique ID tells the application which
+            // product it represents and makes it possible to render it inside a widget.
+        } );
+
+        schema.register( 'definitionsSameLine', {
+            // Behaves like a self-contained object (e.g. an image).
+            isObject: true,
+
+            // Allow in places where other blocks are allowed (e.g. directly in the root).
+            allowWhere: '$text',
+
+            isInline: false
+
+        } );
+
+        schema.register( 'definitionsLine', {
+            // Behaves like a self-contained object (e.g. an image).
+            isObject: true,
+
+            allowWhere: '$text',
+
+            isInline: false,
+
+            styles: {
+                'width': '300px',
+                'border-bottom': '1px solid black'
+            }
+
+        } );
     }
 
     _defineConverters() {
         const editor = this.editor;
         const conversion = editor.conversion;
 
-        // <productPreview> converters ((data) view → model)
-        conversion.for( 'upcast' ).elementToElement( {
+        conversion.elementToElement( {
+            model: 'definitionsSameLine',
             view: {
-                name: 'table',
-                classes: 'table'
-            },
-            model: ( viewElement, { writer: modelWriter } ) => {
-                // Read the "data-id" attribute from the view and set it as the "id" in the model.
-                return modelWriter.createElement( 'definitionsPreview', {
-                    id: parseInt( viewElement.getAttribute( 'data-characters' ) )
-                } );
+                name: 'div',
+                classes: 'definitions-same-line'
             }
         } );
 
-        // <productPreview> converters (model → data view)
+        conversion.for( 'upcast' ).elementToElement( {
+            model: 'definitionsLine',
+            view: {
+                name: 'div',
+                classes: 'definitions-line'
+            }
+        } );
         conversion.for( 'dataDowncast' ).elementToElement( {
-            model: 'definitionsPreview',
-            view: ( modelElement, { writer: viewWriter } ) => {
-                // In the data view, the model <productPreview> corresponds to:
-                //
-                // <section class="product" data-id="..."></section>
-                return viewWriter.createEmptyElement( 'table', {
-                    class: 'table',
-                } );
+            model: 'definitionsLine',
+            view: {
+                name: 'hola',
+                classes: 'definitions-line'
             }
         } );
 
-        // <productPreview> converters (model → editing view)
         conversion.for( 'editingDowncast' ).elementToElement( {
-            model: 'definitionsPreview',
+            model: 'definitionsLine',
             view: ( modelElement, { writer: viewWriter } ) => {
-                // In the editing view, the model <productPreview> corresponds to:
-                //
-                // <section class="product" data-id="...">
-                //     <div class="product__react-wrapper">
-                //         <ProductPreview /> (React component)
-                //     </div>
-                // </section>
-                const id = modelElement.getAttribute( 'definitions' );
+                const section = viewWriter.createContainerElement( 'div', { class: 'definitions-line' } );
 
-                // The outermost <section class="product" data-id="..."></section> element.
-                const section = viewWriter.createContainerElement( 'div', {
-                    class: ''
-                } );
-
-                // The inner <div class="product__react-wrapper"></div> element.
-                // This element will host a React <ProductPreview /> component.
-                const reactWrapper = viewWriter.createRawElement( 'div', {
-                    class: 'definitions__react-wrapper'
-                }, function( domElement ) {
-                    // This the place where React renders the actual product preview hosted
-                    // by a UIElement in the view. You are using a function (renderer) passed
-                    ReactDOM.render(
-                        <Provider store={ store }>
-                            <p>Define los siguientes conceptos:</p>
-                            <Definitions data={id}/>
-                            {id.addHowToSolve ?
-                            <div className="howToResolveExampleDef">
-                                <p><u>Cómo resolver el ejercicio:</u> Tienes que definir cada concepto usando como máximo {id.numLines} {parseInt(id.numLines) === 1 ? "línea" : "líneas"} para cada uno de ellos (no es necesario rellenar {parseInt(id.numLines) === 1 ? "toda la línea" : "todas las líneas"})</p>
-                            </div>
-                            : null}
-                            <br/>
-                        </Provider>
-                        ,
-                        domElement
-                    );
-                } );
-
-                viewWriter.insert( viewWriter.createPositionAt( section, 0 ), reactWrapper );
-
-                return toWidget( section, viewWriter, { label: 'pictogram preview widget' } );
+                return toWidget( section, viewWriter, { label: 'line' } );
             }
         } );
     }

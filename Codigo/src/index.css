@@ -20,3 +20,8 @@ hr {
   background-color:#FFFF00;
   height: 1px;
 }
+
+.definitions-line{
+  width: 100%;
+  border-bottom: 2px solid black;
+}

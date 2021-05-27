@@ -93,7 +93,6 @@ export default class WordSearchPlugin extends Plugin {
         conversion.for( 'editingDowncast' ).elementToElement( {
             model: 'wordSearchPreview',
             view: ( modelElement, { writer: viewWriter } ) => {
-<<<<<<< HEAD
                 const section = viewWriter.createContainerElement( 'table', { class: 'simple-box' } );
 
                 return toWidget( section, viewWriter, { label: 'simple box widget' } );
