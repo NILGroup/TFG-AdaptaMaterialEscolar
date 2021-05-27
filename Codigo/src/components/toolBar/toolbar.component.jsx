@@ -2,40 +2,81 @@ import "./toolbar.styles.scss";
 import React from 'react';
 import {connect} from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { openDefinitionsModal } from '../../redux/definitions/definitions.actions';
-import { selectDefinitionsModalIsDisplayed } from '../../redux/definitions/definitions.selectors';
-import { openDevelopModal } from '../../redux/develop/develop.actions';
-import { selectDevelopModalIsDisplayed } from '../../redux/develop/develop.selectors';
 import { selectModalIsDisplayed } from '../../redux/pictograms/pictogram.selectors';
-import {openPictogramFinder} from '../../redux/pictograms/pictograms.actions';
-import { openWordSearchModal } from '../../redux/wordSearch/wordsearch.actions';
+import {closePictogramFinder, openPictogramFinder} from '../../redux/pictograms/pictograms.actions';
+import { closeWordSearchModal, openWordSearchModal } from '../../redux/wordSearch/wordsearch.actions';
 import { selectWordSearchModalIsDisplayed } from '../../redux/wordSearch/wordsearch.selectors';
 import PictogramSearchModal from '../pictogramSearchModal/pictogramSearchModal';
-import DefinitionsModal from '../exerciseDefinitions/definitionsModal';
-import DevelopModal from '../exerciseDevelop/developModal';
 import WordSearchModal from '../wordSearch/wordsearchModal';
-import { openTrueFalseModal } from "../../redux/trueFalse/trueFalse.actions";
+import { closeTrueFalseModal, openTrueFalseModal } from "../../redux/trueFalse/trueFalse.actions";
 import { selectTrueFalseModalIsDisplayed } from "../../redux/trueFalse/trueFalse.selectors";
 import TrueFalseModal from "../exerciseTrueFalse/trueFalseModal";
+import { selectDefinitionsDevelopModalIsDisplayed } from "../../redux/definitionsDevelopModal/definitionsDevelopModal.selectors";
+import { closeDefinitionsDevelopModal, openDefinitionsDevelopModal } from "../../redux/definitionsDevelopModal/definitionsDevelopModal.actions";
+import DefinitionsDevelopModal from "../DefinitionsDevelopModal/definitionsDevelopModal";
+import { selectToolbarLastOpened } from "../../redux/toolbar/toolbar.selectors";
+import { updateLastOpened } from "../../redux/toolbar/toolbar.actions";
 class Toolbar extends React.Component{
     
+    handleClick = (e) =>{
+        this.closeModal();
+        this.props.updateLastOpened(e.target.name);
+        switch(e.target.name){
+            case "pictograms":
+                this.props.openPictogramFinder();
+                break;
+            case "definitionsdevelop":
+                this.props.openDefinitionsDevelopModal();
+                break;
+            case "wordsearch":
+                this.props.openWordSearchModal();
+                break;
+            case "truefalse":
+                this.props.openTrueFalseModal();
+                break;
+            default:
+                break;
+        }
+    }
+
+    closeModal(){
+        switch(this.props.lastOpened){
+            case "pictograms":
+                if(this.props.showPictogramsModal)
+                    this.props.closePictogramFinder();
+                break;
+            case "definitionsdevelop":
+                if(this.props.showDefinitionsDevelopModal)
+                    this.props.closeDefinitionsDevelopModal();
+                break;
+            case "wordsearch":
+                if(this.props.showWordSearchModal)
+                    this.props.closeWordSearchModal();
+                break;
+            case "truefalse":
+                if(this.props.showTrueFalseModal)
+                    this.props.closeTrueFalseModal();
+                break;
+            default:
+                break;
+        }
+    }
+
     render(){
         return (
         <div className="toolbar">
             <div className="toolbar-self">
-                <button className={this.props.showPictogramsModal ? "pictograms-active" : null} onClick={this.props.openPictogramFinder}>Pictogramas</button>
+                <button name="pictograms" className={this.props.showPictogramsModal ? "pictograms-active" : null} onClick={this.handleClick}>Pictogramas</button>
                 <button >Rellenar huecos</button>
-                <button className={this.props.showDefinitionsModal ? "definitions-active" : null} onClick={this.props.openDefinitionsModal}>Definiciones</button>
-                <button className={this.props.showWordSearchModal ? "wordsearch-active" : null} onClick={this.props.openWordSearchModal}>Sopa de letras</button>
-                <button className={this.props.showTrueFalseModal ? "truefalse-active" : null} onClick={this.props.openTrueFalseModal}>V/F</button>
-                <button className={this.props.showDevelopModal ? "develop-active" : null} onClick={this.props.openDevelopModal}>Desarrollo</button>
+                <button name="definitionsdevelop" className={this.props.showDefinitionsDevelopModal ? "definitions-active" : null} onClick={this.handleClick}>Definiciones/Desarrollo</button>
+                <button name="wordsearch" className={this.props.showWordSearchModal ? "wordsearch-active" : null} onClick={this.handleClick}>Sopa de letras</button>
+                <button name="truefalse" className={this.props.showTrueFalseModal ? "truefalse-active" : null} onClick={this.handleClick}>V/F</button>
             </div>
             <div className="modal-box">
                 { this.props.showPictogramsModal ? <PictogramSearchModal/> : null}
                 { this.props.showWordSearchModal ? <WordSearchModal/> : null}
-                { this.props.showDefinitionsModal ? <DefinitionsModal/> : null}
+                { this.props.showDefinitionsDevelopModal ? <DefinitionsDevelopModal/> : null}
                 { this.props.showTrueFalseModal ? <TrueFalseModal/> : null}
-                { this.props.showDevelopModal ? <DevelopModal/> : null}
             </div>
         </div>)
     }
@@ -44,17 +85,21 @@ class Toolbar extends React.Component{
 const mapDispatchToProps = (dispatch) => ({
     openPictogramFinder: () => dispatch(openPictogramFinder()),
     openWordSearchModal: () => dispatch(openWordSearchModal()),
-    openDefinitionsModal: () => dispatch(openDefinitionsModal()),
     openTrueFalseModal: () => dispatch(openTrueFalseModal()),
-    openDevelopModal: () => dispatch(openDevelopModal())
+    openDefinitionsDevelopModal: () => dispatch(openDefinitionsDevelopModal()),
+    closePictogramFinder: () => dispatch(closePictogramFinder()),
+    closeWordSearchModal: () => dispatch(closeWordSearchModal()),
+    closeTrueFalseModal: () => dispatch(closeTrueFalseModal()),
+    closeDefinitionsDevelopModal: () => dispatch(closeDefinitionsDevelopModal()),
+    updateLastOpened: (last) => dispatch(updateLastOpened(last))
 });
 
 const mapStateToProps = createStructuredSelector({
     showPictogramsModal: selectModalIsDisplayed,
     showWordSearchModal: selectWordSearchModalIsDisplayed,
-    showDefinitionsModal: selectDefinitionsModalIsDisplayed,
     showTrueFalseModal: selectTrueFalseModalIsDisplayed,
-    showDevelopModal: selectDevelopModalIsDisplayed
+    showDefinitionsDevelopModal: selectDefinitionsDevelopModalIsDisplayed,
+    lastOpened: selectToolbarLastOpened
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);

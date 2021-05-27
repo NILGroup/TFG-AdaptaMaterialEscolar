@@ -1,4 +1,3 @@
-
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
@@ -28,7 +27,7 @@ export default class DefinitionsPlugin extends Plugin {
             isObject: true,
 
             // Allow in places where other blocks are allowed (e.g. directly in the root).
-            allowWhere: '$block',
+            allowWhere: '$text',
 
             isInline: false,
 
@@ -96,7 +95,14 @@ export default class DefinitionsPlugin extends Plugin {
                     // by a UIElement in the view. You are using a function (renderer) passed
                     ReactDOM.render(
                         <Provider store={ store }>
+                            <p>Define los siguientes conceptos:</p>
                             <Definitions data={id}/>
+                            {id.addHowToSolve ?
+                            <div className="howToResolveExampleDef">
+                                <p><u>Cómo resolver el ejercicio:</u> Tienes que definir cada concepto usando como máximo {id.numLines} {parseInt(id.numLines) === 1 ? "línea" : "líneas"} para cada uno de ellos (no es necesario rellenar {parseInt(id.numLines) === 1 ? "toda la línea" : "todas las líneas"})</p>
+                            </div>
+                            : null}
+                            <br/>
                         </Provider>
                         ,
                         domElement

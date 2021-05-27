@@ -57,11 +57,6 @@ export const selectWordSearchModalError = createSelector(
   wordsearch => wordsearch.error
 );
 
-export const selectWordSearchModalReady = createSelector(
-  [selectWordSearch],
-  wordsearch => wordsearch.ready
-);
-
 export const selectWordSearchModalHiddenWords = createSelector(
   [selectWordSearch],
   wordsearch => wordsearch.hiddenWords
@@ -72,12 +67,12 @@ export const selectWordSearchModalWordSearchObj = createSelector(
   wordsearch => wordsearch.wordSearchObject
 );
 
-export const selectWordSearchModalReadyToCreate = createSelector(
+export const selectWordSearchModalReadyToPreview = createSelector(
   [selectWordSearch],
-  wordsearch => wordsearch.readyToCreate
+  wordsearch => wordsearch.readyToPreview
 );
 
-export const selectWordSearchModalWords = createSelector(
+export const selectWordSearchModalAddHowToSolve = createSelector(
   [selectWordSearch],
-  wordsearch => wordsearch.words
-)
+  wordsearch => wordsearch.addHowToSolve
+);

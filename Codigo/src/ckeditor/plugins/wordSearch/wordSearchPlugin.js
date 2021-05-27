@@ -1,4 +1,3 @@
-
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 import { toWidget, toWidgetEditable,
@@ -94,6 +93,7 @@ export default class WordSearchPlugin extends Plugin {
         conversion.for( 'editingDowncast' ).elementToElement( {
             model: 'wordSearchPreview',
             view: ( modelElement, { writer: viewWriter } ) => {
+<<<<<<< HEAD
                 const section = viewWriter.createContainerElement( 'table', { class: 'simple-box' } );
 
                 return toWidget( section, viewWriter, { label: 'simple box widget' } );

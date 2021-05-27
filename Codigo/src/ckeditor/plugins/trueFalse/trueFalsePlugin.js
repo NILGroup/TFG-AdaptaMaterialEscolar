@@ -1,4 +1,3 @@
-
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
@@ -28,7 +27,7 @@ export default class TrueFalselugin extends Plugin {
             isObject: true,
 
             // Allow in places where other blocks are allowed (e.g. directly in the root).
-            allowWhere: '$block',
+            allowWhere: '$text',
 
             isInline: false,
 
@@ -97,7 +96,14 @@ export default class TrueFalselugin extends Plugin {
 
                     ReactDOM.render(
                         <Provider store={ store }>
+                            <p>Responde con V si es verdadero o con F si es falso las siguientes frases:</p>
                             <TrueFalse data={id}/>
+                            {id.addHowToSolve ? 
+                            <div className="howToResolveExampleTF">
+                                <p><u>Cómo resolver el ejercicio:</u> Primero lee detenidamente cada frase. Después escribe en el recuadro una V si crees que la frase es verdadera o una F si crees que es falsa.</p>
+                            </div>
+                            : null}
+                            <br/>
                         </Provider>
                         ,
                         domElement
