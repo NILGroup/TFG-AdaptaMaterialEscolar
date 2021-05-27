@@ -43,6 +43,10 @@
             border-bottom: 1px solid var(--ck-color-toolbar-border);
         }
 
+        .ck-toolbar__items{
+            flex-wrap: wrap !important;
+        }
+
     }
 
     .pdf-file{
@@ -94,9 +98,9 @@
     }
 
     //css del interior del editor (hoja)
-    .document-editor__editable-container .ck-editor__editable {
+    .document-editor__editable-container .ck-editor__editable{
         /* Set the dimensions of the "page". */
-        width: 15.8cm;
+        max-width: 15.8cm;
         min-height: 21cm;
 
         /* Keep the "page" off the boundaries of the container. */
@@ -112,6 +116,17 @@
         /* Center the "page". */
         margin: 0 auto;
     }
+
+    /*.image >figcaption{
+        display: table-caption;
+        caption-side: bottom;
+        word-break: break-word;
+        color: #333;
+        background-color: #f7f7f7;
+        padding: .6em !important;
+        font-size: .75em;
+        outline-offset: -1px;
+    }*/
 
     /* Set the default font for the "page" of the content. */
     .document-editor .ck-content,

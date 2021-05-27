@@ -3,11 +3,11 @@ import update from 'react-addons-update';
 
 const INITIAL_STATE = {
     showDefinitionsModal: false,
-    numLines: '',
+    numLines: '1',
     text: [""],
     extraspace: false,
     addHowToSolve: false,
-    listType: false
+    listType: 'ul'
 }
 
 const definitionsReducer = (state = INITIAL_STATE, action) => {
@@ -35,11 +35,11 @@ const definitionsReducer = (state = INITIAL_STATE, action) => {
         case DefinitionsActionTypes.RESET_DEFINITIONS_MODAL: 
             return {
                  ...state,
-                numLines: '',
+                numLines: '1',
                 text: [""],
                 extraspace: false,
                 addHowToSolve: false,
-                listType: false
+                listType: 'ul'
              };
         case DefinitionsActionTypes.UPDATE_DEFINITIONS_EXTRASPACE:
             return{

@@ -29,6 +29,8 @@ class WordSearchModal extends React.Component{
             disableTip: false,
             disableDrag: true
         }
+
+        this.dragRef = React.createRef();
     }
 
     disableTip = () =>{
@@ -138,8 +140,8 @@ class WordSearchModal extends React.Component{
 
     render(){
         return(
-            <Draggable bounds="body" disabled={this.state.disableDrag}>
-                <div className="wordsearchModal">
+            <Draggable nodeRef={this.dragRef} bounds="body" disabled={this.state.disableDrag}>
+                <div ref={this.dragRef} className="wordsearchModal">
                     <div className="wordsearchModal__content">
                         <div className="header" onMouseEnter={this.toggleDisableDrag} onMouseLeave={this.toggleDisableDrag} data-tip data-for="modalWordSearchTip">
                         <ReactTooltip id="modalWordSearchTip" place="top" effect="solid" delayHide={2000} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>¡Puedes arrastrar esta ventana a cualquier parte si mantienes pulsada la parte superior de la misma!</ReactTooltip>
