@@ -25,6 +25,7 @@ import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert';
 import Image from '@ckeditor/ckeditor5-image/src/image';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
+import ImageEditing from '@ckeditor/ckeditor5-image/src/image/imageediting';
 //import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
@@ -52,7 +53,7 @@ class Editor extends React.Component{
             language: 'es',
             plugins: [ExportPdf, Essentials, Heading, Bold, Italic, Underline, Paragraph, Table, TableToolbar, PictogramEditing, Alignment, WordSearchPlugin, 
                     DefinitionsPlugin, TrueFalsePlugin, DevelopPlugin, FontFamily, FontSize, FontColor, FontBackgroundColor, Indent, IndentBlock, ListStyle, 
-                    TodoList, BlockQuote, Image, ImageInsert, ImageToolbar, ImageStyle, ImageResize
+                    TodoList, BlockQuote, Image, ImageInsert, ImageToolbar, ImageStyle, ImageResize, ImageEditing
                 ],
             
             toolbar: [  'exportPdf', '|',
@@ -61,7 +62,7 @@ class Editor extends React.Component{
                         'fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', 'bold', 'italic', 'underline', '|',
                         'alignment:left', 'alignment:center', 'alignment:right', 'alignment:justify', 'outdent', 'indent', '|',
                         'bulletedList', 'numberedList', 'todoList', '|',
-                        'link', 'blockQuote' ,'insertTable', 'imageInsert', '|'
+                         'blockQuote' ,'insertTable', 'imageInsert', '|'
             ],
             
             image: {

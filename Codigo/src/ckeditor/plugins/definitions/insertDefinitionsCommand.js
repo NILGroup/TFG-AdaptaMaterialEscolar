@@ -7,24 +7,32 @@ export default class InsertDefinitionsCommand extends Command {
             // in a way which will result in creating a valid model structure.
             let insertPosition = this.editor.model.document.selection.getFirstPosition();
             const enunciado = writer.createElement('paragraph', insertPosition);
+            
             writer.insertText("Define los siguientes conceptos: ", enunciado);
-            writer.insertText("Cómo resolver el ejercicio: Tienes que definir cada concepto usando como máximo\n", enunciado, "end");
+            
             this.editor.model.insertContent(enunciado);
+            let definition;
+            let linea = undefined;
             definitions.text.forEach(t => {
-                let definition = writer.createElement('paragraph');
+                definition = writer.createElement('paragraph');
                 writer.insertText(t, definition);
-                this.editor.model.insertContent(definition, writer.createPositionAfter(enunciado));
+                if(linea === undefined)
+                    this.editor.model.insertContent(definition, writer.createPositionAfter(enunciado));
+                else
+                    this.editor.model.insertContent(definition, writer.createPositionAfter(linea));
+
                 for(let i = 0; i < definitions.numLines; i++){
-                    let linea = writer.createElement('definitionsLine');
+                    linea = writer.createElement('definitionsLine');
                     this.editor.model.insertContent(linea, writer.createPositionAfter(definition));
                 }
 
             });
 
-            
-           // this.editor.model.insertContent(writer.createElement( 'definitionsSameLine', this.editor.model.document.selection.getLastPosition()));
-            
-        //    this.editor.model.insertContent( writer.createElement( 'definitionsPreview', { definitions } ), insertPosition );
+            if(definitions.addHowToSolve){
+                const howTo = writer.createElement('paragraph');
+                writer.insertText("Cómo resolver el ejercicio: Tienes que definir cada concepto usando como máximo " + definitions.numLines + " líneas para cada uno de ellos (no es necesario rellenar todas)", howTo, "end");
+                this.editor.model.insertContent(howTo, writer.createPositionAfter(linea));
+            }
 
         } );
     }

@@ -10,7 +10,7 @@ import { closePictogramFinder } from '../../redux/pictograms/pictograms.actions'
 class Pictogram extends React.Component{
 
     handleClick = (url) => {
-        this.props.editor.execute( 'insertPictogram', url );
+        this.props.editor.execute( 'imageInsert', { source: url } );
         this.props.editor.editing.view.focus();
         this.props.closePictogramsModal();
     }

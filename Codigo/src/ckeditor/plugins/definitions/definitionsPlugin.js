@@ -1,11 +1,8 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
-import ReactDOM from "react-dom";
-import { Provider } from 'react-redux';
-import { store } from '../../../redux/store';
 import InsertDefinitionsCommand from './insertDefinitionsCommand';
-import Definitions from '../../../components/exerciseDefinitions/definitions';
+
 
 export default class DefinitionsPlugin extends Plugin {
     static get requires() {

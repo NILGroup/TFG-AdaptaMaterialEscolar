@@ -72,7 +72,7 @@ class WordSearchModal extends React.Component{
 
     writeInEditor(){
         if(this.props.wordSearchObject !== null && this.props.error === ''){
-            this.props.editor.execute( 'insertWordSearch',  this.props.wordSearchObject.grid );
+            this.props.editor.execute( 'insertWordSearch',  {grid: this.props.wordSearchObject.grid, words: this.props.wordSearchObject.words, showWords: this.props.hiddenWords, addHowToSolve: this.props.addHowToSolve} );
             this.props.editor.editing.view.focus();
             this.props.closeModal();
             this.props.resetWordSearch();
