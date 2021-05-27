@@ -25,4 +25,9 @@ export const resetDevelopModal = () => ({
 export const updateDevelopExtraSpace = (extraspace) => ({
     type: DevelopActionTypes.UPDATE_DEVELOP_EXTRASPACE,
     payload: extraspace
-})
+});
+
+export const updateDevelopAddHowToSolve = (add) =>({
+    type: DevelopActionTypes.UPDATE_DEVELOP_ADDHOWTOSOLVE,
+    payload: add
+});

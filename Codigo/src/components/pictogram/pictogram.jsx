@@ -16,7 +16,7 @@ class Pictogram extends React.Component{
 
     render(){
     return(<div>
-        <img classname="pictogram" src={this.props.url} onClick={() => this.handleClick(this.props.url)} alt="pict" ></img>
+        <img className="pictogram" src={this.props.url} onClick={() => this.handleClick(this.props.url)} alt="pict" ></img>
     </div>)
     }
 }

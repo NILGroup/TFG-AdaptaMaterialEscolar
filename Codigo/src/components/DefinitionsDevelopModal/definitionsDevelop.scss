@@ -1,0 +1,91 @@
+.modal-DefinitionsDevelop{
+    display: flex;
+    position: absolute;
+    z-index: 1000;
+    border: 1px solid grey;
+    border-radius: 4px;
+    max-height: 800px;
+
+    &__content{
+        overflow: auto;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        background: #ffffff;
+
+        .header{
+            min-height: 40px;
+            height: 40px;
+            color:white;
+            padding-left: 14px;
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            background-color: #ecd6c8;
+            cursor: grab;
+
+            button{
+                position: absolute;
+                top: 0;
+                right: 0;
+                cursor: pointer;
+                margin-top: 7px;
+                margin-right: 14px;
+                margin-left: 14px;
+                text-decoration: none;
+                border: none;
+                font-size: 20px;
+                background: transparent;
+                font-weight: bold;
+            }
+        }
+
+        .selectExercise{
+            overflow: auto;
+            padding-top: 14px;
+            padding-left:28px;
+            padding-right: 28px;
+            padding-bottom: 14px;
+            display:flex;
+            flex-direction: row;
+            border-bottom: 1px solid lightgray;
+        }
+
+        .radios{
+            margin-left: 5px;
+            display: flex;
+        }
+
+        .radios > label{
+            margin-right: 5px;
+            vertical-align: middle;
+
+            input[type=radio]{
+                vertical-align: middle;
+                margin-top: -1px;
+            }
+        }
+
+        .footer{
+            text-align: right;
+            padding: 14px;
+            background: #ecd6c8;
+            padding-left: 14px;
+            button{
+                margin:0;
+                border-radius: 30px;
+                border: none;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 30px;
+                padding-right: 30px;
+                cursor: pointer;
+                color: white;
+                float: left;
+                &:not(:last-child){
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

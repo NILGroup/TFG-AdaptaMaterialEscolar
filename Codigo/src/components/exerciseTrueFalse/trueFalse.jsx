@@ -4,13 +4,29 @@ import './trueFalse.scss'
 class TrueFalse extends React.Component{
     render(){
         return(
-            <ol>
-                {this.props.data.split(",").map((value) => 
+            <div className="exerciseTF">
+                {this.props.data.listType === "ul" ?
+                <ul>
+                {this.props.data.text.map((value) => 
                     <div className="tf">
-                        <li>{value + ' Respuesta: '}</li>
+                        <li>{value}</li>
+                        
                     </div>
                 )}
-            </ol>
+                </ul>
+                :
+                <ol>
+                {this.props.data.text.map((value) => 
+                    <div className="tf">
+                        <li>{value}</li>
+                        
+                    </div>
+                )}
+                </ol>
+                }
+                
+            </div>
+            
         );
     }
 }
