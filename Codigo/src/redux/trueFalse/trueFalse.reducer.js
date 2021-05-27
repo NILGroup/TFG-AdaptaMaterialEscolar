@@ -5,7 +5,7 @@ const INITIAL_STATE = {
     showTrueFalseModal: false,
     text: [""],
     addHowToSolve: false,
-    listType: ''
+    listType: 'ul'
 }
 
 const trueFalseReducer = (state = INITIAL_STATE, action) => {
@@ -30,7 +30,7 @@ const trueFalseReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 text: [""],
                 addHowToSolve: false,
-                listType: ''
+                listType: 'ul'
             };
         case TrueFalseActionTypes.ADD_MORE_TRUEFALSE:
             return{

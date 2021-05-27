@@ -16,6 +16,8 @@ class PictogramSearchModal extends React.Component{
             disableTip: false,
             disableDrag: true
         }
+
+        this.dragRef = React.createRef();
     }
 
     disableTip = () =>{
@@ -37,8 +39,8 @@ class PictogramSearchModal extends React.Component{
 
     render(){
         return(
-            <Draggable bounds="body" disabled={this.state.disableDrag}>
-                <div className="pictoSearch">
+            <Draggable nodeRef={this.dragRef} bounds="body" disabled={this.state.disableDrag}>
+                <div ref={this.dragRef} className="pictoSearch">
                     <div className="pictoSearch__content">
                         <div className="header" onMouseEnter={this.toggleDisableDrag} onMouseLeave={this.toggleDisableDrag} data-tip data-for="modalPictoTip">
                             <ReactTooltip className="tooltip" id="modalPictoTip" place="top" effect="solid" delayHide={2000} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>¡Puedes arrastrar esta ventana a cualquier parte si mantienes pulsada la parte superior de la misma!</ReactTooltip>
@@ -49,8 +51,8 @@ class PictogramSearchModal extends React.Component{
                             {this.props.pictogramResults.length > 0 ? <span className="infoPicto">Haz clic en un pictograma para llevarlo al editor</span> : null}
                             <div className="pictoSearch__content__main__pictoResults">
                                 {this.props.pictogramResults.length > 0 ?
-                                this.props.pictogramResults.map(url => 
-                                    <Pictogram url={url}/>) : <span>No hay resultados</span>}
+                                this.props.pictogramResults.map((url,i) => 
+                                    <Pictogram key={"pictogram_" + (i + 1)} url={url}/>) : <span>No hay resultados</span>}
                             </div>
                         </div>
                     </div>

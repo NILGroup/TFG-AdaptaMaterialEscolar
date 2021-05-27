@@ -19,6 +19,7 @@ class TrueFalseModal extends React.Component {
         disableTip: false,
         disableDrag: true
     }
+    this.dragRef = React.createRef();
   }
   
   disableTip = () =>{
@@ -76,8 +77,8 @@ class TrueFalseModal extends React.Component {
 
   render() {
     return (
-    <Draggable bounds="body" disabled={this.state.disableDrag}>
-      <div className="modal-truefalse">
+    <Draggable nodeRef={this.dragRef} bounds="body" disabled={this.state.disableDrag}>
+      <div ref={this.dragRef} className="modal-truefalse">
         <div className="modal-truefalse__content">
           <div className="header" onMouseEnter={this.toggleDisableDrag} onMouseLeave={this.toggleDisableDrag} data-tip data-for="modaltruefalseTip">
             <ReactTooltip id="modaltruefalseTip" place="top" effect="solid" delayHide={1500} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>¡Puedes arrastrar esta ventana a cualquier parte si mantienes pulsada la parte superior de la misma!</ReactTooltip>
