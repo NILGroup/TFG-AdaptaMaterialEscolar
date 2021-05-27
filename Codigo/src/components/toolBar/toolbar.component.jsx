@@ -16,6 +16,10 @@ import { closeDefinitionsDevelopModal, openDefinitionsDevelopModal } from "../..
 import DefinitionsDevelopModal from "../DefinitionsDevelopModal/definitionsDevelopModal";
 import { selectToolbarLastOpened } from "../../redux/toolbar/toolbar.selectors";
 import { updateLastOpened } from "../../redux/toolbar/toolbar.actions";
+import { closeFillGapsModal, openFillGapsModal } from "../../redux/fillGaps/fillgaps.actions";
+import { selectFillGapsModalIsDisplayed } from "../../redux/fillGaps/fillgaps.selectors";
+import FillGapsModal from "../fillGaps/fillGapsModal";
+
 class Toolbar extends React.Component{
     
     handleClick = (e) =>{
@@ -33,6 +37,9 @@ class Toolbar extends React.Component{
                 break;
             case "truefalse":
                 this.props.openTrueFalseModal();
+                break;
+            case "fillGaps":
+                this.props.openFillGapsModal();
                 break;
             default:
                 break;
@@ -57,6 +64,10 @@ class Toolbar extends React.Component{
                 if(this.props.showTrueFalseModal)
                     this.props.closeTrueFalseModal();
                 break;
+            case "fillGaps":
+                if(this.props.showFillGapsModal)
+                    this.props.closeFillGapsModal()
+                break;
             default:
                 break;
         }
@@ -67,8 +78,8 @@ class Toolbar extends React.Component{
         <div className="toolbar">
             <div className="toolbar-self">
                 <button name="pictograms" className={this.props.showPictogramsModal ? "pictograms-active" : null} onClick={this.handleClick}>Pictogramas</button>
-                <button >Rellenar huecos</button>
-                <button name="definitionsdevelop" className={this.props.showDefinitionsDevelopModal ? "definitions-active" : null} onClick={this.handleClick}>Definiciones/Desarrollo</button>
+                <button name="fillGaps" className={this.props.showFillGapsModal ? "fillGaps-active" : null} onClick={this.handleClick}>Rellenar huecos</button>
+                <button name="definitionsdevelop" className={this.props.showDefinitionsDevelopModal ? "definitionsdevelop-active" : null} onClick={this.handleClick}>Definiciones/Desarrollo</button>
                 <button name="wordsearch" className={this.props.showWordSearchModal ? "wordsearch-active" : null} onClick={this.handleClick}>Sopa de letras</button>
                 <button name="truefalse" className={this.props.showTrueFalseModal ? "truefalse-active" : null} onClick={this.handleClick}>V/F</button>
             </div>
@@ -77,6 +88,7 @@ class Toolbar extends React.Component{
                 { this.props.showWordSearchModal ? <WordSearchModal/> : null}
                 { this.props.showDefinitionsDevelopModal ? <DefinitionsDevelopModal/> : null}
                 { this.props.showTrueFalseModal ? <TrueFalseModal/> : null}
+                { this.props.showFillGapsModal ? <FillGapsModal/> : null}
             </div>
         </div>)
     }
@@ -91,7 +103,9 @@ const mapDispatchToProps = (dispatch) => ({
     closeWordSearchModal: () => dispatch(closeWordSearchModal()),
     closeTrueFalseModal: () => dispatch(closeTrueFalseModal()),
     closeDefinitionsDevelopModal: () => dispatch(closeDefinitionsDevelopModal()),
-    updateLastOpened: (last) => dispatch(updateLastOpened(last))
+    updateLastOpened: (last) => dispatch(updateLastOpened(last)),
+    openFillGapsModal: () => dispatch(openFillGapsModal()),
+    closeFillGapsModal: () => dispatch(closeFillGapsModal())
 });
 
 const mapStateToProps = createStructuredSelector({
@@ -99,7 +113,8 @@ const mapStateToProps = createStructuredSelector({
     showWordSearchModal: selectWordSearchModalIsDisplayed,
     showTrueFalseModal: selectTrueFalseModalIsDisplayed,
     showDefinitionsDevelopModal: selectDefinitionsDevelopModalIsDisplayed,
-    lastOpened: selectToolbarLastOpened
+    lastOpened: selectToolbarLastOpened,
+    showFillGapsModal: selectFillGapsModalIsDisplayed
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);
