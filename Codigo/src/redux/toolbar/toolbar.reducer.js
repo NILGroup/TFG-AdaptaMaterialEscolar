@@ -3,6 +3,7 @@ import PictogramsActionTypes from "../pictograms/pictograms.types";
 import WordSearchActionTypes from "../wordSearch/wordsearch.types";
 import DefinitionsDevelopActionTypes from "../definitionsDevelopModal/definitionsDevelopModal.types";
 import TrueFalseActionTypes from "../trueFalse/trueFalse.types";
+import FillGapsActionTypes from "../fillGaps/fillgaps.types";
 
 const INITIAL_STATE = {
     lastOpened: undefined
@@ -34,6 +35,11 @@ const toolbarReducer = (state = INITIAL_STATE, action) => {
             return{
                 ...state,
                 lastOpened: "truefalse"
+            };
+        case FillGapsActionTypes.CLOSE_FILLWORDS_MODAL:
+            return{
+                ...state,
+                lastOpened: "fillGaps"
             };
          default: 
              return state;

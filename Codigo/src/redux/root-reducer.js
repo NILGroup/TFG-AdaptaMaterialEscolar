@@ -10,6 +10,7 @@ import wordSearchReducer from './wordSearch/wordsearch.reducer';
 import developReducer from './develop/develop.reducer';
 import definitionsDevelopReducer from './definitionsDevelopModal/definitionsDevelopModal.reducer';
 import toolbarReducer from './toolbar/toolbar.reducer';
+import fillGapsReducer from './fillGaps/fillgaps.reducer';
 
 export default combineReducers({
   document: documentReducer,
@@ -20,5 +21,6 @@ export default combineReducers({
   trueFalse: trueFalseReducer,
   develop: developReducer,
   definitionsDevelopModal: definitionsDevelopReducer,
-  toolbar: toolbarReducer
+  toolbar: toolbarReducer,
+  fillgaps: fillGapsReducer
 });
