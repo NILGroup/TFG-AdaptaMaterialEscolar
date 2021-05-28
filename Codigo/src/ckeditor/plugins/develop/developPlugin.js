@@ -35,20 +35,6 @@ export default class DevelopPlugin extends Plugin {
             // product it represents and makes it possible to render it inside a widget.
             allowAttributes: [ 'develop' ]
         } );
-
-        schema.register( 'developRow', {
-            // Behaves like a self-contained object (e.g. an image).
-            isObject: true,
-
-            // Allow in places where other blocks are allowed (e.g. directly in the root).
-            allowWhere: '$block',
-
-            isInline: false,
-
-            // Each product preview has an ID. A unique ID tells the application which
-            // product it represents and makes it possible to render it inside a widget.
-            allowAttributes: [ 'develop' ]
-        } );
     }
 
     _defineConverters() {
@@ -100,7 +86,6 @@ export default class DevelopPlugin extends Plugin {
                     class: 'develop'
                 } );
 
-    
                 // The inner <div class="product__react-wrapper"></div> element.
                 // This element will host a React <ProductPreview /> component.
                 const reactWrapper = viewWriter.createRawElement( 'div', {
@@ -111,19 +96,13 @@ export default class DevelopPlugin extends Plugin {
                     ReactDOM.render(
                         <Provider store={ store }>
                             <Develop data={id}/>
-                            {id.addHowToSolve ?
-                            <div className="howToResolveExampleDev">
-                                <p><u>Cómo resolver el ejercicio:</u> Tienes que escribir lo que pide el enunciado usando como máximo {id.numLines} {parseInt(id.numLines) === 1 ? "línea" : "líneas"} (no es necesario rellenar {parseInt(id.numLines) === 1 ? "toda la línea" : "todas las líneas"})</p>
-                            </div>
-                            : null}
-                            <br/>
                         </Provider>
                         ,
                         domElement
                     );
                 } );
 
-      //          viewWriter.insert( viewWriter.createPositionAt( section, 0 ), reactWrapper );
+                viewWriter.insert( viewWriter.createPositionAt( section, 0 ), reactWrapper );
 
                 return toWidget( section, viewWriter, { label: 'develop preview widget' } );
             }

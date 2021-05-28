@@ -53,7 +53,7 @@ export default class DefinitionsPlugin extends Plugin {
             // Allow in places where other blocks are allowed (e.g. directly in the root).
             allowWhere: '$text',
 
-            isInline: false
+            isInline: true
 
         } );
 
@@ -63,7 +63,7 @@ export default class DefinitionsPlugin extends Plugin {
 
             allowWhere: '$text',
 
-            isInline: false,
+            isInline: true,
 
             styles: {
                 'width': '300px',
@@ -80,7 +80,7 @@ export default class DefinitionsPlugin extends Plugin {
         conversion.elementToElement( {
             model: 'definitionsSameLine',
             view: {
-                name: 'div',
+                name: 'span',
                 classes: 'definitions-same-line'
             }
         } );

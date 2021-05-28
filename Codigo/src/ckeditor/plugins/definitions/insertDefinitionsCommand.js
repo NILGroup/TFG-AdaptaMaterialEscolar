@@ -16,23 +16,24 @@ export default class InsertDefinitionsCommand extends Command {
             definitions.text.forEach(t => {
                 definition = writer.createElement('paragraph');
                 writer.insertText(t, definition);
-                if(linea === undefined)
-                    this.editor.model.insertContent(definition, writer.createPositionAfter(enunciado));
-                else
-                    this.editor.model.insertContent(definition, writer.createPositionAfter(linea));
+                linea = writer.createElement('definitionsSameLine');
+               // writer.insertText("", linea);
+                writer.append( linea ,definition);
+                this.editor.model.insertContent(definition);
 
                 for(let i = 0; i < definitions.numLines; i++){
                     linea = writer.createElement('definitionsLine');
-                    this.editor.model.insertContent(linea, writer.createPositionAfter(definition));
+                    this.editor.model.insertContent(linea);
                 }
-
             });
 
+            const howTo = writer.createElement('paragraph');
+            let endText = " ";
             if(definitions.addHowToSolve){
-                const howTo = writer.createElement('paragraph');
-                writer.insertText("Cómo resolver el ejercicio: Tienes que definir cada concepto usando como máximo " + definitions.numLines + " líneas para cada uno de ellos (no es necesario rellenar todas)", howTo, "end");
-                this.editor.model.insertContent(howTo, writer.createPositionAfter(linea));
+                endText = "Cómo resolver el ejercicio: Primero busca una de las palabras en la sopa de letras. Ten en cuenta que las palabras pueden estar escondidas en vertical, horizontal y/o diagonal, y es posible que algunas estén escritas al revés. Cuando hayas encontrado la palabra, rodéala.";
             }
+            writer.insertText(endText, howTo, "end");
+            this.editor.model.insertContent(howTo,  writer.createPositionAt( linea, "after"));
 
         } );
     }

@@ -12,12 +12,11 @@ export default class InsertTrueFalseCommand extends Command {
             
             this.editor.model.insertContent(enunciado);
 
-            this.editor.model.insertContent( writer.createElement( 'trueFalseBox' ) , writer.createPositionAfter(enunciado));
+            this.editor.model.insertContent( writer.createElement( 'trueFalsePreview', {truefalse}) , writer.createPositionAfter(enunciado));
 
             if(truefalse.addHowToSolve){
                 const howTo = writer.createElement('paragraph');
                 writer.insertText("Cómo resolver el ejercicio:</u> Primero lee detenidamente cada frase. Después escribe en el recuadro una V si crees que la frase es verdadera o una F si crees que es falsa.", howTo, "end");
-             //   this.editor.model.insertContent(howTo, writer.createPositionAfter(linea));
             }
         } );
     }
