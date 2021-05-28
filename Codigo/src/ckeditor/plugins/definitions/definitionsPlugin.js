@@ -71,6 +71,21 @@ export default class DefinitionsPlugin extends Plugin {
             }
 
         } );
+
+        schema.register( 'definitionsLineMore', {
+            // Behaves like a self-contained object (e.g. an image).
+            isObject: true,
+
+            allowWhere: '$text',
+
+            isInline: true,
+
+            styles: {
+                'width': '300px',
+                'border-bottom': '1px solid black'
+            }
+
+        } );
     }
 
     _defineConverters() {
@@ -104,6 +119,30 @@ export default class DefinitionsPlugin extends Plugin {
             model: 'definitionsLine',
             view: ( modelElement, { writer: viewWriter } ) => {
                 const section = viewWriter.createContainerElement( 'div', { class: 'definitions-line' } );
+
+                return toWidget( section, viewWriter, { label: 'line' } );
+            }
+        } );
+
+        conversion.for( 'upcast' ).elementToElement( {
+            model: 'definitionsLineMore',
+            view: {
+                name: 'div',
+                classes: 'definitions-line-more'
+            }
+        } );
+        conversion.for( 'dataDowncast' ).elementToElement( {
+            model: 'definitionsLineMore',
+            view: {
+                name: 'hola',
+                classes: 'definitions-line-more'
+            }
+        } );
+
+        conversion.for( 'editingDowncast' ).elementToElement( {
+            model: 'definitionsLineMore',
+            view: ( modelElement, { writer: viewWriter } ) => {
+                const section = viewWriter.createContainerElement( 'div', { class: 'definitions-line-more' } );
 
                 return toWidget( section, viewWriter, { label: 'line' } );
             }

@@ -8,6 +8,7 @@ import Draggable from "react-draggable";
 import { selectFillGapsModalAddHowToSolve, selectFillGapsModalMode, selectFillGapsModalText, selectFillGapsModalTextSelection, selectFillGapsModalWordsSelected } from "../../redux/fillGaps/fillgaps.selectors";
 import { closeFillGapsModal, resetFillGaps, updateFillGapsAddHowToSolve, updateFillGapsAddSelectedWord, updateFillGapsDeleteSelectedWord, updateFillGapsMode, updateFillGapsSelectedWord, updateFillGapsText, updateFillGapsTextSelection } from "../../redux/fillGaps/fillgaps.actions";
 import { IoMdClose } from "react-icons/io";
+import { selectEditorClass } from "../../redux/editor/editor.selectors";
 
 class FillGapsModal extends React.Component{
     constructor(props) {
@@ -38,6 +39,9 @@ class FillGapsModal extends React.Component{
       this.props.closeTrueFalseModal();*/
 
       //coger las cosas del array wordsSelected y ensamblarlo. el espacio es &nbsp;
+      this.props.editor.execute('insertFillGaps', {text: this.props.textSelection, addHowToSolve: this.props.addHowToSolve});
+      this.props.editor.editing.view.focus();
+      this.props.closeModal();
     }
   
     handleChange = (e) =>{
@@ -133,7 +137,7 @@ class FillGapsModal extends React.Component{
                         <label><input id="extraspace" type="checkbox" name="extraspace" onChange={this.handleChange} checked={this.props.extraspace}/>Añadir espacio extra entre líneas</label> 
                     </div>*/}
                     <div className="container__addHowToSolve">
-                        <label><input id="addHowToSolve" type="checkbox" name="addHowToSolve" onChange={this.handleChange} checked={this.props.addHowToSolve}/>Añadir ejemplo de cómo resolver el ejercicio</label>
+                        <label><input id="addHowToSolve" type="checkbox" name="addHowToSolve" onChange={this.handleChange} checked={false} disabled/>Añadir ejemplo de cómo resolver el ejercicio</label>
                     </div>
                 </div>
             </div>
@@ -164,7 +168,8 @@ const mapStateToProps = createStructuredSelector({
     addHowToSolve: selectFillGapsModalAddHowToSolve,
     mode: selectFillGapsModalMode,
     textSelection: selectFillGapsModalTextSelection,
-    wordsSelected: selectFillGapsModalWordsSelected
+    wordsSelected: selectFillGapsModalWordsSelected,
+    editor: selectEditorClass
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FillGapsModal);

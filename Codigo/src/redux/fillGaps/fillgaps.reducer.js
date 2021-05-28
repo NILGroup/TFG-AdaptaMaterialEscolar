@@ -21,7 +21,9 @@ const fillGapsReducer = (state = INITIAL_STATE, action) => {
         case FillGapsActionTypes.CLOSE_FILLWORDS_MODAL: 
             return {
                  ...state,
-                 showModal: false
+                 showModal: false,
+                 mode: "edition",
+                 text: ''
              };
         case FillGapsActionTypes.RESET_FILLWORDS:
             return{

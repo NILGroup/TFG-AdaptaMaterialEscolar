@@ -41,6 +41,7 @@ import DevelopPlugin from '../../ckeditor/plugins/develop/developPlugin';
 //import FillWords from '../rellenarPalabrasPlugin/fillWords';
 
 import {getColors} from "./colors";
+import FillGapsPlugin from '../../ckeditor/plugins/fillblanks/trueFalsePlugin';
 
 class Editor extends React.Component{
     
@@ -53,7 +54,7 @@ class Editor extends React.Component{
             language: 'es',
             plugins: [ExportPdf, Essentials, Heading, Bold, Italic, Underline, Paragraph, Table, TableToolbar, PictogramEditing, Alignment, WordSearchPlugin, 
                     DefinitionsPlugin, TrueFalsePlugin, DevelopPlugin, FontFamily, FontSize, FontColor, FontBackgroundColor, Indent, IndentBlock, ListStyle, 
-                    TodoList, BlockQuote, Image, ImageInsert, ImageToolbar, ImageStyle, ImageResize, ImageEditing
+                    TodoList, BlockQuote, Image, ImageInsert, ImageToolbar, ImageStyle, ImageResize, ImageEditing, FillGapsPlugin
                 ],
             
             toolbar: [  'exportPdf', '|',

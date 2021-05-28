@@ -11,6 +11,8 @@ export default class InsertDefinitionsCommand extends Command {
             writer.insertText("Define los siguientes conceptos: ", enunciado);
             
             this.editor.model.insertContent(enunciado);
+            this.editor.execute('shiftEnter');
+
             let definition;
             let linea = undefined;
             definitions.text.forEach(t => {
@@ -22,7 +24,11 @@ export default class InsertDefinitionsCommand extends Command {
                 this.editor.model.insertContent(definition);
 
                 for(let i = 0; i < definitions.numLines; i++){
-                    linea = writer.createElement('definitionsLine');
+                    if(definitions.extraspace){
+                        linea = writer.createElement('definitionsLineMore');
+                    }
+                    else
+                        linea = writer.createElement('definitionsLine');
                     this.editor.model.insertContent(linea);
                 }
             });

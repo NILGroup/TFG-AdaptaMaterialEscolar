@@ -12,7 +12,10 @@ export default class InsertDevelopCommand extends Command {
             this.editor.model.insertContent(enunciado);
             let linea = undefined;
             for(let i = 0; i < develop.numLines; i++){
-                linea = writer.createElement('definitionsLine');
+                if(!develop.extraspace)
+                    linea = writer.createElement('definitionsLine');
+                else
+                    linea = writer.createElement('definitionsLineMore');
                 this.editor.model.insertContent(linea);
             }
             const howTo = writer.createElement('paragraph');

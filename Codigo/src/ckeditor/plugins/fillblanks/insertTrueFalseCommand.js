@@ -1,23 +1,23 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
 
-export default class InsertTrueFalseCommand extends Command {
+export default class InsertFillGapsCommand extends Command {
     execute( truefalse ) {
         this.editor.model.change( writer => {
      
-
+            let text = "";
+            truefalse.text.forEach(t => {
+                text+= t + " ";
+            })
             let insertPosition = this.editor.model.document.selection.getFirstPosition();
             const enunciado = writer.createElement('paragraph', insertPosition);
             
-            writer.insertText("Responde con V si es verdadero o con F si es falso las siguientes frases: ", enunciado);
-            
+            writer.insertText(text, enunciado);
             this.editor.model.insertContent(enunciado);
-
-            this.editor.model.insertContent( writer.createElement( 'trueFalsePreview', {truefalse}));
-
             if(truefalse.addHowToSolve){
                 const howTo = writer.createElement('paragraph');
-                writer.insertText("Cómo resolver el ejercicio:</u> Primero lee detenidamente cada frase. Después escribe en el recuadro una V si crees que la frase es verdadera o una F si crees que es falsa.", howTo, "end");
+                writer.insertText("Cómo resolver: rellenar los huecos....", howTo, "end");
             }
+            this.editor.execute('shiftEnter');
         } );
     }
 
