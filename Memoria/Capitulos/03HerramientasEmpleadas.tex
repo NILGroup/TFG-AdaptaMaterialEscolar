@@ -8,7 +8,7 @@
 \chapter{Herramientas empleadas}
 
 \begin{resumen}
-	En este capítulo se explican las herramientas y librerías que se han empleado en el desarrollo de este proyecto. En la sección \ref{cap3:sec:moqups} se introduce la herramienta online Moqups. En la sección \ref{cap3:sec:react} se muestra el \textit{framework} que se ha utilizado para la creación de la página web. En la sección \ref{cap3:sec:apiarasaac} se habla de la API de ARASAAC usada para la búsqueda de pictogramas. En la sección \ref{cap3:sec:jest} se presenta la librería \textit{Jest} usada para la realización de pruebas. En la sección \ref{cap3:sec:ckeditor} se explica el editor de texto que hemos usado para realizar las distintas adaptaciones de la aplicación. En la sección \ref{cap3:sec:wordsearch} se explica el paquete NPM usado para la generación de las sopas de letras.
+	En este capítulo se explican las herramientas y librerías que se han empleado en el desarrollo de este proyecto. En la sección \ref{cap3:sec:moqups} se introduce la herramienta online Moqups. En la sección \ref{cap3:sec:react} se muestra el \textit{framework} que se ha utilizado para la creación de la página web. En la sección \ref{cap3:sec:apiarasaac} se habla de la API de ARASAAC usada para la búsqueda de pictogramas. En la sección \ref{cap3:sec:jest} se presenta la librería \textit{Jest} usada para la realización de pruebas. En la sección \ref{cap3:sec:ckeditor} se explica CKEditor, el editor de texto que hemos usado en la aplicación. En la sección \ref{cap3:sec:wordsearch} se explica el paquete NPM usado para la generación de las sopas de letras.
 \end{resumen}
 	
 %------Primera sección: Moqups------%
@@ -20,7 +20,7 @@
 	
 	Existe la posibilidad de añadir comentarios e iconos, y poder crear diferentes páginas en un mismo proyecto (por ejemplo, crear varias vistas de una aplicación), así como añadir interacción a los elementos (como por ejemplo, haciendo que un botón realice una función específica). También es colaborativo y permite la gestión de roles.
 	
-	En la figura \ref{fig:interfazMoqups} se puede ver la interfaz de un proyecto en blanco. En la parte superior de la página, se pueden crear figuras geométricas y añadir notas, así como agregar a otros usuarios, y exportar el proyecto como una serie de imágenes en formato PNG o PDF y a formato HTML (figura \ref{fig:menuSuperiorMoqups}). Se observa que en el menú lateral de la izquierda se encuentran los apartados para la creación del prototipo (plantillas, páginas que tiene el proyecto, comentarios, imágenes, iconos, etc), como se puede ver en la figura \ref{fig:menuLateralIzdaMoqups}. Por último, en el menú lateral de la derecha, podemos encontrar el formato de las diferentes páginas (o componentes) (figura \ref{fig:menuLateralDchaMoqups}), y las interacciones disponibles (figura \ref{fig:menuLateralDchaInteraccionesMoqups}).
+	En la figura \ref{fig:interfazMoqups} se puede ver la interfaz de un proyecto en blanco. En la parte superior de la página, se encuentran las opciones para crear figuras geométricas y añadir notas, así como agregar a otros usuarios, y exportar el proyecto como una serie de imágenes en formato PNG o PDF y a formato HTML (figura \ref{fig:menuSuperiorMoqups}). Se observa que en el menú lateral de la izquierda se encuentran los apartados para la creación del prototipo (plantillas, páginas que tiene el proyecto, comentarios, imágenes, iconos, etc), como se puede ver en la figura \ref{fig:menuLateralIzdaMoqups}. Por último, en el menú lateral de la derecha, podemos encontrar el formato de las diferentes páginas (o componentes) (figura \ref{fig:menuLateralDchaMoqups}), y las interacciones disponibles (figura \ref{fig:menuLateralDchaInteraccionesMoqups}).
 	\begin{figure}[ht!]
 		\begin{center}
 			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/interfazMoqups}
@@ -108,18 +108,7 @@
 	
 	El Centro Aragonés para la Comunicación Aumentativa y Alternativa (ARASAAC) proporciona una API pública\footnote{\url{https://arasaac.org/developers/api}} (\textit{Application Programming Interfaces}, en castellano ``interfaz de programación de aplicaciones''), cuyo uso es gratuito siempre y cuando la aplicación a desarrollar sea no comercial\footnote{\url{https://arasaac.org/developers/}} (está bajo la licencia de \textit{Creative Commons BY-NC-SA}, es decir, ``Reconocimiento-NoComercial-CompartirIgual''\footnote{\url{https://creativecommons.org/licenses/by-nc-sa/4.0/}} en el que se debe dar crédito a los/as autores/as originales, no se puede usar para fines comerciales y en el caso de que se modifique o transforme ese material se debe distribuir bajo la misma licencia).
 	
-	La API de ARASAAC consta de cuatro apartados, cada uno de los cuales tiene una ruta web dependiendo de lo que se quiera consultar: materiales, pictogramas, palabras clave y usuarios. Como en este proyecto usaremos solo la búsqueda de pictogramas, nos centraremos en el apartado de pictogramas. La API de ARASAAC proporciona ocho servicios web para pictogramas:
-	\begin{enumerate}
-		\item Obtener los datos de todos los pictogramas en un idioma dado.
-		\item Obtener un pictograma en formato imagen dado su identificador.
-		\item Obtener los datos de un pictograma, en un idioma, dado su identificador.
-		\item Obtener los datos de un pictograma, en uno o más idiomas, dado su identificador.
-		\item Obtener en una lista los datos de los pictogramas en un idioma dado que contenga la cadena de caracteres proporcionada.
-		\item Obtener en una lista los datos de los pictogramas en un idioma dado que contenga \textbf{exactamente} la cadena de caracteres proporcionada.
-		\item Obtener los datos de los pictogramas que se han creado o actualizado en los últimos días desde la fecha actual en un idioma dado.
-		\item Obtener los datos de los últimos pictogramas que se han publicado o modificado en un idioma dado.
-	\end{enumerate}
-	Todos ellos se usan con el método de petición \textit{GET} y con formato de salida en \textit{JSON}. De los ocho servicios web proporcionados se usarán los siguientes:
+	La API de ARASAAC consta de cuatro apartados, cada uno de los cuales tiene una ruta web dependiendo de lo que se quiera consultar: materiales, pictogramas, palabras clave y usuarios. Como en este proyecto usaremos solo la búsqueda de pictogramas, nos centraremos en el apartado de pictogramas. La API de ARASAAC proporciona ocho servicios web para pictogramas. Todos ellos se usan con el método de petición \textit{GET} y con formato de salida en \textit{JSON}. De los ocho servicios web proporcionados, en este TFG se usarán los siguientes:
 	\begin{itemize}
 		\item \textbf{/pictograms/\{idPictogram\}}: Devuelve el pictograma en formato imagen dado su identificador \textit{\{idPictogram\}}. Si tiene éxito devolverá la imagen del pictograma en formato png. En caso contrario devolverá un mensaje de error.
 		\item \textbf{/pictograms/\{locale\}/\{idPictogram\}}: Devuelve los datos de un pictograma dado su identificador \textit{\{idPictogram\}} e idioma \textit{\{locale\}}\footnote{\label{lang}Idiomas disponibles: an, ar, bg, br, ca, de, el, en, es, et, eu, fa, fr, gl, he, hr, hu, it, mk, nl, pl, pt, ro, ru, sk, sq, sv, sr, val, zh}. Si tiene éxito devolverá una lista en formato \textit{JSON} con los datos de cada pictograma. En caso contrario devolverá un error 404.
@@ -134,6 +123,66 @@
 \label{cap3:sec:jest}
 	
 	\textit{Jest}\footnote{\url{https://jestjs.io/es-ES/}} es una librería para \textit{Javascript}, creada por Facebook, que permite realizar distintos tipos de pruebas y es compatible con muchos \textit{frameworks} incluyendo el que hemos elegido (\textit{React}). \textit{Jest} tiene una instalación muy sencilla, de pocos pasos, y su configuración es mínima. La documentación\footnote{\url{https://jestjs.io/es-ES/docs/getting-started}} es completa, y contiene lo necesario para poder desarrollar estos tipos de pruebas, junto con una serie de ejemplos realizados paso a paso.
+	El uso de esta librería proporciona ventajas frente a no usarla o hacer tests de forma tradicional:
+	\begin{itemize}
+		\item \textbf{Compatiblidad}. Es compatible con la mayoría de \textit{frameworks} que existen, tales como Angular, React, NodeJS, Babel, etc.
+		\item \textbf{Rapidez}. Cuando las pruebas están vinculadas a la CPU, se ahorra muchísimo tiempo en la ejecución de las pruebas. Esta rapidez se consigue gracias a la combinación de varios factores:
+		\begin{enumerate}
+			\item Paralelización. Gracias a la paralelización, se produce una gran ganancia en el rendimiento.
+			\item Ejecuta primero las pruebas más lentas. Aprovecha al máximo su capacidad de procesamiento al ejecutar primero las pruebas más lentas.
+			\item Tiene una caché de transformaciones babel incorporada. Aplicar transformaciones al código requiere un uso intensivo de CPU. Gracias al uso de una caché que se comparte entre procesos, se reduce mucho tiempo al ejecutar las pruebas.
+		\end{enumerate}
+		\item \textbf{Instantáneas}. Las pruebas de instantáneas son de gran utilidad para garantizar que la interfaz no cambia de forma inesperada.
+	\end{itemize}
+	
+	Una vez que se ha instalado Jest, para realizar un test hay que seguir estos pasos:
+	\begin{enumerate}
+		\item Crear un fichero \textit{Javascript} donde estará la función a probar (por ejemplo, \textit{suma.js}):
+		\begin{lstlisting}[language=Javascript]
+			function suma(a,b){
+				return a + b;
+			}
+			
+			module.exports = suma;
+		\end{lstlisting}
+		\item Crear un fichero \textit{Javascript} donde contendrá la prueba (por ejemplo \textit{suma.test.js}). Para escribir la prueba, tiene que seguir el siguiente esquema:
+		\begin{lstlisting}[frame=single]
+			test(título, () =>{
+				expect(valor, función, expresión...).comparador(resultadoEsperado);
+			});
+		\end{lstlisting}
+			donde ``comparador'' puede ser \textit{.toBe()}, \textit{.toEqual()}, \textit{.toBeNull()}, etc., una de las funciones comparadoras que más se ajuste a lo que se quiere probar. En la documentación oficial\footnote{\url{https://jestjs.io/es-ES/docs/using-matchers}}, hay un apartado llamado ``Utilizando Comparadores'', donde enseñan algunas funciones comparador. Si se quiere ver todas las funciones que ofrece es mejor visitar la API\footnote{\url{https://jestjs.io/es-ES/docs/api}}.
+		
+			En el caso de la prueba que queremos escribir:
+		\begin{lstlisting}[language=Javascript]
+			const suma = require("./suma");
+			
+			test("Prueba de suma: 1 + 2 = 3", () =>{
+				expect(suma(1,2)).toBe(3);
+			});
+			
+			test("Prueba de suma incorrecta: 1 + 2 = 4", () =>{
+				expect(suma(1,2)).toBe(4);
+			});
+		\end{lstlisting}
+		Si ejecutamos solo la primera función, nos saldrá que hemos pasado el test (figura \ref{fig:ejemploTestCorrecto}). En cambio, si ejecutamos ambos tests, vemos que el primero sí lo ha pasado, pero el segundo ha fallado, y nos da más información sobre lo que debería haber dado y la línea de código donde ha fallado (figura \ref{fig:ejemploTestIncorrecto}).
+		
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.55\textwidth]{Imagenes/Bitmap/ejemploTestCorrecto}
+				\caption{Test pasado correctamente}
+				\label{fig:ejemploTestCorrecto}
+			\end{center}
+		\end{figure}
+		
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/ejemploTestIncorrecto}
+				\caption{Test no pasado correctamente}
+				\label{fig:ejemploTestIncorrecto}
+			\end{center}
+		\end{figure}
+	\end{enumerate}
 	
 	Esta librería la hemos usado en el proyecto para realizar las pruebas unitarias y de integración de las distintas partes de la aplicación.
 
@@ -157,7 +206,7 @@
 		\end{center}
 	\end{figure}
 
-	En este proyecto hemos usado la versión \textit{CKEditor 5} para crear un documento editable, en el que el usuario puede realizar los diferentes tipos de adaptaciones de la aplicación, y poder descargarlo en formato PDF. En la figura \ref{fig:ejemploCKEditor5} se puede ver un ejemplo de la versión \textit{CKEditor 5}\footnote{Fuente: \url{https://ckeditor.com/ckeditor-5/demo/\#document}}. En la parte superior se muestra una barra de navegación con los diferentes ejemplos de tipos de editor mencionados anteriormente, y en la inferior, el editor junto con su barra de herramientas (donde el primer elemento de ésta barra es la exportación a formato PDF).
+	En este proyecto hemos usado la versión \textit{CKEditor 5} para crear un documento editable, en el que el usuario puede realizar los diferentes tipos de adaptaciones que ofrece la aplicación, y poder descargar el resultado final en formato PDF. En la figura \ref{fig:ejemploCKEditor5} se puede ver un ejemplo de la versión \textit{CKEditor 5}\footnote{Fuente: \url{https://ckeditor.com/ckeditor-5/demo/\#document}}. En la parte superior se muestra una barra de navegación con los diferentes ejemplos de tipos de editor mencionados anteriormente, y en la inferior, el editor junto con su barra de herramientas (donde el primer elemento de ésta barra es la exportación a formato PDF).
 	
 	
 	
@@ -166,31 +215,40 @@
 %----------------------------------------------%
 \label{cap3:sec:wordsearch}
 
-	Para la creación de las sopas de letras empleamos el paquete NPM (\textit{Node Package Manager}) \textit{word-search}\footnote{\url{https://www.npmjs.com/package/@blex41/word-search}}. Para crearlas, se necesitan unas opciones de configuración, que están encapsuladas en un objeto, y devuelve la sopa de letras en un array. Las opciones de configuración son las siguientes:
+	Para la creación de los ejercicios de sopas de letras empleamos el paquete NPM (\textit{Node Package Manager}) \textit{word-search}\footnote{\url{https://www.npmjs.com/package/@blex41/word-search}}. Para crear una sopa de letras con este paquete, se necesitan unas opciones de configuración, que están encapsuladas en un objeto, y devuelve la sopa de letras en un array. Las opciones de configuración son las siguientes:
 	\begin{itemize}
 		\item cols: Es un número entero que representa el número de columnas que tendrá la sopa de letras. Por defecto tiene un valor de 10.
 		\item rows: Es un número entero que representa el número de filas que tendrá la sopa de letras. Por defecto tiene un valor de 10.
 		\item disabledDirections: Es un array de strings que representa las direcciones cardinales (``N'', ``S'', ``E'', ``W'', ``NE'', ``NW'', ``SE'', ``SW'') no válidas para colocar las palabras en la sopa de letras. Por defecto tiene un valor vacío, es decir, todas las direcciones están permitidas.
-		\item dictionary: Es un array de strings que representa las palabras a buscar en la sopa de letras. Por defecto tiene un valor vacío.
+		\item dictionary: Es un array de strings que contiene las palabras que debe contener la sopa de letras. Por defecto tiene un valor vacío.
 		\item maxWords: Es un número entero que representa el número de palabras máximo que se insertarán en la sopa de letras. Por defecto tiene un valor de 20. Aunque la longitud del array \textit{dictionary} supere este valor, solo se insertará ese número de palabras en la sopa de letras.
 		\item backwardsProbability: Es un número decimal entre 0 y 1 que representa la probabilidad que tiene cada palabra de escribirse al revés. Solo funciona si no se deshabilita, en una dirección cardinal, uno de los extremos. Por ejemplo, para poder escribir una palabra al revés en vertical, se deben tener las direcciones cardinales ``N'' y ``S'' habilitadas, no solo una de ellas. Por defecto tiene un valor de 0.3.
 		\item upperCase: Es un booleano que indica si las letras de la sopa de letras se quieren en mayúscula (\textit{true}) o no (\textit{false}). Por defecto tiene el valor \textit{true}.
 		\item diacritics: Es un booleano que indica si las letras deberían mantener las tildes en la sopa de letras. Por defecto tiene el valor \textit{false}, es decir, no mantener las tildes en la sopa de letras.
 	\end{itemize}
 	En el caso de que alguna de estas opciones no se modificasen, no daría ningún error, sino que cogería el valor por defecto que tuvieran.
-	En la figura \ref{fig:wordsearchoptions} se puede ver un ejemplo de las opciones de configuración de este paquete, donde se ha establecido un tablero de 8x9, se han habilitado todas las direcciones, la probabilidad que tiene cada palabra se ha fijado a 0.5 (cada palabra tiene un 50\% de probabilidad de escribirse al revés), el número máximo de palabras que se insertarán es 20, se quieren mantener las tildes, las letras se quieren en mayúscula y hay que buscar las palabras perro, gata, flamenco y avestruz.
 	
-	\begin{figure}[ht!]
-		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/wordsearchoptions}
-			\caption{Ejemplo de las opciones de configuración de Word-search}
-			\label{fig:wordsearchoptions}
-		\end{center}
-	\end{figure}
+	Para crear la sopa de letras, es necesario hacer una llamada a Wordsearch, pasándole como parámetro las opciones de configuración. En este ejemplo, se ha establecido un tablero de 8x9, se han habilitado todas las direcciones, la probabilidad que tiene cada palabra de escribirse al revés se ha fijado a 0.5 (cada palabra tiene un 50\% de probabilidad de escribirse al revés), el número máximo de palabras que se insertarán es 20, se quieren mantener las tildes, las letras se quieren en mayúsculas y hay que buscar las palabras perro, gata, flamenco y avestruz.
+	\begin{lstlisting}[language=Javascript]
+		const WordSearch = require("@blex41/word-search");
+		
+		const options = {
+			cols: 9,
+			rows: 8,
+			disabledDirections: [],
+			dictionary: ["perro", "gata", "flamenco", "avestruz"],
+			maxWords: 20,
+			backwardsProbability: 0.5,
+			upperCase: true,
+			diacritics: true
+		};
+		
+		const ws = new WordSearch(options);
+	\end{lstlisting}
 	
-	Una vez creada la sopa de letras, el paquete proporciona las siguientes funciones\footnote{Para cada ejemplo, se han usado las opciones de configuración de la figura \ref{fig:wordsearchoptions}. Así mismo, se han dichas funciones una sola vez y seguidas, dando como resultado el mismo tablero}:
+	Una vez creada la sopa de letras, el paquete proporciona las siguientes funciones\footnote{Para cada ejemplo, se han usado las opciones de configuración de la figura \ref{fig:wordsearchoptions}. Así mismo, se han ejecutado dichas funciones una sola vez y seguidas, dando como resultado el mismo tablero.}:
 	\begin{itemize}
-		\item grid(): Devuelve un array de caracteres donde cada posición representa una letra de la sopa de letras. En la figura \ref{fig:wordsearchgrid} se puede ver un ejemplo del resultado de la sopa de letras cuando se usa esta función.
+		\item grid(): Devuelve un array de caracteres donde cada posición representa una letra de la sopa de letras. En la figura \ref{fig:wordsearchgrid} se puede ver un ejemplo del resultado de esta función.
 		
 		\begin{figure}[ht!]
 			\begin{center}
@@ -200,11 +258,11 @@
 			\end{center}
 		\end{figure}
 	
-		\item toString(): Devuelve un array de strings donde cada posición representa una fila de la sopa de letras. En la figura \ref{fig:wordsearchtostring} se puede ver un ejemplo del resultado de la sopa de letras cuando se usa esta función.
+		\item toString(): Devuelve un array de strings donde cada posición representa una fila de la sopa de letras. En la figura \ref{fig:wordsearchtostring} se puede ver un ejemplo del resultado de esta función.
 		
 		\begin{figure}[ht!]
 			\begin{center}
-				\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/wordsearchtostring}
+				\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/wordsearchtostring}
 				\caption{Ejemplo de resultado de sopa de letras usando toString()}
 				\label{fig:wordsearchtostring}
 			\end{center}
@@ -220,7 +278,7 @@
 		
 		\begin{figure}[ht!]
 			\begin{center}
-				\includegraphics[width=0.9\textwidth]{Imagenes/Bitmap/wordsearchwords}
+				\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchwords}
 				\caption{Ejemplo de las palabras insertadas al usar words()}
 				\label{fig:wordsearchwords}
 			\end{center}
@@ -250,7 +308,7 @@
 	
 		\begin{figure}[ht!]
 			\begin{center}
-				\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/wordsearchread}
+				\includegraphics[width=0.2\textwidth]{Imagenes/Bitmap/wordsearchread}
 				\caption{Ejemplo del string formado cuando se usan los parámetros de la figura \ref{fig:wordsearchreadcall}}
 				\label{fig:wordsearchread}
 			\end{center}
