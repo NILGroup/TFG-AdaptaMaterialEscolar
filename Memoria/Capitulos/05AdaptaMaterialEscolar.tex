@@ -392,17 +392,45 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 %-------------------------------------------%
 \label{cap5:sec:implementacion}
 
-AdaptaMaterialEscolar es una aplicación web creada con React (ver sección \ref{cap3:sec:react}), cuyo código se puede encontrar en repositorio del grupo NIL en GitHub\footnote{\url{https://github.com/NILGroup/TFG-AdaptaMaterialEscolar/tree/master/Codigo}}. La web es accesible a través de la siguiente url: \url{https://holstein.fdi.ucm.es/tfg/2021/adapta/}.
-La aplicación está formada por una serie de componentes, los cuales se contarán con más detalle en la sección \ref{cap6:sec:componentes}. Las adaptaciones y ejercicios de la aplicación se encuentran en un componente llamado Toolbar, situado en la parte superior del editor, el cual tiene los siguientes elementos:
-\begin{itemize}
-	\item Pictogramas. Este componente busca pictogramas correspondientes al texto introducido. Haciendo clic en un pictograma hace que éste se lleve al editor.
-	\item Definiciones. Este componente crea una lista de definiciones (y/o preguntas), además de establecer el número de líneas para contestarlas. También tiene una opción para añadir un espaciado extra entre líneas para usuarios que tengan una letra más grande.
-	\item Sopa de letras. Este componente crea una sopa de letras dando una serie de opciones (explicadas en la sección \ref{cap3:sec:wordsearch}), tales como el número de filas, columnas, direcciones cardinales para buscar la palabra...
-	\item Verdadero y falso. Este componente crea una lista de oraciones y añade al final una línea para contestar dicha oración.
-	\item Desarrollo. Este componente crea un ejercicio de desarrollo, insertando un enunciado y el número de líneas para desarrollarlo. También tiene una opción para añadir un espaciado extra entre líneas, al igual que en el ejercicio de definiciones.
-\end{itemize}
-
-Así mismo, la aplicación sigue una arquitectura \textit{Redux}. En la siguiente sección se cuenta más sobre dicha arquitectura.
+	AdaptaMaterialEscolar es una aplicación web creada con React (ver sección \ref{cap3:sec:react}), cuyo código se puede encontrar en el repositorio del grupo NIL en GitHub\footnote{\url{https://github.com/NILGroup/TFG-AdaptaMaterialEscolar/tree/master/Codigo}}. Es accesible a través de la siguiente url: \url{https://holstein.fdi.ucm.es/tfg/2021/adapta/}. En la figura \ref{fig:adaptamaterialescolarInicio1} se puede ver la página principal de la aplicación. En ella se puede ver el header en la parte superior, con el logo de la aplicación en la parte de la izquierda, y los botones de Inicio, Ayuda y Contacto en la parte de la derecha; y en el centro de la página una zona para poder subir el fichero \textit{.pdf}. Cuando éste se ha subido, aparecerán dos zonas diferenciadas: la zona de la izquierda contiene el documento subido y la zona de la derecha es la zona que contiene las funcionalidades y el editor con su barra de herramientas, como se puede ver en la figura \ref{fig:adaptamaterialescolarInicio2}.
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/adaptamaterialescolarInicio1}
+			\caption{Página principal de AdaptaMaterialEscolar}
+			\label{fig:adaptamaterialescolarInicio1}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/adaptamaterialescolarInicio2}
+			\caption{Página principal de AdaptaMaterialEscolar tras subir un documento}
+			\label{fig:adaptamaterialescolarInicio2}
+		\end{center}
+	\end{figure}
+	
+	Las funcionalidades implementadas se darán con más detalle en la sección \ref{cap5:sec:funcionalidades} y son las siguientes:
+	
+	\begin{itemize}
+		\item Pictogramas. Permite buscar pictogramas correspondientes al texto introducido. Haciendo clic en un pictograma hace que éste se lleve al editor.
+		\item Rellenar huecos. Permite crear un ejercicio de completar huecos, a partir de un texto inicial, haciendo clic en las palabras en las que se quiera dejar el hueco.
+		\item Definiciones/Desarrollo. Definiciones permite crear una lista de conceptos a definir o preguntas a contestar en un número máximo de líneas. Desarrollo permite crear un ejercicio de desarrollo insertando el enunciado en un número de líneas máximo. En ambos, el número de líneas lo establece el usuario y también tiene una opción para añadir espaciado extra entre líneas para estudiantes que tengan una letra más grande.
+		\item Sopa de letras. Permite crear una sopa de letras estableciendo el número de filas, columnas, las palabras que se quiere insertar y las direcciones cardinales para buscar la palabra. También se puede establecer la escritura al revés de cada palabra y mostrar en el ejercicio las palabras a buscar.
+		\item Verdadero y falso. Permite crear una lista de oraciones y añade al final una línea para contestar dicha oración con verdadero o falso.
+	\end{itemize}
+	
+	Todos los ejercicios tienen una opción para añadir un ejemplo de cómo resolver el ejercicio, y en todos ellos se añade un enunciado plantilla automáticamente, que posteriormente el usuario puede personalizar a su gusto.
+	Al hacer clic en una de las funcionalidades, se abrirá, justo debajo de la barra de funcionalidades, una ventana movible manteniendo el clic izquierdo pulsado en la parte superior de dicha ventana. En la figura \ref{fig:adaptamaterialescolarMovible} se puede ver el mensaje que sale al pasar el ratón por encima de la parte superior de la ventana en el que informa al usuario de que puede moverla; y se ve que ésta se ha movido de sitio.
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/adaptamaterialescolarMovible}
+			\caption{Ejemplo de ventana movible}
+			\label{fig:adaptamaterialescolarMovible}
+		\end{center}
+	\end{figure}
+	
 %-----------------------------------%
 \subsection{Arquitectura}
 %-----------------------------------%
