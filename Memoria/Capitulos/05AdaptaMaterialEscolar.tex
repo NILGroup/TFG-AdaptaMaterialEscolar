@@ -543,6 +543,8 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}).
 		\item Activar escritura al revés: Activa la probabilidad de escribir cada palabra al revés. En el caso de que esta opción no se active, la probabilidad será cero. Si se activa, aparecerá una barra deslizante para establecer dicha probabilidad.
 	\end{itemize}
 	
+	Así mismo, existe otra opción no relacionada con la creación de la sopa de letras y es la posibilidad de mostrar en el editor las palabras a buscar junto al enunciado.
+	
 	Una vez que se han rellenado los campos obligatorios (filas, columnas, palabras y dirección) se activarán los botones de ``Vista previa'' y ``Aceptar''. El botón Vista previa genera primero la sopa de letras y la muestra al usuario antes de escribirla en el editor (en la figura \ref{fig:wordsearchPreview} se muestra la vista previa de la sopa de letras usando la configuración de la figura \ref{fig:wordsearchConfig}). En cambio, el botón Aceptar genera la sopa de letras y la escribe directamente en el editor, sin mostrarla antes al usuario. En ambos casos, si ocurre algún error (por ejemplo, que el número de filas y columnas sea igual o menor que cero) se mostrará al usuario el mensaje de error correspondiente. 
 	
 	\begin{figure}[ht!]
@@ -602,151 +604,197 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}).
 		\end{center}
 	\end{figure}
 	
-\subsubsection{Definiciones}
+	\subsubsection{Definiciones/Preguntas}
+	
+	Esta opción inicialmente fue pensada para permitir añadir ejercicios para que los estudiantes pudieran definir conceptos, pero durante la implementación vimos la opción de aumentar la funcionalidad planteando otros tipos de ejercicios, como, por ejemplo, preguntas cortas para que el alumnado tenga que responder argumentando.
+	
+	Al seleccionar esta opción en nuestra aplicación se muestra la interfaz de la figura \ref{fig:definitionsOptions1}. Para crear este tipo de ejercicio, hay que rellenar los siguientes campos:
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/definitionsOptions1}
+			\caption{Interfaz del ejercicio de definiciones/preguntas}
+			\label{fig:definitionsOptions1}
+		\end{center}
+	\end{figure}
+	\begin{itemize}
+		\item Conceptos a definir o preguntas a contestar: Es un array de strings que inicialmente está vacío, y contiene los conceptos a definir y/o preguntas a contestar. Dentro de los inputs, si se pulsa a la tecla enter, se podrá introducir más conceptos o preguntas (también se puede hacer clic en el botón ``más'' para añadir. Para quitar alguna fila, se tendrá que hacer clic en el botón ``menos'').
+		\item Número de líneas: número máximo de líneas para definir el concepto o contestar la pregunta. Por defecto es 1.
+		\item La forma en la que se muestra las frases: puede mostrarse como una lista no ordenada o una lista ordenada. Por defecto está establecido en mostrarse como una lista no ordenada.
+	\end{itemize}
+	
+	Así mismo, se ha incluido una opción para añadir espacio extra entre líneas para los estudiantes que tengan una letra más grande.
 
-El componente Definiciones inicialmente fue pensado para permitir añadir ejercicios para que los alumnos pudieran definir conceptos, pero durante la implementación vimos la opción de aumentar la funcionalidad planteando otros tipos de ejercicios, como, por ejemplo, preguntas cortas para que el alumnado tenga que responder argumentando.
+	Una vez que se han rellenado los campos obligatorios, el botón Aceptar se habilitará. Al hacer clic en él se procederá a escribir en el editor cada concepto y/o pregunta, seguido del número de líneas especificado por el usuario. Así mismo, se reseteará el modal y se cerrará. En la figura \ref{fig:definitionsResult} se muestra el resultado de este ejercicio al usar las opciones de la figura \ref{fig:definitionsOptions1} en la parte superior. La parte inferior es el resultado de usar las opciones de la figura \ref{fig:definitionsOptions2}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/definitionsOptions2}
+			\caption{Interfaz del ejercicio de definiciones/preguntas con espacio extra activado}
+			\label{fig:definitionsOptions2}
+		\end{center}
+	\end{figure}
 
-La interfaz del tipo de ejercicio se puede ver en la Figura \ref{fig:imgdefiniciones} y consta de apartados para insertar o redactar el enunciado, añadir los conceptos o preguntas, indicar el número de líneas para la respuesta del alumno y aumentar el interlineado en caso de que sea necesario facilita la escritura de quienes necesitan espacio extra, por tener una letra de mayor tamaño o cualquier otra causa.
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/definitionsResult}
+			\caption{Resultado del ejercicio de definiciones/preguntas usando las opciones de las figuras \ref{fig:definitionsOptions1} y \ref{fig:definitionsOptions2}}
+			\label{fig:definitionsResult}
+		\end{center}
+	\end{figure}
 
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgdefiniciones}
-		\caption{Interfaz del componente Definiciones}
-		\label{fig:imgdefiniciones}
-	\end{center}
-\end{figure}
+	\subsubsection{Pregunta para desarrollar}
+	
+	El ejercicio pregunta para desarrollar tiene como finalidad permitir que se inserte en el editor de texto un enunciado que pregunte al alumno sobre teoría, de forma que tenga que argumentar su respuesta de manera más extensa.
+	
+	La interfaz de este ejercicio se puede ver en la figura \ref{fig:developOptions}. Para crear el ejercicio, hace falta escribir el enunciado y elegir el número de líneas máximo para desarrollarlo. Así mismo, se ha incluido una opción no obligatoria para añadir espacio extra entre líneas en caso de que algún estudiante tenga un tamaño de letra mayor. 
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/developOptions}
+			\caption{Interfaz del ejercicio pregunta para desarrollar}
+			\label{fig:developOptions}
+		\end{center}
+	\end{figure}
+	
+	Una vez que se han rellenado los campos obligatorios, el botón Aceptar se habilitará. Al hacer clic en él se procederá a escribir, en el editor, el enunciado del ejercicio y en los siguientes renglones el número de líneas especificado por el usuario. También se reseteará los datos del ejercicio y se cerrará el modal. En la figura \ref{fig:developResult} se muestra el resultado de este ejercicio. En la parte superior se muestra dicho resultado usando las opciones de la figura \ref{fig:developOptions}. En la parte inferior, el mismo ejercicio pero quitando la opción de añadir el ejemplo de cómo resolver el ejercicio, y añadiendo espacio extra entre líneas.
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/developResult}
+			\caption{Resultado de ejercicio pregunta para desarrollar}
+			\label{fig:developResult}
+		\end{center}
+	\end{figure}
+	
+	\subsubsection{Verdadero o Falso}
+	
+	La opción Verdadero o Falso sirve para plantear ejercicios en los que el alumnado tenga que indicar si un predicado es verdadero o falso, escribiendo en el recuadro una V si es verdadero o una F si es falso.
+	
+	Al seleccionar esta opción en nuestra aplicación, se muestra la interfaz de la figura \ref{fig:truefalseOptions}. Para crear un ejercicio de verdadero y falso se necesitan rellenar los siguientes campos:
+	\begin{itemize}
+		\item Frases: es un array de strings que inicialmente está vacío, y contendrá las frases del ejercicio. Hay que escribir una frase en cada input de texto (para añadir más inputs, se puede pulsar la tecla enter dentro de uno de los inputs, o pulsar el botón ``más'' al lado de éste. Para quitarlos, se tendrá que hacer clic en el ``menos'').
+		\item La forma para mostrarla: puede ser como una lista no ordenada o una lista ordenada. Por defecto está seleccionada la lista no ordenada.
+	\end{itemize}
 
-El ejemplo del resultado de la doble funcionalidad del ejercicio de Definiciones se puede ver en las Figuras \ref{fig:imgdef1} y \ref{fig:imgdef2} .
-
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgdef1}
-		\caption{Ejemplo 1 del componente Definiciones}
-		\label{fig:imgdef1}
-	\end{center}
-\end{figure}
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgdef2}
-		\caption{Ejemplo 2 del componente Definiciones}
-		\label{fig:imgdef2}
-	\end{center}
-\end{figure}
-
-\subsubsection{Desarrollo}
-
-El componente Desarrollo tiene como finalidad permitir que se inserte en el editor de texto un enunciado que pregunte al alumno sobre teoría, de forma que tenga que argumentar su respuesta de manera más extensa.
-
-La interfaz del tipo de ejercicio se puede ver en la Figura \ref{fig:imgdesarrollo} y consta de apartados para insertar o redactar el enunciado, indicar el número de líneas para la respuesta del alumno y aumentar el interlineado en caso de que sea necesario facilita la escritura de quienes necesitan espacio extra, por tener una letra de mayor tamaño o cualquier otra causa.
-
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgdesarrollo}
-		\caption{Interfaz del componente Desarrollo}
-		\label{fig:imgdesarrollo}
-	\end{center}
-\end{figure}
-
-A diferencia del componente Definiciones, únicamente hay un espacio de escritura para los alumnos, en el que deben escribir su respuesta.
-
-El ejemplo del resultado de la funcionalidad del ejercicio de Desarrollo se puede ver en la Figura \ref{fig:imgdes1}:
-
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgdes1}
-		\caption{Ejemplo del componente Desarrollo}
-		\label{fig:imgdes1}
-	\end{center}
-\end{figure}
-
-\subsubsection{Verdadero o Falso}
-
-El componente Verdadero o Falso sirve para plantear ejercicios en los que el alumnado tenga que indicar si un predicado es verdadero o falso, escribiendo en el recuadro su respuesta.
-
-La interfaz del tipo de ejercicio se puede ver en la Figura \ref{fig:imgvf} y consta de apartados para insertar o redactar los predicados que se tienen que analizar. En este tipo de ejercicio no es necesario añadir enunciado, debido a que la funcionalidad es la misma para cualquier actividad. 
-
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/imgvf}
-		\caption{Ejemplo del componente Verdadero o Falso}
-		\label{fig:imgvf}
-	\end{center}
-\end{figure}
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/truefalseOptions}
+			\caption{Interfaz del ejercicio Verdadero o Falso}
+			\label{fig:truefalseOptions}
+		\end{center}
+	\end{figure}
+	
+	Una vez que se han rellenado los campos obligatorios mencionados anteriormente, el botón Aceptar se habilitará. Al hacer clic en él se procederá a escribir en el editor cada frase, seguido de un recuadro para escribir V si es verdadero o F si es falso, y se procederá a resetear los datos del modal y a cerrarlo. En la figura \ref{fig:truefalseResult} se muestra el resultado del ejercicio usando las opciones de la figura \ref{fig:truefalseOptions}.
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/truefalseResult}
+			\caption{Resultado de ejercicio Verdadero o Falso}
+			\label{fig:truefalseResult}
+		\end{center}
+	\end{figure}
+	
+	\subsubsection{Rellenar huecos}
+	
+	El ejercicio de rellenar huecos tiene como finalidad escribir las palabras faltantes en los espacios en los que haya una línea. Al seleccionar esta opción en nuestra aplicación se muestra la interfaz de la figura \ref{fig:fillgapsOptions}. Este ejercicio consta de dos fases:
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/fillgapsOptions}
+			\caption{Interfaz de edición del ejercicio rellenar huecos}
+			\label{fig:fillgapsOptions}
+		\end{center}
+	\end{figure}
+	\begin{itemize}
+		\item En la primera fase hay que insertar el texto en el que se quiera quitar palabras. Una vez que se ha insertado, el botón Seleccionar palabras se habilitará.
+		\item La segunda fase se alcanza cuando se hace clic en el botón de Seleccionar palabras. Para quitar una palabra basta con hacer clic en ella. Si se quiere volver a ver la palabra, hay que volver a hacer clic en ella. Para volver a editar el texto (volver a la fase uno), simplemente hay que hacer clic en el botón Editar texto. En la figura \ref{fig:fillgapsSelection} se puede ver la interfaz de selección de las palabras. En ésta, se han seleccionado las palabras ``vivos'', ``plantas'' y ``orgánicas''.
+	\end{itemize}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/fillgapsSelection}
+			\caption{Interfaz de selección de palabras del ejercicio rellenar huecos}
+			\label{fig:fillgapsSelection}
+		\end{center}
+	\end{figure}
+	
+	Una vez que se ha seleccionado al menos una palabra, el botón Aceptar se habilitará. Al hacer clic en éste, se escribirá, en el editor, el texto modificado. En el enunciado del ejercicio se mostrará las palabras que se han escondido. Así mismo, se reseteará el modal y se cerrará. En la figura \ref{fig:fillgapsResult} se ve el resultado del ejercicio al usar las opciones de las figuras \ref{fig:fillgapsOptions} y \ref{fig:fillgapsSelection}.
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/fillgapsResult}
+			\caption{Resultado del ejercicio de rellenar huecos}
+			\label{fig:fillgapsResult}
+		\end{center}
+	\end{figure}
 
 \subsection{Estructura del código}
 %-----------------------------------%
 \label{cap7:sec:estructura}
 
-La organización de directorios del proyecto gira en torno al patrón de diseño Redux, como se ha explicado en el apartado \ref{cap7:sec:arquitectura} de este mismo capítulo.
-
-El código de la funcionalidad de la aplicación se estructura principalmente en cuatro carpetas: components, pages, ckeditor y redux; además, contamos con el fichero App, que supone el punto de inicio del programa.
-
-El contenido de cada carpeta es el siguiente:
-
-\begin{itemize}
-	\item \textbf{Components:} Representado en la Figura \ref{fig:srcComponents}, contiene cada componente que representa una funcionalidad para la aplicación, o parte de ella, y todos cuentan, como mínimo, con los siguientes ficheros:
+	La organización de directorios del proyecto gira en torno al patrón de diseño Redux, como se ha explicado en la sección \ref{cap5:sec:arquitectura} de este mismo capítulo.
+	
+	El código de la funcionalidad de la aplicación se estructura principalmente en cuatro carpetas: components, pages, ckeditor y redux; además, contamos con el fichero App, que supone el punto de inicio del programa.
+	
+	El contenido de cada carpeta es el siguiente:
 	\begin{itemize}
-		\item Fichero modal de la funcionalidad del componente.
-		\item Fichero que realiza las modificaciones pertinentes para ejecutar la funcionalidad.
-		\item Fichero de estilo del componente.
+		\item \textbf{Components:} Representado en la Figura \ref{fig:srcComponents}, contiene cada componente que representa una funcionalidad para la aplicación, o parte de ella, y todos cuentan, como mínimo, con los siguientes ficheros:
+		\begin{itemize}
+			\item Fichero modal de la funcionalidad del componente.
+			\item Fichero que realiza las modificaciones pertinentes para ejecutar la funcionalidad.
+			\item Fichero de estilo del componente.
+		\end{itemize}
 	\end{itemize}
-\end{itemize}
-
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/srcComponents}
-		\caption{Ejemplo de organización de Components}
-		\label{fig:srcComponents}
-	\end{center}
-\end{figure}
-
-\begin{itemize}
-	\item \textbf{Pages:} Representado en la Figura \ref{fig:srcPages}, contiene la página del editor, que permite cargar un fichero inicial para comenzar la adaptación, y la página de ayuda, que muestra información relevante sobre la aplicación y su uso. En los dos casos se cuenta con:
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/srcComponents}
+			\caption{Ejemplo de organización de Components}
+			\label{fig:srcComponents}
+		\end{center}
+	\end{figure}
+	
+	Uno de los componentes más importantes es el de la barra de herramientas (\textit{Toolbar}), que sirve como hilo conductor de la selección de los diferentes tipos de adaptaciones que pueden agregarse al documento, mediante el patrón de diseño del despachador (\textit{dispatcher}).
+	
 	\begin{itemize}
-		\item Fichero de funcionalidad de la página.
-		\item Fichero de estilo de la página.
+		\item \textbf{Pages:} Representado en la Figura \ref{fig:srcPages}, contiene la página del editor, que permite cargar un fichero inicial para comenzar la adaptación, y la página de ayuda, que muestra información relevante sobre la aplicación y su uso. En los dos casos se cuenta con:
+		\begin{itemize}
+			\item Fichero de funcionalidad de la página.
+			\item Fichero de estilo de la página.
+		\end{itemize}
 	\end{itemize}
-\end{itemize}
-
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/srcPages}
-		\caption{Ejemplo de organización de Pages}
-		\label{fig:srcPages}
-	\end{center}
-\end{figure}
-
-\begin{itemize}
-	\item \textbf{Redux:} Representado en la Figura \ref{fig:srcRedux}, contiene la implementación del patrón de diseño que se ha aplicado a toda la aplicación, basado en el almacenamiento de los datos que necesita cada componente. La carpeta consta del store y el reducer, elementos necesarios para el desarrollo del mismo. Además, se incluye también cada componente principal con los siguientes ficheros:
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.22\textwidth]{Imagenes/Bitmap/srcPages}
+			\caption{Ejemplo de organización de Pages}
+			\label{fig:srcPages}
+		\end{center}
+	\end{figure}
 	\begin{itemize}
-		\item Fichero action: controla las diferentes acciones que puede ejecutar cada componente.
-		\item Fichero reducer: controla el estado de los componentes según el tipo de acción que realicen, partiendo de un estado inicial.
-		\item Fichero selectors: devuelve el valor de los atributos de cada componente.
-		\item Fichero types: contiene un listado de acciones posibles para cada componente. 
+		\item \textbf{Redux:} Representado en la Figura \ref{fig:srcRedux}, contiene la implementación del patrón de diseño que se ha aplicado a toda la aplicación, basado en el almacenamiento de los datos que necesita cada componente. La carpeta consta del store y el reducer, elementos necesarios para el desarrollo del mismo. Además, se incluye también cada componente principal con los siguientes ficheros:
+		\begin{itemize}
+			\item Fichero action: controla las diferentes acciones que puede ejecutar cada componente.
+			\item Fichero reducer: controla el estado de los componentes según el tipo de acción que realicen, partiendo de un estado inicial.
+			\item Fichero selectors: devuelve el valor de los atributos de cada componente.
+			\item Fichero types: contiene un listado de acciones posibles para cada componente. 
+		\end{itemize}
 	\end{itemize}
-\end{itemize}
-
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.5\textwidth]{Imagenes/Bitmap/srcRedux}
-		\caption{Ejemplo de organización de Redux}
-		\label{fig:srcRedux}
-	\end{center}
-\end{figure}
-
-\begin{itemize}
-	\item \textbf{CKEditor:} Representado en la Figura \ref{fig:srcCkeditor},contiene todos componentes software o plugins que se han desarrollado para la aplicación, permitiendo la interacción a partir de comandos que controlan las diferentes funcionalidades. Consta de un fichero que devuelve la instancia del editor CKeditor5 y una carpeta para cada plugin, con los siguientes archivos:
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.4\textwidth]{Imagenes/Bitmap/srcRedux}
+			\caption{Ejemplo de organización de Redux}
+			\label{fig:srcRedux}
+		\end{center}
+	\end{figure}
 	\begin{itemize}
-		\item Fichero de implementación del plugin.
-		\item Fichero de inserción del plugin mediante el patrón de diseño de comando (command).
+		\item \textbf{CKEditor:} Representado en la Figura \ref{fig:srcCkeditor},contiene todos componentes software o plugins que se han desarrollado para la aplicación, permitiendo la interacción a partir de comandos que controlan las diferentes funcionalidades. Consta de un fichero que devuelve la instancia del editor CKeditor5 y una carpeta para cada plugin, con los siguientes archivos:
+		\begin{itemize}
+			\item Fichero de implementación del plugin.
+			\item Fichero de inserción del plugin mediante el patrón de diseño de comando (\textit{command}).
+		\end{itemize}
 	\end{itemize}
-\end{itemize}
-
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.5\textwidth]{Imagenes/Bitmap/srcCkeditor}
-		\caption{Ejemplo de organización de CKEditor}
-		\label{fig:srcCkeditor}
-	\end{center}
-\end{figure}
-
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.4\textwidth]{Imagenes/Bitmap/srcCkeditor}
+			\caption{Ejemplo de organización de CKEditor}
+			\label{fig:srcCkeditor}
+		\end{center}
+	\end{figure}
