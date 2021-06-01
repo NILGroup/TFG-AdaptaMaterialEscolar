@@ -520,44 +520,88 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}).
 \subsection{Funcionalidades}
 \label{cap5:sec:funcionalidades}
 %-----------------------------------%
+	En esta sección se explicarán con detalle la implementación de cada una de las funcionalidades.
+	
+	\subsubsection{Sopa de letras}
+	En la figura \ref{fig:wordsearchConfig} se puede ver el aspecto de la aplicación al seleccionar sopa de letras. La creación del ejercicio de sopa de letras solicita los siguientes parámetros:
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/wordsearchConfig}
+			\caption{Generación de la sopa de letras en AdaptaMaterialEscolar}
+			\label{fig:wordsearchConfig}
+		\end{center}
+	\end{figure}
+	\begin{itemize}
+		\item Filas: El número de filas que tendrá la sopa de letras. 
+		\item Columnas: El número de columnas que tendrá la sopa de letras.
+		\item Palabras: Las palabras que se insertarán en la sopa de letras.
+		\item Dirección: Las direcciones en las que se quiere insertar la palabra. Como mínimo se debe activar una dirección para poder generar la sopa de letras.
+	\end{itemize}
+	
+	También se ha añadido otra opción de carácter no obligatorio:
+	\begin{itemize}
+		\item Activar escritura al revés: Activa la probabilidad de escribir cada palabra al revés. En el caso de que esta opción no se active, la probabilidad será cero. Si se activa, aparecerá una barra deslizante para establecer dicha probabilidad.
+	\end{itemize}
+	
+	Una vez que se han rellenado los campos obligatorios (filas, columnas, palabras y dirección) se activarán los botones de ``Vista previa'' y ``Aceptar''. El botón Vista previa genera primero la sopa de letras y la muestra al usuario antes de escribirla en el editor (en la figura \ref{fig:wordsearchPreview} se muestra la vista previa de la sopa de letras usando la configuración de la figura \ref{fig:wordsearchConfig}). En cambio, el botón Aceptar genera la sopa de letras y la escribe directamente en el editor, sin mostrarla antes al usuario. En ambos casos, si ocurre algún error (por ejemplo, que el número de filas y columnas sea igual o menor que cero) se mostrará al usuario el mensaje de error correspondiente. 
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.74\textwidth]{Imagenes/Bitmap/wordsearchPreview}
+			\caption{Vista previa de la sopa de letras}
+			\label{fig:wordsearchPreview}
+		\end{center}
+	\end{figure}
+	
+	En la figura \ref{fig:wordsearchSequence} se muestra el diagrama de secuencia de esta funcionalidad. Tal y como puede verse en dicho diagrama, al pulsar aceptar ocurre lo siguiente:
+	\begin{enumerate}
+		\item Se hace una llamada al despachador pasándole como acción \textit{updateForceReadyToPreview(false)}, para ocultar la Vista Previa en caso de que esté visible.
+		\item Hay que distinguir dos casos fundamentales:
+		\begin{itemize}
+			\item Si ya hay una sopa de letras creada, es decir, el objeto WordSearchObject es distinto de null, significa que anteriormente se ha pulsado en el botón de Vista Previa, o en el botón Aceptar pero hay un error. En este caso, si hay un mensaje de error se hace una llamada a \textit{generateWordSearch()}.
+			\item Si no hay una sopa de letras creada, es decir, el objecto WordSearchObject es null, llamaremos directamente a \textit{generateWordSearch()}.
+		\end{itemize}
+		\item La función \textit{generateWordSearch()} consta de dos fases:
+		\begin{enumerate}
+			\item Se llama al despachador pasándole como acción \textit{createWordSearch()}. El despachador buscará en \textit{Actions} el tipo de acción que es (en este caso, \textit{CREATE\_WORDSEARCH}). Posteriormente llamará al reductor a través de \textit{wordSearchRedutor()}, pasándole como parámetros el estado (\textit{state}) del componente y la acción buscada anteriormente. A continuación, buscará en el \textit{switch} el tipo de acción y se procederá a crear la sopa de letras llamando a \textit{createWordSearch()} pasándole como parámetros el objeto wordSearchObject y el objeto de configuración de la sopa de letras, \textit{options}. Esta función devolverá una sopa de letras en caso de que las filas y columnas sean mayores que cero. En caso contrario, o si ha habido alguna excepción, devolverá null. En la figura \ref{fig:flujoCreateWordSearch} se puede ver un diagrama con el flujo de acción, reductor, etc., concretos para este caso.
+			\begin{figure}[ht!]
+				\begin{center}
+					\includegraphics[width=0.74\textwidth]{Imagenes/Bitmap/flujoCreateWordSearch}
+					\caption{Diagrama de flujo de la generación de la sopa de letras}
+					\label{fig:flujoCreateWordSearch}
+				\end{center}
+			\end{figure}
+			\item Se llama al despachador pasándole como acción \textit{updateError()}. El despachador buscará en \textit{Actions} el tipo de acción que es (que en este caso es \textit{UPDATE\_WORDSEARCH\_ERROR}). Después llamará al reductor donde buscará el tipo de acción en el \textit{switch} y actualizará el mensaje de error llamando a la función \textit{manageError()} pasándole como parámetros el error, el objeto wordSearchObject y la longitud del array \textit{dictionary}. El error solo puede tomar tres estados:
+			\begin{itemize}
+				\item Si el objeto wordSearchObject es null, el error será ``Las filas y columnas deben tener un valor positivo mayor que 0''.
+				\item Si el objeto wordSearchObject es distinto a null:
+				\begin{itemize}
+					\item Hay que ver si la longitud de words (una de las funciones de la sopa de letras, que se puede leer en la sección \ref{cap3:sec:wordsearch}) es menor que la longitud del array \textit{dictionary}. En este caso, el error será ``No todas las palabras introducidas están en la sopa de letras. Prueba a cambiar el valor de las filas, columnas y/o número máximo de palabras''.
+					\item En caso contrario, no habrá mensaje de error.
+				\end{itemize}
+			\end{itemize}
+		\end{enumerate}
+		\item Por último, se hará una llamada a \textit{writeInEditor()}, una función local de \textit{WordSearchModal}, cuyo objetivo es escribir en el editor la sopa de letras, además de resetear los datos del modal y cerrarlo.
+	\end{enumerate}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchSequence}
+			\caption{Diagrama de secuencia de la generación de la sopa de letras}
+			\label{fig:wordsearchSequence}
+		\end{center}
+	\end{figure}
 
-\subsubsection{Sopa de letras}
+	En la figura \ref{fig:wordsearchResult} se muestra el resultado de la generación de la sopa de letras si se usa como configuración los datos de la figura \ref{fig:wordsearchConfig}.
 
-En la figura \ref{fig:wordsearch} se puede ver la interfaz de la generación de la sopa de letras que hemos implementado. Para poder crearla, se tienen que rellenar, como mínimo, lo siguientes campos:
-\begin{itemize}
-	\item Filas: El número de filas que tendrá la sopa de letras. 
-	\item Columnas: El número de columnas que tendrá la sopa de letras.
-	\item Palabras: Las palabras que se insertarán en la sopa de letras, separadas mediante comas.
-	\item Dirección: Las direcciones en las que se quiere insertar la palabra. Como mínimo se debe activar una dirección para poder generar la sopa de letras.
-\end{itemize}
-
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/wordsearch}
-		\caption{Interfaz de generación de la sopa de letras}
-		\label{fig:wordsearch}
-	\end{center}
-\end{figure}
-
-También se han añadido otras opciones que están disponibles en el paquete, explicadas al principio de esta sección, y que no son obligatorias:
-\begin{itemize}
-	\item Activar escritura al revés: Activa la probabilidad de escribir cada palabra al revés. En el caso de que esta opción no se active, la probabilidad será cero. Si se activa, aparecerá una barra deslizante para establecer dicha probabilidad.
-	\item Mantener tildes: Si se activa, las tildes que tengan las palabras se mantendrán cuando se genere la sopa de letras.
-\end{itemize}
-Así como un botón para resetear los campos de la sopa de letras y una opción para escribir en el editor las palabras que debe buscar el usuario.
-
-Una vez que se han rellenado las opciones mínimas se activará el botón ``Vista previa''. La funcionalidad de este botón se puede ver en la figura \ref{fig:wordsearchSequence} . Al darle clic a dicho botón, se llama a la función ``handleClick'', en cuyo cuerpo se hace una llamada al despachador pasándole como acción \textit{createWordSearch}. En el fichero \textit{wordsearch.actions.js} se buscará la acción que corresponde con el parámetro pasado, en este caso es \textit{createWordSearch}, donde buscará el tipo correspondiente en el fichero \textit{worsearch.types.js} y lo devolverá. Una vez buscado este tipo de acción, que en este caso es \textit{WordSearchActionTypes.CREATE\_WORDSEARCH}, el despachador llamará al reductor (que se encuentra en \textit{wordsearch.reducer.js}) y buscará la opción \textit{CREATE\_WORDSEARCH}. Una vez encontrado, devolverá el estado actual junto con la creación de la sopa de letras en el campo \textit{wordSearchObject}, el cual se crea gracias a una llamada a la función \textit{createWordSearch(wordSearch, options)} que se encuentra en el fichero \textit{wordsearch.utils.js}, pasándole como parámetro el campo \textit{wordSearchObject}, y el objeto opciones mencionado al principio de esta sección (\textit{cols, rows, dictionary, maxWords, disabledDirections, backwardsProbability, diacritics}). Esta función primero transforma a entero las opciones \textit{rows, cols} y \textit{maxWords}, y creará el array de palabras (\textit{dictionary}) llamando a la función \textit{split(``,'')} de la librería String, y para cada palabra, quitará sus espacios llamando a \textit{trim()}. Una vez hecho esto, se comprobará si las filas y las columnas son mayores que cero. En caso afirmativo, se procederá a crear el objeto \textit{wordsearch} pasándole como parámetro esas opciones y devolviéndolo. En caso de que haya algún error, se devolverá null. Tras devolver el estado modificado, el componente \textit{WordSearchModal} llama a la función \textit{generateTable()}. Esta función devuelve el componente de la sopa de letras \textit{WordSearch}, pasándole como datos la función \textit{grid()} descrita anteriormente, en el caso de que el objeto \textit{wordSearchObject} sea distinto de null (este objeto lo lee a través del selector \textit{selectWordSearchModalWordSearchObj}, el cual devuelve el campo \textit{wordSearchObject} del estado actual que se encuentra en el reductor), o directamente devuelve null en el caso de que \textit{wordSearchObject} también lo sea. Así mismo, esta función actualiza los mensajes de error a través de \textit{updateError(error)}, que llamará al despachador y hará el mismo proceso que con \textit{createWordSearch()}.
-
-\begin{figure}[ht!]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchSequence}
-		\caption{Diagrama de secuencia de la generación de la sopa de letras}
-		\label{fig:wordsearchSequence}
-	\end{center}
-\end{figure}
-
-Al finalizar , y si no ha habido errores, se mostrará una vista previa de la sopa de letras en dicho modal y se activará el botón "Aceptar", el cual si se le da clic se escribirá en el editor la sopa de letras.
-
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.75\textwidth]{Imagenes/Bitmap/wordsearchResult}
+			\caption{Resultado de la generación de la sopa de letras}
+			\label{fig:wordsearchResult}
+		\end{center}
+	\end{figure}
+	
 \subsubsection{Definiciones}
 
 El componente Definiciones inicialmente fue pensado para permitir añadir ejercicios para que los alumnos pudieran definir conceptos, pero durante la implementación vimos la opción de aumentar la funcionalidad planteando otros tipos de ejercicios, como, por ejemplo, preguntas cortas para que el alumnado tenga que responder argumentando.
