@@ -20,7 +20,7 @@
 	
 	Existe la posibilidad de añadir comentarios e iconos, y poder crear diferentes páginas en un mismo proyecto (por ejemplo, crear varias vistas de una aplicación), así como añadir interacción a los elementos (como por ejemplo, haciendo que un botón realice una función específica). También es colaborativo y permite la gestión de roles.
 	
-	En la figura \ref{fig:interfazMoqups} se puede ver la interfaz de un proyecto en blanco. En la parte superior de la página, se encuentran las opciones para crear figuras geométricas y añadir notas, así como agregar a otros usuarios, y exportar el proyecto como una serie de imágenes en formato PNG o PDF y a formato HTML (figura \ref{fig:menuSuperiorMoqups}). Se observa que en el menú lateral de la izquierda se encuentran los apartados para la creación del prototipo (plantillas, páginas que tiene el proyecto, comentarios, imágenes, iconos, etc), como se puede ver en la figura \ref{fig:menuLateralIzdaMoqups}. Por último, en el menú lateral de la derecha, podemos encontrar el formato de las diferentes páginas (o componentes) (figura \ref{fig:menuLateralDchaMoqups}), y las interacciones disponibles (figura \ref{fig:menuLateralDchaInteraccionesMoqups}).
+	En la figura \ref{fig:interfazMoqups} se puede ver la interfaz de un proyecto en blanco. En la parte superior de la página, se encuentran las opciones para crear figuras geométricas y añadir notas, así como agregar a otros usuarios, y exportar el proyecto como una serie de imágenes en formato PNG o PDF y a formato HTML (figura \ref{fig:menuSuperiorMoqups}). Se observa que en el menú lateral de la izquierda se encuentran los apartados para la creación del prototipo (plantillas, páginas que tiene el proyecto, comentarios, imágenes, iconos, etc.), como se puede ver en la figura \ref{fig:menuLateralIzdaMoqups}. Por último, en el menú lateral de la derecha, podemos encontrar el formato de las diferentes páginas (o componentes) (figura \ref{fig:menuLateralDchaMoqups}), y las interacciones disponibles (figura \ref{fig:menuLateralDchaInteraccionesMoqups}).
 	\begin{figure}[ht!]
 		\begin{center}
 			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/interfazMoqups}
@@ -110,11 +110,11 @@
 	
 	La API de ARASAAC consta de cuatro apartados, cada uno de los cuales tiene una ruta web dependiendo de lo que se quiera consultar: materiales, pictogramas, palabras clave y usuarios. Como en este proyecto usaremos solo la búsqueda de pictogramas, nos centraremos en el apartado de pictogramas. La API de ARASAAC proporciona ocho servicios web para pictogramas. Todos ellos se usan con el método de petición \textit{GET} y con formato de salida en \textit{JSON}. De los ocho servicios web proporcionados, en este TFG se usarán los siguientes:
 	\begin{itemize}
-		\item \textbf{/pictograms/\{idPictogram\}}: Devuelve el pictograma en formato imagen dado su identificador \textit{\{idPictogram\}}. Si tiene éxito devolverá la imagen del pictograma en formato png. En caso contrario devolverá un mensaje de error.
-		\item \textbf{/pictograms/\{locale\}/\{idPictogram\}}: Devuelve los datos de un pictograma dado su identificador \textit{\{idPictogram\}} e idioma \textit{\{locale\}}\footnote{\label{lang}Idiomas disponibles: an, ar, bg, br, ca, de, el, en, es, et, eu, fa, fr, gl, he, hr, hu, it, mk, nl, pl, pt, ro, ru, sk, sq, sv, sr, val, zh}. Si tiene éxito devolverá una lista en formato \textit{JSON} con los datos de cada pictograma. En caso contrario devolverá un error 404.
+		\item \textbf{/pictograms/\{idPictogram\}}: Devuelve el pictograma en formato imagen dado su identificador \{idPictogram\}. Si tiene éxito devolverá la imagen del pictograma en formato png. En caso contrario devolverá un mensaje de error.
+		\item \textbf{/pictograms/\{locale\}/\{idPictogram\}}: Devuelve los datos de un pictograma dado su identificador \{idPictogram\} e idioma \{locale\}\footnote{\label{lang}Idiomas disponibles: an, ar, bg, br, ca, de, el, en, es, et, eu, fa, fr, gl, he, hr, hu, it, mk, nl, pl, pt, ro, ru, sk, sq, sv, sr, val, zh}. Si tiene éxito devolverá una lista en formato \textit{JSON} con los datos de cada pictograma. En caso contrario devolverá un error 404.
 		\item \textbf{/pictograms/\{idPictogram\}/languages/\{languages\}}: Devuelve los datos de un pictograma dado su identificador \{idPictogram\} en uno o más idiomas\cref{lang} especificados en \{languages\}. Si tiene éxito devolverá los datos del pictograma en formato \textit{JSON} en los idiomas proporcionados. En caso contrario devolverá un mensaje de error.
-		\item \textbf{/pictograms/\{locale\}/search/\{searchText\}}: Devuelve en una lista los datos de los pictogramas en el idioma \textit{\{locale\}}\cref{lang} que contenga la cadena de caracteres \textit{\{searchText\}} pasado como parámetro. Si tiene éxito devolverá dicha lista en formato \textit{JSON} con los datos de cada pictograma encontrado. En caso contrario no devolverá nada.
-		\item \textbf{/pictograms/\{locale\}/bestsearch/\{searchText\}}: Devuelve en una lista los datos de los pictogramas en el idioma \textit{\{locale\}}\cref{lang} que contenga \textbf{exactamente} la cadena de caracteres \textit{\{searchText\}} pasado como parámetro. Si tiene éxito devolverá dicha lista en formato \textit{JSON} con los datos de cada pictograma encontrado. En caso contrario no devolverá nada.
+		\item \textbf{/pictograms/\{locale\}/search/\{searchText\}}: Devuelve en una lista los datos de los pictogramas en el idioma \{locale\}\cref{lang} que contenga la cadena de caracteres \{searchText\} pasada como parámetro. Si tiene éxito devolverá dicha lista en formato \textit{JSON} con los datos de cada pictograma encontrado. En caso contrario no devolverá nada.
+		\item \textbf{/pictograms/\{locale\}/bestsearch/\{searchText\}}: Devuelve en una lista los datos de los pictogramas en el idioma \{locale\}\cref{lang} que contenga \textbf{exactamente} la cadena de caracteres \{searchText\} pasada como parámetro. Si tiene éxito devolverá dicha lista en formato \textit{JSON} con los datos de cada pictograma encontrado. En caso contrario no devolverá nada.
 	\end{itemize}
 
 %----------Cuarta sección: Jest----------%
@@ -252,7 +252,7 @@
 		
 		\begin{figure}[ht!]
 			\begin{center}
-				\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/wordsearchgrid}
+				\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/wordsearchgrid}
 				\caption{Ejemplo de resultado de sopa de letras usando grid()}
 				\label{fig:wordsearchgrid}
 			\end{center}
@@ -267,7 +267,7 @@
 				\label{fig:wordsearchtostring}
 			\end{center}
 		\end{figure}
-		
+	
 		\item words(): Devuelve un array de objetos con las palabras que se han insertado correctamente en la sopa de letras. Cada objeto tiene tres campos:
 		\begin{itemize}
 			\item word: la palabra que está en el campo \textit{dictionary}.
@@ -278,7 +278,7 @@
 		
 		\begin{figure}[ht!]
 			\begin{center}
-				\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchwords}
+				\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/wordsearchwords}
 				\caption{Ejemplo de las palabras insertadas al usar words()}
 				\label{fig:wordsearchwords}
 			\end{center}
@@ -288,7 +288,7 @@
 		
 		\begin{figure}[ht!]
 			\begin{center}
-				\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchdump}
+				\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/wordsearchdump}
 				\caption{Ejemplo del objeto resultante al usar dump()}
 				\label{fig:wordsearchdump}
 			\end{center}
@@ -300,7 +300,7 @@
 		
 		\begin{figure}[ht!]
 			\begin{center}
-				\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/wordsearchreadcall}
+				\includegraphics[width=0.55\textwidth]{Imagenes/Bitmap/wordsearchreadcall}
 				\caption{Ejemplo de llamada a la función read()}
 				\label{fig:wordsearchreadcall}
 			\end{center}
@@ -308,7 +308,7 @@
 	
 		\begin{figure}[ht!]
 			\begin{center}
-				\includegraphics[width=0.2\textwidth]{Imagenes/Bitmap/wordsearchread}
+				\includegraphics[width=0.17\textwidth]{Imagenes/Bitmap/wordsearchread}
 				\caption{Ejemplo del string formado cuando se usan los parámetros de la figura \ref{fig:wordsearchreadcall}}
 				\label{fig:wordsearchread}
 			\end{center}
