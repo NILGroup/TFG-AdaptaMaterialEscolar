@@ -1,0 +1,156 @@
+  
+%---------------------------------------------------------------------%
+%																	  %
+%               Capítulo 7 - Trabajo individual				  		  %
+%																	  %
+%---------------------------------------------------------------------%
+\setlength{\parskip}{\baselineskip}
+
+\chapter{Evaluación de AdaptaMaterialEscolar}
+
+\begin{resumen}
+	En este capítulo se explicará cómo se realizó la evaluación del proyecto AdaptaMaterialEscolar con los usuarios finales y los resultados obtenidos.
+\end{resumen}
+	
+%------Primera sección------%
+\section{Función de la evaluación}
+%-----------------------------------%
+Una vez se tuvo una versión lo suficientemente completa de la aplicación web AdaptaMaterialEscolar para que fuera probada por los usuarios finales, es decir, las profesoras del Aula TEA de Ciudad Real, organizamos la evaluación que necesitábamos para cumplir la intención principal de ésta, la de confirmar si finalmente había resultado útil nuestro proyecto para los docentes que tuvieran que realizar algún tipo de adaptación curricular al alumnado que lo necesitara, durante cualquier etapa académica.
+
+Con el fin de hacer una valoración detallada, los aspectos que queríamos analizar en nuestro proyecto eran: el diseño de la interfaz, la usabilidad del sistema al completo y cada funcionalidad independiente y las posibles mejoras que se valoraría implementar en el futuro. 
+
+Para facilitar la realización de la evaluación de nuestra aplicación web y análisis de los resultados, desarrollamos una encuesta en Google Forms para los usuarios finales, que finalmente fueron más de los esperados, tal y como se explicará a lo largo del capítulo.
+
+La estructura de las preguntas del cuestionario que realizamos fue la siguiente:
+
+\begin{itemize}
+	\item Preguntas generales, para obtener algunos datos estadísticos del usuario (Figura \ref{fig:preg-generales} ).
+	\item Preguntas para docentes, para realizar ciertas preguntas únicamente a quienes pertenecieran a la profesión (Figura \ref{fig:preg-docentes} ).
+	\item Preguntas sobre usabilidad, para recopilar información sobre la facilidad o dificultad de uso del sistema completo (Figuras \ref{fig:preg-sus1}, \ref{fig:preg-sus2} y  \ref{fig:preg-sus3}).
+	\item Preguntas sobre diseño, para obtener información sobre la estética de la aplicación (Figura \ref{fig:preg-diseño}).
+	\item Preguntas sobre funcionalidades, para obtener información sobre la dificultad de uso de cada funcionalidad y recopilar nuevas adaptaciones o mejoras que se desean para la aplicación (Figuras \ref{fig:preg-fun1} y  \ref{fig:preg-fun2}).
+	\item Preguntas sobre utilidad real, para comprobar si realmente la aplicación ha cumplido con su finalidad y evaluar si debería seguir en desarrollo en el futuro (Figura \ref{fig:preg-utilidad}).
+\end{itemize}
+
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/preguntas-generales}
+			\caption{Preguntas generales}
+			\label{fig:preg-generales}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/preguntas-docentes}
+			\caption{Preguntas para docentes}
+			\label{fig:preg-docentes}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/preguntas-sus1}
+			\caption{Preguntas sobre SUS I}
+			\label{fig:preg-sus1}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/preguntas-sus2}
+			\caption{Preguntas sobre SUS II}
+			\label{fig:preg-sus2}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/preguntas-sus3}
+			\caption{Preguntas sobre SUS III}
+			\label{fig:preg-sus3}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/preguntas-diseno}
+			\caption{Preguntas sobre diseño}
+			\label{fig:preg-diseño}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/preguntas-fun1}
+			\caption{Preguntas sobre funcionalidades I}
+			\label{fig:preg-fun1}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/preguntas-fun2}
+			\caption{Preguntas sobre funcionalidades II}
+			\label{fig:preg-fun2}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/preguntas-utilidad}
+			\caption{Preguntas sobre utilidad real}
+			\label{fig:preg-utilidad}
+		\end{center}
+	\end{figure}
+
+Todos los apartados de la encuesta, a excepción del de usabilidad, fueron planificados por nosotros específicamente para obtener información que considerábamos relevante para el proyecto. Sin embargo, las preguntas sobre usabilidad de la evaluación siguen el modelo de cuestionario de la Escala de Usabilidad de un Sistema, o SUS (System Usability Scale) por sus siglas en inglés, uno de los más utilizados para la medición de usabilidad en Experiencia de Usuario. Se compone por diez preguntas puntuables del 1 al 5, donde la valoración más baja significa que el usuario está ``Muy en desacuerd'' con la afirmación y, en la más alta, ``Muy de acuerdo'' y, a pesar de que es posible modificar las preguntas del cuestionario SUS, las mantuvimos tal y como aparecen en el modelo original.
+
+Para obtener un dato relevante sobre la usabilidad de nuestro proyecto, con el modelo SUS es necesario realizar una medición de la siguiente forma:
+
+\begin{itemize}
+	\item Las preguntas pares deben restar a 5 el valor que asigne el usuario.
+	\item Las preguntas impares deben restar 1 al valor que asigne el usuario.
+\end{itemize}
+
+Si el resultado que se obtiene es cercano a 100, que es la máxima puntuación que se podría obtener con las preguntas del cuestionario, significa que la usabilidad del proyecto es buena para el usuario. En caso contrario, habría que realizar cambios para mejorar y facilitar su uso.
+
+
+%------Segunda sección------%
+\section{Prueba con el usuario final}
+%-----------------------------------%
+	
+	El viernes 28 de mayo planificamos una reunión presencial en el IES Maestro Juan de Ávila con las profesoras del Aula TEA, quienes han colaborado en el proyecto, como se ha comentado en anteriores capítulos, para establecer los requisitos necesarios para el desarrollo de AdaptaMaterialEscolar. Una vez allí, la orientadora del centro, María José Morales Rubio, se unió a la presentación por iniciativa e interés propio en nuestro proyecto. Se realizó una prueba de aproximadamente una hora de duración, en la que se les mostró todas las posibilidades de adaptación de un tema de naturales, que nos facilitaron las propias profesoras del Aula TEA, con cada una de las funcionalidades que estaban desarrolladas para el momento de la prueba.
+
+Ese mismo día se realizó una prueba de la aplicación con otra profesora del mismo instituto, Esther Valiente Moreno, que imparte las asignaturas de Emprendimiento Empresarial y Economía en el centro y cuenta con un alumno TEA en una de las clases. Además, aunque por falta de tiempo fue imposible mostrar en el día el proyecto a más profesores, contactaron con nosotros tres más, debido a que se habían interesado en aprender a utilizar AdaptaMaterialEscolar para el curso siguiente, por los buenos comentarios que les llegaron por parte de quienes hicieron la prueba con nosotros. Uno de ellos imparte Biología y los otros dos, Historia y Geografía.
+
+El día 1 de junio, una profesora del IES Pedro Álvarez de Sotomayor de Manzanares, María de las Cruces Valiente Moreno, que imparte la asignatura de Tecnología Industrial, también se interesó por el proyecto, debido a que nos comentó que en su centro había un alumno con sordera total a quien debían adaptar el material, por lo que se organizó una reunión por videollamada para mostrarle el funcionamiento de AdaptaMaterialEscolar.
+
+Durante las reuniones con los profesores de los distintos centros educativos, surgieron requisitos nuevos que se pretenden plantear como trabajo futuro en caso de que AdaptaMaterialEscolar pueda seguir en desarrollo en los próximos años; incluso se nos llegó a ofrecer la oportunidad de realizar un curso de formación a nuevos profesores y alumnos de máster el curso que viene, en el IES Maestro Juan de Ávila, para presentarlo como herramienta de adaptabilidad para el profesorado, independientemente de si llegábamos a cumplir con los nuevos requisitos o si manteníamos el proyecto tal y como lo vieron.
+
+Los requisitos que se recopilaron entre todas las reuniones de forma oral, además de reiterar la necesidad de continuar desarrollando los de la captación inicial, abrieron nuevas posibilidades para asignaturas que no se tuvieron en cuenta al principio. Los requisitos fueron los siguientes:
+
+\begin{itemize}
+	\item Añadir un pictotraductor como funcionalidad.
+	\item Añadir cuadrícula para ejercicios de matemáticas, para que los alumnos puedan escribir los números en ella.
+	\item Añadir la alternativa de añadir doble pauta, en vez de renglones de una única línea, para determinar el tamaño de la letra del alumno.
+	\item Crear una herramienta de recorte de imágenes para el texto original.
+	\item Añadir encabezado al texto con, al menos, nombre del centro educativo, nombre del alumno y asignatura.
+	\item Añadir ejercicios con espacio para dibujar.
+	\item Añadir ejercicios para ejercicios de cálculo con fórmulas con huecos a rellenar por el alumno.
+	\item Enumerar ejercicios de forma automática.
+\end{itemize}
+
+
+Como todos los profesores realizaron la encuesta mencionada anteriormente, anotaron también otros requisitos que no se comentaron de forma oral durante las pruebas de la aplicación.
+
+
+
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:
