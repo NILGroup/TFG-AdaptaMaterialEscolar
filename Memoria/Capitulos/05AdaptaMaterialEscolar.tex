@@ -4,11 +4,11 @@
 %																	  %
 %---------------------------------------------------------------------%
 
-\chapter{Requisitos y diseño}
+\chapter{AdaptaMaterialEscolar}
 
 
 \begin{resumen}
-	En este capítulo se explicará, en la sección \ref{cap5:sec:capturaRequisitos}, para quién va a desarrollarse el proyecto de AdaptaMaterialEscolar y el proceso de captura de los requisitos para la aplicación. En la sección \ref{cap5:sec:diseño}, se explicará cómo se diseñó la aplicación. Por último, en la sección \ref{cap5:sec:implementacion}, se mostrará cómo se ha implementado la aplicación.
+	En este capítulo se explicará, en la sección \ref{cap5:sec:capturaRequisitos}, para quién va a desarrollarse el proyecto de AdaptaMaterialEscolar y el proceso de captura de requisitos. En la sección \ref{cap5:sec:diseño}, se explicará cómo se diseñó la aplicación a partir de los requisitos. Por último, en la sección \ref{cap5:sec:implementacion}, se mostrará cómo se ha implementado la aplicación. 
 \end{resumen}
 
 
@@ -19,7 +19,7 @@
 
 El Trabajo de Fin de Grado de AdaptaMaterialEscolar es un proyecto sin ánimo de lucro que ha sido desarrollado con la colaboración de  las profesoras del Aula TEA del IES Maestro Juan de Ávila de Ciudad Real.
 
-Para su implementación, debido a que se pretende que el proyecto sea útil para el máximo número de docentes posibles, se hizo una amplia captura de requisitos con los usuarios finales, de forma que se pudieron conocer las necesidades reales de un centro educativo, siguiendo un Diseño Centrado en el Usuario.
+Para su implementación, debido a que se pretende que el proyecto sea realmente útil para los docentes, se hizo una amplia captura de requisitos con los usuarios finales, de forma que se pudieron conocer las necesidades reales de un centro educativo, siguiendo un Diseño Centrado en el Usuario.
 
 Se realizaron una serie de reuniones con los usuarios finales, tanto presenciales como online, para obtener los requisitos de la aplicación; además, se mantuvo el contacto con ellos durante todo el proceso de diseño e implementación, para irles enseñando la evolución de la aplicación.	
 
@@ -40,7 +40,7 @@ En este punto, a partir de la información proporcionada por los usuarios finales
 	\item Registro: Las profesoras indicaron que era mejor no tener que registrarse en la aplicación para poder trabajar con ella, ya que se consideró que no era conveniente almacenar usuarios ni contraseñas para evitar que los profesores tuvieran que utilizar datos personales con los que identificarse.
 \end{itemize}
 
-A partir de ahí, como resultado de la reunión, obtuvimos las funcionalidades de la aplicación junto con las profesora. Presentamos estas funcionalidades agrupadas en: adaptaciones de temario, actividades y/o exámenes y
+A partir de ahí, como resultado de la reunión, obtuvimos las funcionalidades de la aplicación. Presentamos estas funcionalidades agrupadas en: adaptaciones de temario, actividades y/o exámenes y
  formato.
 
 \label{cap5:sec:capturaRequisitos:tiposAdaptaciones}
@@ -48,7 +48,6 @@ A partir de ahí, como resultado de la reunión, obtuvimos las funcionalidades de 
 \underline{Adaptaciones de temario}
 
 La motivación de las adaptaciones de temario es conseguir, en el menor tiempo posible, una unidad didáctica teórica adaptada al alumno de forma casi inmediata y automática, seleccionando el texto a convertir. En este sentido, la aplicación debe ofrecer al usuario la posibilidad de:
-
 \begin{itemize}
 	\item Generar un resumen a partir de un texto.
 	\item Crear esquemas que faciliten la visualización del temario y/o las actividades, seleccionando contenido de un texto ya redactado o escribiendo desde cero.
@@ -58,7 +57,6 @@ La motivación de las adaptaciones de temario es conseguir, en el menor tiempo po
 \underline{Adaptaciones de actividades y/o exámenes}:
 
 La motivación de las adaptaciones de actividades y/o exámenes es conseguir unidades didácticas prácticas o actividades de forma fácil, seleccionando texto o un ejercicio ya redactado y adaptándolo de forma automática al tipo de ejercicio que se quiere obtener, añadiendo enunciados y ejemplos (con o sin pictogramas), siempre que sea posible, donde se explique cómo debe resolverse el ejercicio. La aplicación debe permitir crear los siguientes tipos de ejercicios:
-
 \begin{itemize}
 	\item Ejercicios de relacionar contenido mediante flechas.
 	\item Ejercicios de sopa de letras.
@@ -69,14 +67,16 @@ La motivación de las adaptaciones de actividades y/o exámenes es conseguir unida
 	\item Ejercicios de completar los espacios en blanco en esquemas.
 \end{itemize}
 
+Además, todos los ejercicios que se creen deben permitir añadir ejemplos (con o sin pictogramas) explicando cómo debe resolverse el ejercicio.
+
 \underline{Adaptaciones de formato}:
 
-Las adaptaciones de formato deben permitir estandarizar cualquier documento que se vaya a entregar al alumno, de manera que el cambio de una asignatura a otra no suponga un cambio visual y el aprendizaje sea menos costoso. Nuestra aplicación debe permitir al usuario final que pueda:s
+Las adaptaciones de formato deben permitir estandarizar cualquier documento que se vaya a entregar al alumno, de manera que el cambio de una asignatura a otra no suponga un cambio visual y el aprendizaje sea menos costoso. Nuestra aplicación debe permitir al usuario final que, dado un texto, pueda:
 
 \begin{itemize}
 	\item Sustituir una palabra por un pictograma.
 	\item Sustituir una palabra por una imagen.
-	\item Resaltar  una palabra con un color, para que los alumnos visualicen de cada una de las palabras resaltadas en el texto con mayor facilidad.
+	\item Subrayar una palabra con un color, para que los alumnos visualicen cada una de las palabras resaltadas en el texto con mayor facilidad.
 	\item Añadir una  leyenda de colores con la categoría de cada tipo de palabra resaltada, para que los alumnos puedan identificar el significado de cada una de las palabras resaltadas en el texto.
 	\item Añadir leyenda de colores para diferenciar las asignaturas, para que los alumnos relacionen cada asignatura con un color determinado y cambien de clase sin confundirse.
 	\item Estandarizar formato en textos, estableciendo una fuente de texto determinada y un tamaño acorde para cada alumno.
@@ -91,13 +91,13 @@ Las adaptaciones de formato deben permitir estandarizar cualquier documento que 
 
 Una vez recopilados los requisitos del proyecto, redactamos una lista con éstos para que pudiéramos, tanto las profesoras del Aula TEA como el equipo de desarrollo, analizarlos de forma independiente, para no influir en la toma de decisiones sobre la importancia y dificultad de cada funcionalidad.
 
-Enviamos el listado de requisitos a las profesoras por correo electrónico, con la finalidad de que revisaran el contenido o añadieran nuevas funcionalidades si fuera necesario y evaluaran cada uno de ellos. Las profesoras Ana María Alonso Frades y Ana María Díaz Valle debían puntuar los requisitos según la utilidad que pudieran aportar cada una de ellas a su trabajo. Las posibles puntuaciones debían ir de uno a tres, siendo el uno poco importante, el dos importante y el tres imprescindible. Prácticamente todos los requisitos fueron puntuadas como imprescindible, por lo que quedó claro que el proyecto cubre una necesidad real y no añadieron ningún requisito más.
+Enviamos el listado de requisitos a las profesoras por correo electrónico, con la finalidad de que revisaran el contenido o añadieran nuevas funcionalidades si fuera necesario y evaluaran cada uno de ellos. Las profesoras Ana María Alonso Frades y Ana María Díaz Valle debían puntuar los requisitos según la utilidad que pudieran aportar cada uno de ellos a su trabajo. Las posibles puntuaciones debían ir de uno a tres, siendo el uno poco importante, el dos importante y el tres imprescindible. Prácticamente todos los requisitos fueron puntuadas como imprescindible, por lo que quedó claro que el proyecto cubre una necesidad real y no añadieron ningún requisito más.
 
-Por otro lado, cada miembro del equipo de desarrollo puntuó los requisitos de manera individual, para no influir en la decisión de los compañeros, según la dificultad que consideraban que tendría la implementación de cada requisito a nivel técnico. Las posibles puntuaciones debían ir de uno a tres, siendo el uno difícil, el dos intermedio y el tres fácil. La finalidad de este análisis de los requisitos era obtener un listado con las funcionalidades ordenadas por dificultad e importancia. 
+Por otro lado, cada miembro del equipo de desarrollo puntuó los requisitos de manera individual, para no influir en la decisión de los compañeros, según la dificultad que consideraban que tendría la implementación de cada requisito a nivel técnico. Las posibles puntuaciones debían ir de uno a tres, siendo el uno difícil, el dos intermedio y el tres fácil. 
 
-Con la puntuación que asignaron las profesoras de forma conjunta, se obtuvo el indicador de importancia de cada tarea y, con la media de las puntuaciones del equipo de desarrollo, el indicador de dificultad.
+La finalidad de este análisis de los requisitos era obtener un listado con las funcionalidades ordenadas por dificultad e importancia. Con la puntuación que asignaron las profesoras de forma conjunta, se obtuvo el indicador de importancia de cada tarea y, con la media de las puntuaciones del equipo de desarrollo, el indicador de dificultad.
 
-La tabla resultante ordena, de forma descendente, las puntuaciones obtenidas entre la multiplicación de los indicadores de importancia y dificultad, siendo 9 la máxima calificación y 1 la mínima. Para establecer un orden en el desarrollo de los requisitos, se considera más prioritaria la implementación de las funcionalidades con puntuación 9 (imprescindibles y fáciles de implementar) y las menos prioritarias serán aquellas con puntuación 1 (funcionalidades poco importantes y difíciles de implementar). En la Tabla \ref{tabla:cap5:sec:segundaIteracionTablaRequisitos1} se muestra el listado final de las funcionalidades, agrupadas por tipo de adaptación, con la media de las puntuaciones obtenidas.
+La tabla resultante ordena, de forma descendente, las puntuaciones obtenidas de la multiplicación de los indicadores de importancia y dificultad, siendo 9 la máxima calificación y 1 la mínima. Para establecer un orden en el desarrollo de los requisitos, se considera más prioritaria la implementación de las funcionalidades con puntuación 9 (imprescindibles y fáciles de implementar) y las menos prioritarias serán aquellas con puntuación 1 (funcionalidades poco importantes y difíciles de implementar). En la Tabla \ref{tabla:cap5:sec:segundaIteracionTablaRequisitos1} se muestra el listado final de las funcionalidades, agrupadas por tipo de adaptación, con la media de las puntuaciones obtenidas.
 
 El resultado final se separó en dos tablas. La primera, la Tabla \ref{tabla:cap5:sec:segundaIteracionTablaOrdenFuncionalidades}, contiene las funcionalidades de la aplicación: las adaptaciones de temario (T) y actividades y/o exámenes (A), y la segunda, la Tabla \ref{tabla:cap5:sec:segundaIteracionTablaOrdenPersonalizacion}, contiene las adaptaciones de formato (F) que serían necesarias en el proyecto.
 
@@ -105,17 +105,16 @@ El resultado final se separó en dos tablas. La primera, la Tabla \ref{tabla:cap5
 \begin{table}
 	\begin{adjustbox}{center}
 	\centering
-	\scalebox{0.9}{
-			\begin{tabular}{p{9cm} p{3cm} p{3cm}}
+	\scalebox{0.82}{
+			\begin{tabular}{p{9cm} p{2cm} p{2cm}}
 			\hline
 			\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE TEMARIO (T)}} & \multicolumn{2}{| c |}{\textbf{Evaluación}} \\ \hline
-			\textbf{Requisito} &\textbf{Importancia} & \textbf{Dificultad}\\ \hline
+			\textbf{Requisito} &\textbf{Imp.} & \textbf{Dif.}\\ \hline
 			Generar un resumen a partir de un texto & 3 & 2\\ \hline
 			Crear esquemas que faciliten la visualización del temario y/o las actividades, seleccionando contenido de un texto ya redactado o escribiendo desde cero & 3 & 1,7 \\ \hline
 			Crear tablas que organicen el temario y/o las actividades, seleccionando contenido de un texto ya redactado o escribiendo desde cero & 2 & 1,7 \\ \hline
-			\hline
-			\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE ACIVIDADES Y/O TEMARIO (A)}} & \multicolumn{2}{| c |}{\textbf{Evaluación}} \\ \hline
-			\textbf{Requisito} &\textbf{Importancia} & \textbf{Dificultad}\\ \hline
+			\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE ACTIVIDADES (A)}} & \multicolumn{2}{| c |}{\textbf{Evaluación}} \\ \hline
+			\textbf{Requisito} &\textbf{Imp.} & \textbf{Dif.}\\ \hline
 			Ejercicios de relacionar contenido mediante flechas & 3 & 2 \\ \hline
 			Ejercicios de sopa de letras & 2 & 3 \\ \hline
 			Ejercicios de completar espacios en un texto & 3 & 2,7\\ \hline
@@ -124,9 +123,8 @@ El resultado final se separó en dos tablas. La primera, la Tabla \ref{tabla:cap5
 			Ejercicios de completar los espacios en blanco en tablas & 3 & 2 \\ \hline
 			Ejercicios de completar los espacios en blanco en esquemas & 3 & 1 \\ \hline
 			Añadir enunciados y ejemplos (con o sin pictogramas), donde se explique cómo debe resolverse el ejercicio & 2 & 3 \\ \hline
-			\hline
-			\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE FORMATO (F)}} & \multicolumn{2}{| c |}{\textbf{Evaluación}} \\ \hline
-			\textbf{Requisito} &\textbf{Importancia} & \textbf{Dificultad}\\ \hline
+			\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE FORMATO I (F)}} & \multicolumn{2}{| c |}{\textbf{Evaluación}} \\ \hline
+			\textbf{Requisito} &\textbf{Imp.} & \textbf{Dif.}\\ \hline
 			Sustituir una palabra por un pictograma & 2 & 2,7 \\ \hline
 			Sustituir una palabra por una imagen & 2 & 2,3 \\ \hline
 			Resaltar una palabra con un color & 3 & 3  \\ \hline
@@ -138,21 +136,23 @@ El resultado final se separó en dos tablas. La primera, la Tabla \ref{tabla:cap5
 			Subrayar una parte del texto & 2 & 2,7 \\ \hline
 			Poner en negrita una parte del texto & 3 & 2,7 \\ \hline
 			Añadir imágenes buscando una palabra en bases de datos de imágenes libres & 3 & 2,3 \\ \hline
+			\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE FORMATO II (F)}} & \multicolumn{2}{| c |}{\textbf{Evaluación}} \\ \hline
+			\textbf{Requisito} &\textbf{Imp.} & \textbf{Dif.}\\ \hline
+			Añadir espacio extra entre líneas para escribir & 3 & 2\\ \hline
 		\end{tabular}
 	}
 	\end{adjustbox}
-	
-	\caption{Puntuación de los requisitos I.}
+	\caption{Puntuación de los requisitos creada por los docentes (Importancia) y los desarrolladores (Dificultad).}
 	\label{tabla:cap5:sec:segundaIteracionTablaRequisitos1}
 \end{table}
 
 \begin{table}
 	\begin{adjustbox}{center}
 	\centering
-	\scalebox{0.9}{
-			\begin{tabular}{p{4cm} p{8cm} p{3cm}}
+	\scalebox{0.82}{
+			\begin{tabular}{p{1cm} p{8cm} p{3cm}}
 			\hline
-			\textbf{Tipo de requisito} & \textbf{Requisito} & \textbf{Puntuación}\\ \hline
+			\textbf{Tipo} & \textbf{Requisito} & \textbf{Puntuación}\\ \hline
 			\textbf{A} & Ejercicios de verdadero o falso & \textbf{9} \\ \hline
 			\textbf{A} & Ejercicios de completar espacios en un texto & \textbf{8,1} \\ \hline
 			\textbf{A} & Ejercicios de desarrollo en un espacio limitado para escribir & \textbf{8,1} \\ \hline
@@ -160,24 +160,24 @@ El resultado final se separó en dos tablas. La primera, la Tabla \ref{tabla:cap5
 			\textbf{A} & Ejercicios de relacionar contenido mediante flechas & \textbf{6} \\ \hline
 			\textbf{A} & Ejercicios de sopas de letras & \textbf{6} \\ \hline
 			\textbf{A} & Añadir ejemplos (con o sin pictogramas) sobre cómo resolver el ejercicio & \textbf{6} \\ \hline
-			\textbf{A} &Ejercicios de completar los espacios en blanco en tablas & \textbf{6} \\ \hline
+			\textbf{A} & Ejercicios de completar los espacios en blanco en tablas & \textbf{6} \\ \hline
 			\textbf{T} & Crear esquemas que faciliten la visualización del temario y/o las actividades, seleccionando contenido de un texto ya redactado o escribiendo desde cero & \textbf{5,1} \\ \hline
 			\textbf{T} & Crear tablas que organicen el temario y/o las actividades, seleccionando contenido de un texto ya redactado o escribiendo desde cero & \textbf{3,4} \\ \hline
 			\textbf{A} & Ejercicios de completar los espacios en blanco en esquemas & \textbf{3} \\ \hline
 		\end{tabular}
 	}
 	\end{adjustbox}
-	\caption{Lista de funcionalidades ordenada por prioridad.}
+	\caption{Lista de funcionalidades relacionadas con adaptaciones de temario (T) y crear actividades (A), ordenada por prioridad.}
 	\label{tabla:cap5:sec:segundaIteracionTablaOrdenFuncionalidades}
 \end{table}
 
 \begin{table}
 	\begin{adjustbox}{center}
 		\centering
-		\scalebox{0.9}{
-			\begin{tabular}{p{4cm} p{8cm} p{3cm}}
+		\scalebox{0.82}{
+			\begin{tabular}{p{1cm} p{8cm} p{3cm}}
 				\hline
-				\textbf{Tipo de requisito} & \textbf{Requisito} & \textbf{Puntuación}\\ \hline
+				\textbf{Tipo} & \textbf{Requisito} & \textbf{Puntuación}\\ \hline
 				\textbf{F} & Resaltar una palabra con un color & \textbf{9} \\ \hline
 				\textbf{F} & Aumentar el tamaño de la fuente de una parte del texto & \textbf{8,1} \\ \hline
 				\textbf{F} & Poner en negrita una parte del texto & \textbf{8,1} \\ \hline
@@ -185,41 +185,26 @@ El resultado final se separó en dos tablas. La primera, la Tabla \ref{tabla:cap5
 				\textbf{F} & 
 				Añadir enunciados y ejemplos (con o sin pictogramas), donde se explique cómo debe resolverse el ejercicio & \textbf{6} \\ \hline
 				\textbf{F} & Estandarizar formato para títulos e índices del temario, generando de forma automática una plantilla del color de la asignatura & \textbf{6} \\ \hline
-				\textbf{F} &Estandarizar formato en textos, estableciendo una fuente de texto determinada y un tamaño acorde para cada alumno & \textbf{6} \\ \hline
+				\textbf{F} & Estandarizar formato en textos, estableciendo una fuente de texto determinada y un tamaño acorde para cada alumno & \textbf{6} \\ \hline
+				\textbf{F} & Añadir espacio extra entre líneas para escribir & \textbf{6} \\ \hline
 				\textbf{F} & Sustituir una palabra por un pictograma & \textbf{5,4} \\ \hline
 				\textbf{F} & Subrayar una parte del texto & \textbf{5,4} \\ \hline
 				\textbf{F} & Añadir una  leyenda de colores con la categoría de cada tipo de palabra resaltada, para que los alumnos puedan identificar el significado de cada una de las palabras resaltadas en el texto & \textbf{3} \\ \hline
 			\end{tabular}
 		}
 	\end{adjustbox}
-	\caption{Lista de opciones de personalización ordenada por prioridad.}
+	\caption{Lista de funcionalidades de adaptación de formato, ordenada por prioridad.}
 	\label{tabla:cap5:sec:segundaIteracionTablaOrdenPersonalizacion}
 \end{table}
 
 
 \subsection{Requisitos adicionales}
 
-El miércoles 4 de diciembre de 2019, el grupo de investigación NIL (Natural Interaction based on Language) organizó un workshop en la Facultad de Informática de la Universidad Complutense con docentes de otros centros y asociacione. Durante este workshop se mostraron las herramientas tecnológicas inclusivas que se habían desarrollado o que se encontraban en desarrollo, siendo una de las presentadas AdaptaMaterialEscolar.
+El miércoles 4 de diciembre de 2019, el grupo de investigación NIL (Natural Interaction based on Language) organizó un workshop en la Facultad de Informática de la Universidad Complutense con docentes de otros centros y asociaciones. Durante este workshop se mostraron las herramientas tecnológicas inclusivas que se habían desarrollado o que se encontraban en desarrollo, siendo una de las presentadas AdaptaMaterialEscolar.
 
-Un miembro del equipo de desarrollo, Jorge Velasco Conde, realizó una presentación en la que explicó a los asistentes el funcionamiento y la finalidad de nuestro proyecto, con ejemplos visuales sobre posibles adaptaciones que podrían llegar a realizarse. Después de la presentación se realizó una ronda de opiniones con todos los docentes y expertos, para que pudieran expresar qué les había parecido la aplicación web. Todos los comentarios fueron muy positivos y preguntaron cuándo estaría disponible para uso público. Además de dar un feedback positivo sobre el proyecto, también propusieron un nuevo tipo de adaptación de formato, para mejorar las opciones de personalización para los alumnos. El requisito consiste en facilitar a los alumnos con letra de mayor tamaño que puedan escribir en un espacio suficientemente grande para ellos, ampliando la distancia entre renglones cuando sea necesario.
+Un miembro del equipo de desarrollo, Jorge Velasco Conde, realizó una presentación en la que explicó a los asistentes el funcionamiento y la finalidad de nuestro proyecto, con ejemplos visuales sobre posibles adaptaciones que podrían llegar a realizarse. Después de la presentación se realizó una ronda de opiniones con todos los docentes y expertos, para que pudieran expresar qué les había parecido la propuesta. Todos los comentarios fueron muy positivos y preguntaron cuándo estaría disponible para uso público. Además de dar un feedback positivo sobre el proyecto, también propusieron un nuevo tipo de adaptación de formato, para mejorar las opciones de personalización para los alumnos. El requisito consiste en aportar un espacio lo suficientemente grande, ampliando la distancia entre los renglones si es necesario, para que los alumnos que tienen una letra de mayor tamaño puedan escribir sin problema.
 
-\begin{table}
-	\begin{adjustbox}{center}
-		\centering
-		\scalebox{0.9}{
-			\begin{tabular}{p{9cm} p{2cm} p{2cm} p{2cm}}
-			\hline
-			\multicolumn{1}{| c |}{\textbf{ADAPTACIONES DE FORMATO (F)}} & \multicolumn{3}{| c |}{\textbf{Evaluación}} \\ \hline
-			\textbf{Requisito} &\textbf{Importancia} & \textbf{Dificultad} & \textbf{Prioridad}\\ \hline
-			Añadir espacio extra entre líneas para escribir & 3 & 2 & 6\\ \hline
-		\end{tabular}
-		}
-	\end{adjustbox}
-	\caption{Puntuación de los requisitos II.}
-	\label{tabla:cap5:sec:capturaAdicionalNuevaAdaptacionFormato}
-\end{table}
-
-En este caso únicamente realizamos la evaluación del requisito los desarrolladores, ya que, al ser una petición, se consideró que el indicador de importancia debía tener la máxima puntuación, para poder aportar utilidad a un mayor número de centros y asociaciones y el indicador de dificultad volvió a calcularse de forma independiente entre el equipo, haciendo la media entre las puntuaciones. En la Tabla \ref{tabla:cap5:sec:capturaAdicionalNuevaAdaptacionFormato} se pueden ver estas puntuaciones.
+En este caso únicamente realizamos la evaluación del requisito los desarrolladores, ya que, al ser una petición, se consideró que el indicador de importancia debía tener la máxima puntuación, para poder aportar utilidad a un mayor número de centros y asociaciones y el indicador de dificultad volvió a calcularse de forma independiente entre el equipo, haciendo la media entre las puntuaciones. El requisito se encuentra anexado en la Tabla \ref{tabla:cap5:sec:segundaIteracionTablaRequisitos1} y en la Tabla \ref{tabla:cap5:sec:segundaIteracionTablaOrdenPersonalizacion} se puede ver la puntuación.
 
 
 %------Última sección: Diseño de la aplicación------%
@@ -231,11 +216,11 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 	
 	\subsection{Primera iteración: boceto inicial}
 	\label{cap5:sec:diseño:subsec:primera}
-		Para comenzar el proceso de diseño se creó un boceto en papel de la página principal de la aplicación (figura \ref{fig:bocetoInicial}). En la parte superior de este diseño, se observa que hay una barra de navegación con dos menús: Texto y Actividades. Cada uno de ellos tiene un submenú con las diferentes adaptaciones disponibles para dicho menú (en la sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones} se pueden ver las diferentes adaptaciones que habrá en la aplicación). En el lado derecho encontramos otro menú con dos zonas diferenciadas: en la parte superior tenemos los botones de Subir texto (que sube un fichero en formato \textit{.pdf} o \textit{.docx}) y Descargar (que descarga el documento adaptado en formato \textit{.pdf}). En la parte inferior del menú lateral, nos encontramos un Resaltar información, el cual sirve para dar formato a los títulos, al cuerpo, etc. Por último, en el centro de la página, se encuentra el fichero subido con el que podremos seleccionar textos y poder adaptarlos conforme así se requiera.
+		Para comenzar el proceso de diseño se creó un boceto en papel de la página principal de la aplicación (Figura \ref{fig:bocetoInicial}). En la parte superior de este diseño, se observa que hay una barra de navegación con dos menús: Texto y Actividades. Cada uno de ellos tiene un submenú con las diferentes adaptaciones disponibles para dicho menú (en la sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones} se pueden ver las diferentes adaptaciones que habrá en la aplicación). En el lado derecho encontramos otro menú con dos zonas diferenciadas: en la parte superior tenemos los botones de Subir texto (que sube un fichero en formato \textit{.pdf} o \textit{.docx}) y Descargar (que descarga el documento adaptado en formato \textit{.pdf}). En la parte inferior del menú lateral, nos encontramos un Resaltar información, el cual sirve para dar formato a los títulos, al cuerpo, etc. Por último, en el centro de la página, se encuentra el fichero subido con el que podremos seleccionar textos y poder adaptarlos conforme así se requiera.
 		
 		\begin{figure}[ht!]
 			\begin{center}
-				\includegraphics[scale=0.73, angle=90]{Imagenes/Bitmap/bocetoInicial}
+				\includegraphics[scale=0.6, angle=90]{Imagenes/Bitmap/bocetoInicial}
 				\caption{Boceto inicial de la aplicación}
 				\label{fig:bocetoInicial}
 			\end{center}
@@ -245,41 +230,41 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 	\label{cap5:sec:diseño:subsec:segunda}
 		Partiendo del diseño inicial, y a través de la herramienta \textit{Moqups} (ver sección \ref{cap3:sec:moqups}), se creó un prototipo más amplio por vistas:
 		\begin{itemize}
-			\item \textbf{Página principal}: En la figura \ref{fig:paginaInicialProtoConjunto} se puede ver la página principal de la aplicación. Ésta es la página que se vería nada más entrar. En la parte superior, encontramos dos barras de navegación con diferentes menús. En la barra de navegación superior, podemos ver los menús relacionados con un editor de texto: Archivo, Edición, Formato, Insertar y Ayuda. En la barra de navegación inferior se encuentran los menús correspondientes a las adaptaciones de Temario y Actividades, además de la posibilidad de buscar imágenes libres\footnote{Las imágenes libres son aquellas imágenes que son de dominio público y que no tienen derechos reservados.} (también llamadas imágenes \textit{CC0} o \textit{Creative Commons Zero}\footnote{https://creativecommons.org/publicdomain/zero/1.0/deed.es}) y pictogramas. En el centro de la página web, podemos observar dos elementos: el logo de la aplicación AdaptaMaterialEscolar y una zona para poder subir el fichero en formato \textit{.pdf} o \textit{.docx}, ya sea seleccionándolo de una carpeta o arrastrando desde la carpeta a la zona de subida.
+			\item \textbf{Página principal}: En la Figura \ref{fig:paginaInicialProtoConjunto} se puede ver la página principal de la aplicación. Ésta es la página que se vería nada más entrar. En la parte superior, encontramos dos barras de navegación con diferentes menús. En la barra de navegación superior, podemos ver los menús relacionados con un editor de texto: Archivo, Edición, Formato, Insertar y Ayuda. En la barra de navegación inferior se encuentran los menús correspondientes a las adaptaciones de Temario y Actividades, además de la posibilidad de buscar imágenes libres\footnote{Las imágenes libres son aquellas imágenes que son de dominio público y que no tienen derechos reservados.} (también llamadas imágenes \textit{CC0} o \textit{Creative Commons Zero}\footnote{https://creativecommons.org/publicdomain/zero/1.0/deed.es}) y pictogramas. En el centro de la página web, podemos observar dos elementos: el logo de la aplicación AdaptaMaterialEscolar y una zona para poder subir el fichero en formato \textit{.pdf} o \textit{.docx}, ya sea seleccionándolo de una carpeta o arrastrando desde la carpeta a la zona de subida.
 			
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.97\textwidth]{Imagenes/Bitmap/paginaInicialProtoConjunto}
+					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/paginaInicialProtoConjunto}
 					\caption{Versión 1.0 de la página principal}
 					\label{fig:paginaInicialProtoConjunto}
 				\end{center}
 			\end{figure}
 		
-			\item \textbf{Editor}: Una vez subido el fichero se pasa a la vista del editor. En la figura \ref{fig:editorProtoConjunto} se puede observar dicha vista. En ésta, encontramos en la parte superior las dos barras de navegación descritas en el punto anterior. En el centro de la página observamos dos elementos: el elemento de la izquierda es el fichero subido, donde se podrán seleccionar las partes del texto que se quieran adaptar. El elemento de la derecha es el editor donde se podrá, también, adaptar e insertar imágenes, pictogramas, dar formato, etc.
+			\item \textbf{Editor}: Una vez subido el fichero se pasa a la vista del editor. En la Figura \ref{fig:editorProtoConjunto} se puede observar dicha vista. En ésta, encontramos en la parte superior las dos barras de navegación descritas en el punto anterior. En el centro de la página observamos dos elementos: el elemento de la izquierda es el fichero subido, donde se podrán seleccionar las partes del texto que se quieran adaptar. El elemento de la derecha es el editor donde se podrá, también, adaptar e insertar imágenes, pictogramas, dar formato, etc.
 
 			\begin{figure}[htp!]
 				\begin{center}
-					\includegraphics[width=0.97\textwidth]{Imagenes/Bitmap/editorProtoConjunto}
+					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/editorProtoConjunto}
 					\caption{Versión 1.0 del editor}
 					\label{fig:editorProtoConjunto}
 				\end{center}
 			\end{figure}
 			
-			\item \textbf{Búsqueda de pictogramas}: En la figura \ref{fig:buscarPictoProtoConjunto} se puede ver la búsqueda de pictogramas. En la parte superior derecha de la aplicación aparece una ventana con los diferentes pictogramas que se obtienen al buscar la palabra ``Perro''. Previamente, para poder realizar la búsqueda de pictogramas, se ha tenido que seleccionar el campo Pictos, que está a la izquierda de la barra de búsqueda. Si se hace clic en uno de ellos automáticamente se pondrá en el campo del editor.
+			\item \textbf{Búsqueda de pictogramas}: En la Figura \ref{fig:buscarPictoProtoConjunto} se puede ver la búsqueda de pictogramas. En la parte superior derecha de la aplicación aparece una ventana con los diferentes pictogramas que se obtienen al buscar la palabra ``Perro''. Previamente, para poder realizar la búsqueda de pictogramas, se ha tenido que seleccionar el campo Pictos, que está a la izquierda de la barra de búsqueda. Si se hace clic en uno de ellos automáticamente se pondrá en el campo del editor.
 			
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.97\textwidth]{Imagenes/Bitmap/buscarPictoProtoConjunto}
+					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/buscarPictoProtoConjunto}
 					\caption{Versión 1.0 de la búsqueda de pictogramas}
 					\label{fig:buscarPictoProtoConjunto}
 				\end{center}
 			\end{figure}
 			
-			\item \textbf{Adaptación de actividades}: En la figura \ref{fig:edicionActividadesProtoConjunto} se puede ver un ejemplo de una adaptación de una actividad. En este caso, el ejercicio es ``Completar'', es decir, completar el texto rellenando los huecos en blanco. Para ello, se ha tenido que seleccionar el menú Actividades (figura \ref{fig:editorProtoConjunto}) y, de entre los distintos tipos de actividades que hay, seleccionar ``Completar''. Una vez elegido este apartado, habría que ir señalando en la parte de la izquierda las palabras en las que se quiera dejar el hueco, por lo que en la parte de la derecha (editor) saldría huecos en blanco en vez de la palabra señalada. Si se quiere cerrar este menú, bastaría con darle clic en la flecha que hay en la parte de la izquierda del menú.
+			\item \textbf{Adaptación de actividades}: En la Figura \ref{fig:edicionActividadesProtoConjunto} se puede ver un ejemplo de una adaptación de una actividad. En este caso, el ejercicio es ``Completar'', es decir, completar el texto rellenando los huecos en blanco. Para ello, se ha tenido que seleccionar el menú Actividades (Figura \ref{fig:editorProtoConjunto}) y, de entre los distintos tipos de actividades que hay, seleccionar ``Completar''. Una vez elegido este apartado, habría que ir señalando en la parte de la izquierda las palabras en las que se quiera dejar el hueco, por lo que en la parte de la derecha (editor) saldría huecos en blanco en vez de la palabra señalada. Si se quiere cerrar este menú, bastaría con darle clic en la flecha que hay en la parte de la izquierda del menú.
 			
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/edicionActividadesProtoConjunto}
+					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/edicionActividadesProtoConjunto}
 					\caption{Versión 1.0 de la adaptación de actividades}
 					\label{fig:edicionActividadesProtoConjunto}
 				\end{center}
@@ -287,13 +272,13 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 			
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/edicionTemarioProtoConjunto}
+					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/edicionTemarioProtoConjunto}
 					\caption{Versión 1.0 de la adaptación de temario}
 					\label{fig:edicionTemarioProtoConjunto}
 				\end{center}
 			\end{figure}
 		
-			\item \textbf{Adaptación de temario}: En la figura \ref{fig:edicionTemarioProtoConjunto} se puede encontrar un ejemplo de una adaptación de temario. En este caso, la adaptación es ``Resumir texto''. Para ello, se ha tenido que seleccionar el menú Temario (figura \ref{fig:editorProtoConjunto}). Una vez elegido este apartado, lo primero es seleccionar el texto que se quiera resumir en la parte izquierda y después habría que darle clic a ``Resumir texto'' para que salga, en la parte de la derecha, el texto resumido.
+			\item \textbf{Adaptación de temario}: En la Figura \ref{fig:edicionTemarioProtoConjunto} se puede encontrar un ejemplo de una adaptación de temario. En este caso, la adaptación es ``Resumir texto''. Para ello, se ha tenido que seleccionar el menú Temario (Figura \ref{fig:editorProtoConjunto}). Una vez elegido este apartado, lo primero es seleccionar el texto que se quiera resumir en la parte izquierda y después habría que darle clic a ``Resumir texto'' para que salga, en la parte de la derecha, el texto resumido.
 			
 		\end{itemize}
 	
@@ -301,11 +286,11 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 	\label{cap5:sec:diseño:subsec:tercera}
 		Una vez que se hizo la versión 1.0 del prototipo, se propuso hacer una iteración competitiva para ver si este prototipo se podía mejorar. Cada miembro del equipo realizó, de forma individual y sin influir los unos en los otros, un prototipo propio partiendo del inicial. Con esto se consigue tener diferentes puntos de vista sobre una misma funcionalidad. Una vez que todos los prototipos fueron diseñados (dos de forma digital y otro en papel) se realizó una puesta en común para analizar las distintas propuestas. Los resultados fueron los siguientes:
 		\begin{itemize}
-			\item \textbf{Página principal}: En las figuras \ref{fig:paginaInicialProtoJorge}, \ref{fig:paginaInicialProtoNatalia} y \ref{fig:paginaInicialProtoPablo} se puede observar los resultados de los tres prototipos para la página principal. En el caso de la figura \ref{fig:paginaInicialProtoJorge}, en la parte inferior están los créditos y los logotipos de ARASAAC\footnote{https://arasaac.org/}, la Universidad Complutense de Madrid\footnote{https://www.ucm.es} y la licencia de \textit{Creative Commons}\footnote{https://creativecommons.org/}. También se observa que en la parte de la derecha de la barra de navegación se propuso hacer un sistema de \textit{login} para poder guardar el trabajo realizado.  Ésto último no resultó debido a que los usuarios finales que usen la aplicación especificaron que no querían recordar ningún nombre de usuario y contraseña. 
+			\item \textbf{Página principal}: En las Figuras \ref{fig:paginaInicialProtoJorge}, \ref{fig:paginaInicialProtoNatalia} y \ref{fig:paginaInicialProtoPablo} se puede observar los resultados de los tres prototipos para la página principal. En el caso de la Figura \ref{fig:paginaInicialProtoJorge}, en la parte inferior están los créditos y los logotipos de ARASAAC\footnote{https://arasaac.org/}, la Universidad Complutense de Madrid\footnote{https://www.ucm.es} y la licencia de \textit{Creative Commons}\footnote{https://creativecommons.org/}. También se observa que en la parte de la derecha de la barra de navegación se propuso hacer un sistema de \textit{login} para poder guardar el trabajo realizado.  Ésto último no resultó debido a que los usuarios finales que usen la aplicación especificaron que no querían recordar ningún nombre de usuario y contraseña. 
 			
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.73\textwidth, angle=90]{Imagenes/Bitmap/paginaInicialProtoJorge}
+					\includegraphics[width=0.64\textwidth, angle=90]{Imagenes/Bitmap/paginaInicialProtoJorge}
 					\caption{Prototipo de la página principal (Jorge)}
 					\label{fig:paginaInicialProtoJorge}
 				\end{center}
@@ -313,7 +298,7 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 			
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/paginaInicialProtoNatalia}
+					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/paginaInicialProtoNatalia}
 					\caption{Prototipo de la página principal (Natalia)}
 					\label{fig:paginaInicialProtoNatalia}
 				\end{center}
@@ -321,19 +306,19 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 		
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/paginaInicialProtoPablo}
+					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/paginaInicialProtoPablo}
 					\caption{Prototipo de la página principal (Pablo)}
 					\label{fig:paginaInicialProtoPablo}
 				\end{center}
 			\end{figure}
 		
-			También, en la parte inferior de dicha figura coincidimos que sería buena idea establecer algún botón, tal y como ocurre en las figuras \ref{fig:paginaInicialProtoNatalia} (aquí se observa que hay dos botones: Créditos, que es donde iría la parte inferior de la figura \ref{fig:paginaInicialProtoJorge}; y Ayuda, por si el usuario necesita algún tipo de ayuda con la aplicación) y \ref{fig:paginaInicialProtoPablo} (en este caso se ve tres botones: Inicio, que te llevaría a la página principal; Ayuda, donde se incluiría también la parte de Créditos; y Contacto, por si el usuario tiene algún problema y/o sugerencia pueda contactar con los desarrolladores y proporcionarle una respuesta).
+			También, en la parte inferior de dicha figura coincidimos que sería buena idea establecer algún botón, tal y como ocurre en las Figuras \ref{fig:paginaInicialProtoNatalia} (aquí se observa que hay dos botones: Créditos, que es donde iría la parte inferior de la Figura \ref{fig:paginaInicialProtoJorge}; y Ayuda, por si el usuario necesita algún tipo de ayuda con la aplicación) y \ref{fig:paginaInicialProtoPablo} (en este caso se ve tres botones: Inicio, que te llevaría a la página principal; Ayuda, donde se incluiría también la parte de Créditos; y Contacto, por si el usuario tiene algún problema y/o sugerencia pueda contactar con los desarrolladores y proporcionarle una respuesta).
 		
-			\item \textbf{Editor}: En las figuras \ref{fig:editorProtoJorge}, \ref{fig:editorProtoNatalia} y \ref{fig:editorProtoPablo} se pueden ver los resultados de la página del editor. En el caso de las figura \ref{fig:editorProtoJorge}, observamos una barra de navegación con diferentes menús, que representa los tipos de adaptaciones que tendrá en la aplicación (véase sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones}), junto con la búsqueda de imágenes y pictogramas. Si se pasa el ratón por encima de uno de estos menús saldrá un desplegable con los distintos tipos de actividades, temario y formato que hay, tal y como se puede ver en la figura \ref{fig:desplegableProtoJorge}. 
+			\item \textbf{Editor}: En las Figuras \ref{fig:editorProtoJorge}, \ref{fig:editorProtoNatalia} y \ref{fig:editorProtoPablo} se pueden ver los resultados de la página del editor. En el caso de las Figura \ref{fig:editorProtoJorge}, observamos una barra de navegación con diferentes menús, que representa los tipos de adaptaciones que tendrá en la aplicación (véase sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones}), junto con la búsqueda de imágenes y pictogramas. Si se pasa el ratón por encima de uno de estos menús saldrá un desplegable con los distintos tipos de actividades, temario y formato que hay, tal y como se puede ver en la Figura \ref{fig:desplegableProtoJorge}. 
 			
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.73\textwidth, angle=90]{Imagenes/Bitmap/editorProtoJorge}
+					\includegraphics[width=0.64\textwidth, angle=90]{Imagenes/Bitmap/editorProtoJorge}
 					\caption{Prototipo del editor (Jorge)}
 					\label{fig:editorProtoJorge}
 				\end{center}
@@ -341,27 +326,27 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 			
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.73\textwidth, angle=90]{Imagenes/Bitmap/desplegableProtoJorge}
+					\includegraphics[width=0.64\textwidth, angle=90]{Imagenes/Bitmap/desplegableProtoJorge}
 					\caption{Prototipo del editor con un desplegable en uno de los menús (Jorge)}
 					\label{fig:desplegableProtoJorge}
 				\end{center}
 			\end{figure}
 		
-			Así mismo, se ven dos elementos separados por un hueco: el elemento de la izquierda representa el fichero subido, y el de la derecha, el editor. Debajo de éste se encuentra un panel con unos botones para poder descargar, guardar y ver el documento editado, así como la posibilidad de poder borrar todo lo escrito en el editor (Vista Previa, que se puede ver en la figura \ref{fig:vistaPreviaProtoJorge}, donde la opacidad del fondo está ligeramente oscurecida, y, en el centro, cómo quedaría lo escrito en el editor; Descargar, Guardar y Borrar todo).
+			Así mismo, se ven dos elementos separados por un hueco: el elemento de la izquierda representa el fichero subido, y el de la derecha, el editor. Debajo de éste se encuentra un panel con unos botones para poder descargar, guardar y ver el documento editado, así como la posibilidad de poder borrar todo lo escrito en el editor (Vista Previa, que se puede ver en la Figura \ref{fig:vistaPreviaProtoJorge}, donde la opacidad del fondo está ligeramente oscurecida, y, en el centro, cómo quedaría lo escrito en el editor; Descargar, Guardar y Borrar todo).
 			
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.73\textwidth, angle=90]{Imagenes/Bitmap/vistaPreviaProtoJorge}
+					\includegraphics[width=0.64\textwidth, angle=90]{Imagenes/Bitmap/vistaPreviaProtoJorge}
 					\caption{Prototipo de la vista previa (Jorge)}
 					\label{fig:vistaPreviaProtoJorge}
 				\end{center}
 			\end{figure}
 			
-			En la figura \ref{fig:editorProtoNatalia}, también existe esa barra de navegación con esos menús, aunque se cambia el logo de AdaptaMaterialEscolar por dichos menús, añadiendo el de Archivo y Formato. También tiene los dos elementos mencionados anteriormente: en la parte de la izquierda el documento subido, y en el de la derecha, el editor. En éste, se encuentra una barra de herramientas con la posibilidad de cambiar el formato de la letra, la posición del texto, y dos botones para descargar y borrar todo (representados por una cuadrado con una flecha apuntando hacia abajo, Descargar; y una papelera con una cruz en ella, Borrar todo). 
+			En la Figura \ref{fig:editorProtoNatalia}, también existe esa barra de navegación con esos menús, aunque se cambia el logo de AdaptaMaterialEscolar por dichos menús, añadiendo el de Archivo y Formato. También tiene los dos elementos mencionados anteriormente: en la parte de la izquierda el documento subido, y en el de la derecha, el editor. En éste, se encuentra una barra de herramientas con la posibilidad de cambiar el formato de la letra, la posición del texto, y dos botones para descargar y borrar todo (representados por una cuadrado con una flecha apuntando hacia abajo, Descargar; y una papelera con una cruz en ella, Borrar todo). 
 			
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/editorProtoNatalia}
+					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/editorProtoNatalia}
 					\caption{Prototipo del editor (Natalia)}
 					\label{fig:editorProtoNatalia}
 				\end{center}
@@ -369,13 +354,13 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 		
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/editorProtoPablo}
+					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/editorProtoPablo}
 					\caption{Prototipo del editor (Pablo)}
 					\label{fig:editorProtoPablo}
 				\end{center}
 			\end{figure}
 		
-			En cambio, en la figura \ref{fig:editorProtoPablo}, se observa que esa barra de navegación no está, sino que está incluida en el propio editor (el elemento que se encuentra en la parte de la izquierda). En esta barra de herramientas se podrá dar formato al texto (ponerle forma de título, párrafo, color, negrita, cursiva, etc), así como deshacer y rehacer lo escrito, crear tablas, y unos botones con los distintos tipos de adaptaciones que hay.
+			En cambio, en la Figura \ref{fig:editorProtoPablo}, se observa que esa barra de navegación no está, sino que está incluida en el propio editor (el elemento que se encuentra en la parte de la izquierda). En esta barra de herramientas se podrá dar formato al texto (ponerle forma de título, párrafo, color, negrita, cursiva, etc), así como deshacer y rehacer lo escrito, crear tablas, y unos botones con los distintos tipos de adaptaciones que hay.
 			
 			
 			
@@ -383,7 +368,7 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 	
 	\subsection{Cuarta iteración: diseño final}
 	\label{cap5:sec:diseño:subsec:cuarta}
-		Una vez hecho la puesta en común de los diseños realizados por cada miembro del equipo se procedió a hacer el diseño final. Este diseño tomaba como base la figura \ref{fig:editorProtoPablo}, debido a que estaba todo más limpio y claro visualmente, y a la que se le añadió una barra de navegación en la parte superior (tal y como aparece en las figuras \ref{fig:editorProtoJorge} y \ref{fig:editorProtoNatalia}) para los tipos de adaptaciones que habrá en la aplicación. Esta barra de navegación surge porque algunas adaptaciones tienen un estilo de implementación distinto (algunas se podrán hacer sobre el propio editor pero otras abrirán nuevas ventanas para poder realizar la adaptación, sobre todo en las adaptaciones de actividades).
+		Una vez hecho la puesta en común de los diseños realizados por cada miembro del equipo se procedió a hacer el diseño final. Este diseño tomaba como base la Figura \ref{fig:editorProtoPablo}, debido a que estaba todo más limpio y claro visualmente, y a la que se le añadió una barra de navegación en la parte superior (tal y como aparece en las Figuras \ref{fig:editorProtoJorge} y \ref{fig:editorProtoNatalia}) para los tipos de adaptaciones que habrá en la aplicación. Esta barra de navegación surge porque algunas adaptaciones tienen un estilo de implementación distinto (algunas se podrán hacer sobre el propio editor pero otras abrirán nuevas ventanas para poder realizar la adaptación, sobre todo en las adaptaciones de actividades).
 		
 		Tras realizar este diseño, se envió un email a las profesoras del Aula TEA para que nos dieran \textit{feedback} sobre él. La respuesta fue positiva: tanto la distribución de los elementos como los colores usados eran adecuados. Así mismo, nos propusieron una nueva funcionalidad: permitir subrayar un texto con fluorescente.
 
@@ -392,7 +377,7 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 %-------------------------------------------%
 \label{cap5:sec:implementacion}
 
-	AdaptaMaterialEscolar es una aplicación web creada con React (ver sección \ref{cap3:sec:react}), cuyo código se puede encontrar en el repositorio del grupo NIL en GitHub\footnote{\url{https://github.com/NILGroup/TFG-AdaptaMaterialEscolar/tree/master/Codigo}}. Es accesible a través de la siguiente url: \url{https://holstein.fdi.ucm.es/tfg/2021/adapta/}. En la figura \ref{fig:adaptamaterialescolarInicio1} se puede ver la página principal de la aplicación. En ella se puede ver el header en la parte superior, con el logo de la aplicación en la parte de la izquierda, y los botones de Inicio, Ayuda y Contacto en la parte de la derecha; y en el centro de la página una zona para poder subir el fichero \textit{.pdf}. Cuando éste se ha subido, aparecerán dos zonas diferenciadas: la zona de la izquierda contiene el documento subido y la zona de la derecha es la zona que contiene las funcionalidades y el editor con su barra de herramientas, como se puede ver en la figura \ref{fig:adaptamaterialescolarInicio2}.
+	AdaptaMaterialEscolar es una aplicación web creada con React (ver sección \ref{cap3:sec:react}), cuyo código se puede encontrar en el repositorio del grupo NIL en GitHub\footnote{\url{https://github.com/NILGroup/TFG-AdaptaMaterialEscolar/tree/master/Codigo}}. Es accesible a través de la siguiente url: \url{https://holstein.fdi.ucm.es/tfg/2021/adapta/}. En la Figura \ref{fig:adaptamaterialescolarInicio1} se muestra la página principal de la aplicación. En ella se puede ver el header en la parte superior, con el logo de la aplicación en la parte de la izquierda, y los botones de Inicio, Ayuda y Contacto en la parte de la derecha; y en el centro de la página una zona para poder subir el fichero \textit{.pdf}. Cuando éste se ha subido, aparecerán dos zonas diferenciadas: la zona de la izquierda contiene el documento subido y la zona de la derecha es la zona que contiene las funcionalidades y el editor con su barra de herramientas, como se puede ver en la Figura \ref{fig:adaptamaterialescolarInicio2}.
 	
 	\begin{figure}[ht!]
 		\begin{center}
@@ -414,14 +399,14 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 	
 	\begin{itemize}
 		\item Pictogramas. Permite buscar pictogramas correspondientes al texto introducido. Haciendo clic en un pictograma hace que éste se lleve al editor.
-		\item Rellenar huecos. Permite crear un ejercicio de completar huecos, a partir de un texto inicial, haciendo clic en las palabras en las que se quiera dejar el hueco.
+		\item Rellenar huecos. Permite crear un ejercicio de completar con palabras los huecos, a partir de un texto inicial, haciendo clic en las palabras en las que se quiera dejar el hueco.
 		\item Definiciones/Desarrollo. Definiciones permite crear una lista de conceptos a definir o preguntas a contestar en un número máximo de líneas. Desarrollo permite crear un ejercicio de desarrollo insertando el enunciado en un número de líneas máximo. En ambos, el número de líneas lo establece el usuario y también tiene una opción para añadir espaciado extra entre líneas para estudiantes que tengan una letra más grande.
 		\item Sopa de letras. Permite crear una sopa de letras estableciendo el número de filas, columnas, las palabras que se quiere insertar y las direcciones cardinales para buscar la palabra. También se puede establecer la escritura al revés de cada palabra y mostrar en el ejercicio las palabras a buscar.
-		\item Verdadero y falso. Permite crear una lista de oraciones y añade al final una línea para contestar dicha oración con verdadero o falso.
+		\item Verdadero y falso. Permite crear una lista de oraciones y añade al final un recuadro para contestar con una V si es verdadero o con una F si es falso.
 	\end{itemize}
 	
 	Todos los ejercicios tienen una opción para añadir un ejemplo de cómo resolver el ejercicio, y en todos ellos se añade un enunciado plantilla automáticamente, que posteriormente el usuario puede personalizar a su gusto.
-	Al hacer clic en una de las funcionalidades, se abrirá, justo debajo de la barra de funcionalidades, una ventana movible manteniendo el clic izquierdo pulsado en la parte superior de dicha ventana. En la figura \ref{fig:adaptamaterialescolarMovible} se puede ver el mensaje que sale al pasar el ratón por encima de la parte superior de la ventana en el que informa al usuario de que puede moverla; y se ve que ésta se ha movido de sitio.
+	Al hacer clic en una de las funcionalidades, se abrirá, justo debajo de la barra de funcionalidades, una ventana movible manteniendo el clic izquierdo pulsado en la parte superior de dicha ventana. En la Figura \ref{fig:adaptamaterialescolarMovible} se puede ver el mensaje que sale al pasar el ratón por encima de la parte superior de la ventana en el que informa al usuario de que puede moverla; y se ve que ésta se ha movido de sitio.
 	
 	\begin{figure}[ht!]
 		\begin{center}
@@ -562,10 +547,10 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 	\end{figure} 
 	
 	\subsubsection{Sopa de letras}
-	En la figura \ref{fig:wordsearchConfig} se puede ver el aspecto de la aplicación al seleccionar sopa de letras. La creación del ejercicio de sopa de letras solicita los siguientes parámetros:
+	En la Figura \ref{fig:wordsearchConfig} se puede ver el aspecto de la aplicación al seleccionar sopa de letras. La creación del ejercicio de sopa de letras solicita los siguientes parámetros:
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/wordsearchConfig}
+			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/wordsearchConfig}
 			\caption{Generación de la sopa de letras en AdaptaMaterialEscolar}
 			\label{fig:wordsearchConfig}
 		\end{center}
@@ -582,32 +567,39 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 		\item Activar escritura al revés: Activa la probabilidad de escribir cada palabra al revés. En el caso de que esta opción no se active, la probabilidad será cero. Si se activa, aparecerá una barra deslizante para establecer dicha probabilidad.
 	\end{itemize}
 	
-	Así mismo, existe otra opción no relacionada con la creación de la sopa de letras y es la posibilidad de mostrar en el editor las palabras a buscar junto al enunciado.
+	Así mismo, existe otra opción de carácter opcional no relacionada con la creación de la sopa de letras y es la posibilidad de mostrar en el editor las palabras a buscar junto al enunciado.
 	
-	Una vez que se han rellenado los campos obligatorios (filas, columnas, palabras y dirección) se activarán los botones de ``Vista previa'' y ``Aceptar''. El botón Vista previa genera primero la sopa de letras y la muestra al usuario antes de escribirla en el editor (en la figura \ref{fig:wordsearchPreview} se muestra la vista previa de la sopa de letras usando la configuración de la figura \ref{fig:wordsearchConfig}). En cambio, el botón Aceptar genera la sopa de letras y la escribe directamente en el editor, sin mostrarla antes al usuario. En ambos casos, si ocurre algún error (por ejemplo, que el número de filas y columnas sea igual o menor que cero) se mostrará al usuario el mensaje de error correspondiente. 
+	Una vez que se han rellenado los campos obligatorios (filas, columnas, palabras y dirección) se activarán los botones de ``Vista previa'' y ``Aceptar''. El botón Vista previa genera primero la sopa de letras y la muestra al usuario antes de escribirla en el editor (en la Figura \ref{fig:wordsearchPreview} se muestra la vista previa de la sopa de letras usando la configuración de la Figura \ref{fig:wordsearchConfig}). En cambio, el botón Aceptar genera la sopa de letras y la escribe directamente en el editor, sin mostrarla antes al usuario. En ambos casos, si ocurre algún error (por ejemplo, que el número de filas y columnas sea igual o menor que cero) se mostrará al usuario el mensaje de error correspondiente. 
 	
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.74\textwidth]{Imagenes/Bitmap/wordsearchPreview}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/wordsearchPreview}
 			\caption{Vista previa de la sopa de letras}
 			\label{fig:wordsearchPreview}
 		\end{center}
 	\end{figure}
 	
-	En la figura \ref{fig:wordsearchSequence} se muestra el diagrama de secuencia de esta funcionalidad. Tal y como puede verse en dicho diagrama, al pulsar aceptar ocurre lo siguiente:
+	En la Figura \ref{fig:wordsearchSequence} se muestra el diagrama de secuencia de esta funcionalidad. Tal y como puede verse en dicho diagrama, al pulsar aceptar ocurre lo siguiente:
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchSequence}
+			\caption{Diagrama de secuencia de la generación de la sopa de letras}
+			\label{fig:wordsearchSequence}
+		\end{center}
+	\end{figure}
 	\begin{enumerate}
-		\item Se hace una llamada al despachador pasándole como acción \textit{updateForceReadyToPreview(false)}, para ocultar la Vista Previa en caso de que esté visible.
+		\item Se hace una llamada al despachador pasándole como acción \textit{updateForceReadyToPreview(false)}, para ocultar la vista previa en caso de que esté visible.
 		\item Hay que distinguir dos casos fundamentales:
 		\begin{itemize}
-			\item Si ya hay una sopa de letras creada, es decir, el objeto WordSearchObject es distinto de null, significa que anteriormente se ha pulsado en el botón de Vista Previa, o en el botón Aceptar pero hay un error. En este caso, si hay un mensaje de error se hace una llamada a \textit{generateWordSearch()}.
+			\item Si ya hay una sopa de letras creada, es decir, el objeto WordSearchObject es distinto de null, significa que anteriormente se ha pulsado el botón de Vista Previa, o el botón Aceptar pero hay un error. En este caso, si hay un mensaje de error se hace una llamada a \textit{generateWordSearch()}.
 			\item Si no hay una sopa de letras creada, es decir, el objecto WordSearchObject es null, llamaremos directamente a \textit{generateWordSearch()}.
 		\end{itemize}
 		\item La función \textit{generateWordSearch()} consta de dos fases:
 		\begin{enumerate}
-			\item Se llama al despachador pasándole como acción \textit{createWordSearch()}. El despachador buscará en \textit{Actions} el tipo de acción que es (en este caso, \textit{CREATE\_WORDSEARCH}). Posteriormente llamará al reductor a través de \textit{wordSearchRedutor()}, pasándole como parámetros el estado (\textit{state}) del componente y la acción buscada anteriormente. A continuación, buscará en el \textit{switch} el tipo de acción y se procederá a crear la sopa de letras llamando a \textit{createWordSearch()} pasándole como parámetros el objeto wordSearchObject y el objeto de configuración de la sopa de letras, \textit{options}. Esta función devolverá una sopa de letras en caso de que las filas y columnas sean mayores que cero. En caso contrario, o si ha habido alguna excepción, devolverá null. En la figura \ref{fig:flujoCreateWordSearch} se puede ver un diagrama con el flujo de acción, reductor, etc., concretos para este caso.
+			\item Se llama al despachador pasándole como acción \textit{createWordSearch()}. El despachador buscará en \textit{Actions} el tipo de acción que es (en este caso, \textit{CREATE\_WORDSEARCH}). Posteriormente llamará al reductor a través de \textit{wordSearchRedutor()}, pasándole como parámetros el estado (\textit{state}) del componente y la acción buscada anteriormente. A continuación, buscará en el \textit{switch} el tipo de acción y se procederá a crear la sopa de letras llamando a \textit{createWordSearch()} pasándole como parámetros el objeto wordSearchObject y el objeto de configuración de la sopa de letras, \textit{options}. Esta función devolverá una sopa de letras en caso de que las filas y columnas sean mayores que cero. En caso contrario, o si ha habido alguna excepción, devolverá null. En la Figura \ref{fig:flujoCreateWordSearch} se puede ver un diagrama con el flujo de acción, reductor, etc., concretos para este caso.
 			\begin{figure}[ht!]
 				\begin{center}
-					\includegraphics[width=0.74\textwidth]{Imagenes/Bitmap/flujoCreateWordSearch}
+					\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/flujoCreateWordSearch}
 					\caption{Diagrama de flujo de la generación de la sopa de letras}
 					\label{fig:flujoCreateWordSearch}
 				\end{center}
@@ -624,20 +616,12 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 		\end{enumerate}
 		\item Por último, se hará una llamada a \textit{writeInEditor()}, una función local de \textit{WordSearchModal}, cuyo objetivo es escribir en el editor la sopa de letras, además de resetear los datos del modal y cerrarlo.
 	\end{enumerate}
-	
-	\begin{figure}[ht!]
-		\begin{center}
-			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchSequence}
-			\caption{Diagrama de secuencia de la generación de la sopa de letras}
-			\label{fig:wordsearchSequence}
-		\end{center}
-	\end{figure}
 
-	En la figura \ref{fig:wordsearchResult} se muestra el resultado de la generación de la sopa de letras si se usa como configuración los datos de la figura \ref{fig:wordsearchConfig}.
+	En la Figura \ref{fig:wordsearchResult} se muestra el resultado de la generación de la sopa de letras si se usa como configuración los datos de la Figura \ref{fig:wordsearchConfig}.
 
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.75\textwidth]{Imagenes/Bitmap/wordsearchResult}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/wordsearchResult}
 			\caption{Resultado de la generación de la sopa de letras}
 			\label{fig:wordsearchResult}
 		\end{center}
@@ -647,10 +631,10 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 	
 	Esta opción inicialmente fue pensada para permitir añadir ejercicios para que los estudiantes pudieran definir conceptos, pero durante la implementación vimos la opción de aumentar la funcionalidad planteando otros tipos de ejercicios, como, por ejemplo, preguntas cortas para que el alumnado tenga que responder argumentando.
 	
-	Al seleccionar esta opción en nuestra aplicación se muestra la interfaz de la figura \ref{fig:definitionsOptions1}. Para crear este tipo de ejercicio, hay que rellenar los siguientes campos:
+	Al seleccionar esta opción en nuestra aplicación se muestra la interfaz de la Figura \ref{fig:definitionsOptions1}. Para crear este tipo de ejercicio, hay que rellenar los siguientes campos:
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/definitionsOptions1}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/definitionsOptions1}
 			\caption{Interfaz del ejercicio de definiciones/preguntas}
 			\label{fig:definitionsOptions1}
 		\end{center}
@@ -663,11 +647,11 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 	
 	Así mismo, se ha incluido una opción para añadir espacio extra entre líneas para los estudiantes que tengan una letra más grande.
 
-	Una vez que se han rellenado los campos obligatorios, el botón Aceptar se habilitará. Al hacer clic en él se procederá a escribir en el editor cada concepto y/o pregunta, seguido del número de líneas especificado por el usuario. Así mismo, se reseteará el modal y se cerrará. En la figura \ref{fig:definitionsResult} se muestra el resultado de este ejercicio al usar las opciones de la figura \ref{fig:definitionsOptions1} en la parte superior. La parte inferior es el resultado de usar las opciones de la figura \ref{fig:definitionsOptions2}
+	Una vez que se han rellenado los campos obligatorios, el botón Aceptar se habilitará. Al hacer clic en él se procederá a escribir en el editor cada concepto y/o pregunta, seguido del número de líneas especificado por el usuario. Así mismo, se reseteará el modal y se cerrará. En la Figura \ref{fig:definitionsResult} se muestra el resultado de este ejercicio al usar las opciones de la Figura \ref{fig:definitionsOptions1} en la parte superior. La parte inferior es el resultado de usar las opciones de la Figura \ref{fig:definitionsOptions2}
 	
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/definitionsOptions2}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/definitionsOptions2}
 			\caption{Interfaz del ejercicio de definiciones/preguntas con espacio extra activado}
 			\label{fig:definitionsOptions2}
 		\end{center}
@@ -675,8 +659,8 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/definitionsResult}
-			\caption{Resultado del ejercicio de definiciones/preguntas usando las opciones de las figuras \ref{fig:definitionsOptions1} y \ref{fig:definitionsOptions2}}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/definitionsResult}
+			\caption{Resultado del ejercicio de definiciones/preguntas usando las opciones de las Figuras \ref{fig:definitionsOptions1} y \ref{fig:definitionsOptions2}}
 			\label{fig:definitionsResult}
 		\end{center}
 	\end{figure}
@@ -685,21 +669,21 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 	
 	El ejercicio pregunta para desarrollar tiene como finalidad permitir que se inserte en el editor de texto un enunciado que pregunte al alumno sobre teoría, de forma que tenga que argumentar su respuesta de manera más extensa.
 	
-	La interfaz de este ejercicio se puede ver en la figura \ref{fig:developOptions}. Para crear el ejercicio, hace falta escribir el enunciado y elegir el número de líneas máximo para desarrollarlo. Así mismo, se ha incluido una opción no obligatoria para añadir espacio extra entre líneas en caso de que algún estudiante tenga un tamaño de letra mayor. 
+	La interfaz de este ejercicio se puede ver en la Figura \ref{fig:developOptions}. Para crear el ejercicio, hace falta escribir el enunciado y elegir el número de líneas máximo para desarrollarlo. Así mismo, se ha incluido una opción no obligatoria para añadir espacio extra entre líneas en caso de que algún estudiante tenga un tamaño de letra mayor. 
 	
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/developOptions}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/developOptions}
 			\caption{Interfaz del ejercicio pregunta para desarrollar}
 			\label{fig:developOptions}
 		\end{center}
 	\end{figure}
 	
-	Una vez que se han rellenado los campos obligatorios, el botón Aceptar se habilitará. Al hacer clic en él se procederá a escribir, en el editor, el enunciado del ejercicio y en los siguientes renglones el número de líneas especificado por el usuario. También se reseteará los datos del ejercicio y se cerrará el modal. En la figura \ref{fig:developResult} se muestra el resultado de este ejercicio. En la parte superior se muestra dicho resultado usando las opciones de la figura \ref{fig:developOptions}. En la parte inferior, el mismo ejercicio pero quitando la opción de añadir el ejemplo de cómo resolver el ejercicio, y añadiendo espacio extra entre líneas.
+	Una vez que se han rellenado los campos obligatorios, el botón Aceptar se habilitará. Al hacer clic en él se procederá a escribir, en el editor, el enunciado del ejercicio y en los siguientes renglones el número de líneas especificado por el usuario. También se reseteará los datos del ejercicio y se cerrará el modal. En la Figura \ref{fig:developResult} se muestra el resultado de este ejercicio. En la parte superior se muestra dicho resultado usando las opciones de la Figura \ref{fig:developOptions}. En la parte inferior, el mismo ejercicio pero quitando la opción de añadir el ejemplo de cómo resolver el ejercicio, y añadiendo espacio extra entre líneas.
 	
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/developResult}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/developResult}
 			\caption{Resultado de ejercicio pregunta para desarrollar}
 			\label{fig:developResult}
 		\end{center}
@@ -709,7 +693,7 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 	
 	La opción Verdadero o Falso sirve para plantear ejercicios en los que el alumnado tenga que indicar si un predicado es verdadero o falso, escribiendo en el recuadro una V si es verdadero o una F si es falso.
 	
-	Al seleccionar esta opción en nuestra aplicación, se muestra la interfaz de la figura \ref{fig:truefalseOptions}. Para crear un ejercicio de verdadero y falso se necesitan rellenar los siguientes campos:
+	Al seleccionar esta opción en nuestra aplicación, se muestra la interfaz de la Figura \ref{fig:truefalseOptions}. Para crear un ejercicio de verdadero y falso se necesitan rellenar los siguientes campos:
 	\begin{itemize}
 		\item Frases: es un array de strings que inicialmente está vacío, y contendrá las frases del ejercicio. Hay que escribir una frase en cada input de texto (para añadir más inputs, se puede pulsar la tecla enter dentro de uno de los inputs, o pulsar el botón ``más'' al lado de éste. Para quitarlos, se tendrá que hacer clic en el ``menos'').
 		\item La forma para mostrarla: puede ser como una lista no ordenada o una lista ordenada. Por defecto está seleccionada la lista no ordenada.
@@ -717,17 +701,17 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/truefalseOptions}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/truefalseOptions}
 			\caption{Interfaz del ejercicio Verdadero o Falso}
 			\label{fig:truefalseOptions}
 		\end{center}
 	\end{figure}
 	
-	Una vez que se han rellenado los campos obligatorios mencionados anteriormente, el botón Aceptar se habilitará. Al hacer clic en él se procederá a escribir en el editor cada frase, seguido de un recuadro para escribir V si es verdadero o F si es falso, y se procederá a resetear los datos del modal y a cerrarlo. En la figura \ref{fig:truefalseResult} se muestra el resultado del ejercicio usando las opciones de la figura \ref{fig:truefalseOptions}.
+	Una vez que se han rellenado los campos obligatorios mencionados anteriormente, el botón Aceptar se habilitará. Al hacer clic en él se procederá a escribir en el editor cada frase, seguido de un recuadro para escribir V si es verdadero o F si es falso, y se procederá a resetear los datos del modal y a cerrarlo. En la Figura \ref{fig:truefalseResult} se muestra el resultado del ejercicio usando las opciones de la Figura \ref{fig:truefalseOptions}.
 	
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/truefalseResult}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/truefalseResult}
 			\caption{Resultado de ejercicio Verdadero o Falso}
 			\label{fig:truefalseResult}
 		\end{center}
@@ -735,32 +719,32 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 	
 	\subsubsection{Rellenar huecos}
 	
-	El ejercicio de rellenar huecos tiene como finalidad escribir las palabras faltantes en los espacios en los que haya una línea. Al seleccionar esta opción en nuestra aplicación se muestra la interfaz de la figura \ref{fig:fillgapsOptions}. Este ejercicio consta de dos fases:
+	El ejercicio de rellenar huecos tiene como finalidad escribir las palabras faltantes en los espacios en los que haya una línea. Al seleccionar esta opción en nuestra aplicación se muestra la interfaz de la Figura \ref{fig:fillgapsOptions}. Este ejercicio consta de dos fases:
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/fillgapsOptions}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/fillgapsOptions}
 			\caption{Interfaz de edición del ejercicio rellenar huecos}
 			\label{fig:fillgapsOptions}
 		\end{center}
 	\end{figure}
 	\begin{itemize}
 		\item En la primera fase hay que insertar el texto en el que se quiera quitar palabras. Una vez que se ha insertado, el botón Seleccionar palabras se habilitará.
-		\item La segunda fase se alcanza cuando se hace clic en el botón de Seleccionar palabras. Para quitar una palabra basta con hacer clic en ella. Si se quiere volver a ver la palabra, hay que volver a hacer clic en ella. Para volver a editar el texto (volver a la fase uno), simplemente hay que hacer clic en el botón Editar texto. En la figura \ref{fig:fillgapsSelection} se puede ver la interfaz de selección de las palabras. En ésta, se han seleccionado las palabras ``vivos'', ``plantas'' y ``orgánicas''.
+		\item La segunda fase se alcanza cuando se hace clic en el botón de Seleccionar palabras. Para quitar una palabra basta con hacer clic en ella. Si se quiere volver a ver la palabra, hay que volver a hacer clic en ella. Para volver a editar el texto (volver a la fase uno), simplemente hay que hacer clic en el botón Editar texto. En la Figura \ref{fig:fillgapsSelection} se puede ver la interfaz de selección de las palabras. En ésta, se han seleccionado las palabras ``vivos'', ``plantas'' y ``orgánicas''.
 	\end{itemize}
 	
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/fillgapsSelection}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/fillgapsSelection}
 			\caption{Interfaz de selección de palabras del ejercicio rellenar huecos}
 			\label{fig:fillgapsSelection}
 		\end{center}
 	\end{figure}
 	
-	Una vez que se ha seleccionado al menos una palabra, el botón Aceptar se habilitará. Al hacer clic en éste, se escribirá, en el editor, el texto modificado. En el enunciado del ejercicio se mostrará las palabras que se han escondido. Así mismo, se reseteará el modal y se cerrará. En la figura \ref{fig:fillgapsResult} se ve el resultado del ejercicio al usar las opciones de las figuras \ref{fig:fillgapsOptions} y \ref{fig:fillgapsSelection}.
+	Una vez que se ha seleccionado al menos una palabra, el botón Aceptar se habilitará. Al hacer clic en éste, se escribirá, en el editor, el texto modificado. En el enunciado del ejercicio se mostrará las palabras que se han escondido. Así mismo, se reseteará el modal y se cerrará. En la Figura \ref{fig:fillgapsResult} se ve el resultado del ejercicio al usar las opciones de las Figuras \ref{fig:fillgapsOptions} y \ref{fig:fillgapsSelection}.
 	
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/fillgapsResult}
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/fillgapsResult}
 			\caption{Resultado del ejercicio de rellenar huecos}
 			\label{fig:fillgapsResult}
 		\end{center}
