@@ -403,106 +403,120 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 	
 	\begin{itemize}
 		\item Pictogramas. Permite buscar pictogramas correspondientes al texto introducido. Haciendo clic en un pictograma hace que éste se lleve al editor.
-		\item Rellenar huecos. Permite crear un ejercicio de completar con palabras los huecos, a partir de un texto inicial, haciendo clic en las palabras en las que se quiera dejar el hueco.
+		\item Completar huecos. Permite crear un ejercicio de completar con palabras los huecos, a partir de un texto inicial, haciendo clic en las palabras en las que se quiera dejar el hueco.
 		\item Definiciones/Desarrollo. Definiciones permite crear una lista de conceptos a definir o preguntas a contestar en un número máximo de líneas. Desarrollo permite crear un ejercicio de desarrollo insertando el enunciado en un número de líneas máximo. En ambos, el número de líneas lo establece el usuario y también tiene una opción para añadir espaciado extra entre líneas para estudiantes que tengan una letra más grande.
 		\item Sopa de letras. Permite crear una sopa de letras estableciendo el número de filas, columnas, las palabras que se quiere insertar y las direcciones cardinales para buscar la palabra. También se puede establecer la escritura al revés de cada palabra y mostrar en el ejercicio las palabras a buscar.
 		\item Verdadero y falso. Permite crear una lista de oraciones y añade al final un recuadro para contestar con una V si es verdadero o con una F si es falso.
 	\end{itemize}
 	
 	Todos los ejercicios tienen una opción para añadir un ejemplo de cómo resolver el ejercicio, y en todos ellos se añade un enunciado plantilla automáticamente, que posteriormente el usuario puede personalizar a su gusto.
-	Al hacer clic en una de las funcionalidades, se abrirá, justo debajo de la barra de funcionalidades, una ventana movible manteniendo el clic izquierdo pulsado en la parte superior de dicha ventana. En la Figura \ref{fig:adaptamaterialescolarMovible} se puede ver el mensaje que sale al pasar el ratón por encima de la parte superior de la ventana en el que informa al usuario de que puede moverla; y se ve que ésta se ha movido de sitio.
 	
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/adaptamaterialescolarMovible}
+			\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/adaptamaterialescolarMovible}
 			\caption{Ejemplo de ventana movible}
 			\label{fig:adaptamaterialescolarMovible}
 		\end{center}
 	\end{figure}
-	
-%-----------------------------------%
-\subsection{Arquitectura}
-%-----------------------------------%
-\label{cap5:sec:arquitectura}
-En el proyecto de este TFG se ha decidido aplicar una arquitectura \textit{Redux}\footnote{\url{https://redux.js.org/}}. Redux es un patrón de arquitectura de datos que pretende disminuir el número de relaciones entre los componentes de la aplicación. Se trata de un patrón que se adapta a todo tipo de librería o framework del lado del cliente. La figura \ref{fig:flujoRedux} muestra un diagrama mostrando el flujo de una aplicación Redux. Dicho diagrama muestra un flujo unidireccional, donde las vistas se suscriben a los datos del Store y actualizan estos mediante acciones.
-\figura{Bitmap/flujoRedux}{width=.9\textwidth}{fig:flujoRedux}{Muestra de flujo }
 
-Esta arquitectura se basa en tres principios:
-\begin{itemize}
-	\item Única fuente de la verdad. El estado de la aplicación se guarda en un único store y cuando los componentes necesiten conocer el estado lo cogeran del store. Este store es un objeto Javascript y está estructurado en forma de árbol con todos los datos necesarios para la aplicación.
-	\item El estado es de sólo lectura. No podemos modificar el estado directamente, solo podremos leer de él para mostrarlo en la vista y si queremos modificarlo tendremos que ejecutar acciones. Las acciones son un objeto Javascript que incluye al menos un atributo type que indica el tipo de acción que estamos emitiendo y en caso de que haya datos asociados al cambio o modificación, un atributo payload con esos datos. Por ejemplo, en el siguiente fragmento de código se tiene una acción para cargar un documento, donde el atributo type indica el tipo de acción a realizar y el payload llevará los datos del documento a cargar:
-	\begin{lstlisting}[language=Javascript]
-		export const loadDocument = (document) => ({
-			type: DocumentActionTypes.LOAD_FILE,
-			payload: document
-		});
-	\end{lstlisting}
-	\item Cambios con funciones puras. Ya que el estado no se puede modificar directamente y está almacenado en un store, tenemos que ejecutar acciones puras llamadas reducers para modificarlo. Un reducer es una función que recibe dos parámetros, el estado inicial y una acción. Dentro contendrá un switch-case que, en base a la acción que reciba, ejecutará los cambios necesarios en el store. Por ejemplo, en caso de recibir una acción del tipo LOAD\underline{ }FILE, almacenará el documento recibido del payload de la acción y lo guardará en el store. El siguiente fragmento muestra un reducer del módulo documentos dende gestiona la acción LOAD\underline{ }FILE:
-	\begin{lstlisting}[language=Javascript]
-		const documentReducer = (state = INITIAL_STATE, action) => {
-			switch (action.type){
-				case DocumentActionTypes.LOAD_FILE: 
-				return {
-					...state,
-					file: action.payload.file,
-					fileIsLoaded: true
-				};
-				default: 
-				return state;
-			}
+	Al hacer clic en una de las funcionalidades, se abrirá, justo debajo de la barra de funcionalidades, una ventana movible manteniendo el clic izquierdo pulsado en la parte superior de dicha ventana. En la Figura \ref{fig:adaptamaterialescolarMovible} se puede ver el mensaje que sale al pasar el ratón por encima de la parte superior de la ventana en el que informa al usuario de que puede moverla; y se ve que ésta se ha movido de sitio.
+	
+	%-----------------------------------%
+	\subsection{Arquitectura}
+	%-----------------------------------%
+	\label{cap5:sec:arquitectura}
+	En el proyecto de este TFG se ha decidido aplicar una arquitectura \textit{Redux}\footnote{\url{https://redux.js.org/}}. Redux es un patrón de arquitectura de datos que pretende disminuir el número de relaciones entre los componentes de la aplicación. Se trata de un patrón que se adapta a todo tipo de librería o framework del lado del cliente. La figura \ref{fig:flujoRedux} muestra un diagrama mostrando el flujo de una aplicación Redux. Dicho diagrama muestra un flujo unidireccional, donde las vistas se suscriben a los datos del Store y actualizan estos mediante acciones.
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/flujoRedux}
+			\caption{Muestra de flujo en Redux}
+			\label{fig:flujoRedux}
+		\end{center}
+	\end{figure} 
+	
+	Esta arquitectura se basa en tres principios:
+	\begin{itemize}
+		\item Única fuente de la verdad. El estado de la aplicación se guarda en un único store y cuando los componentes necesiten conocer el estado lo cogeran del store. Este store es un objeto Javascript y está estructurado en forma de árbol con todos los datos necesarios para la aplicación.
+		\item El estado es de solo lectura. No podemos modificar el estado directamente, solo podremos leer de él para mostrarlo en la vista y si queremos modificarlo tendremos que ejecutar acciones. Las acciones son un objeto Javascript que incluye al menos un atributo type que indica el tipo de acción que estamos emitiendo y en caso de que haya datos asociados al cambio o modificación, un atributo payload con esos datos. Por ejemplo, en el siguiente fragmento de código se tiene una acción para cargar un documento, donde el atributo type indica el tipo de acción a realizar y el payload llevará los datos del documento a cargar:
+		\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}]
+			export const loadDocument = (document) => ({
+				type: DocumentActionTypes.LOAD_FILE,
+				payload: document
+			});
+		\end{lstlisting}
+		\item Cambios con funciones puras. Ya que el estado no se puede modificar directamente y está almacenado en un store, tenemos que ejecutar acciones puras llamadas \textit{reducers} para modificarlo. Un \textit{reducer} es una función que recibe dos parámetros, el estado inicial y una acción. Dentro contendrá un \textit{switch-case} que, en base a la acción que reciba, ejecutará los cambios necesarios en el store. Por ejemplo, en caso de recibir una acción del tipo LOAD\underline{ }FILE, almacenará el documento recibido del payload de la acción y lo guardará en el store. El siguiente fragmento muestra un reducer del módulo documentos dende gestiona la acción LOAD\underline{ }FILE:
+		\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}]
+			const documentReducer = (state = INITIAL_STATE, action) => {
+				switch (action.type){
+					case DocumentActionTypes.LOAD_FILE: 
+					return {
+						...state,
+						file: action.payload.file,
+						fileIsLoaded: true
+					};
+					default: 
+					return state;
+				}
+				
+			};
+		\end{lstlisting}
+	\end{itemize}
+	Al externalizar toda la información en un store, facilitamos el acceso y modificación de datos en la aplicación. En la figura \ref{fig:reduxVs} se muestran las diferencias de flujo de información entre los componentes de una aplicación web sin redux y otra con redux.
+	
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/reduxvsnoredux}
+			\caption{Comparación de flujo de información de componentes sin y con redux. Fuente: https://blog.codecentric.de/en/2017/12/developing-modern-offline-apps-reactjs-redux-electron-part-3-reactjs-redux-basics/}
+			\label{fig:reduxVs}
+		\end{center}
+	\end{figure} 
+	
+	En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) y se siguen los siguientes pasos:
+	\begin{itemize} 
+		\item Los componentes se suscriben a los datos del store mediante selectores. Estos selectores actúan como \textit{getters}, es decir, funciones de solo lectura de datos. Cuando el store modifique uno de esos valores, los componentes a los que estén suscritos se actualizarán automáticamente. Se recurre a una librería de npm denominada \textit{reselect}\footnote{\url{https://www.npmjs.com/package/reselect}} que simplifica estas implementaciones. Mediante \textit{reselect} ejecutamos una función denominada \textit{createSelector}, que internamente realiza la suscripción al dato del store que queramos. En el siguiente fragmento se crea un selector para obtener el documento cargado en el store. Se selecciona el módulo document del store y creamos un selector que obtenga el fichero:
+		\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}]
+			const selectDocumentStore = (store) => store.document;
 			
-		};
-	\end{lstlisting}
-\end{itemize}
-Al externalizar toda la información en un store, facilitamos el acceso y modificación de datos en la aplicación. En la figura \ref{fig:reduxVs} se muestran las diferencias de flujo de información entre los componentes de una aplicación web sin redux y una aplicación con redux.
-\figura{Bitmap/reduxvsnoredux}{width=.9\textwidth}{fig:reduxVs}{Comparación de flujo de información de componentes sin y con redux. Fuente: https://blog.codecentric.de/en/2017/12/developing-modern-offline-apps-reactjs-redux-electron-part-3-reactjs-redux-basics/}
-
-
-En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) y se siguen los siguientes pasos:
-\begin{itemize} 
-	\item Los componentes se suscriben a los datos del store mediante selectores. Estos selectores actúan como getters, es decir, funciones de sólo lectura de datos. Cuando el store modifique uno de esos valores, los componentes a los que estén suscritos se actualizarán automáticamente. Se recurre a una librería de npm denominada \textit{reselect}\footnote{\url{https://www.npmjs.com/package/reselect}} que simplifica estas implementaciones. Mediante reselect ejecutamos una función denominada createSelector, que internamente realiza la suscripción al dato del store que queramos. En el siguiente fragmento se crea un selector para obtener el documento cargado en el store. Se selecciona el módulo document del store y creamos un selector que obtenga el fichero:
-	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{purple}]
-		const selectDocumentStore = (store) => store.document;
+			export const selectDocumentFile = createSelector(
+			[selectDocumentStore],
+			documentStore => documentStore.file
+			);
+		\end{lstlisting}
+		En los componentes se inyectarán los selectors necesarios mediante una función llamada \textit{createStructuredSelector}. Por ejemplo, en el componente que muestra un documento:
+		\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}]
+			const mapStateToProps = createStructuredSelector({
+				document: selectDocumentFile
+			});
+		\end{lstlisting}
+		\item Los componentes ejecutan acciones. Esto lo realizan ejecutando un método \textit{dispatch} y añadiendo como parámetro la acción a ejecutar. Por ejemplo, si tenemos una acción de cargar un documento, haríamos lo siguiente:
+		\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}]
+			export const loadDocument = document => ({
+				type: DocumentActionTypes.LOAD_FILE,
+				payload: document
+			});
+		\end{lstlisting}
 		
-		export const selectDocumentFile = createSelector(
-		[selectDocumentStore],
-		documentStore => documentStore.file
-		);
-	\end{lstlisting}
-	En los componentes se inyectarán los selectors necesarios mediante una función llamada createStructuredSelector. Por ejemplo, en el componente que muestra un documento:
-	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{purple}]
-		const mapStateToProps = createStructuredSelector({
-			document: selectDocumentFile
-		});
-	\end{lstlisting}
-	\item Los componentes ejecutan acciones. Esto lo realizan ejecutando un método dispatch y añadiendo como parámetro la acción a ejecutar. Por ejemplo, si tenemos una acción de cargar un documento, haríamos lo siguiente:
-	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{purple}]
-		export const closePictogramSearchModal = () => ({
-			type: PictogramsActionTypes.CLOSE_PICTOGRAMS_MODAL
-		});
-	\end{lstlisting}
-	
-	\item Se ejecutan middlewares en caso de necesitar acciones asíncronas. Estos middlewares permiten ejecutar llamadas a API REST y posteriormente despachar otras acciones según el resultado. El siguiente ejemplo muestra cómo se ejecuta un middleware de buscar pictogramas llamando a la API de ARASAAC:
-	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{purple}]
-		export const fetchPictogramsAction = (searchInput) => {
-			return dispatch => {
-				fetch(`https://api.arasaac.org/api/pictograms/es/search/\${searchInput}`)
-				.then((response) => response.json())
-				.then(data => {
-					let items = [];
-					for(let i = 0; i < data.length && i < 20; i++){
-						items.push(´https://static.arasaac.org/pictograms/\${data[i].\_id}/\${data[i].\_id}\_500.png`)
-					}
-					dispatch(fetchPictogramsSuccess(items));
-				})
-				.catch(error){
-					dispatch(fetchPictogramsFailure(error))        
-				};
+		\item Se ejecutan middlewares en caso de necesitar acciones asíncronas. Estos middlewares permiten ejecutar llamadas a API REST y posteriormente despachar otras acciones según el resultado. El siguiente ejemplo muestra cómo se ejecuta un middleware de buscar pictogramas llamando a la API de ARASAAC:
+		\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}]
+			export const fetchPictogramsAction = (searchInput) => {
+				return dispatch => {
+					fetch("https://api.arasaac.org/api/pictograms/es/search/$\dollar${searchInput}")
+					.then((response) => response.json())
+					.then(data => {
+						let items = [];
+						for(let i = 0; i < data.length && i < 20; i++){
+							items.push("https://static.arasaac.org/pictograms/$\dollar${data[i].\_id}/$\dollar${data[i].\_id}\_500.png")
+						}
+						dispatch(fetchPictogramsSuccess(items));
+					})
+					.catch(error){
+						dispatch(fetchPictogramsFailure(error))        
+					};
+				}
 			}
-		}
-	\end{lstlisting}
-	\item El store de redux invoca a la función reductora solicitada por la acción. El store le pasará dos argumentos a la función: estado actual y acción. El switch dentro del reductor encontrará la acción solicitada y actualizará los datos en base a ella. Los selectores detectarán el cambio y actualizarán las vistas.
-\end{itemize}
+		\end{lstlisting}
+		\item El store de redux invoca a la función reductora solicitada por la acción. El store le pasará dos argumentos a la función: estado actual y acción. El switch dentro del reductor encontrará la acción solicitada y actualizará los datos en base a ella. Los selectores detectarán el cambio y actualizarán las vistas.
+	\end{itemize}
 
 
 %-----------------------------------%
@@ -510,9 +524,10 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 \label{cap5:sec:funcionalidades}
 %-----------------------------------%
 	En esta sección se explicarán con detalle la implementación de cada una de las funcionalidades.
+	
 	\subsubsection{Buscador de pictogramas}
 	La figura \ref{fig:pictoModal} muestra la apariencia de la aplicación cuando se selecciona el buscador de pictogramas. En él, se muestra un único input donde se introduce el texto a buscar. La aplicación reaccionará automáticamente y mostrará los resultados conforme se vaya actualizando el texto a buscar. En la figura \ref{fig:pictoResults} se puede ver cómo se muestran los resultados una vez se ha introducido un texto de búsqueda.
-		\begin{figure}[ht!]
+	\begin{figure}[ht!]
 		\begin{center}
 			\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/pictoModal}
 			\caption{Buscador de pictogramas de AdaptaMaterialEscolar}
@@ -534,10 +549,12 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 		\end{center}
 	\end{figure} 
 	Una vez se ha introducido el texto, se selecciona el pictograma deseado y se hace click sobre él para introducirlo en el editor. La figura \ref{fig:pictoEditor} contiene el aspecto del editor una vez se ha introducido un pictograma.
-	Internamente, este módulo contiene tres valores: searchResults, inputText y errorText. El inputText contiene el texto del formulario de búsqueda, cada vez que se actualice la vista PictogramSearchModal ejecutará una acción FetchPictogramsAction, la cual realizará la llamada a la API externa de ARASAAC y obtendrá los pictogramas. Como esta acción ejecuta una llamada a una API externa, tiene un carácter asíncrono y actúa como middleware entre acciones. En la acción se ejecutará un fetch a la url de ARASAAC, si todo va bien se obtendrán los datos y se ejecutará otra acción llamada FetchPictogramsSuccess que actualizará el Store con los datos obtenidos y automáticamente actualizará la interfaz con los resultados. Si se ha producido cualquier error de conexión se ejecutará una acción llamada FetchPictogramsFailure donde se almacenará el error y se comunicará en la vista. Las figuras \ref{fig:pictoClase} y \ref{fig:pictoSecuencia} muestran el diagrama de clases y secuencias asociados a este caso de uso.
+	Internamente, este módulo contiene tres valores: searchResults, inputText y errorText. El inputText contiene el texto del formulario de búsqueda, cada vez que se actualice la vista \textit{PictogramSearchModal} ejecutará una acción \textit{FetchPictogramsAction}, la cual realizará la llamada a la API externa de ARASAAC y obtendrá los pictogramas. Como esta acción ejecuta una llamada a una API externa, tiene un carácter asíncrono y actúa como middleware entre acciones. En la acción se ejecutará un fetch a la url de ARASAAC, si todo va bien se obtendrán los datos y se ejecutará otra acción llamada \textit{FetchPictogramsSuccess} que actualizará el Store con los datos obtenidos y automáticamente actualizará la interfaz con los resultados. Si se ha producido cualquier error de conexión se ejecutará una acción llamada \textit{FetchPictogramsFailure} donde se almacenará el error y se comunicará en la vista.
+	
+	Las figuras \ref{fig:pictoClase} y \ref{fig:pictoSecuencia} muestran el diagrama de clases y secuencias asociados a este caso de uso.
 	\begin{figure}[ht!]
 		\begin{center}
-			\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/pictogramClassDiagram}
+			\includegraphics[width=0.74\textwidth]{Imagenes/Bitmap/pictogramClassDiagram}
 			\caption{Diagrama de clases del buscador de pictogramas}
 			\label{fig:pictoClase}
 		\end{center}
@@ -721,7 +738,7 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 		\end{center}
 	\end{figure}
 	
-	\subsubsection{Rellenar huecos}
+	\subsubsection{Completar huecos}
 	
 	El ejercicio de rellenar huecos tiene como finalidad escribir las palabras faltantes en los espacios en los que haya una línea. Al seleccionar esta opción en nuestra aplicación se muestra la interfaz de la Figura \ref{fig:fillgapsOptions}. Este ejercicio consta de dos fases:
 	\begin{figure}[ht!]
