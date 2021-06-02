@@ -138,7 +138,7 @@
 	Una vez que se ha instalado Jest, para realizar un test hay que seguir estos pasos:
 	\begin{enumerate}
 		\item Crear un fichero \textit{Javascript} donde estará la función a probar (por ejemplo, \textit{suma.js}):
-		\begin{lstlisting}[language=Javascript]
+		\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}]
 			function suma(a,b){
 				return a + b;
 			}
@@ -154,7 +154,7 @@
 			donde ``comparador'' puede ser \textit{.toBe()}, \textit{.toEqual()}, \textit{.toBeNull()}, etc., una de las funciones comparadoras que más se ajuste a lo que se quiere probar. En la documentación oficial\footnote{\url{https://jestjs.io/es-ES/docs/using-matchers}}, hay un apartado llamado ``Utilizando Comparadores'', donde enseñan algunas funciones comparador. Si se quiere ver todas las funciones que ofrece es mejor visitar la API\footnote{\url{https://jestjs.io/es-ES/docs/api}}.
 		
 			En el caso de la prueba que queremos escribir:
-		\begin{lstlisting}[language=Javascript]
+		\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}]
 			const suma = require("./suma");
 			
 			test("Prueba de suma: 1 + 2 = 3", () =>{
@@ -229,7 +229,7 @@
 	En el caso de que alguna de estas opciones no se modificasen, no daría ningún error, sino que cogería el valor por defecto que tuvieran.
 	
 	Para crear la sopa de letras, es necesario hacer una llamada a Wordsearch, pasándole como parámetro las opciones de configuración. En este ejemplo, se ha establecido un tablero de 8x9, se han habilitado todas las direcciones, la probabilidad que tiene cada palabra de escribirse al revés se ha fijado a 0.5 (cada palabra tiene un 50\% de probabilidad de escribirse al revés), el número máximo de palabras que se insertarán es 20, se quieren mantener las tildes, las letras se quieren en mayúsculas y hay que buscar las palabras perro, gata, flamenco y avestruz.
-	\begin{lstlisting}[language=Javascript]
+	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}]
 		const WordSearch = require("@blex41/word-search");
 		
 		const options = {

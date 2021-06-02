@@ -377,7 +377,11 @@ En este caso únicamente realizamos la evaluación del requisito los desarrollador
 %-------------------------------------------%
 \label{cap5:sec:implementacion}
 
-	AdaptaMaterialEscolar es una aplicación web creada con React (ver sección \ref{cap3:sec:react}), cuyo código se puede encontrar en el repositorio del grupo NIL en GitHub\footnote{\url{https://github.com/NILGroup/TFG-AdaptaMaterialEscolar/tree/master/Codigo}}. Es accesible a través de la siguiente url: \url{https://holstein.fdi.ucm.es/tfg/2021/adapta/}. En la Figura \ref{fig:adaptamaterialescolarInicio1} se muestra la página principal de la aplicación. En ella se puede ver el header en la parte superior, con el logo de la aplicación en la parte de la izquierda, y los botones de Inicio, Ayuda y Contacto en la parte de la derecha; y en el centro de la página una zona para poder subir el fichero \textit{.pdf}. Cuando éste se ha subido, aparecerán dos zonas diferenciadas: la zona de la izquierda contiene el documento subido y la zona de la derecha es la zona que contiene las funcionalidades y el editor con su barra de herramientas, como se puede ver en la Figura \ref{fig:adaptamaterialescolarInicio2}.
+	AdaptaMaterialEscolar es una aplicación web creada con React (ver sección \ref{cap3:sec:react}), cuyo código se puede encontrar en el repositorio del grupo NIL en GitHub\footnote{\url{https://github.com/NILGroup/TFG-AdaptaMaterialEscolar/tree/master/Codigo}}.
+	
+	Es accesible a través de la siguiente url: \url{https://holstein.fdi.ucm.es/tfg/2021/adapta/}. 
+	
+	En la Figura \ref{fig:adaptamaterialescolarInicio1} se muestra la página principal de la aplicación. En ella se puede ver el header en la parte superior, con el logo de la aplicación en la parte de la izquierda, y los botones de Inicio, Ayuda y Contacto en la parte de la derecha; y en el centro de la página una zona para poder subir el fichero \textit{.pdf}. Cuando éste se ha subido, aparecerán dos zonas diferenciadas: la zona de la izquierda contiene el documento subido y la zona de la derecha es la zona que contiene las funcionalidades y el editor con su barra de herramientas, como se puede ver en la Figura \ref{fig:adaptamaterialescolarInicio2}.
 	
 	\begin{figure}[ht!]
 		\begin{center}
@@ -457,7 +461,7 @@ Al externalizar toda la información en un store, facilitamos el acceso y modific
 En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) y se siguen los siguientes pasos:
 \begin{itemize} 
 	\item Los componentes se suscriben a los datos del store mediante selectores. Estos selectores actúan como getters, es decir, funciones de sólo lectura de datos. Cuando el store modifique uno de esos valores, los componentes a los que estén suscritos se actualizarán automáticamente. Se recurre a una librería de npm denominada \textit{reselect}\footnote{\url{https://www.npmjs.com/package/reselect}} que simplifica estas implementaciones. Mediante reselect ejecutamos una función denominada createSelector, que internamente realiza la suscripción al dato del store que queramos. En el siguiente fragmento se crea un selector para obtener el documento cargado en el store. Se selecciona el módulo document del store y creamos un selector que obtenga el fichero:
-	\begin{lstlisting}[language=Javascript]
+	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{purple}]
 		const selectDocumentStore = (store) => store.document;
 		
 		export const selectDocumentFile = createSelector(
@@ -466,28 +470,28 @@ En redux, el flujo de datos es unidireccional (ver figura \ref{fig:flujoRedux}) 
 		);
 	\end{lstlisting}
 	En los componentes se inyectarán los selectors necesarios mediante una función llamada createStructuredSelector. Por ejemplo, en el componente que muestra un documento:
-	\begin{lstlisting}[language=Javascript]
+	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{purple}]
 		const mapStateToProps = createStructuredSelector({
 			document: selectDocumentFile
 		});
 	\end{lstlisting}
 	\item Los componentes ejecutan acciones. Esto lo realizan ejecutando un método dispatch y añadiendo como parámetro la acción a ejecutar. Por ejemplo, si tenemos una acción de cargar un documento, haríamos lo siguiente:
-	\begin{lstlisting}[language=Javascript]
+	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{purple}]
 		export const closePictogramSearchModal = () => ({
 			type: PictogramsActionTypes.CLOSE_PICTOGRAMS_MODAL
 		});
 	\end{lstlisting}
 	
 	\item Se ejecutan middlewares en caso de necesitar acciones asíncronas. Estos middlewares permiten ejecutar llamadas a API REST y posteriormente despachar otras acciones según el resultado. El siguiente ejemplo muestra cómo se ejecuta un middleware de buscar pictogramas llamando a la API de ARASAAC:
-	\begin{lstlisting}[language=Javascript]
+	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{purple}]
 		export const fetchPictogramsAction = (searchInput) => {
 			return dispatch => {
-				fetch(`https://api.arasaac.org/api/pictograms/es/search/${searchInput}`)
+				fetch(`https://api.arasaac.org/api/pictograms/es/search/\${searchInput}`)
 				.then((response) => response.json())
 				.then(data => {
 					let items = [];
 					for(let i = 0; i < data.length && i < 20; i++){
-						items.push(`https://static.arasaac.org/pictograms/${data[i]._id}/${data[i]._id}_500.png`)
+						items.push(´https://static.arasaac.org/pictograms/\${data[i].\_id}/\${data[i].\_id}\_500.png`)
 					}
 					dispatch(fetchPictogramsSuccess(items));
 				})
