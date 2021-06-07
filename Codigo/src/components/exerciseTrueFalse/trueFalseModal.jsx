@@ -20,6 +20,8 @@ class TrueFalseModal extends React.Component {
         disableDrag: true
     }
     this.dragRef = React.createRef();
+    this.nameInputs = [];
+    this.focus = null;
   }
   
   disableTip = () =>{
@@ -64,15 +66,31 @@ class TrueFalseModal extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps){
-    if(this.props.text !== prevProps.text){
-      this.nameInput.focus();
+  handleRemoveRow = (i) =>{
+    if(this.focus.name > this.nameInputs[i].name)
+      this.focus = this.nameInputs[this.focus.name.charAt(this.focus.name.length - 1)-1];
+    else {
+      if(this.focus.name === this.nameInputs[i].name && i === this.nameInputs.length - 1)
+        this.focus = this.nameInputs[i-1];
     }
-      
+    this.props.deleteTrueFalse(i);
+    this.nameInputs = [...this.nameInputs.slice(0,i), ...this.nameInputs.slice(i+1)];
+  }
+
+  componentDidUpdate(prevProps){
+    this.nameInputs = this.nameInputs.filter(item => item !== null); //HACK: after removing, there is a null at last pos
+    if(this.props.text.length > prevProps.text.length){
+      this.focus = this.nameInputs[this.props.text.length-1];
+    }
+    this.focus.focus();
   }
 
   componentDidMount(){
-    this.nameInput.focus();
+    this.nameInputs[0].focus();
+  }
+
+  handleFocus = (i) =>{
+    this.focus = this.nameInputs[i];
   }
 
   render() {
@@ -95,9 +113,9 @@ class TrueFalseModal extends React.Component {
               {this.props.text.map((el, i) =>{
                 return(
                 <div key={"tf-" + i} className="container__text">
-                  <input ref={(input) => {this.nameInput = input;}} type="text" name="text" autoComplete="off" value={el} onChange={(e) =>{ this.handleChangeText(e, i)}} onKeyDown={this.handleKeyDown}/>
+                  <input ref={(input) => {this.nameInputs[i] = input;}} type="text" name={"text"+i} autoComplete="off" value={el} onChange={(e) =>{ this.handleChangeText(e, i)}} onKeyDown={this.handleKeyDown} onFocus={() => this.handleFocus(i)}/>
                   <button data-tip data-for="addTip" className="add" onClick={this.props.addMoreTrueFalse}><GoPlus color="white" size="1.3em"/><ReactTooltip id="addTip" place="top" effect="solid">Añadir más filas</ReactTooltip></button>
-                  {<button data-tip data-for="deleteTip" className="delete" disabled={this.props.text.length === 1} onClick={() => {this.props.deleteTrueFalse(i)}}><GoDash color="white" size="1.3em"/><ReactTooltip id="deleteTip" place="top" effect="solid">Quitar fila</ReactTooltip></button>}
+                  {<button data-tip data-for="deleteTip" className="delete" disabled={this.props.text.length === 1} onClick={() => {this.handleRemoveRow(i)}}><GoDash color="white" size="1.3em"/><ReactTooltip id="deleteTip" place="top" effect="solid">Quitar fila</ReactTooltip></button>}
                 </div>
               )})}
               <div className="container__chooseListType">

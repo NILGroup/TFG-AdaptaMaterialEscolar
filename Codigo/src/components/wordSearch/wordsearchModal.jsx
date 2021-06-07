@@ -31,6 +31,8 @@ class WordSearchModal extends React.Component{
         }
 
         this.dragRef = React.createRef();
+        this.nameInputs = [];
+        this.focus = null;
     }
 
     disableTip = () =>{
@@ -125,19 +127,45 @@ class WordSearchModal extends React.Component{
             this.props.addMoreDictionary();
         }
     }
+
+    handleRemoveRow = (i) =>{
+        if(!this.focus.name.startsWith("text")){
+            this.focus = this.nameInputs[i-1];
+        }
+        else{
+            if(this.focus.name > this.nameInputs[i].name)
+            this.focus = this.nameInputs[this.focus.name.charAt(this.focus.name.length - 1)-1];
+          else {
+            if(this.focus.name === this.nameInputs[i].name && i === this.nameInputs.length - 1)
+              this.focus = this.nameInputs[i-1];
+          }
+        }
+        
+        this.props.deleteDictionary(i);
+        this.nameInputs = [...this.nameInputs.slice(0,i), ...this.nameInputs.slice(i+1)];
+      }
     
     componentDidUpdate(prevProps){
-        if(this.props.dictionary !== prevProps.dictionary && this.props.dictionary.length > 1){
-            this.nameInput.focus();
+        this.nameInputs = this.nameInputs.filter(item => item !== null); //HACK: after removing, there is a null at last pos
+        if(this.props.dictionary.length > prevProps.dictionary.length){
+            this.focus = this.nameInputs[this.props.dictionary.length-1];
+            this.focus.focus();
         }
-        if(this.props.rows !== prevProps.rows && this.props.rows === ""){
+        else if(this.props.dictionary.length < prevProps.dictionary.length){
+            this.focus.focus();
+        }
+        else if(this.props.rows !== prevProps.rows && this.props.rows === ""){
             this.nameRows.focus();
         }
     }
 
     componentDidMount(){
         this.nameRows.focus();
-    }
+      }
+    
+      handleFocus = (i) =>{
+        this.focus = this.nameInputs[i];
+      }
 
     render(){
         return(
@@ -168,9 +196,9 @@ class WordSearchModal extends React.Component{
                                     {this.props.dictionary.map((el, i) =>{
                                         return(
                                         <div key={"ws-" + i} className="container__words__text">
-                                            <input ref={(input) => {this.nameInput = input;}} type="text" autoComplete="off" name="text" value={el} onChange={(e) =>{ this.handleChangeDictionary(e, i)}} onKeyDown={this.handleKeyDown}/>
+                                            <input ref={(input) => {this.nameInputs[i] = input;}} type="text" name={"text"+i} autoComplete="off" value={el} onChange={(e) =>{ this.handleChangeDictionary(e, i)}} onKeyDown={this.handleKeyDown} onFocus={() => this.handleFocus(i)}/>
                                             <button data-tip data-for="addTip" className="add" onClick={this.props.addMoreDictionary}><GoPlus color="white" size="1.3em"/><ReactTooltip id="addTip" place="top" effect="solid">Añadir más palabras</ReactTooltip></button>
-                                            {<button data-tip data-for="deleteTip" className="delete" disabled={this.props.dictionary.length === 1} onClick={() => {this.props.deleteDictionary(i)}}><GoDash color="white" size="1.3em"/><ReactTooltip id="deleteTip" place="top" effect="solid">Quitar palabra</ReactTooltip></button>}
+                                            {<button data-tip data-for="deleteTip" className="delete" disabled={this.props.dictionary.length === 1} onClick={() => {this.handleRemoveRow(i)}}><GoDash color="white" size="1.3em"/><ReactTooltip id="deleteTip" place="top" effect="solid">Quitar palabra</ReactTooltip></button>}
                                         </div>
                                     )})}
                                     </div>

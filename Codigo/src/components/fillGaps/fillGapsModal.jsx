@@ -132,12 +132,8 @@ class FillGapsModal extends React.Component{
                       <button className="selectEdit" onClick={this.changeToEdition}>Editar texto</button>
                       }
                     </div>
-                    
-                    {/*<div className="container__extraspace">
-                        <label><input id="extraspace" type="checkbox" name="extraspace" onChange={this.handleChange} checked={this.props.extraspace}/>Añadir espacio extra entre líneas</label> 
-                    </div>*/}
                     <div className="container__addHowToSolve">
-                        <label><input id="addHowToSolve" type="checkbox" name="addHowToSolve" onChange={this.handleChange} checked={false} disabled/>Añadir ejemplo de cómo resolver el ejercicio</label>
+                        <label><input id="addHowToSolve" type="checkbox" name="addHowToSolve" onChange={this.handleChange} checked={this.props.addHowToSolve}/>Añadir ejemplo de cómo resolver el ejercicio</label>
                     </div>
                 </div>
             </div>
