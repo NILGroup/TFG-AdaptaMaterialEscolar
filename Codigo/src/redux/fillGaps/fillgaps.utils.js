@@ -2,7 +2,7 @@ export const openingSymbol = "((";
 export const closingSymbol = "))";
 
 export const createUnders = (word) =>{
-    var under = "____";
+    var under = "______";
     for(let i = 0; i < word.length; ++i){
         under += "_";
     }

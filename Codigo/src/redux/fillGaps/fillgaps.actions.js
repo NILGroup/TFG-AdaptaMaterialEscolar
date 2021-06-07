@@ -40,3 +40,7 @@ export const updateFillGapsDeleteSelectedWord = (i) => ({
     type: FillGapsActionTypes.UPDATE_FILLWORDS_DELETESELECTED,
     payload: i
 });
+
+export const resetFillGapsWordSelection = () =>({
+    type: FillGapsActionTypes.RESET_FILLWORDS_WORDSSELECTED
+});

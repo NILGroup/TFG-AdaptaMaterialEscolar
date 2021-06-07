@@ -21,9 +21,7 @@ const fillGapsReducer = (state = INITIAL_STATE, action) => {
         case FillGapsActionTypes.CLOSE_FILLWORDS_MODAL: 
             return {
                  ...state,
-                 showModal: false,
-                 mode: "edition",
-                 text: ''
+                 showModal: false
              };
         case FillGapsActionTypes.RESET_FILLWORDS:
             return{
@@ -55,7 +53,6 @@ const fillGapsReducer = (state = INITIAL_STATE, action) => {
                 textSelection: state.text.split(" ").map(item => item.trim())
             };
         case FillGapsActionTypes.UPDATE_FILLWORDS_ADDSELECTED:
-            console.log(state.wordsSelected);
             return{
                 ...state,
                 wordsSelected: [...state.wordsSelected.slice(0, state.wordsSelected.length), {word: action.payload.word, index: action.payload.index}, ...state.wordsSelected.slice(state.wordsSelected.length + 1)],
@@ -68,6 +65,11 @@ const fillGapsReducer = (state = INITIAL_STATE, action) => {
                 textSelection: update(state.textSelection, {[action.payload]: {$set: returnWord(state.wordsSelected, action.payload)}}),
                 wordsSelected: [...state.wordsSelected.slice(0,index), ...state.wordsSelected.slice(index + 1)]
             };
+        case FillGapsActionTypes.RESET_FILLWORDS_WORDSSELECTED:
+            return{
+                ...state,
+                wordsSelected:[]
+            }
         default: 
             return state;
     }
