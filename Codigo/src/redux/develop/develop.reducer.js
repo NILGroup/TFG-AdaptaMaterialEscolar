@@ -1,8 +1,8 @@
 import DevelopActionTypes from "./develop.types";
 
 const INITIAL_STATE = {
-    showDefinitionsModal: false,
-    numLines: '',
+    showDevelopModal: false,
+    numLines: 1,
     text: '',
     extraspace: false,
     addHowToSolve: false
@@ -33,7 +33,7 @@ const developReducer = (state = INITIAL_STATE, action) => {
          case DevelopActionTypes.RESET_DEVELOP_MODAL: 
             return {
                 ...state,
-                numLines: '',
+                numLines: 1,
                 text: '',
                 extraspace: false,
                 addHowToSolve: false

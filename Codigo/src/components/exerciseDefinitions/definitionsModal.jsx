@@ -78,8 +78,11 @@ class DefinitionsModal extends React.Component {
     this.nameInputs = this.nameInputs.filter(item => item !== null); //HACK: after removing, there is a null at last pos
     if(this.props.text.length > prevProps.text.length){
       this.focus = this.nameInputs[this.props.text.length-1];
+      this.focus.focus();
     }
-    this.focus.focus();
+    else if(this.props.text.length < prevProps.text.length){
+      this.focus.focus();
+    }
   }
 
   componentDidMount(){

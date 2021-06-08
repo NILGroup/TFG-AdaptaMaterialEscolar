@@ -84,13 +84,13 @@ class DefinitionsDevelopModal extends React.Component{
                     {this.props.selectedExercise === "definitions" ?
                         <div className="footer">
                             <button className="reset" onClick={this.props.resetDefinitionsModal}>Resetear</button>
-                            <button className="accept" onClick={this.accept} disabled={this.props.textDefinitions.filter(def => def === "").length > 0 || !this.props.numLinesDefinitions || !this.props.listTypeDef}>Aceptar</button>
+                            <button className="accept" onClick={this.accept} disabled={this.props.textDefinitions.filter(def => def === "").length > 0 || this.props.numLinesDevelop <= 0 || !this.props.listTypeDef}>Aceptar</button>
                         </div>
                         :
                         this.props.selectedExercise === "develop" ?
                         <div className="footer">
                             <button className="reset" onClick={this.props.resetDevelopModal}>Resetear</button>
-                            <button className="accept" onClick={this.accept} disabled={!this.props.textDevelop || !this.props.numLinesDevelop}>Aceptar</button>
+                            <button className="accept" onClick={this.accept} disabled={!this.props.textDevelop || this.props.numLinesDevelop <= 0}>Aceptar</button>
                         </div>
                         :
                         null
