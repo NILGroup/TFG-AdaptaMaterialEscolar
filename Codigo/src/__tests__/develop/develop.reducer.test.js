@@ -54,7 +54,7 @@ describe("Develop reducer", () =>{
     it("Reinicia los datos del modal de Develop", () =>{
         const state = {
             showDevelopModal: true,
-            numLines: 1,
+            numLines: 4,
             text: 'Ejemplo de enunciado de develop',
             extraspace: true,
             addHowToSolve: true
@@ -142,7 +142,7 @@ describe("Develop reducer", () =>{
         expect(developReducer(stateAfterAction1, action2)).toEqual(expectedResult2);
     });
 
-    it("Actualiza la selección de añadir espacio extra", () =>{
+    it("Actualiza la selección de añadir espacio extra de Develop", () =>{
         const state = {
             showDevelopModal: true,
             numLines: 1,
@@ -175,7 +175,7 @@ describe("Develop reducer", () =>{
         }
         expect(developReducer(state, action1)).toEqual(expectedResult1);
         expect(developReducer(stateAfterAction1, action2)).toEqual(expectedResult2);
-    })
+    });
 
     it("Actualiza añadir ejemplo de Develop", () =>{
         const state = {

@@ -48,7 +48,7 @@ describe("TrueFalse Actions", () =>{
         expect(actions.resetTrueFalseModal()).toEqual(expectedAction);
     });
 
-    it("Debe crear una acción para añadir más frases", () =>{
+    it("Debe crear una acción para añadir más frases de TrueFalse", () =>{
         const expetectAction = {
             type: types.default.ADD_MORE_TRUEFALSE
         };
@@ -74,7 +74,7 @@ describe("TrueFalse Actions", () =>{
         expect(actions.deleteTrueFalse(index2)).toEqual(expectedAction2);
     });
 
-    it("Debe crear una acción para seleccionar y deseleccionar añadir ejemplo de cómo resolver el ejercicio de TrueFalse", () =>{
+    it("Debe crear una acción para añadir o no un ejemplo de cómo resolver el ejercicio de TrueFalse", () =>{
         const expectedAction1 = {
             type: types.default.UPDATE_TRUEFALSE_ADDHOWTOSOLVE,
             payload: true

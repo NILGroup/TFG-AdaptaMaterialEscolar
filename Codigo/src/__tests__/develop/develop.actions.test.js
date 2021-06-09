@@ -40,7 +40,7 @@ describe("Develop actions", () =>{
         expect(actions.resetDevelopModal()).toEqual(expectedAction);
     });
 
-    it("Debe crear una acción para seleccionar y deseleccionar añadir espacio extra", () =>{
+    it("Debe crear una acción para añadir o no espacio extra de Develop", () =>{
         const expectedAction1 = {
             type: types.default.UPDATE_DEVELOP_EXTRASPACE,
             payload: true
@@ -53,7 +53,7 @@ describe("Develop actions", () =>{
         expect(actions.updateDevelopExtraSpace(false)).toEqual(expectedAction2);
     });
 
-    it("Debe crear una acción para seleccionar y deseleccionar añadir ejemplo de cómo resolver el ejercicio de Develop", () =>{
+    it("Debe crear una acción para añadir o no un ejemplo de cómo resolver el ejercicio de Develop", () =>{
         const expectedAction1 = {
             type: types.default.UPDATE_DEVELOP_ADDHOWTOSOLVE,
             payload: true

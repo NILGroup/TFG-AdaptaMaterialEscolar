@@ -50,7 +50,7 @@ describe("Develop selectors", () =>{
 
         expect(selectors.selectDevelopExtraSpace(state)).toBe(false);
         expect(selectors.selectDevelopExtraSpace(state2)).toBe(true);
-    })
+    });
 
     it("Devuelve el estado de la opción añadir ejemplo de Develop", () =>{
         const state = {
