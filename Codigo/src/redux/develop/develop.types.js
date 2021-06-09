@@ -1,4 +1,4 @@
-const DevelopActionActionTypes = {
+const DevelopActionTypes = {
     OPEN_DEVELOP_MODAL: 'OPEN_DEVELOP_MODAL',
     UPDATE_DEVELOP_NUMLINES: 'UPDATE_DEVELOP_NUMLINES',
     UPDATE_DEVELOP_TEXT: 'UPDATE_DEVELOP_TEXT',
@@ -8,4 +8,4 @@ const DevelopActionActionTypes = {
     UPDATE_DEVELOP_ADDHOWTOSOLVE: 'UPDATE_DEVELOP_ADDHOWTOSOLVE'
 }
 
-export default DevelopActionActionTypes;
+export default DevelopActionTypes;

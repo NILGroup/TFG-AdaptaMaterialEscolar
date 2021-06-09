@@ -1,14 +1,17 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from "react-redux";
-import { addMoreDefinitions, deleteDefinition, updateAddHowToSolve, updateChooseListType, updateDefinitionsExtraSpace, updateDefinitionsNumLines, updateDefinitionsText } from '../../redux/definitions/definitions.actions';
+import { addMoreDefinitions, closeDefinitionsModal, deleteDefinition, resetDefinitionsModal, updateAddHowToSolve, updateChooseListType, updateDefinitionsExtraSpace, updateDefinitionsNumLines, updateDefinitionsText } from '../../redux/definitions/definitions.actions';
 import {selectDefinitionsAddHowToSolve, selectDefinitionsChooseListType, selectDefinitionsExtraSpace, selectDefinitionsNumLines, selectDefinitionsText} from "../../redux/definitions/definitions.selectors";
 import './definitions.scss'
 import ReactTooltip from "react-tooltip";
+import Draggable from 'react-draggable';
 
 //Iconos
 import {GoPlus, GoDash} from 'react-icons/go';
 import { FcInfo } from 'react-icons/fc';
+import { IoMdClose } from "react-icons/io";
+import { selectEditorClass } from '../../redux/editor/editor.selectors';
 
 class DefinitionsModal extends React.Component {
   constructor(props) {
@@ -18,6 +21,7 @@ class DefinitionsModal extends React.Component {
       disableTip: false,
       disableDrag: true
     }
+    this.dragRef = React.createRef();
     this.nameInputs = [];
     this.focus = null;
   }
@@ -33,6 +37,13 @@ class DefinitionsModal extends React.Component {
         disableDrag: !this.state.disableDrag
     });
   }
+
+  accept = () =>{
+    this.props.editor.execute( 'insertDefinitions', {text: this.props.text, numLines: this.props.numLines, extraspace: this.props.extraspace, addHowToSolve: this.props.addHowToSolve, listType: this.props.listType});
+    this.props.editor.editing.view.focus();
+    this.props.resetDefinitionsModal();
+    this.props.closeDefinitionsModal();
+}
     
   handleChange(e) {
     switch(e.target.name){
@@ -95,43 +106,59 @@ class DefinitionsModal extends React.Component {
 
   render() {
     return (
-          <div className="modal-definitions__content__main">
-            <div className="modal-definitions__content__main__container">
-              <div className="container__info">
-                <span>* Campos obligatorios</span>
-              </div>
-              <label><span>*</span>Inserte los conceptos a definir (uno por fila): <FcInfo size="1.2em" data-tip data-for="infoDefTip"/><ReactTooltip id="infoDefTip" place="top" effect="solid">Se puede escribir una palabra, una oración (afirmativa, interrogativa...), etc. <br/> Puedes añadir más filas pulsando la tecla enter dentro de los recuadros</ReactTooltip></label>
-                {this.props.text.map((el, i) =>{
-                  return(
-                  <div key={"def-" + i} className="container__text">
-                    <input ref={(input) => {this.nameInputs[i] = input;}} type="text" name={"text"+i} autoComplete="off" value={el} onChange={(e) =>{ this.handleChangeText(e, i)}} onKeyDown={this.handleKeyDown} onFocus={() => this.handleFocus(i)}/>
-                    <button data-tip data-for="addTip" className="add" onClick={this.props.addMoreDefinitions}><GoPlus color="white" size="1.3em"/><ReactTooltip id="addTip" place="top" effect="solid">Añadir más filas</ReactTooltip></button>
-                    {<button data-tip data-for="deleteTip" className="delete" disabled={this.props.text.length === 1} onClick={() => {this.handleRemoveRow(i)}}><GoDash color="white" size="1.3em"/><ReactTooltip id="deleteTip" place="top" effect="solid">Quitar fila</ReactTooltip></button>}
+      <Draggable nodeRef={this.dragRef} bounds="body" disabled={this.state.disableDrag}>
+        <div ref={this.dragRef} className="modal-definitions">
+          <div className="modal-definitions__content">
+            <div className="header" onMouseEnter={this.toggleDisableDrag} onMouseLeave={this.toggleDisableDrag} data-tip data-for="modalDefinitionsTip">
+              <ReactTooltip id="modalDefinitionsTip" place="top" effect="solid" delayHide={2000} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>¡Puedes arrastrar esta ventana a cualquier parte si mantienes pulsada la parte superior de la misma!</ReactTooltip>
+              <button onClick={this.props.closeDefinitionsModal}><IoMdClose size="1.2em"/></button>
+            </div>
+            <div className="modal-definitions__content__main">
+              <div className="modal-definitions__content__main__container">
+                <div className="container__info">
+                  <span>* Campos obligatorios</span>
+                </div>
+                <label><span>*</span>Inserte los conceptos a definir (uno por fila): <FcInfo size="1.2em" data-tip data-for="infoDefTip"/><ReactTooltip id="infoDefTip" place="top" effect="solid">Se puede escribir una palabra, una oración (afirmativa, interrogativa...), etc. <br/> Puedes añadir más filas pulsando la tecla enter dentro de los recuadros</ReactTooltip></label>
+                  {this.props.text.map((el, i) =>{
+                    return(
+                    <div key={"def-" + i} className="container__text">
+                      <input ref={(input) => {this.nameInputs[i] = input;}} type="text" name={"text"+i} autoComplete="off" value={el} onChange={(e) =>{ this.handleChangeText(e, i)}} onKeyDown={this.handleKeyDown} onFocus={() => this.handleFocus(i)}/>
+                      <button data-tip data-for="addTip" className="add" onClick={this.props.addMoreDefinitions}><GoPlus color="white" size="1.3em"/><ReactTooltip id="addTip" place="top" effect="solid">Añadir más filas</ReactTooltip></button>
+                      {<button data-tip data-for="deleteTip" className="delete" disabled={this.props.text.length === 1} onClick={() => {this.handleRemoveRow(i)}}><GoDash color="white" size="1.3em"/><ReactTooltip id="deleteTip" place="top" effect="solid">Quitar fila</ReactTooltip></button>}
+                    </div>
+                  )})}
+                <div className="container">
+                  <label><span>*</span>Número de líneas para cada definición:<input type="number" id="numLines" name="numLines" min="1" value={this.props.numLines} onChange={this.handleChange}/></label> 
+                </div>
+                <div className="container__chooseListType">
+                  <label><span>*</span>Selecciona la forma en la que se muestran las frases:</label>
+                  <div className="container__chooseListType__type">
+                    <label><input type="radio" value="ul" name="listType" checked={this.props.listType === "ul"} onChange={this.handleChange}/>Lista no ordenada</label>
+                    <label><input type="radio" value="ol" name="listType" checked={this.props.listType === "ol"} onChange={this.handleChange}></input>Lista ordenada</label>
                   </div>
-                )})}
-              <div className="container">
-                <label><span>*</span>Número de líneas para cada definición:<input type="number" id="numLines" name="numLines" min="1" value={this.props.numLines} onChange={this.handleChange}/></label> 
-              </div>
-              <div className="container__chooseListType">
-                <label><span>*</span>Selecciona la forma en la que se muestran las frases:</label>
-                <div className="container__chooseListType__type">
-                  <label><input type="radio" value="ul" name="listType" checked={this.props.listType === "ul"} onChange={this.handleChange}/>Lista no ordenada</label>
-                  <label><input type="radio" value="ol" name="listType" checked={this.props.listType === "ol"} onChange={this.handleChange}></input>Lista ordenada</label>
+                </div>
+                <div className="container__extraspace">
+                  <label><input id="extraspace" type="checkbox" name="extraspace" onChange={this.handleChange} checked={this.props.extraspace}/>Añadir espacio extra entre líneas</label> 
+                </div>
+                <div className="container__addHowToSolve">
+                  <label><input id="addHowToSolve" type="checkbox" name="addHowToSolve" onChange={this.handleChange} checked={this.props.addHowToSolve}/>Añadir ejemplo de cómo resolver el ejercicio</label>
                 </div>
               </div>
-              <div className="container__extraspace">
-                <label><input id="extraspace" type="checkbox" name="extraspace" onChange={this.handleChange} checked={this.props.extraspace}/>Añadir espacio extra entre líneas</label> 
-              </div>
-              <div className="container__addHowToSolve">
-                <label><input id="addHowToSolve" type="checkbox" name="addHowToSolve" onChange={this.handleChange} checked={this.props.addHowToSolve}/>Añadir ejemplo de cómo resolver el ejercicio</label>
-              </div>
+            </div>
+            <div className="footer">
+              <button className="reset" onClick={this.props.resetDefinitionsModal}>Resetear</button>
+              <button className="accept" onClick={this.accept} disabled={this.props.text.filter(def => def === "").length > 0 || this.props.numLines <= 0 || !this.props.listType}>Aceptar</button>
             </div>
           </div>
+        </div>
+      </Draggable>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
+  closeDefinitionsModal: () => dispatch(closeDefinitionsModal()),
+  resetDefinitionsModal: () => dispatch(resetDefinitionsModal()),
   updateDefinitionsNumLines: (numLines) => dispatch(updateDefinitionsNumLines(numLines)),
   updateDefinitionsText: (text, index) => dispatch(updateDefinitionsText(text, index)),
   updateDefinitionsExtraSpace: (extraspace) => dispatch(updateDefinitionsExtraSpace(extraspace)),
@@ -146,7 +173,8 @@ const mapStateToProps = createStructuredSelector({
   text: selectDefinitionsText,
   extraspace: selectDefinitionsExtraSpace,
   addHowToSolve: selectDefinitionsAddHowToSolve,
-  listType: selectDefinitionsChooseListType
+  listType: selectDefinitionsChooseListType,
+  editor: selectEditorClass
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DefinitionsModal);

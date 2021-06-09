@@ -1,9 +1,10 @@
 import ToolbarActionTypes from "./toolbar.types";
 import PictogramsActionTypes from "../pictograms/pictograms.types";
 import WordSearchActionTypes from "../wordSearch/wordsearch.types";
-import DefinitionsDevelopActionTypes from "../definitionsDevelopModal/definitionsDevelopModal.types";
 import TrueFalseActionTypes from "../trueFalse/trueFalse.types";
 import FillGapsActionTypes from "../fillGaps/fillgaps.types";
+import DevelopActionTypes from "../develop/develop.types";
+import DefinitionsActionTypes from "../definitions/definitions.types";
 
 const INITIAL_STATE = {
     lastOpened: undefined
@@ -26,11 +27,6 @@ const toolbarReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 lastOpened: "wordsearch"
             };
-        case DefinitionsDevelopActionTypes.CLOSE_DEFINITIONS_DEVELOP_MODAL:
-            return{
-                ...state,
-                lastOpened: "definitionsdevelop"
-            };
         case TrueFalseActionTypes.CLOSE_TRUEFALSE_MODAL:
             return{
                 ...state,
@@ -40,6 +36,16 @@ const toolbarReducer = (state = INITIAL_STATE, action) => {
             return{
                 ...state,
                 lastOpened: "fillGaps"
+            };
+        case DevelopActionTypes.CLOSE_DEVELOP_MODAL:
+            return{
+                ...state,
+                lastOpened: "develop"
+            };
+        case DefinitionsActionTypes.CLOSE_DEFINITIONS_MODAL:
+            return{
+                ...state,
+                lastOpened: "definitions"
             };
          default: 
              return state;

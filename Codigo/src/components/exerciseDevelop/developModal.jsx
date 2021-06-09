@@ -1,9 +1,13 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from "react-redux";
-import { updateDevelopAddHowToSolve, updateDevelopExtraSpace, updateDevelopNumLines, updateDevelopText } from '../../redux/develop/develop.actions';
+import { closeDevelopModal, resetDevelopModal, updateDevelopAddHowToSolve, updateDevelopExtraSpace, updateDevelopNumLines, updateDevelopText } from '../../redux/develop/develop.actions';
 import { selectDevelopAddHowToSolve, selectDevelopExtraSpace, selectDevelopNumLines, selectDevelopText} from "../../redux/develop/develop.selectors";
 import './develop.scss'
+import { IoMdClose } from "react-icons/io";
+import Draggable from 'react-draggable';
+import ReactTooltip from "react-tooltip";
+import { selectEditorClass } from '../../redux/editor/editor.selectors';
 
 class DevelopModal extends React.Component {
   constructor(props) {
@@ -13,6 +17,7 @@ class DevelopModal extends React.Component {
       disableTip: false,
       disableDrag: true
     }
+    this.dragRef = React.createRef();
   }
   
   disableTip = () =>{
@@ -26,6 +31,13 @@ class DevelopModal extends React.Component {
         disableDrag: !this.state.disableDrag
     });
   }
+
+  accept = () =>{
+    this.props.editor.execute( 'insertDevelop', {text: this.props.text, numLines: this.props.numLines, extraspace: this.props.extraspace, addHowToSolve: this.props.addHowToSolve});
+    this.props.editor.editing.view.focus();
+    this.props.resetDevelopModal();
+    this.props.closeDevelopModal();
+}
 
   handleChange(e) {
     switch(e.target.name){
@@ -58,31 +70,47 @@ class DevelopModal extends React.Component {
 
   render() {
     return (
-          <div className="modal-develop__content__main">
-            <div className="modal-develop__content__main__container">
-              <div className="container__info">
-                <span>* Campos obligatorios</span>
-              </div>
-              <div className="container__text">
-                <label><span>*</span>Inserte el enunciado del ejercicio de desarrollo:</label>
-                <textarea ref={(textarea) => {this.nameTextarea = textarea;}} id="text" name="text" value={this.props.text} onChange={this.handleChange} cols = "70"/>
-              </div>
-              <div className="container">
-                <label><span>*</span>Número de líneas para el ejercicio:<input type="number" id="numLines" name="numLines" min="1" value={this.props.numLines} onChange={this.handleChange}/></label> 
-              </div>
-              <div className="container__extraspace">
-                <label><input id="extraspace" type="checkbox" name="extraspace" onChange={this.handleChange} checked={this.props.extraspace}/>Añadir espacio extra entre líneas</label> 
-              </div>
-              <div className="container__addHowToSolve">
-                <label><input id="addHowToSolve" type="checkbox" name="addHowToSolve" onChange={this.handleChange} checked={this.props.addHowToSolve}/>Añadir ejemplo de cómo resolver el ejercicio</label>
+      <Draggable nodeRef={this.dragRef} bounds="body" disabled={this.state.disableDrag}>
+        <div ref={this.dragRef} className="modal-develop">
+          <div className="modal-develop__content">
+            <div className="header" onMouseEnter={this.toggleDisableDrag} onMouseLeave={this.toggleDisableDrag} data-tip data-for="modalDevelopTip">
+                <ReactTooltip id="modalDevelopTip" place="top" effect="solid" delayHide={2000} disable={this.state.disableTip} afterHide={() => {this.disableTip()}}>¡Puedes arrastrar esta ventana a cualquier parte si mantienes pulsada la parte superior de la misma!</ReactTooltip>
+                <button onClick={this.props.closeDevelopModal}><IoMdClose size="1.2em"/></button>
+            </div>
+            <div className="modal-develop__content__main">
+              <div className="modal-develop__content__main__container">
+                <div className="container__info">
+                  <span>* Campos obligatorios</span>
+                </div>
+                <div className="container__text">
+                  <label><span>*</span>Inserte el enunciado del ejercicio de desarrollo:</label>
+                  <textarea ref={(textarea) => {this.nameTextarea = textarea;}} id="text" name="text" value={this.props.text} onChange={this.handleChange} cols = "70"/>
+                </div>
+                <div className="container">
+                  <label><span>*</span>Número de líneas para el ejercicio:<input type="number" id="numLines" name="numLines" min="1" value={this.props.numLines} onChange={this.handleChange}/></label> 
+                </div>
+                <div className="container__extraspace">
+                  <label><input id="extraspace" type="checkbox" name="extraspace" onChange={this.handleChange} checked={this.props.extraspace}/>Añadir espacio extra entre líneas</label> 
+                </div>
+                <div className="container__addHowToSolve">
+                  <label><input id="addHowToSolve" type="checkbox" name="addHowToSolve" onChange={this.handleChange} checked={this.props.addHowToSolve}/>Añadir ejemplo de cómo resolver el ejercicio</label>
+                </div>
               </div>
             </div>
+            <div className="footer">
+              <button className="reset" onClick={this.props.resetDevelopModal}>Resetear</button>
+              <button className="accept" onClick={this.accept} disabled={!this.props.text || this.props.numLines <= 0}>Aceptar</button>
+            </div>
           </div>
+        </div>
+      </Draggable>
     );
   }
 }
 
   const mapDispatchToProps = (dispatch) => ({
+    closeDevelopModal: () => dispatch(closeDevelopModal()),
+    resetDevelopModal: () => dispatch(resetDevelopModal()),
     updateDevelopNumLines: (numLines) => dispatch(updateDevelopNumLines(numLines)),
     updateDevelopText: (text) => dispatch(updateDevelopText(text)),
     updateDevelopExtraSpace: (extraspace) => dispatch(updateDevelopExtraSpace(extraspace)),
@@ -93,7 +121,8 @@ class DevelopModal extends React.Component {
     numLines: selectDevelopNumLines,
     text: selectDevelopText,
     extraspace: selectDevelopExtraSpace,
-    addHowToSolve: selectDevelopAddHowToSolve
+    addHowToSolve: selectDevelopAddHowToSolve,
+    editor: selectEditorClass
   });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DevelopModal);

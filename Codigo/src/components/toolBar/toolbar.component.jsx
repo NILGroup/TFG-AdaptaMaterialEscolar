@@ -11,14 +11,17 @@ import WordSearchModal from '../wordSearch/wordsearchModal';
 import { closeTrueFalseModal, openTrueFalseModal } from "../../redux/trueFalse/trueFalse.actions";
 import { selectTrueFalseModalIsDisplayed } from "../../redux/trueFalse/trueFalse.selectors";
 import TrueFalseModal from "../exerciseTrueFalse/trueFalseModal";
-import { selectDefinitionsDevelopModalIsDisplayed } from "../../redux/definitionsDevelopModal/definitionsDevelopModal.selectors";
-import { closeDefinitionsDevelopModal, openDefinitionsDevelopModal } from "../../redux/definitionsDevelopModal/definitionsDevelopModal.actions";
-import DefinitionsDevelopModal from "../DefinitionsDevelopModal/definitionsDevelopModal";
+import DefinitionsModal from "../exerciseDefinitions/definitionsModal";
+import DevelopModal from "../exerciseDevelop/developModal";
 import { selectToolbarLastOpened } from "../../redux/toolbar/toolbar.selectors";
 import { updateLastOpened } from "../../redux/toolbar/toolbar.actions";
 import { closeFillGapsModal, openFillGapsModal } from "../../redux/fillGaps/fillgaps.actions";
 import { selectFillGapsModalIsDisplayed } from "../../redux/fillGaps/fillgaps.selectors";
 import FillGapsModal from "../fillGaps/fillGapsModal";
+import { closeDefinitionsModal, openDefinitionsModal } from "../../redux/definitions/definitions.actions";
+import { closeDevelopModal, openDevelopModal } from "../../redux/develop/develop.actions";
+import { selectDefinitionsModalIsDisplayed } from "../../redux/definitions/definitions.selectors";
+import { selectDevelopModalIsDisplayed } from "../../redux/develop/develop.selectors";
 
 class Toolbar extends React.Component{
     
@@ -29,8 +32,11 @@ class Toolbar extends React.Component{
             case "pictograms":
                 this.props.openPictogramFinder();
                 break;
-            case "definitionsdevelop":
-                this.props.openDefinitionsDevelopModal();
+            case "definitions":
+                this.props.openDefinitionsModal();
+                break;
+            case "develop":
+                this.props.openDevelopModal();
                 break;
             case "wordsearch":
                 this.props.openWordSearchModal();
@@ -52,10 +58,13 @@ class Toolbar extends React.Component{
                 if(this.props.showPictogramsModal)
                     this.props.closePictogramFinder();
                 break;
-            case "definitionsdevelop":
-                if(this.props.showDefinitionsDevelopModal)
-                    this.props.closeDefinitionsDevelopModal();
+            case "definitions":
+                if(this.props.showDefinitionsModal)
+                    this.props.closeDefinitionsModal();
                 break;
+            case "develop":
+                if(this.props.showDevelopModal)
+                    this.props.closeDevelopModal();
             case "wordsearch":
                 if(this.props.showWordSearchModal)
                     this.props.closeWordSearchModal();
@@ -79,14 +88,16 @@ class Toolbar extends React.Component{
             <div className="toolbar-self">
                 <button name="pictograms" className={this.props.showPictogramsModal ? "pictograms-active" : null} onClick={this.handleClick}>Pictogramas</button>
                 <button name="fillGaps" className={this.props.showFillGapsModal ? "fillGaps-active" : null} onClick={this.handleClick}>Rellenar huecos</button>
-                <button name="definitionsdevelop" className={this.props.showDefinitionsDevelopModal ? "definitionsdevelop-active" : null} onClick={this.handleClick}>Definiciones/Desarrollo</button>
+                <button name="definitions" className={this.props.showDefinitionsModal ? "definitions-active" : null} onClick={this.handleClick}>Definiciones</button>
+                <button name="develop" className={this.props.showDevelopModal ? "develop-active" : null} onClick={this.handleClick}>Desarrollo</button>
                 <button name="wordsearch" className={this.props.showWordSearchModal ? "wordsearch-active" : null} onClick={this.handleClick}>Sopa de letras</button>
                 <button name="truefalse" className={this.props.showTrueFalseModal ? "truefalse-active" : null} onClick={this.handleClick}>V/F</button>
             </div>
             <div className="modal-box">
                 { this.props.showPictogramsModal ? <PictogramSearchModal/> : null}
                 { this.props.showWordSearchModal ? <WordSearchModal/> : null}
-                { this.props.showDefinitionsDevelopModal ? <DefinitionsDevelopModal/> : null}
+                { this.props.showDefinitionsModal ? <DefinitionsModal/> : null}
+                { this.props.showDevelopModal ? <DevelopModal/> : null}
                 { this.props.showTrueFalseModal ? <TrueFalseModal/> : null}
                 { this.props.showFillGapsModal ? <FillGapsModal/> : null}
             </div>
@@ -98,11 +109,13 @@ const mapDispatchToProps = (dispatch) => ({
     openPictogramFinder: () => dispatch(openPictogramFinder()),
     openWordSearchModal: () => dispatch(openWordSearchModal()),
     openTrueFalseModal: () => dispatch(openTrueFalseModal()),
-    openDefinitionsDevelopModal: () => dispatch(openDefinitionsDevelopModal()),
+    openDefinitionsModal: () => dispatch(openDefinitionsModal()),
+    openDevelopModal: () => dispatch(openDevelopModal()),
     closePictogramFinder: () => dispatch(closePictogramFinder()),
     closeWordSearchModal: () => dispatch(closeWordSearchModal()),
     closeTrueFalseModal: () => dispatch(closeTrueFalseModal()),
-    closeDefinitionsDevelopModal: () => dispatch(closeDefinitionsDevelopModal()),
+    closeDefinitionsModal: () => dispatch(closeDefinitionsModal()),
+    closeDevelopModal: () => dispatch(closeDevelopModal()),
     updateLastOpened: (last) => dispatch(updateLastOpened(last)),
     openFillGapsModal: () => dispatch(openFillGapsModal()),
     closeFillGapsModal: () => dispatch(closeFillGapsModal())
@@ -112,7 +125,8 @@ const mapStateToProps = createStructuredSelector({
     showPictogramsModal: selectModalIsDisplayed,
     showWordSearchModal: selectWordSearchModalIsDisplayed,
     showTrueFalseModal: selectTrueFalseModalIsDisplayed,
-    showDefinitionsDevelopModal: selectDefinitionsDevelopModalIsDisplayed,
+    showDefinitionsModal: selectDefinitionsModalIsDisplayed,
+    showDevelopModal: selectDevelopModalIsDisplayed,
     lastOpened: selectToolbarLastOpened,
     showFillGapsModal: selectFillGapsModalIsDisplayed
 });
