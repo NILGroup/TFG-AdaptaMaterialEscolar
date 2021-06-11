@@ -76,9 +76,9 @@
 	
 	\begin{itemize}
 		\item \textit{To Do}: Se corresponden con las tareas que todavía no se han realizado.
-		\item \textit{In Progress}: Son tareas en las que el equipo de desarrollo ha comenzado a trabajar, por lo que se mueve la correspondiente tarea de \textit{To Do} a esta columna.
-		\item \textit{Ready to Testing}: Son tareas listas para ser probadas. Una vez que se ha terminado una tarea habrá que moverla de \textit{In Progress} a esta columna.
-		\item \textit{Testing}: Son tareas que se están probando. Dependiendo del tipo de tarea se tratará de una forma u otra. Para probar una tarea hay que moverla de \textit{Ready To Testing} a esta columna. En la sección \ref{cap4:sec:pruebas} se dan más detalles de cómo se prueban las tareas de memoria y las de implementación.
+		\item \textit{In Progress}: Son tareas en las que el equipo de desarrollo ha comenzado a trabajar.
+		\item \textit{Ready for Testing}: Son tareas listas para ser probadas.
+		\item \textit{Testing}: Son tareas que se están probando. Dependiendo del tipo de tarea se probará de una forma u otra. En la sección \ref{cap4:sec:pruebas} se dan más detalles de cómo se prueban las tareas de memoria y las de implementación.
 		\item \textit{Needs approval}: En esta lista se encuentran las tareas que necesitan ser aprobadas por las tutoras antes de darlas por finalizadas. Una vez que se ha terminado de trabajar en una tarea y se ha acabado de hacerle las pruebas, habrá que moverla de \textit{Testing} a esta columna.
 		\item \textit{Done}: Son tareas que se han dado por terminadas, validadas y aprobadas. Cuando las tutoras le han dado el visto bueno, se podrá mover de \textit{Needs Approval} a \textit{Done}.
 	\end{itemize}
@@ -88,7 +88,7 @@
 	\begin{itemize}
 		\item \colorbox{naranja}{\textcolor{naranja}{123}} Tareas relacionadas con la memoria.
 		\item \colorbox{rojo}{\textcolor{rojo}{123}} Tareas correspondientes con diseño y desarrollo de código (implementación).
-		\item \colorbox{morado}{\textcolor{morado}{123}} Aquí se encuentran las tareas que requieren investigación por parte del equipo, antes de empezar a codificar o realizar cualquier otro tipo de tarea.
+		\item \colorbox{morado}{\textcolor{morado}{123}} Tareas que requieren investigación por parte del equipo, antes de empezar a codificar o realizar cualquier otro tipo de tarea.
 		\item \colorbox{azulOscuro}{\textcolor{azulOscuro}{123}} Tareas que no corresponden con ninguna de las anteriores.
 	\end{itemize}
 
@@ -104,11 +104,11 @@
 
 \subsection{Pruebas de memoria}
 
-	Las pruebas de memoria consisten en buscar errores léxicos y gramaticales en la memoria, y corregirlos antes de su entrega, además de completarla con más información en el caso de que sea posible, y comprobar que todo se entiende. Estas pruebas las hará todos los miembros del equipo de la siguiente forma: cuando haya alguna tarea de memoria en \textit{Ready to testing}, el usuario que vaya a revisarla, se la asignará y la llevará a \textit{Testing}. Una vez que haya terminado, y no sea la última persona en haberla revisado, la volverá a llevar a \textit{Ready to testing}. En caso contrario, la llevará a \textit{Needs approval}. Con este sistema se asegura completamente que todo esté correctamente escrito.
+	Las pruebas de memoria consisten en buscar errores léxicos y gramaticales en la memoria, y corregirlos antes de su entrega, además de completarla con más información en el caso de que sea posible, y comprobar que todo se entiende. Estas pruebas las harán todos los miembros del equipo de la siguiente forma: cuando haya alguna tarea de memoria en \textit{Ready for testing}, el usuario que vaya a revisarla, se la asignará y la llevará a \textit{Testing}. Una vez que haya terminado, y no sea la última persona en haberla revisado, la volverá a llevar a \textit{Ready for testing}. En caso contrario, la llevará a \textit{Needs approval}. Con este sistema tratamos de asegurarnos de que todo esté correctamente escrito.
 
 \subsection{Pruebas de implementación}
 
-	Para las pruebas de implementación, se contempla dos tipos de pruebas: pruebas unitarias y pruebas de integración. Todas estas pruebas las haremos con \textit{Jest} (ver sección \ref{cap3:sec:jest}). Estas pruebas las desarrollará y realizará alguno de los miembros que no haya implementado esa parte del código, y las hará cuando la tarea correspondiente de prueba esté en la columna \textit{Ready to Testing}. La razón de esto es porque las personas que no han escrito el código pueden sacar más casos de prueba que las personas que lo han escrito.
+	Para las pruebas de implementación, se contemplan dos tipos de pruebas: pruebas unitarias y pruebas de integración. Todas estas pruebas las haremos con \textit{Jest} (ver sección \ref{cap3:sec:jest}). Estas pruebas las desarrollará y realizará alguno de los miembros que no haya implementado esa parte del código, y las hará cuando la tarea correspondiente de prueba esté en la columna \textit{Ready for Testing}. La razón de esto es porque las personas que no han escrito el código pueden sacar más casos de prueba que las personas que lo han escrito.
 	
 	\subsubsection{Pruebas unitarias}
 
@@ -121,13 +121,13 @@
 		\item Deben ser \textbf{repetibles}: se deben repetir todas las veces que queramos, y el resultado debe ser el mismo en todas las repeticiones.
 	\end{itemize}
 
-	El uso de pruebas unitarias proporcionan una serie de ventajas:
+	El uso de pruebas unitarias proporciona una serie de ventajas:
 	
 	\begin{itemize}
-		\item \textbf{Aumento de la calidad} del código: debido a que estas pruebas se ejecutan de forma regular, permite detectar errores a tiempo y poder corregirlos antes de completar el código y liberar la aplicación.
-		\item \textbf{Facilitan los cambios}: se pueden aplicar cambios para mejorar el código, ya que ese cambio solo afectaría a una parte del código. En el caso de que al aplicar el cambio éste no estuviera correctamente realizado, es decir, no hiciera lo que esperase, la prueba unitaria nos avisaría de que hay errores.
+		\item \textbf{Aumento de la calidad} del código: debido a que estas pruebas se ejecutan de forma regular, permiten detectar errores a tiempo y poder corregirlos antes de completar el código y liberar la aplicación.
+		\item \textbf{Facilitan los cambios}: si se considera que el código es mejorable se pueden aplicar cambios sin problemas, ya que la prueba unitaria nos avisaría de los errores que pudieran surgir.
 		\item \textbf{Reduce los tiempos} de integración, ya que podemos probar partes del código sin disponer del código completo.
-		\item \textbf{Reduce el coste}: teniendo en cuenta que permite detectar errores tempranos, los tiempos de entrega mejoran respecto a no usarlos.
+		\item \textbf{Reduce el coste}: teniendo en cuenta que permite detectar errores en fases tempranas, evitan el paso de los errores a fases posteriores y, además, el cambio de corregirlos en fases tempranas es menos costoso y más fácil que si se corrigieran en fases más tardías, ya que en este último caso el error suele ser producido a causa de muchos cambios. Por ello, las pruebas unitarias ayudan a reducir los costes de corrección de errores y a optimizar las entregas, ahorrando tiempo y recursos.
 	\end{itemize}
 	
 
@@ -137,7 +137,7 @@
 		\item \textbf{\textit{Top-Down}}: Es una estrategia de ``arriba a abajo'', donde se va probando los componentes que no son llamados por ningún otro, y se integran los componentes que son llamados desde la parte integrada.
 		\item \textbf{\textit{Bottom-Up}}: Es una estrategia de ``abajo a arriba'', donde se prueban los componentes que no llaman a otras partes de la aplicación, y se continua por componentes que solo llaman a la parte integrada.
 		\item \textbf{\textit{End-to-End}}: Es una estrategia orientada al proceso de negocio, en la cual integran los componentes necesarios por parte de un proceso de negocio para ver si el flujo de la aplicación funciona tal y como fue diseñado.
-		\item \textbf{Funciones}: Este tipo de integración está orientada a una función del sistema, el cual se va integrando cada uno de los componentes que necesita esa función.
+		\item \textbf{Funciones}: Este tipo de integración está orientada a una función del sistema. Se van integrando cada uno de los componentes que necesita esa función.
 		\item \textbf{Ad-Hoc}: En esta estrategia el software se ve como módulos independientes, y una vez que se han implementado y validado por parte del equipo de desarrollo, se integran.
 		\item \textbf{\textit{Big-Bang}}: Esta estrategia solo es válida cuando se dispone de todos los componentes, es decir, no se integra hasta que el software no esté completo.
 	\end{itemize}
