@@ -572,7 +572,78 @@
 	\end{figure}
 	
 	\subsubsection{Editor}
-	En la figura \ref{fig:adaptamaterialescolarInicio2} se puede ver, en la parte de la derecha, el editor. 
+	En la figura \ref{fig:adaptamaterialescolarInicio2} se puede ver, en la parte de la derecha, el editor. Para añadir funcionalidad al editor, se necesitan incluir \textit{plugins}\footnote{\url{https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/plugins.html}}. Estos \textit{plugins} pueden ser del propio editor o creados por un usuario y la mayoría tienen configuración personalizable. El editor consta de dos partes: la barra de herramientas y la zona de escritura. La barra de herramientas consta de los siguientes elementos:
+	\begin{itemize}
+		\item Exportar a PDF: permite exportar a un documento \textit{.pdf} el contenido del editor. Es posible gracias al \textit{plugin ExportPdf}.
+		\item Deshacer y rehacer: permite deshacer/rehacer la última acción realizada en el editor. Es posible gracias al \textit{plugin Essentials}.
+		\item Estilos de párrafo: permite cambiar el estilo del párrafo. Es posible gracias al \textit{plugin Heading}. Se pueden definir nuevos estilos y añadirlos a la configuración del \textit{plugin}. 
+		\item Fuente de la letra: permite cambiar la fuente de la letra. Es posible gracias al \textit{plugin FontFamily}. Cada familia de fuente de texto que se quiera incluir debe ser añadida a las opciones de configuración del \textit{plugin}. 
+		\item Tamaño de la letra: permite cambiar el tamaño de la letra. Es posible gracias al \textit{plugin FontSize}. Se pueden definir tamaños de letra personalizados añadiéndolos a las opciones de configuración del \textit{plugin}.
+		\item Color de la letra: permite cambiar el color de la letra. Es posible gracias al \textit{plugin FontColor}. Se pueden definir colores personalizados y añadirlos a las opciones de configuración del \textit{plugin}, así como el número de columnas a mostrar.
+		\item Color de resaltado: permite resaltar una palabra con un color. Es posible gracias al \textit{plugin FontBackgroundColor}. Se pueden definir colores personalizados y añadirlos a las opciones de configuración del \textit{plugin}, así como el número de columnas a mostrar.
+		\item Negrita, cursiva y subrayado: permite cambiar el formato de texto a negrita, cursiva y/o subrayado gracias a los \textit{plugins Bold, Italic} y \textit{Underline}, respectivamente.
+		\item Alineamiento del texto: permite alinear el texto a la izquierda, centrarlo, alinearlo a la derecha o justificarlo. Es posible gracias al \textit{plugin Alignment}.
+		\item Sangría: permite disminuir o aumentar la sangría de un párrafo. Es posible gracias al \textit{plugin Indent} e \textit{IndentBlock}.
+		\item Listas: permite crear listas no numeradas, listas numeradas y listas de tareas. Es posible gracias a los \textit{plugins ListStyle}, para las listas numeradas y no numeradas, y \textit{TodoList} para las listas de tareas.
+		\item Cita en bloque: permite insertar citas en bloque. Es posible gracias al \textit{plugin BlockQuote}.
+		\item Tablas: permite insertar tablas y modificar el diseño de las mismas (mezclar celdas, añadir o eliminar filas y columnas, cambiar de color la tabla y celdas, etc.). Es posible gracias a los \textit{plugins Table, TableToolbar, TableProperties} y \textit{TableCellProperties}.
+		\item Imágenes: permite insertar imágenes a través de una URL y redimensionarlas. Es posible gracias a los \textit{plugins Image, ImageInsert, ImageToolbar, ImageStyle} e \textit{ImageResize}.
+	\end{itemize}
+	El editor está configurado por defecto con la fuente de letra Arial, un tamaño de letra de 16px y el texto alineado a la izquierda.
+	
+	Para que un ejercicio se pueda escribir en el editor, es necesario crear el \textit{plugin} del ejercicio correspondiente. Éste debe tener dos ficheros (ver sección \ref{cap5:sec:estructura:ckeditor}. En el fichero que define la inserción del comando del componente (o ejercicio en este caso) se debe definir la función \textit{execute()}, cuyo parámetro son los datos que se necesiten para visualizar el ejercicio (puede ser un objeto, una sola variable, etc.). En el otro fichero (el \textit{plugin} del componente) se debe definir el comando de inserción y añadirlo a la lista de comandos del editor. En el siguiente fragmento de código se muestra un ejemplo del fichero \textit{plugin} de Completar huecos donde se define el comando y se añade a la lista de comandos del editor.
+	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}, caption=Ejemplo del fichero plugin de Completar huecos donde se define y añade el comando]
+		init(){
+			this.editor.commands.add('insertFillGaps', new InsertFillGapsCommand(this.editor));
+		}
+	\end{lstlisting}
+	En el siguiente fragmento de código se muestra un ejemplo de la función \textit{execute()} del fichero inserción del comando de Completar huecos.
+	\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}, caption=Ejemplo del fichero inserción del comando de Completar huecos donde se define la función execute()]
+		execute(data){
+			this.editor.model.change(writer => {
+				let text = "";
+				data.text.forEach(t =>{
+					text += t + " ";
+				})
+				let insertPosition = this.editor.model.document.selection.getFirstPosition();
+				const enunciado = writer.createElement('paragraph', insertPosition);
+				
+				writer.insertText(text, enunciado);
+				this.editor.model.insertContent(enunciado);
+				if(data.addHowToSolve){
+					const howTo = writer.createElement('paragraph');
+					writer.insertText("Cómo resolver el ejercicio: ... ", howTo, "end");
+				}
+				this.editor.execute("shiftEnter");
+			});
+		}
+	\end{lstlisting}
+	
+	La figura \ref{fig:editorSequence} muestra un diagrama de secuencia de cómo se inicializa el editor y cómo se ejecuta la función \textit{execute()} al ser llamado por un componente cualquiera. Para ello, hay dos fases a ejecutar. En la primera fase se inicializa el editor y nos centraremos en la inicialización de cada \textit{plugin} y comando:
+	\begin{enumerate}
+		\item Cuando se crea el editor se llama a la función \textit{create()} pasándole como parámetros \textit{sourceElementOrData}, el componente HTML donde estará montado el editor; y \textit{config}, el objeto de configuración del editor en el que se encuentra el idioma del editor, los plugins y algunas configuraciones de éstos. Dentro de esta función, se crea el editor haciendo un \textit{new this()} y pasándole como parámetros los mismos que en el \textit{create}, y asignará este editor a una variable. Posteriormente, se llama a la función \textit{initPlugins()} del editor, pasándole como parámetro los \textit{plugins} del objeto \textit{config}.
+		\item La llamada a \textit{initPlugins()} iterará sobre cada \textit{plugin} que haya en \textit{plugins}. Para ello, se hace una llamada a \textit{init()} pasándole como parámetros los \textit{plugins}.
+		\item La llamada a \textit{init()} se ejecuta en la clase \textit{PluginsCollection}, una clase de \textit{CKEditor 5} para gestionar los \textit{plugins}. A continuación se ejecuta un bucle \textit{forEach} en el que, para cada \textit{plugin} de \textit{plugins}, se hará una llamada a \textit{init()}. Esta llamada a \textit{init()} la tiene cada clase \textit{ComponentePlugin} obligatoriamente.
+		\item La función \textit{init()} de cada clase \textit{ComponentePlugin} insertará, en la lista de comandos del editor, el comando correspondiente a esa clase. Se hace una llamada a \textit{add()} pasándole como parámetros el nombre del comando y un objeto de la clase \textit{InsertComponentCommand()} donde se encuentra la función \textit{execute()}. La llamada a \textit{new InsertComponentCommand()} necesita como parámetro el editor.
+		\item Una vez hecho todo este proceso, devolverá el editor inicializado. Hay que tener en cuenta que en todo este proceso se llaman a más funciones y se asignan más variables, ya que lo hace internamente y no son funciones que nosotros hayamos creado.
+	\end{enumerate}
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/editorSequence}
+			\caption{Diagrama de secuencia del proceso de inicialización del editor y la ejecución de la función execute()}
+			\label{fig:editorSequence}
+		\end{center}
+	\end{figure} 
+	En la segunda fase nos centraremos en la ejecución de la función \textit{execute()} de un componente cualquiera:
+	\begin{enumerate}
+		\item Un componente hace una llamada a la función \textit{execute()} del editor pasándole como parámetros el nombre del comando \textit{``insertComponente''} y el objeto con los datos necesarios para la visualización del componente en el editor, \textit{options}.
+		\item La función \textit{execute()} del editor ejecuta un bloque try-catch:
+		\begin{enumerate}
+			\item Try: se hace una llamada a \textit{execute()} de la clase \textit{CommandCollection}, una clase de CKEditor para gestionar los comandos, pasándole como parámetros el nombre del comando y el objeto de datos. Si todo va bien, se obtendrá el comando y se llamará a la función \textit{execute()} de la clase \textit{InsertComponentCommand} pasándole como parámetro el objeto de datos. En el caso de que el comando no exista se lanzará una excepción.
+			\item Catch: si ha habido alguna excepción y no se ha conseguido ejecutar el comando, se capturará la excepción y se relanzará otra excepción llamando a la función \textit{rethrowUnexpectedError()} pasándole como argumentos el error y el editor.
+		\end{enumerate}
+		\item Si todo ha ido bien, se visualizará en el editor el componente.
+	\end{enumerate}
 	
 	\subsubsection{Buscador de pictogramas}
 	La Figura \ref{fig:pictoModal} muestra la apariencia de la aplicación cuando se selecciona el buscador de pictogramas. En él, se muestra un único input donde se introduce el texto a buscar. La aplicación reaccionará automáticamente y mostrará los resultados conforme se vaya actualizando el texto a buscar. En la Figura \ref{fig:pictoResults} se puede ver cómo se muestran los resultados una vez se ha introducido un texto de búsqueda.
@@ -673,7 +744,7 @@
 				\end{itemize}
 			\end{itemize}
 		\end{enumerate}
-		\item Por último, se hará una llamada a \textit{writeInEditor()}, una función local de \textit{WordSearchModal}, cuyo objetivo es escribir en el editor la sopa de letras.
+		\item Por último, se hará una llamada a \textit{writeInEditor()}, una función local de \textit{WordSearchModal}, cuyo objetivo es escribir en el editor la sopa de letras. Para que se escriba en el editor, se ejecuta una función del editor llamada \textit{execute()} donde se le pasa como parámetros el comando a ejecutar (en este caso es \textit{insertWordSearch}) y un objeto con la sopa de letras, las palabras que se han insertado en la sopa de letras, la opción de mostrar las palabras a buscar en la sopa de letras y la opción de añadir un ejemplo de cómo resolver el ejercicio.
 	\end{enumerate}
 
 	En la Figura \ref{fig:wordsearchResult} se muestra el resultado de la generación de la sopa de letras si se usa como configuración los datos de la Figura \ref{fig:wordsearchConfig}.
@@ -807,7 +878,7 @@
 
 \subsection{Estructura del código}
 %-----------------------------------%
-\label{cap7:sec:estructura}
+\label{cap5:sec:estructura}
 
 	La organización de directorios del proyecto gira en torno al patrón de diseño Redux. El código de la funcionalidad de la aplicación se estructura principalmente en cuatro carpetas: components, pages, ckeditor y redux. Además, contamos con el fichero App, que supone el punto de inicio del programa. El contenido de cada carpeta es el siguiente:
 	\begin{itemize}
@@ -860,6 +931,7 @@
 		\end{center}
 	\end{figure}
 	\begin{itemize}
+		\label{cap5:sec:estructura:ckeditor}
 		\item \textbf{CKEditor:} Representado en la Figura \ref{fig:srcCkeditor},contiene todos componentes software o plugins que se han desarrollado para la aplicación, permitiendo la interacción a partir de comandos que controlan las diferentes funcionalidades. Consta de un fichero que devuelve la instancia del editor, CKEditor 5, y una carpeta para cada plugin, con los siguientes ficheros:
 		\begin{itemize}
 			\item Fichero de implementación del plugin.
