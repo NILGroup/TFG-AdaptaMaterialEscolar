@@ -8,13 +8,13 @@
 \chapter{Herramientas empleadas}
 
 \begin{resumen}
-	En este capítulo se explican las herramientas y librerías que se han empleado en el desarrollo de este proyecto. En la sección \ref{cap3:sec:moqups} se introduce la herramienta online Moqups. En la sección \ref{cap3:sec:react} se muestra el \textit{framework} que se ha utilizado para la creación de la página web. En la sección \ref{cap3:sec:apiarasaac} se habla de la API de ARASAAC usada para la búsqueda de pictogramas. En la sección \ref{cap3:sec:jest} se presenta la librería \textit{Jest} usada para la realización de pruebas. En la sección \ref{cap3:sec:ckeditor} se explica CKEditor, el editor de texto que hemos usado en la aplicación. En la sección \ref{cap3:sec:wordsearch} se explica el paquete NPM usado para la generación de las sopas de letras.
+	En este capítulo se explican las herramientas y librerías que se han empleado en el desarrollo de este proyecto. En la sección \ref{cap4:sec:moqups} se introduce la herramienta online Moqups. En la sección \ref{cap4:sec:react} se muestra el \textit{framework} que se ha utilizado para la creación de la página web. En la sección \ref{cap4:sec:apiarasaac} se habla de la API de ARASAAC usada para la búsqueda de pictogramas. En la sección \ref{cap4:sec:jest} se presenta la librería \textit{Jest} usada para la realización de pruebas. En la sección \ref{cap4:sec:ckeditor} se explica CKEditor, el editor de texto que hemos usado en la aplicación. En la sección \ref{cap4:sec:wordsearch} se explica el paquete NPM usado para la generación de las sopas de letras.
 \end{resumen}
 	
 %------Primera sección: Moqups------%
 \section{Moqups}
 %-----------------------------------%
-\label{cap3:sec:moqups}
+\label{cap4:sec:moqups}
 
 	Moqups\footnote{\url{https://moqups.com/}} es una página web para la creación de bocetos, prototipos, diagramas, etc. Permite diseñar una interfaz, o simplemente ver cómo es el flujo de un algoritmo, arrastrando desde los menús al espacio de trabajo los distintos elementos (llamados plantillas) que podemos encontrar en una aplicación (barras de progreso, etiquetas o \textit{labels}, enlaces, diferentes tipos de ventanas, etc.).
 	
@@ -68,12 +68,12 @@
 	\end{figure}
 	
 	
-	En este proyecto se ha usado Moqups para la creación de la versión 1.0 del prototipo de la aplicación web (en la sección \ref{cap5:sec:diseño:subsec:segunda} se puede leer una explicación detallada de cómo se ha creado este prototipo y de las diferentes vistas del mismo).
+	En este proyecto se ha usado Moqups para la creación de la versión 1.0 del prototipo de la aplicación web (en la sección \ref{cap6:sec:diseño:subsec:segunda} se puede leer una explicación detallada de cómo se ha creado este prototipo y de las diferentes vistas del mismo).
 	
 %------Segunda sección: React------%
 \section{React}
 %----------------------------------%
-\label{cap3:sec:react}
+\label{cap4:sec:react}
 
 	\textit{React}\footnote{\url{https://es.reactjs.org/}} es una librería de \textit{JavaScript}, creada por Facebook y de código abierto\footnote{\url{https://github.com/facebook/react}}, que permite crear interfaces de usuario interactivas de forma sencilla. Está basada en la programación orientada a componentes, donde cada componente se puede ver como una funcionalidad distinta, es decir, como una pieza de un puzle. La ventaja de usar componentes es que, al ser independientes unos de otros, si en la carga de una página web falla uno, no afectaría al resto de componentes, por lo que dicha página quedaría cargada sin ese componente. Así mismo, al usar un DOM (Modelo de Objetos del Documento) virtual, deja que la propia librería actualice las partes que han cambiado, en lugar de actualizar todos los componentes.
 	
@@ -98,13 +98,13 @@
 	
 	\textit{React} aporta rendimiento, flexibilidad y organización de código, frente a la creación de una página web de forma clásica (es decir, sin usar ninguna librería o \textit{framework}). Tiene una documentación bastante completa\footnote{\url{https://es.reactjs.org/docs/getting-started.html}}, junto con un tutorial para aprender desde cero\footnote{\url{https://es.reactjs.org/tutorial/tutorial.html}}.
 	
-	Esta librería la hemos usado en el proyecto para implementar los distintos tipos de adaptaciones en la aplicación web (ver sección \ref{cap5:sec:capturaRequisitos:tiposAdaptaciones}).
+	Esta librería la hemos usado en el proyecto para implementar los distintos tipos de adaptaciones en la aplicación web (ver sección \ref{cap6:sec:capturaRequisitos:tiposAdaptaciones}).
 	
 
 %------Tercera sección: API ARASAAC------%
 \section{API de ARASAAC}
 %----------------------------------------%
-\label{cap3:sec:apiarasaac}
+\label{cap4:sec:apiarasaac}
 	
 	El Centro Aragonés para la Comunicación Aumentativa y Alternativa (ARASAAC) proporciona una API pública\footnote{\url{https://arasaac.org/developers/api}}, cuyo uso es gratuito siempre y cuando la aplicación a desarrollar sea no comercial\footnote{\url{https://arasaac.org/developers/}} (está bajo la licencia de \textit{Creative Commons BY-NC-SA}, es decir, ``Reconocimiento-NoComercial-CompartirIgual''\footnote{\url{https://creativecommons.org/licenses/by-nc-sa/4.0/}} en el que se debe dar crédito a los/as autores/as originales, no se puede usar para fines comerciales y en el caso de que se modifique o transforme ese material se debe distribuir bajo la misma licencia).
 	
@@ -120,7 +120,7 @@
 %----------Cuarta sección: Jest----------%
 \section{Jest}
 %----------------------------------------%
-\label{cap3:sec:jest}
+\label{cap4:sec:jest}
 	
 	\textit{Jest}\footnote{\url{https://jestjs.io/es-ES/}} es una librería para \textit{Javascript}, creada por Facebook, que permite realizar pruebas unitarias y de integración y es compatible con muchos \textit{frameworks} incluyendo el que hemos elegido (\textit{React}). \textit{Jest} tiene una instalación muy sencilla, de pocos pasos, y su configuración es mínima. La documentación\footnote{\url{https://jestjs.io/es-ES/docs/getting-started}} es completa, y contiene lo necesario para poder desarrollar estos tipos de pruebas, junto con una serie de ejemplos realizados paso a paso.
 	El uso de esta librería proporciona ventajas frente a no usarla o hacer tests de forma tradicional:
@@ -190,7 +190,7 @@
 %----------Quinta sección: CKEditor 5----------%
 \section{CKEditor}
 %----------------------------------------------%
-\label{cap3:sec:ckeditor}
+\label{cap4:sec:ckeditor}
 
 	\textit{CKEditor}\footnote{\url{https://ckeditor.com/}} es un editor de código abierto de tipo ``WYSIWYG''\footnote{\textbf{WYSIWYG}, acrónimo de \textit{What You See Is What You Get} (en español, ``lo que ves es lo que obtienes''), es una frase aplicada a los procesadores de texto y otros editores con formato, que permiten escribir un documento mostrando directamente el resultado final, frecuentemente el resultado impreso. \url{https://es.wikipedia.org/wiki/WYSIWYG}} y es totalmente personalizable. \textit{CKEditor} tiene dos versiones diferentes:
 	\begin{itemize}
@@ -213,7 +213,7 @@
 %----------Sexta sección: Word-search----------%
 \section{Word-search}
 %----------------------------------------------%
-\label{cap3:sec:wordsearch}
+\label{cap4:sec:wordsearch}
 
 	Para la creación de los ejercicios de sopas de letras empleamos el paquete NPM (\textit{Node Package Manager}) \textit{word-search}\footnote{\url{https://www.npmjs.com/package/@blex41/word-search}}. Para crear una sopa de letras con este paquete, se necesitan unas opciones de configuración que están encapsuladas en un objeto, y devuelve la sopa de letras en un array. Las opciones de configuración son las siguientes:
 	\begin{itemize}

@@ -14,7 +14,7 @@
 
 
 \begin{resumen}
-	En este capítulo se describe la metodología de desarrollo que se usa en el proyecto. En la sección \ref{cap4:sec:introduccion} se hace una introducción de los tipos de metodologías que existen. En la sección \ref{cap4:sec:kanban} se explica la metodología que se ha elegido. Por último, en la sección \ref{cap4:sec:pruebas} se describen los tipos de pruebas que se realizarán a lo largo del proyecto.
+	En este capítulo se describe la metodología de desarrollo que se usa en el proyecto. En la sección \ref{cap5:sec:introduccion} se hace una introducción de los tipos de metodologías que existen. En la sección \ref{cap5:sec:kanban} se explica la metodología que se ha elegido. Por último, en la sección \ref{cap5:sec:pruebas} se describen los tipos de pruebas que se realizarán a lo largo del proyecto.
 	
 \end{resumen}
 
@@ -22,7 +22,7 @@
 %------Primera sección: Introducción------%
 \section{Introducción}
 %-----------------------------------------%
-\label{cap4:sec:introduccion}
+\label{cap5:sec:introduccion}
 
 	La metodología (del griego \textit{metá} ``más allá'', \textit{odós} ``camino'' y \textit{logos} ``razón, estudio'') hace referencia al ``conjunto de métodos que se siguen en una investigación científica o una exposición doctrinal''\footnote{\url{https://dle.rae.es/metodología}}. Si este término se lleva al ámbito de la gestión de proyectos, se puede definir como un conjunto de técnicas, herramientas y procedimientos que permite organizar los procesos de un proyecto.
 	
@@ -35,7 +35,7 @@
 %------Segunda sección: Kanban------%
 \section{Kanban}
 %-----------------------------------%
-\label{cap4:sec:kanban}
+\label{cap5:sec:kanban}
 
 	El término ``\kanban''\footnote{\url{https://blog.trello.com/es/metodologia-kanban}}\space proviene del japonés, cuyo significado es ``tarjetas visuales''. Fue creado en la empresa Toyota en la década de los 50 para controlar el avance del trabajo con los materiales disponibles.
 	
@@ -78,7 +78,7 @@
 		\item \textit{To Do}: Se corresponden con las tareas que todavía no se han realizado.
 		\item \textit{In Progress}: Son tareas en las que el equipo de desarrollo ha comenzado a trabajar.
 		\item \textit{Ready for Testing}: Son tareas listas para ser probadas.
-		\item \textit{Testing}: Son tareas que se están probando. Dependiendo del tipo de tarea se probará de una forma u otra. En la sección \ref{cap4:sec:pruebas} se dan más detalles de cómo se prueban las tareas de memoria y las de implementación.
+		\item \textit{Testing}: Son tareas que se están probando. Dependiendo del tipo de tarea se probará de una forma u otra. En la sección \ref{cap5:sec:pruebas} se dan más detalles de cómo se prueban las tareas de memoria y las de implementación.
 		\item \textit{Needs approval}: En esta lista se encuentran las tareas que necesitan ser aprobadas por las tutoras antes de darlas por finalizadas. Una vez que se ha terminado de trabajar en una tarea y se ha acabado de hacerle las pruebas, habrá que moverla de \textit{Testing} a esta columna.
 		\item \textit{Done}: Son tareas que se han dado por terminadas, validadas y aprobadas. Cuando las tutoras le han dado el visto bueno, se podrá mover de \textit{Needs Approval} a \textit{Done}.
 	\end{itemize}
@@ -98,7 +98,7 @@
 %------última sección: Tipos de pruebas------%
 \section{Tipos de pruebas}
 %--------------------------------------------%
-\label{cap4:sec:pruebas}
+\label{cap5:sec:pruebas}
 
 	Como tenemos dos tipos de tareas, de memoria y de implementación, cada una se tratará de una forma diferente a la hora de realizar las pruebas.
 
@@ -108,7 +108,7 @@
 
 \subsection{Pruebas de implementación}
 
-	Para las pruebas de implementación, se contemplan dos tipos de pruebas: pruebas unitarias y pruebas de integración. Todas estas pruebas las haremos con \textit{Jest} (ver sección \ref{cap3:sec:jest}). Estas pruebas las desarrollará y realizará alguno de los miembros que no haya implementado esa parte del código, y las hará cuando la tarea correspondiente de prueba esté en la columna \textit{Ready for Testing}. La razón de esto es porque las personas que no han escrito el código pueden sacar más casos de prueba que las personas que lo han escrito.
+	Para las pruebas de implementación, se contemplan dos tipos de pruebas: pruebas unitarias y pruebas de integración. Todas estas pruebas las haremos con \textit{Jest} (ver sección \ref{cap4:sec:jest}). Estas pruebas las desarrollará y realizará alguno de los miembros que no haya implementado esa parte del código, y las hará cuando la tarea correspondiente de prueba esté en la columna \textit{Ready for Testing}. La razón de esto es porque las personas que no han escrito el código pueden sacar más casos de prueba que las personas que lo han escrito.
 	
 	\subsubsection{Pruebas unitarias}
 
