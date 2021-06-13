@@ -204,21 +204,20 @@
 
 	\subsection{Primera iteración: boceto inicial}
 	\label{cap6:sec:diseño:subsec:primera}
-		Para comenzar el proceso de diseño se creó un boceto en papel de la página principal de la aplicación (Figura \ref{fig:bocetoInicial}). En la parte superior de este diseño, se observa que hay una barra de navegación con dos menús: Texto y Actividades. Cada uno de ellos tiene un submenú con las diferentes adaptaciones disponibles para dicho menú. En el lado derecho encontramos otro menú con dos zonas diferenciadas: en la parte superior tenemos los botones de Subir texto (que sube un fichero en formato \textit{.pdf} o \textit{.docx}) y Descargar (que descarga el documento adaptado en formato \textit{.pdf}). En la parte inferior del menú lateral, nos encontramos un Resaltar información, el cual sirve para dar formato a los títulos, al cuerpo, etc. Por último, en el centro de la página, se encuentra el fichero subido con el que podremos seleccionar textos y poder adaptarlos conforme así se requiera.
+		Para comenzar el proceso de diseño se creó un boceto en papel de la página principal de la aplicación (Figura \ref{fig:bocetoInicial}). En la parte superior de este diseño se observa que hay una barra de navegación con dos menús: Texto y Actividades. Cada uno de ellos tiene un submenú con las diferentes adaptaciones disponibles para dicho menú. En el lado derecho encontramos otro menú con dos zonas diferenciadas: en la parte superior tenemos los botones de Subir texto (que sube un fichero en formato \textit{.pdf} o \textit{.docx}) y Descargar (que descarga el documento adaptado en formato \textit{.pdf}). En la parte inferior del menú lateral, nos encontramos un Resaltar información, el cual sirve para dar formato a los títulos, al cuerpo, etc. Por último, en el centro de la página, se encuentra el fichero subido con el que podremos seleccionar textos y poder adaptarlos conforme así se requiera.
 	
 	\subsection{Segunda iteración: versión 1.0 del prototipo}
 	\label{cap6:sec:diseño:subsec:segunda}
 		Partiendo del diseño inicial, y a través de la herramienta \textit{Moqups} (ver sección \ref{cap4:sec:moqups}), se creó un prototipo más amplio por vistas:
+		\begin{figure}[ht!]
+			\begin{center}
+				\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/paginaInicialProtoConjunto}
+				\caption{Versión 1.0 de la página principal}
+				\label{fig:paginaInicialProtoConjunto}
+			\end{center}
+		\end{figure}
 		\begin{itemize}
-			\item \textbf{Página principal}: En la Figura \ref{fig:paginaInicialProtoConjunto} se puede ver la página principal de la aplicación. Ésta es la página que se vería nada más entrar. En la parte superior, encontramos dos barras de navegación con diferentes menús. En la barra de navegación superior, podemos ver los menús relacionados con un editor de texto: Archivo, Edición, Formato, Insertar y Ayuda. En la barra de navegación inferior se encuentran los menús correspondientes a las adaptaciones de Temario y Actividades, además de la posibilidad de buscar imágenes libres\footnote{Las imágenes libres son aquellas imágenes que son de dominio público y que no tienen derechos reservados.} (también llamadas imágenes \textit{CC0} o \textit{Creative Commons Zero}\footnote{https://creativecommons.org/publicdomain/zero/1.0/deed.es}) y pictogramas. En el centro de la página web, podemos observar dos elementos: el logo de la aplicación AdaptaMaterialEscolar y una zona para poder subir el fichero en formato \textit{.pdf} o \textit{.docx}, ya sea seleccionándolo de una carpeta o arrastrando desde la carpeta a la zona de subida.
-			
-			\begin{figure}[ht!]
-				\begin{center}
-					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/paginaInicialProtoConjunto}
-					\caption{Versión 1.0 de la página principal}
-					\label{fig:paginaInicialProtoConjunto}
-				\end{center}
-			\end{figure}
+			\item \textbf{Página principal}: En la Figura \ref{fig:paginaInicialProtoConjunto} se puede ver la página principal de la aplicación. Ésta es la página que se vería nada más entrar. En la parte superior, encontramos dos barras de navegación con diferentes menús. En la barra de navegación superior, podemos ver los menús relacionados con un editor de texto: Archivo, Edición, Formato, Insertar y Ayuda. En la barra de navegación inferior se encuentran los menús correspondientes a las adaptaciones de Temario y Actividades, además de la posibilidad de buscar imágenes libres\footnote{Las imágenes libres son aquellas imágenes que son de dominio público y que no tienen derechos reservados.} (también llamadas imágenes \textit{CC0} o \textit{Creative Commons Zero}\footnote{https://creativecommons.org/publicdomain/zero/1.0/deed.es}) y pictogramas. En el centro de la página web podemos observar dos elementos: el logo de la aplicación AdaptaMaterialEscolar y una zona para poder subir el fichero en formato \textit{.pdf} o \textit{.docx}, ya sea seleccionándolo de una carpeta o arrastrando desde la carpeta a la zona de subida.	
 		
 			\item \textbf{Editor}: Una vez subido el fichero se pasa a la vista del editor. En la Figura \ref{fig:editorProtoConjunto} se puede observar dicha vista. En ésta, encontramos en la parte superior las dos barras de navegación descritas en el punto anterior. En el centro de la página observamos dos elementos: el elemento de la izquierda es el fichero subido, donde se podrán seleccionar las partes del texto que se quieran adaptar. El elemento de la derecha es el editor donde se podrá, también, adaptar e insertar imágenes, pictogramas, dar formato, etc.
 
@@ -240,8 +239,6 @@
 				\end{center}
 			\end{figure}
 			
-			\item \textbf{Creación de actividades}: En la Figura \ref{fig:edicionActividadesProtoConjunto} se puede ver un ejemplo de creación de un ejercicio. En este caso, el ejercicio es ``Completar'', es decir, completar el texto rellenando los huecos en blanco. Para ello, se ha tenido que seleccionar el menú Actividades y, de entre los distintos tipos de actividades que hay, seleccionar ``Completar''. Una vez elegido este apartado, habría que ir señalando en la parte de la izquierda las palabras en las que se quiera dejar el hueco, por lo que en la parte de la derecha (editor) saldría huecos en blanco en vez de la palabra señalada. Si se quiere cerrar este menú, bastaría con darle clic en la flecha que hay en la parte de la izquierda del menú.
-			
 			\begin{figure}[ht!]
 				\begin{center}
 					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/edicionActividadesProtoConjunto}
@@ -250,6 +247,10 @@
 				\end{center}
 			\end{figure}
 			
+			\item \textbf{Creación de actividades}: En la Figura \ref{fig:edicionActividadesProtoConjunto} se puede ver un ejemplo de creación de un ejercicio. En este caso, el ejercicio es ``Completar'', es decir, completar el texto rellenando los huecos en blanco. Para ello, se ha tenido que seleccionar el menú Actividades y, de entre los distintos tipos de actividades que hay, seleccionar ``Completar''. Una vez elegido este apartado, habría que ir señalando en la parte de la izquierda las palabras en las que se quiera dejar el hueco, por lo que en la parte de la derecha (editor) saldría huecos en blanco en vez de la palabra señalada. Si se quiere cerrar este menú, bastaría con darle clic en la flecha que hay en la parte de la izquierda del menú.
+			
+			\item \textbf{Adaptación de temario}: En la Figura \ref{fig:edicionTemarioProtoConjunto} se puede encontrar un ejemplo de una adaptación de temario. En este caso, la adaptación es ``Resumir texto''. Para ello, se ha tenido que seleccionar el menú Temario. Una vez elegido este apartado, lo primero es seleccionar el texto que se quiera resumir en la parte izquierda y después habría que darle clic a ``Resumir texto'' para que salga, en la parte de la derecha, el texto resumido.
+			
 			\begin{figure}[ht!]
 				\begin{center}
 					\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/edicionTemarioProtoConjunto}
@@ -257,9 +258,6 @@
 					\label{fig:edicionTemarioProtoConjunto}
 				\end{center}
 			\end{figure}
-		
-			\item \textbf{Adaptación de temario}: En la Figura \ref{fig:edicionTemarioProtoConjunto} se puede encontrar un ejemplo de una adaptación de temario. En este caso, la adaptación es ``Resumir texto''. Para ello, se ha tenido que seleccionar el menú Temario. Una vez elegido este apartado, lo primero es seleccionar el texto que se quiera resumir en la parte izquierda y después habría que darle clic a ``Resumir texto'' para que salga, en la parte de la derecha, el texto resumido.
-			
 		\end{itemize}
 	
 	\subsection{Tercera iteración: iteración competitiva}
@@ -420,7 +418,7 @@
 				\label{fig:wordsearchModal}
 			\end{center}
 		\end{figure}
-		\item Verdadero o falso. Permite crear una lista de oraciones y añade al final un recuadro para contestar con una V si es verdadero o con una F si es falso. En la figura \ref{fig:truefalseModal} se puede ver la intefaz de la aplicación al seleccionar V/F.
+		\item Verdadero o falso. Permite crear una lista de oraciones y añade al final un recuadro para contestar con una V si es verdadero o con una F si es falso. En la figura \ref{fig:truefalseModal} se puede ver la interfaz de la aplicación al seleccionar V/F.
 		\begin{figure}[ht!]
 			\begin{center}
 				\includegraphics[width=1\textwidth]{Imagenes/Bitmap/truefalseModal}
@@ -430,7 +428,7 @@
 		\end{figure}
 	\end{itemize}
 	
-	Todos los ejercicios tienen una opción para añadir un ejemplo de cómo resolver el ejercicio, y en todos ellos se añade un enunciado plantilla automáticamente, que posteriormente el usuario puede personalizar a su gusto. En las figuras ... se observa al resultado de todos los ejercicios, donde se añade el enunciado y un párrafo sobre cómo resolver el ejercicio.
+	Todos los ejercicios tienen una opción para añadir un ejemplo de cómo resolver el ejercicio, y en todos ellos se añade un enunciado plantilla automáticamente, que posteriormente el usuario puede personalizar a su gusto. En las Figuras \ref{fig:wordsearchResult}, \ref{fig:definitionsResult}, \ref{fig:developResult}, \ref{fig:truefalseResult} y \ref{fig:fillgapsResult} se observa el resultado de todos los ejercicios, donde se añade el enunciado y un párrafo sobre cómo resolver el ejercicio.
 	
 	\begin{figure}[ht!]
 		\begin{center}
@@ -458,7 +456,7 @@
 	Esta arquitectura se basa en tres principios:
 	\begin{itemize}
 		\item Única fuente de la verdad. El estado de la aplicación se guarda en un único Store y cuando los componentes necesiten conocer el estado lo cogerán del Store. Este Store es un objeto Javascript y está estructurado en forma de árbol con todos los datos necesarios para la aplicación.
-		\item El estado es de solo lectura. No podemos modificar el estado directamente, solo podremos leer de él para mostrarlo en la vista y si queremos modificarlo tendremos que ejecutar acciones. Las acciones son un objeto Javascript que incluye al menos un atributo \textit{type} que indica el tipo de acción que estamos emitiendo y en caso de que haya datos asociados al cambio o modificación, un atributo payload con esos datos. Por ejemplo, en el siguiente fragmento de código se tiene una acción para cargar un documento, donde el atributo type indica el tipo de acción a realizar y el payload llevará los datos del documento a cargar:
+		\item El estado es de solo lectura. No podemos modificar el estado directamente, solo podremos leer de él para mostrarlo en la vista y si queremos modificarlo tendremos que ejecutar acciones. Las acciones son un objeto Javascript que incluye al menos un atributo \textit{type} que indica el tipo de acción que estamos emitiendo y, en caso de que haya datos asociados al cambio o modificación, un atributo \textit{payload} con esos datos. Por ejemplo, en el siguiente fragmento de código se tiene una acción para cargar un documento, donde el atributo \textit{type} indica el tipo de acción a realizar y el \textit{payload} llevará los datos del documento a cargar:
 		\begin{lstlisting}[language=Javascript, backgroundcolor=\color{lightgray}, caption=Ejemplo de acción para cargar un documento]
 			export const loadDocument = (document) => ({
 				type: DocumentActionTypes.LOAD_FILE,
@@ -848,7 +846,7 @@
 	Al seleccionar esta opción en nuestra aplicación, se muestra la interfaz de la Figura \ref{fig:truefalseModal}. Para crear un ejercicio de verdadero y falso se necesitan rellenar los siguientes campos:
 	\begin{itemize}
 		\item Frases: Contendrá las frases del ejercicio. Hay que escribir una frase en cada input de texto. Para añadir más inputs, se puede pulsar la tecla Enter dentro de uno de los inputs, o pulsar el botón ``más''. Para quitarlos, se tendrá que hacer clic en el ``menos''. Ambos botones se encuentran ubicados en la derecha de cada input.
-		\item La forma para mostrarla: puede ser como una lista no ordenada o una lista ordenada. Por defecto está seleccionada la lista no ordenada.
+		\item La forma en la que se muestran las frases: puede ser como una lista no ordenada o una lista ordenada. Por defecto está seleccionada la lista no ordenada.
 	\end{itemize}
 	
 	En la Figura \ref{fig:flujoTruefalse} se muestra un diagrama con el flujo de acción, reductor, etc., cuando se añaden más inputs y en la Figura \ref{fig:truefalseSequence}, un diagrama de secuencia de la misma funcionalidad. Tal y como se puede ver en el diagrama de secuencia ocurre lo siguiente:
@@ -896,7 +894,7 @@
 	
 	El ejercicio de completar huecos tiene como finalidad escribir las palabras faltantes en los espacios en los que haya una línea. Al seleccionar esta opción en nuestra aplicación se muestra la interfaz de la Figura \ref{fig:fillgapsModal}. Este ejercicio consta de dos fases:
 	\begin{itemize}
-		\item En la primera fase hay que insertar el texto en el que se quiera quitar palabras. Una vez que se ha insertado, el botón Seleccionar palabras se habilitará. El texto se puede seleccionar y copiar del documento fuente y pegarlo en el \textit{textarea}. En la Figura \ref{fig:fillgapsEdition} se muestra un ejemplo de la interfaz de edición en la que se debe insertar el texto, y en el que una vez insertado, el botón Seleccionar palabras se habilitará. 
+		\item En la primera fase hay que insertar el texto del que se quiera quitar palabras. Una vez que se ha insertado, el botón Seleccionar palabras se habilitará. El texto se puede seleccionar y copiar del documento fuente y pegarlo en el \textit{textarea}. En la Figura \ref{fig:fillgapsEdition} se muestra un ejemplo de la interfaz de edición en la que se debe insertar el texto, y en el que una vez insertado, el botón Seleccionar palabras se habilitará. 
 		\begin{figure}[ht!]
 			\begin{center}
 				\includegraphics[width=1\textwidth]{Imagenes/Bitmap/fillgapsEdition}
@@ -916,7 +914,7 @@
 	
 	En la Figura \ref{fig:fillgapsSequence1} se muestra un diagrama de secuencia cuando se hace clic en el botón Seleccionar palabras. Tal y como se puede ver en el diagrama de secuencia ocurre lo siguiente:
 	\begin{enumerate}
-		\item Se hace una llamada a la función \textit{changeToSelection}. Esta función consta de dos partes:
+		\item Se hace una llamada a la función \textit{changeToSelection()}. Esta función consta de dos partes:
 		\begin{enumerate}
 			\item Se hace una llamada al despachador pasándole como parámetro \textit{updateMode(mode)}, donde \textit{mode} puede ser o \textit{edition} o \textit{selection}. En este caso es \textit{selection}. El despachador buscará en \textit{Actions} el tipo de acción que es (\textit{UPDATE\_FILLGAPS\_MODE}), junto con su \textit{payload}. Después llamará al reductor a través de \textit{fillGapsReducer()} pasándole como parámetros el estado (\textit{state}) del componente y la acción devuelta anteriormente, buscará el tipo de acción en el \textit{switch} y actualizará el modo a \textit{selection}. Después devolverá el estado actualizado.
 			\item Se hace una llamada al despachador pasándole como parámetro \textit{updateTextSelection()}. El despachador buscará en \textit{Actions} el tipo de acción que es (\textit{UPDATE\_FILLGAPS\_TEXTSELECTION}). Posteriormente llamará al reductor a través de \textit{fillGapsReducer()} pasándole como parámetros el estado (\textit{state}) del componente y la acción devuelta anteriormente, buscará el tipo de acción en el \textit{switch} y actualizará la variable \textit{textSelection}. Esta variable contiene las palabras del texto separadas por espacios. Después devolverá el estado actualizado. Una vez finalizado este proceso, se cambiará a la interfaz de selección de palabras (Figura \ref{fig:fillgapsSelection}). 
@@ -938,18 +936,18 @@
 		\end{figure}
 		\begin{figure}[ht!]
 			\begin{center}
-				\includegraphics[width=1\textwidth]{Imagenes/Bitmap/fillgapsSequence2}
+				\includegraphics[width=0.94\textwidth]{Imagenes/Bitmap/fillgapsSequence2}
 				\caption{Diagrama de secuencia cuando se hace clic en una palabra en el ejercicio completar huecos}
 				\label{fig:fillgapsSequence2}
 			\end{center}
 		\end{figure}
 		\begin{enumerate}
-			\item Si la palabra comienza con una guión bajo, se llama al despachador pasándole como parámetro \textit{updateDeleteSelectedWord(i)}, donde \textit{i} es la posición de la palabra en el array \textit{textSelection}. El despachador buscará en \textit{Actions} el tipo de acción que es (\textit{UPDATE\_FILLGAPS\_DELETESELECTED}) junto con su \textit{payload} (\textit{i}). Posteriormente se llamará al reductor a través de \textit{fillGapsReducer()} pasándole como parámetros el estado (\textit{state}) del componente y la acción, buscará el tipo de acción en el \textit{switch} y procederá a actualizar dos variables: \textit{textSelection} donde se recupera la palabra que se ha ocultado y \textit{wordSelected}, donde se busca el índice de la palabra que se ha ocultado en el array \textit{wordsSelected} y se elimina del mismo. Después devolverá el estado modificado.
-			\item Si la palabra no comienza con guión bajo, se llama al despachador pasándole como parámetro \textit{updateAddSelectedWord(e.target.textContent, i)}, donde \textit{e.target.textContent} es la palabra e \textit{i} es la posición en el array \textit{textContent}. El despachador buscará en \textit{Actions} el tipo de acción que es (\textit{UPDATE\_FILLGAPS\_ADDSELECTED}) junto con su \textit{payload} (\textit{i}). Posteriormente se llamará al reductor a través de \textit{fillGapsReducer()} pasándole como parámetros el estado (\textit{state}) del componente y la acción, buscará el tipo de acción en el \textit{switch} y procederá a actualizar dos variables: \textit{textSelection}, donde se sustituye la palabra por guiones bajos, y \textit{wordsSelected}, donde se añade un objeto con la palabra y la posición en el array \textit{textSelection} para poder recuperarla después. Por último devolverá el estado modificado.
+			\item Si la palabra comienza con una guión bajo, se llama al despachador pasándole como parámetro \textit{updateDeleteSelectedWord(i)}, donde \textit{i} es la posición de la palabra en el array \textit{textSelection}. El despachador buscará en \textit{Actions} el tipo de acción que es (\textit{UPDATE\_FILLGAPS\_DELETESELECTED}) junto con su \textit{payload} (\textit{i}). Posteriormente se llamará al reductor a través de \textit{fillGapsReducer()} pasándole como parámetros el estado (\textit{state}) del componente y la acción, buscará el tipo de acción en el \textit{switch} y procederá a actualizar dos variables: \textit{textSelection}, donde se recupera la palabra que se ha ocultado, y \textit{wordSelected}, donde se busca el índice de la palabra que se ha ocultado en el array \textit{wordsSelected}, y se elimina la palabra de éste. Después devolverá el estado modificado.
+			\item Si la palabra no comienza con guión bajo, se llama al despachador pasándole como parámetro \textit{updateAddSelectedWord(textContent, i)}, donde \textit{textContent} es la palabra e \textit{i} es la posición en el array \textit{textContent}. El despachador buscará en \textit{Actions} el tipo de acción que es (\textit{UPDATE\_FILLGAPS\_ADDSELECTED}) junto con su \textit{payload} (\textit{i}). Posteriormente se llamará al reductor a través de \textit{fillGapsReducer()} pasándole como parámetros el estado (\textit{state}) del componente y la acción, buscará el tipo de acción en el \textit{switch} y procederá a actualizar dos variables: \textit{textSelection}, donde se sustituye la palabra por guiones bajos, y \textit{wordsSelected}, donde se añade un objeto con la palabra y la posición en el array \textit{textSelection} para poder recuperarla después. Por último devolverá el estado modificado.
 		\end{enumerate}
 	\end{enumerate}
 
-	Una vez que se ha seleccionado al menos una palabra, el botón Aceptar se habilitará. Al hacer clic en éste, se escribirá, en el editor, el texto modificado. Para ello, se llamará a la función \textit{execute()} del editor, pasándole como parámetros el nombre del comando (\textit{insertFillGaps}) y el objeto de datos con el texto modificado, las palabras escondidas y la opción para añadir un ejemplo de cómo resolver el ejercicio. En la Figura \ref{fig:fillgapsResult} se ve el resultado del ejercicio al usar las opciones de las Figuras \ref{fig:fillgapsEdition} y \ref{fig:fillgapsSelection}.
+	Una vez que se ha seleccionado al menos una palabra, el botón Aceptar se habilitará. Al hacer clic en éste se escribirá el texto modificado en el editor. Para ello, se llamará a la función \textit{execute()} del editor, pasándole como parámetros el nombre del comando (\textit{insertFillGaps}) y el objeto de datos con el texto modificado, las palabras escondidas y la opción para añadir un ejemplo de cómo resolver el ejercicio. En la Figura \ref{fig:fillgapsResult} se ve el resultado del ejercicio al usar las opciones de las Figuras \ref{fig:fillgapsEdition} y \ref{fig:fillgapsSelection}.
 	
 	\begin{figure}[ht!]
 		\begin{center}
