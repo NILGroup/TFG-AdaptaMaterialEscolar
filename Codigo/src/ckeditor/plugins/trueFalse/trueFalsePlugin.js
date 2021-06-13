@@ -35,11 +35,45 @@ export default class TrueFalselugin extends Plugin {
             // product it represents and makes it possible to render it inside a widget.
             allowAttributes: [ 'truefalse' ]
         } );
+
+        schema.register( 'trueFalseBox', {
+            // Behaves like a self-contained object (e.g. an image).
+          //  isObject: true,
+
+            // Allow in places where other blocks are allowed (e.g. directly in the root).
+            allowWhere: '$text',
+            isObject: true,
+            isInline: true
+        } );
     }
 
     _defineConverters() {
         const editor = this.editor;
         const conversion = editor.conversion;
+
+        conversion.for( 'upcast' ).elementToElement( {
+            model: 'trueFalseBox',
+            view: {
+                name: 'span',
+                classes: 'true-false-box'
+            }
+        } );
+        conversion.for( 'dataDowncast' ).elementToElement( {
+            model: 'trueFalseBox',
+            view: {
+                name: 'span',
+                classes: 'true-false-box'
+            }
+        } );
+
+        conversion.for( 'editingDowncast' ).elementToElement( {
+            model: 'trueFalseBox',
+            view: ( modelElement, { writer: viewWriter } ) => {
+                const section = viewWriter.createContainerElement( 'span', { class: 'true-false-box' } );
+
+                return toWidget( section, viewWriter, { label: 'trueFalseBox' } );
+            }
+        } );
 
         // <productPreview> converters ((data) view → model)
         conversion.for( 'upcast' ).elementToElement( {

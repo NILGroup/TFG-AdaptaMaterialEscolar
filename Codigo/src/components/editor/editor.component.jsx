@@ -184,6 +184,7 @@ class Editor extends React.Component{
                         editor.ui.getEditableElement()
                     );
                     this.props.setEditor(editor);
+                    editor.execute( 'fontFamily', { value: 'Arial' } );
             } }/>
         </div>
     </div>);

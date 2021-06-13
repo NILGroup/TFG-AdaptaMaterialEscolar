@@ -3,15 +3,13 @@ import Command from '@ckeditor/ckeditor5-core/src/command';
 export default class InsertDefinitionsCommand extends Command {
     execute(definitions) {
         this.editor.model.change( writer => {
-            // Insert <productPreview id="...">*</productPreview> at the current selection position
-            // in a way which will result in creating a valid model structure.
             let insertPosition = this.editor.model.document.selection.getFirstPosition();
-            const enunciado = writer.createElement('paragraph', insertPosition);
-            
+            let enunciado = writer.createElement('paragraph', insertPosition);
+            let listType = definitions.listType === 'ul' ? 'bulletedList' : 'numberedList';
+
             writer.insertText("Define los siguientes conceptos: ", enunciado);
             
             this.editor.model.insertContent(enunciado);
-            this.editor.execute('shiftEnter');
 
             let definition;
             let linea = undefined;
@@ -19,9 +17,8 @@ export default class InsertDefinitionsCommand extends Command {
                 definition = writer.createElement('paragraph');
                 writer.insertText(t, definition);
                 linea = writer.createElement('definitionsSameLine');
-               // writer.insertText("", linea);
                 writer.append( linea ,definition);
-                this.editor.model.insertContent(definition);
+                writer.insert(definition, enunciado, 'after');
 
                 for(let i = 0; i < definitions.numLines; i++){
                     if(definitions.extraspace){
@@ -29,18 +26,19 @@ export default class InsertDefinitionsCommand extends Command {
                     }
                     else
                         linea = writer.createElement('definitionsLine');
-                    this.editor.model.insertContent(linea);
+                    writer.append(linea, definition);
                 }
+                writer.setSelection( definition, 'in');
+                this.editor.execute( listType);
+                enunciado = definition;
             });
 
-            const howTo = writer.createElement('paragraph');
-            let endText = " ";
+            let howTo = writer.createElement('paragraph');
             if(definitions.addHowToSolve){
-                endText = "Cómo resolver el ejercicio: Primero busca una de las palabras en la sopa de letras. Ten en cuenta que las palabras pueden estar escondidas en vertical, horizontal y/o diagonal, y es posible que algunas estén escritas al revés. Cuando hayas encontrado la palabra, rodéala.";
+                writer.insertText("Cómo resolver el ejercicio: Primero busca una de las palabras en la sopa de letras. Ten en cuenta que las palabras pueden estar escondidas en vertical, horizontal y/o diagonal, y es posible que algunas estén escritas al revés. Cuando hayas encontrado la palabra, rodéala.", howTo, "end");
             }
-            writer.insertText(endText, howTo, "end");
-            this.editor.model.insertContent(howTo,  writer.createPositionAt( linea, "after"));
-
+            writer.insert(howTo, enunciado, 'after');
+            writer.setSelection(howTo, 'end');
         } );
     }
 

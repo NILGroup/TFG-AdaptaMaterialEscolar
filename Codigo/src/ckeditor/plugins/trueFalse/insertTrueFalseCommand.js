@@ -6,18 +6,31 @@ export default class InsertTrueFalseCommand extends Command {
      
 
             let insertPosition = this.editor.model.document.selection.getFirstPosition();
-            const enunciado = writer.createElement('paragraph', insertPosition);
-            
+            let enunciado = writer.createElement('paragraph', insertPosition);
+            let listType = truefalse.listType === 'ul' ? 'bulletedList' : 'numberedList';
             writer.insertText("Responde con V si es verdadero o con F si es falso las siguientes frases: ", enunciado);
             
             this.editor.model.insertContent(enunciado);
-
-            this.editor.model.insertContent( writer.createElement( 'trueFalsePreview', {truefalse}));
-
+            
+            let trueFalseLine = undefined;
+            let trueFalseBox = undefined;
+           
+            truefalse.text.forEach(phrase => {
+                trueFalseLine = writer.createElement('paragraph');
+                writer.insertText(phrase, trueFalseLine);
+                trueFalseBox = writer.createElement('trueFalseBox');
+                writer.append( trueFalseBox ,trueFalseLine);
+                writer.insert(trueFalseLine, enunciado, 'after');
+                writer.setSelection( trueFalseLine, 'in');
+                this.editor.execute( listType);
+                enunciado = trueFalseLine;
+            });
+            let howTo = writer.createElement('paragraph');
             if(truefalse.addHowToSolve){
-                const howTo = writer.createElement('paragraph');
-                writer.insertText("Cómo resolver el ejercicio:</u> Primero lee detenidamente cada frase. Después escribe en el recuadro una V si crees que la frase es verdadera o una F si crees que es falsa.", howTo, "end");
+                writer.insertText("Cómo resolver el ejercicio: Primero lee detenidamente cada frase. Después escribe en el recuadro una V si crees que la frase es verdadera o una F si crees que es falsa.", howTo, "end");
             }
+            writer.insert(howTo, enunciado, 'after');
+            writer.setSelection(howTo, 'end');
         } );
     }
 

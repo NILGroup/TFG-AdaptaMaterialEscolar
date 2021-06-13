@@ -15,25 +15,6 @@ Definitions
     display: inline-flex;
 }
     
-ol { 
-    padding-left: 0em;
-}
-    
-li{
-    overflow:hidden;
-    margin-bottom: 0.5em;
-}
-    
-li:after {
-    content:"";
-    display: inline-flex;
-    vertical-align: bottom;
-    width: 100%;
-    margin-right: -100%;
-    margin-left: 5px;
-    border-bottom: 1px solid black;
-}
-    
 .defi{
     margin-bottom: 0.75em;
 }
@@ -42,9 +23,21 @@ li:after {
     margin-top: 2em;
 }
 
-.definitions-line{
+.definitions-same-line{
     width: 200px;
+}
+
+.definitions-line{
+    width: 100%;
     border-bottom: 2px solid black;
     height: 20px;
+}
+
+.true-false-box{
+    border: 1px solid black;
+    width: 20px;
+    height: 25px;
+    margin-left: 5px;
+    display:inline-block;
 }
 /*TODO Wordsearch*/

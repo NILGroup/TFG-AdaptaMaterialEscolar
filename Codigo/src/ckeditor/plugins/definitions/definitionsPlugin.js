@@ -110,7 +110,7 @@ export default class DefinitionsPlugin extends Plugin {
         conversion.for( 'dataDowncast' ).elementToElement( {
             model: 'definitionsLine',
             view: {
-                name: 'hola',
+                name: 'div',
                 classes: 'definitions-line'
             }
         } );
@@ -134,7 +134,7 @@ export default class DefinitionsPlugin extends Plugin {
         conversion.for( 'dataDowncast' ).elementToElement( {
             model: 'definitionsLineMore',
             view: {
-                name: 'hola',
+                name: 'div',
                 classes: 'definitions-line-more'
             }
         } );

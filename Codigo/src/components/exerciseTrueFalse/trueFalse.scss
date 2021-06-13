@@ -191,14 +191,12 @@
     align-items: center;
 }
 
-.tf > li:after{
-    content:"";
-    vertical-align: bottom;
+.true-false-box{
     border: 1px solid black;
     width: 20px;
     height: 25px;
     margin-left: 5px;
-    display: inline-flex;
+    display:inline-block;
 }
 
 .answerTF{
