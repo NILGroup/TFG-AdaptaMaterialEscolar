@@ -2,11 +2,8 @@ import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 import { toWidget, toWidgetEditable,
     viewToModelPositionOutsideModelElement} from '@ckeditor/ckeditor5-widget/src/utils';
-import ReactDOM from "react-dom";
-import { Provider } from 'react-redux';
-import { store } from '../../../redux/store';
 import InsertWordSearchCommand from './insertWordSearchCommand';
-import WordSearch from '../../../components/wordSearch/wordSearch';
+
 
 export default class WordSearchPlugin extends Plugin {
     static get requires() {
@@ -25,7 +22,7 @@ export default class WordSearchPlugin extends Plugin {
         );
     }
 
-  /*  _defineSchema() {
+    _defineSchema() {
         const schema = this.editor.model.schema;
 
         schema.register( 'wordSearchPreview', {
@@ -79,39 +76,39 @@ export default class WordSearchPlugin extends Plugin {
         conversion.for( 'upcast' ).elementToElement( {
             model: 'wordSearchPreview',
             view: {
-                name: 'table',
-                classes: 'simple-box'
+                name: 'div',
+                classes: 'word-search-box'
             }
         } );
         conversion.for( 'dataDowncast' ).elementToElement( {
             model: 'wordSearchPreview',
             view: {
-                name: 'hola',
-                classes: 'simple-box'
+                name: 'div',
+                classes: 'word-search-box'
             }
         } );
         conversion.for( 'editingDowncast' ).elementToElement( {
             model: 'wordSearchPreview',
             view: ( modelElement, { writer: viewWriter } ) => {
-                const section = viewWriter.createContainerElement( 'table', { class: 'simple-box' } );
+                const section = viewWriter.createContainerElement( 'div', { class: 'word-search-box' } );
 
-                return toWidget( section, viewWriter, { label: 'simple box widget' } );
+                return toWidget( section, viewWriter, { label: 'word search box widget' } );
             }
         } );
 
         conversion.elementToElement( {
             model: 'wordSearchRow',
             view: {
-                name: 'tr',
-                classes: 'simple-box-title'
+                name: 'div',
+                classes: 'word-search-row'
             }
         } );
 
         // <simpleBoxTitle> converters
         conversion.for( 'upcast' ).elementToElement( {
             view: {
-                name: 'th',
-                classes: 'simple-box-title'
+                name: 'div',
+                classes: 'word-search-cell'
             },
             model: ( viewElement, { writer: modelWriter } ) => {
                 // Extract the "name" from "{name}".
@@ -139,7 +136,7 @@ export default class WordSearchPlugin extends Plugin {
         function createPlaceholderView( modelItem, viewWriter ) {
             const name = modelItem.getAttribute( 'name' );
 
-            const placeholderView = viewWriter.createEditableElement( 'th', {
+            const placeholderView = viewWriter.createEditableElement( 'div', {
                 class: 'wordSearchCell'
             }, {
                 isAllowedInsideAttributeElement: true
@@ -151,9 +148,9 @@ export default class WordSearchPlugin extends Plugin {
 
             return placeholderView;
         }
-    }*/
+    }
 
-    _defineSchema() {
+    /*_defineSchema() {
         const schema = this.editor.model.schema;
 
         schema.register( 'wordSearchPreview', {
@@ -240,6 +237,6 @@ export default class WordSearchPlugin extends Plugin {
 
                 return toWidget( section, viewWriter, { label: 'wordsearch preview widget' } );
             }
-        } );
-    }
+        } )
+    }*/
 }

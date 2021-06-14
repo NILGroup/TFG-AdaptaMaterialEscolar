@@ -3,9 +3,12 @@ import Command from '@ckeditor/ckeditor5-core/src/command';
 export default class InsertPictogramCommand extends Command {
     execute( url ) {
         this.editor.model.change( writer => {
-            // Insert <productPreview id="...">*</productPreview> at the current selection position
-            // in a way which will result in creating a valid model structure.
-            this.editor.model.insertContent( writer.createElement( 'pictogramPreview', { url } ) );
+
+            let image = writer.createElement('image', {src: url});
+            this.editor.model.insertContent( image );
+            writer.setSelection(image, 'on');
+            this.editor.execute( 'imageStyle', { value: 'side' } );
+          
         } );
     }
 

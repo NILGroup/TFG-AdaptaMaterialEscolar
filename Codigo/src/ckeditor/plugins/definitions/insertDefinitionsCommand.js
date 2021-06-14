@@ -16,8 +16,6 @@ export default class InsertDefinitionsCommand extends Command {
             definitions.text.forEach(t => {
                 definition = writer.createElement('paragraph');
                 writer.insertText(t, definition);
-                linea = writer.createElement('definitionsSameLine');
-                writer.append( linea ,definition);
                 writer.insert(definition, enunciado, 'after');
 
                 for(let i = 0; i < definitions.numLines; i++){
