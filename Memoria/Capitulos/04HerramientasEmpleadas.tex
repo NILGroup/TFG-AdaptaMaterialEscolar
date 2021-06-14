@@ -206,14 +206,14 @@
 
 	Para la creación de los ejercicios de sopas de letras empleamos el paquete NPM (\textit{Node Package Manager}) \textit{word-search}\footnote{\url{https://www.npmjs.com/package/@blex41/word-search}}. Para crear una sopa de letras con este paquete, se necesitan unas opciones de configuración que están encapsuladas en un objeto, y devuelve la sopa de letras en un array. Las opciones de configuración son las siguientes:
 	\begin{itemize}
-		\item cols: Es un número entero que representa el número de columnas que tendrá la sopa de letras. Por defecto tiene un valor de 10.
-		\item rows: Es un número entero que representa el número de filas que tendrá la sopa de letras. Por defecto tiene un valor de 10.
-		\item disabledDirections: Es un array de strings que representa las direcciones cardinales (``N'', ``S'', ``E'', ``W'', ``NE'', ``NW'', ``SE'', ``SW'') no válidas para colocar las palabras en la sopa de letras. Por defecto tiene un valor vacío, es decir, todas las direcciones están permitidas.
-		\item dictionary: Es un array de strings que contiene las palabras que debe contener la sopa de letras. Por defecto tiene un valor vacío.
-		\item maxWords: Es un número entero que representa el número de palabras máximo que se insertarán en la sopa de letras. Por defecto tiene un valor de 20. Aunque la longitud del array \textit{dictionary} supere este valor, solo se insertará ese número de palabras en la sopa de letras.
-		\item backwardsProbability: Es un número decimal entre 0 y 1 que representa la probabilidad que tiene cada palabra de escribirse al revés. Solo funciona si no se deshabilita, en una dirección cardinal, uno de los extremos. Por ejemplo, para poder escribir una palabra al revés en vertical, se deben tener las direcciones cardinales ``N'' y ``S'' habilitadas, no solo una de ellas. Por defecto tiene un valor de 0.3.
-		\item upperCase: Es un booleano que indica si las letras de la sopa de letras se quieren en mayúscula (\textit{true}) o no (\textit{false}). Por defecto tiene el valor \textit{true}.
-		\item diacritics: Es un booleano que indica si las letras deberían mantener las tildes en la sopa de letras. Por defecto tiene el valor \textit{false}, es decir, no mantener las tildes en la sopa de letras.
+		\item \textbf{cols}: Es un número entero que representa el número de columnas que tendrá la sopa de letras. Por defecto tiene un valor de 10.
+		\item \textbf{rows}: Es un número entero que representa el número de filas que tendrá la sopa de letras. Por defecto tiene un valor de 10.
+		\item \textbf{disabledDirections}: Es un array de strings que representa las direcciones cardinales (``N'', ``S'', ``E'', ``W'', ``NE'', ``NW'', ``SE'', ``SW'') no válidas para colocar las palabras en la sopa de letras. Por defecto tiene un valor vacío, es decir, todas las direcciones están permitidas.
+		\item \textbf{dictionary}: Es un array de strings que contiene las palabras que debe contener la sopa de letras. Por defecto tiene un valor vacío.
+		\item \textbf{maxWords}: Es un número entero que representa el número de palabras máximo que se insertarán en la sopa de letras. Por defecto tiene un valor de 20. Aunque la longitud del array \textit{dictionary} supere este valor, solo se insertará ese número de palabras en la sopa de letras.
+		\item \textbf{backwardsProbability}: Es un número decimal entre 0 y 1 que representa la probabilidad que tiene cada palabra de escribirse al revés. Solo funciona si no se deshabilita, en una dirección cardinal, uno de los extremos. Por ejemplo, para poder escribir una palabra al revés en vertical, se deben tener las direcciones cardinales ``N'' y ``S'' habilitadas, no solo una de ellas. Por defecto tiene un valor de 0.3.
+		\item \textbf{upperCase}: Es un booleano que indica si las letras de la sopa de letras se quieren en mayúscula (\textit{true}) o no (\textit{false}). Por defecto tiene el valor \textit{true}.
+		\item \textbf{diacritics}: Es un booleano que indica si las letras deberían mantener las tildes en la sopa de letras. Por defecto tiene el valor \textit{false}, es decir, no mantener las tildes en la sopa de letras.
 	\end{itemize}
 	En el caso de que alguna de estas opciones no se modificasen, no daría ningún error, sino que cogería el valor por defecto que tuvieran.
 	
@@ -237,7 +237,7 @@
 	
 	Una vez creada la sopa de letras, el paquete proporciona las siguientes funciones\footnote{Para cada ejemplo, se han usado las opciones de configuración del Listing \ref{lst:genWordsearch}. Así mismo, se han ejecutado dichas funciones una sola vez y seguidas, dando como resultado el mismo tablero.}:
 	\begin{itemize}
-		\item grid(): Devuelve un array de caracteres donde cada posición representa una letra de la sopa de letras. En la Figura \ref{fig:wordsearchgrid} se puede ver un ejemplo del resultado de esta función.
+		\item \textbf{grid()}: Devuelve un array de caracteres donde cada posición representa una letra de la sopa de letras. En la Figura \ref{fig:wordsearchgrid} se puede ver un ejemplo del resultado de esta función.
 		
 		\begin{figure}[ht!]
 			\centering
@@ -246,7 +246,7 @@
 			\label{fig:wordsearchgrid}
 		\end{figure}
 	
-		\item toString(): Devuelve un array de strings donde cada posición representa una fila de la sopa de letras. En la Figura \ref{fig:wordsearchtostring} se puede ver un ejemplo del resultado de esta función.
+		\item \textbf{toString()}: Devuelve un array de strings donde cada posición representa una fila de la sopa de letras. En la Figura \ref{fig:wordsearchtostring} se puede ver un ejemplo del resultado de esta función.
 		
 		\begin{figure}[ht!]
 			\centering
@@ -255,11 +255,11 @@
 			\label{fig:wordsearchtostring}
 		\end{figure}
 	
-		\item words(): Devuelve un array de objetos con las palabras que se han insertado correctamente en la sopa de letras. Cada objeto tiene tres campos:
+		\item \textbf{words()}: Devuelve un array de objetos con las palabras que se han insertado correctamente en la sopa de letras. Cada objeto tiene tres campos:
 		\begin{itemize}
-			\item word: la palabra que está en el campo \textit{dictionary}.
-			\item clean: este campo depende de las opciones de \textit{upperCase} y \textit{diacritics}, es decir, se escribirá la palabra del campo \textit{word} con o sin mayúsculas y con o sin tildes (dependiendo si los valores de dichas opciones están a \textit{true} o \textit{false}).
-			\item path: contiene un array de objetos con las posiciones ``x'' e ``y'' de cada letra de la palabra en la sopa de letras.
+			\item \textbf{word}: la palabra que está en el campo \textit{dictionary}.
+			\item \textbf{clean}: este campo depende de las opciones de \textit{upperCase} y \textit{diacritics}, es decir, se escribirá la palabra del campo \textit{word} con o sin mayúsculas y con o sin tildes (dependiendo si los valores de dichas opciones están a \textit{true} o \textit{false}).
+			\item \textbf{path}: contiene un array de objetos con las posiciones ``x'' e ``y'' de cada letra de la palabra en la sopa de letras.
 		\end{itemize}
 		En la Figura \ref{fig:wordsearchwords} se puede ver un ejemplo del resultado cuando se usa la función words().
 		
@@ -270,7 +270,7 @@
 			\label{fig:wordsearchwords}
 		\end{figure}
 		
-		\item dump(): Devuelve un objeto que representa el estado de la sopa de letras (es una \textit{snapshot} del tablero). Esto puede resultar útil si se quiere guardar el juego y usarlo después con la siguiente función. En la Figura \ref{fig:wordsearchdump} se puede ver un ejemplo del objeto resultante cuando se usa esta función.
+		\item \textbf{dump()}: Devuelve un objeto que representa el estado de la sopa de letras (es una \textit{snapshot} del tablero). Esto puede resultar útil si se quiere guardar el juego y usarlo después con la siguiente función. En la Figura \ref{fig:wordsearchdump} se puede ver un ejemplo del objeto resultante cuando se usa esta función.
 		
 		\begin{figure}[ht!]
 			\centering
@@ -279,9 +279,9 @@
 			\label{fig:wordsearchdump}
 		\end{figure}
 		
-		\item load(backup): Carga el parámetro \textit{backup} que representa un estado de la sopa de letras generado previamente con \textit{dump()}.
+		\item \textbf{load(backup)}: Carga el parámetro \textit{backup} que representa un estado de la sopa de letras generado previamente con \textit{dump()}.
 		
-		\item read(start, end): Devuelve un string con las letras que se forman al leer las posiciones de \textit{start} a \textit{end}. En la Figura \ref{fig:wordsearchreadcall} se puede ver la forma en la que se llama a esta función, pasándole los objetos posición \textit{start} y \textit{end} y, en la Figura \ref{fig:wordsearchread}, un ejemplo del string formado al leer dichas posiciones.
+		\item \textbf{read(start, end)}: Devuelve un string con las letras que se forman al leer las posiciones de \textit{start} a \textit{end}. En la Figura \ref{fig:wordsearchreadcall} se puede ver la forma en la que se llama a esta función, pasándole los objetos posición \textit{start} y \textit{end} y, en la Figura \ref{fig:wordsearchread}, un ejemplo del string formado al leer dichas posiciones.
 		
 		\begin{figure}[ht!]
 			\centering
