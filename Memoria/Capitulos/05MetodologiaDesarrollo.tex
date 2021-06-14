@@ -44,9 +44,9 @@
 		\item \textbf{Visualizar el trabajo y las fases del ciclo de producción o flujo de trabajo}. El trabajo está dividido en partes o tareas. Para visualizar todas estas tareas, se usa una pizarra o tablero llamado ``tablero \kanban''. Una de las ventajas de usar el tablero es que cualquier persona del equipo puede saber el trabajo realizado y el trabajo pendiente, evitando que éste último se acumule. Además, permite conocer en qué tarea está trabajando cada uno. El tablero \kanban \space se divide en varias columnas que representan las distintas fases por las que puede pasar una tarea. Las fases las decide cada equipo, aunque el modelo más común suele tener las siguientes:
 		
 		\begin{itemize}
-			\item \textit{To Do}: Tareas pendientes.
-			\item \textit{Doing}: Tareas en curso.
-			\item \textit{Done}: Tareas terminadas, validadas y aprobadas. Una vez en esta fase, no se podrá volver a mover a ninguna anterior, ya que el cliente lo ha validado, y le ha generado valor.
+			\item \textbf{\textit{To Do}}: Tareas pendientes.
+			\item \textbf{\textit{Doing}}: Tareas en curso.
+			\item \textbf{\textit{Done}}: Tareas terminadas, validadas y aprobadas. Una vez en esta fase, no se podrá volver a mover a ninguna anterior, ya que el cliente lo ha validado, y le ha generado valor.
 		\end{itemize}
 	
 		\item \textbf{Determinar y respetar el trabajo en curso}. Debe haber un límite máximo de tareas que se pueda realizar en cada fase para evitar cuellos de botella. Este límite, llamado \textit{Work In Progress} (WIP), debe ser algo conocido y hay varias formas de calcularlo. Lo suele establecer el equipo de desarrollo y se puede cambiar en cualquier momento. El WIP impide comenzar tareas hasta que no se hayan finalizado otras en curso, evitando así la acumulación de tareas.
@@ -60,8 +60,8 @@
 	
 	En nuestro proyecto, distinguimos dos tipos de tareas:
 	\begin{itemize}
-		\item Tareas de memoria: Son las tareas de redacción de la memoria.
-		\item Tareas de implementación: Son tareas de diseño y/o desarrollo de código.
+		\item \textbf{Tareas de memoria}: Son las tareas de redacción de la memoria.
+		\item \textbf{Tareas de implementación}: Son tareas de diseño y/o desarrollo de código.
 	\end{itemize}
 
 	En la Figura \ref{fig:tableroKanban} se puede ver nuestro tablero \kanban \space. Este tablero tiene un total de seis columnas:
@@ -74,12 +74,12 @@
 	\end{figure}
 	
 	\begin{itemize}
-		\item \textit{To Do}: Se corresponden con las tareas que todavía no se han realizado.
-		\item \textit{In Progress}: Son tareas en las que el equipo de desarrollo ha comenzado a trabajar.
-		\item \textit{Ready for Testing}: Son tareas listas para ser probadas.
-		\item \textit{Testing}: Son tareas que se están probando. Dependiendo del tipo de tarea se probará de una forma u otra. En la sección \ref{cap5:sec:pruebas} se dan más detalles de cómo se prueban las tareas de memoria y las de implementación.
-		\item \textit{Needs approval}: En esta lista se encuentran las tareas que necesitan ser aprobadas por las tutoras antes de darlas por finalizadas. Una vez que se ha terminado de trabajar en una tarea y se ha acabado de hacerle las pruebas, habrá que moverla de \textit{Testing} a esta columna.
-		\item \textit{Done}: Son tareas que se han dado por terminadas, validadas y aprobadas. Cuando las tutoras le han dado el visto bueno, se podrá mover de \textit{Needs Approval} a \textit{Done}.
+		\item \textbf{\textit{To Do}}: Se corresponden con las tareas que todavía no se han realizado.
+		\item \textbf{\textit{In Progress}}: Son tareas en las que el equipo de desarrollo ha comenzado a trabajar.
+		\item \textbf{\textit{Ready for Testing}}: Son tareas listas para ser probadas.
+		\item \textbf{\textit{Testing}}: Son tareas que se están probando. Dependiendo del tipo de tarea se probará de una forma u otra. En la sección \ref{cap5:sec:pruebas} se dan más detalles de cómo se prueban las tareas de memoria y las de implementación.
+		\item \textbf{\textit{Needs approval}}: En esta lista se encuentran las tareas que necesitan ser aprobadas por las tutoras antes de darlas por finalizadas. Una vez que se ha terminado de trabajar en una tarea y se ha acabado de hacerle las pruebas, habrá que moverla de \textit{Testing} a esta columna.
+		\item \textbf{\textit{Done}}: Son tareas que se han dado por terminadas, validadas y aprobadas. Cuando las tutoras le han dado el visto bueno, se podrá mover de \textit{Needs Approval} a \textit{Done}.
 	\end{itemize}
 
 	Así mismo, en la Figura \ref{fig:tableroKanban} se observa que las tareas tienen asignadas unas etiquetas de colores:
