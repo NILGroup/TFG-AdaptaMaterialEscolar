@@ -22,49 +22,43 @@
 	
 	En la Figura \ref{fig:interfazMoqups} se puede ver la interfaz de un proyecto en blanco. En la parte superior de la página, se encuentran las opciones para crear figuras geométricas y añadir notas, así como agregar a otros usuarios, y exportar el proyecto como una serie de imágenes en formato PNG o PDF y a formato HTML (Figura \ref{fig:menuSuperiorMoqups}). Se observa que en el menú lateral de la izquierda se encuentran los apartados para la creación del prototipo (plantillas, páginas que tiene el proyecto, comentarios, imágenes, iconos, etc.), como se puede ver en la Figura \ref{fig:menuLateralIzdaMoqups}. Por último, en el menú lateral de la derecha, podemos encontrar el formato de las diferentes páginas (o componentes) (Figura \ref{fig:menuLateralDchaMoqups}), y las interacciones disponibles (Figura \ref{fig:menuLateralDchaInteraccionesMoqups}).
 	\begin{figure}[ht!]
-		\begin{center}
-			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/interfazMoqups}
-			\caption{Interfaz de Moqups}
-			\label{fig:interfazMoqups}
-		\end{center}
+		\centering
+		\includegraphics[width=1\textwidth]{Imagenes/Bitmap/interfazMoqups}
+		\caption{Interfaz de Moqups}
+		\label{fig:interfazMoqups}
 	\end{figure}
 	
 	\begin{figure}[ht!]
-		\begin{center}
-			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuSuperior}
-			\caption{Menú superior}
-			\label{fig:menuSuperiorMoqups}
-		\end{center}
+		\centering
+		\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuSuperior}
+		\caption{Menú superior}
+		\label{fig:menuSuperiorMoqups}
 	\end{figure}
 
 	\begin{figure}[ht!]
-		\begin{center}
-			\begin{minipage}{.3\textwidth}
-				\vspace{12mm}
-				\begin{center}
-					\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuLateralIzda}
-					\captionof{figure}{Menú lateral izquierda}
-					\label{fig:menuLateralIzdaMoqups}
-				\end{center}
-			\end{minipage}
-			\hspace{2mm}
-			\begin{minipage}{.3\textwidth}
-				\begin{center}
-					\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuLateralDcha}
-					\captionof{figure}{Menú lateral derecha (formato)}
-					\label{fig:menuLateralDchaMoqups}
-				\end{center}
-			\end{minipage}
-			\hspace{2mm}
-			\begin{minipage}{.3\textwidth}
-				\vspace{20mm}
-				\begin{center}
-					\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuLateralDchaInteraccion}
-					\captionof{figure}{Menú lateral derecha (interacciones)}
-					\label{fig:menuLateralDchaInteraccionesMoqups}
-				\end{center}
-			\end{minipage}
-		\end{center}
+		\centering
+		\begin{minipage}{.3\textwidth}
+			\vspace{12mm}
+			\centering
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuLateralIzda}
+			\captionof{figure}{Menú lateral izquierda}
+			\label{fig:menuLateralIzdaMoqups}
+		\end{minipage}
+		\hspace{2mm}
+		\begin{minipage}{.3\textwidth}
+			\centering
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuLateralDcha}
+			\captionof{figure}{Menú lateral derecha (formato)}
+			\label{fig:menuLateralDchaMoqups}
+		\end{minipage}
+		\hspace{2mm}
+		\begin{minipage}{.3\textwidth}
+			\vspace{20mm}
+			\centering
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/menuLateralDchaInteraccion}
+			\captionof{figure}{Menú lateral derecha (interacciones)}
+			\label{fig:menuLateralDchaInteraccionesMoqups}
+		\end{minipage}
 	\end{figure}
 	
 	
@@ -80,19 +74,17 @@
 	La sintaxis que emplea \textit{React} es muy parecida a la sintaxis HTML. Para definir los componentes, se emplean etiquetas definidas por el usuario dentro de código \textit{Javascript}. Esta sintaxis se llama \textit{JSX}. No es obligatorio su uso, pero facilita tanto la codificación como la lectura del código. En la Figura \ref{fig:sinformatoJSX} se puede ver un ejemplo de una funcionalidad sin emplear el formato \textit{JSX} y en la Figura \ref{fig:conformatoJSX} la misma funcionalidad pero usando \textit{JSX}.
 	
 	\begin{figure}[ht!]
-		\begin{center}
-			\includegraphics[width=0.95\textwidth]{Imagenes/Bitmap/reactSinJSX}
-			\caption{Funcionalidad sin usar JSX}
-			\label{fig:sinformatoJSX}
-		\end{center}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Imagenes/Bitmap/reactSinJSX}
+		\caption{Funcionalidad sin usar JSX}
+		\label{fig:sinformatoJSX}
 	\end{figure}
 	
 	\begin{figure}[ht!]
-		\begin{center}
-			\includegraphics[width=0.95\textwidth]{Imagenes/Bitmap/reactConJSX}
-			\caption{Funcionalidad empleando JSX}
-			\label{fig:conformatoJSX}
-		\end{center}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Imagenes/Bitmap/reactConJSX}
+		\caption{Funcionalidad empleando JSX}
+		\label{fig:conformatoJSX}
 	\end{figure}
 	
 	
@@ -168,19 +160,17 @@
 		Si ejecutamos solo la primera función, nos saldrá que hemos pasado el test (Figura \ref{fig:ejemploTestCorrecto}). En cambio, si ejecutamos ambos tests, vemos que el primero sí lo ha pasado, pero el segundo ha fallado, y nos da más información sobre lo que debería haber dado y la línea de código donde ha fallado (Figura \ref{fig:ejemploTestIncorrecto}).
 		
 		\begin{figure}[ht!]
-			\begin{center}
-				\includegraphics[width=0.5\textwidth]{Imagenes/Bitmap/ejemploTestCorrecto}
-				\caption{Test pasado correctamente}
-				\label{fig:ejemploTestCorrecto}
-			\end{center}
+			\centering
+			\includegraphics[width=0.5\textwidth]{Imagenes/Bitmap/ejemploTestCorrecto}
+			\caption{Test pasado correctamente}
+			\label{fig:ejemploTestCorrecto}
 		\end{figure}
 		
 		\begin{figure}[ht!]
-			\begin{center}
-				\includegraphics[width=0.75\textwidth]{Imagenes/Bitmap/ejemploTestIncorrecto}
-				\caption{Test no pasado correctamente}
-				\label{fig:ejemploTestIncorrecto}
-			\end{center}
+			\centering
+			\includegraphics[width=0.75\textwidth]{Imagenes/Bitmap/ejemploTestIncorrecto}
+			\caption{Test no pasado correctamente}
+			\label{fig:ejemploTestIncorrecto}
 		\end{figure}
 	\end{enumerate}
 	
@@ -199,11 +189,10 @@
 	\end{itemize}
 
 	\begin{figure}[ht!]
-		\begin{center}
-			\includegraphics[width=0.9\textwidth]{Imagenes/Bitmap/ejemploCKEditor5}
-			\caption{Ejemplo de CKEditor 5}
-			\label{fig:ejemploCKEditor5}
-		\end{center}
+		\centering
+		\includegraphics[width=1\textwidth]{Imagenes/Bitmap/ejemploCKEditor5}
+		\caption{Ejemplo de CKEditor 5}
+		\label{fig:ejemploCKEditor5}
 	\end{figure}
 
 	En este proyecto hemos usado la versión \textit{CKEditor 5} para crear un documento editable, en el que el usuario puede realizar los diferentes tipos de adaptaciones que ofrece la aplicación, y poder descargar el resultado final en formato PDF. En la Figura \ref{fig:ejemploCKEditor5} se puede ver un ejemplo de la versión \textit{CKEditor 5}\footnote{Fuente: \url{https://ckeditor.com/ckeditor-5/demo/\#document}}. En la parte superior se muestra una barra de navegación con los diferentes ejemplos de tipos de editor mencionados anteriormente, y en la inferior, el editor junto con su barra de herramientas (donde el primer elemento de ésta barra es la exportación a formato PDF).
@@ -251,21 +240,19 @@
 		\item grid(): Devuelve un array de caracteres donde cada posición representa una letra de la sopa de letras. En la Figura \ref{fig:wordsearchgrid} se puede ver un ejemplo del resultado de esta función.
 		
 		\begin{figure}[ht!]
-			\begin{center}
-				\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/wordsearchgrid}
-				\caption{Ejemplo de resultado de sopa de letras usando grid()}
-				\label{fig:wordsearchgrid}
-			\end{center}
+			\centering
+			\includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/wordsearchgrid}
+			\caption{Ejemplo de resultado de sopa de letras usando grid()}
+			\label{fig:wordsearchgrid}
 		\end{figure}
 	
 		\item toString(): Devuelve un array de strings donde cada posición representa una fila de la sopa de letras. En la Figura \ref{fig:wordsearchtostring} se puede ver un ejemplo del resultado de esta función.
 		
 		\begin{figure}[ht!]
-			\begin{center}
-				\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/wordsearchtostring}
-				\caption{Ejemplo de resultado de sopa de letras usando toString()}
-				\label{fig:wordsearchtostring}
-			\end{center}
+			\centering
+			\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/wordsearchtostring}
+			\caption{Ejemplo de resultado de sopa de letras usando toString()}
+			\label{fig:wordsearchtostring}
 		\end{figure}
 	
 		\item words(): Devuelve un array de objetos con las palabras que se han insertado correctamente en la sopa de letras. Cada objeto tiene tres campos:
@@ -277,21 +264,19 @@
 		En la Figura \ref{fig:wordsearchwords} se puede ver un ejemplo del resultado cuando se usa la función words().
 		
 		\begin{figure}[ht!]
-			\begin{center}
-				\includegraphics[width=0.84\textwidth]{Imagenes/Bitmap/wordsearchwords}
-				\caption{Ejemplo de las palabras insertadas al usar words()}
-				\label{fig:wordsearchwords}
-			\end{center}
+			\centering
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchwords}
+			\caption{Ejemplo de las palabras insertadas al usar words()}
+			\label{fig:wordsearchwords}
 		\end{figure}
 		
 		\item dump(): Devuelve un objeto que representa el estado de la sopa de letras (es una \textit{snapshot} del tablero). Esto puede resultar útil si se quiere guardar el juego y usarlo después con la siguiente función. En la Figura \ref{fig:wordsearchdump} se puede ver un ejemplo del objeto resultante cuando se usa esta función.
 		
 		\begin{figure}[ht!]
-			\begin{center}
-				\includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/wordsearchdump}
-				\caption{Ejemplo del objeto resultante al usar dump()}
-				\label{fig:wordsearchdump}
-			\end{center}
+			\centering
+			\includegraphics[width=1\textwidth]{Imagenes/Bitmap/wordsearchdump}
+			\caption{Ejemplo del objeto resultante al usar dump()}
+			\label{fig:wordsearchdump}
 		\end{figure}
 		
 		\item load(backup): Carga el parámetro \textit{backup} que representa un estado de la sopa de letras generado previamente con \textit{dump()}.
@@ -299,19 +284,17 @@
 		\item read(start, end): Devuelve un string con las letras que se forman al leer las posiciones de \textit{start} a \textit{end}. En la Figura \ref{fig:wordsearchreadcall} se puede ver la forma en la que se llama a esta función, pasándole los objetos posición \textit{start} y \textit{end} y, en la Figura \ref{fig:wordsearchread}, un ejemplo del string formado al leer dichas posiciones.
 		
 		\begin{figure}[ht!]
-			\begin{center}
-				\includegraphics[width=0.55\textwidth]{Imagenes/Bitmap/wordsearchreadcall}
-				\caption{Ejemplo de llamada a la función read()}
-				\label{fig:wordsearchreadcall}
-			\end{center}
+			\centering
+			\includegraphics[width=0.55\textwidth]{Imagenes/Bitmap/wordsearchreadcall}
+			\caption{Ejemplo de llamada a la función read()}
+			\label{fig:wordsearchreadcall}
 		\end{figure}
 	
 		\begin{figure}[ht!]
-			\begin{center}
-				\includegraphics[width=0.17\textwidth]{Imagenes/Bitmap/wordsearchread}
-				\caption{Ejemplo del string formado cuando se usan los parámetros de la Figura \ref{fig:wordsearchreadcall}}
-				\label{fig:wordsearchread}
-			\end{center}
+			\centering
+			\includegraphics[width=0.17\textwidth]{Imagenes/Bitmap/wordsearchread}
+			\caption{Ejemplo del string formado cuando se usan los parámetros de la Figura \ref{fig:wordsearchreadcall}}
+			\label{fig:wordsearchread}
 		\end{figure}
 	
 	\end{itemize}
