@@ -3,7 +3,7 @@ import update from 'react-addons-update';
 
 const INITIAL_STATE = {
     showDefinitionsModal: false,
-    numLines: '1',
+    numLines: 1,
     text: [""],
     extraspace: false,
     addHowToSolve: false,
@@ -35,7 +35,7 @@ const definitionsReducer = (state = INITIAL_STATE, action) => {
         case DefinitionsActionTypes.RESET_DEFINITIONS_MODAL: 
             return {
                  ...state,
-                numLines: '1',
+                numLines: 1,
                 text: [""],
                 extraspace: false,
                 addHowToSolve: false,
@@ -49,7 +49,7 @@ const definitionsReducer = (state = INITIAL_STATE, action) => {
         case DefinitionsActionTypes.ADD_MORE_DEFINITIONS:
             return{
                 ...state,
-                text: [...state.text.slice(0,state.text.length), "", ...state.text.slice(state.text.length)]
+                text: [...state.text.slice(0,state.text.length), "", ...state.text.slice(state.text.length + 1)]
             };
         case DefinitionsActionTypes.DELETE_DEFINITION:
             return{

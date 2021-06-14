@@ -10,7 +10,7 @@ class Definitions extends React.Component{
                 {this.props.data.text.map((value) => 
                     <div className="defi">
                         <li>{value}</li>
-                        {Array.from(Array(parseInt(this.props.data.numLines) - 1), () =>{
+                        {Array.from(Array(this.props.data.numLines - 1), () =>{
                             if(this.props.data.extraspace){
                                 return <div className="lineDefi extraspace-linesDefi"></div>
                             }
@@ -24,7 +24,7 @@ class Definitions extends React.Component{
                 {this.props.data.text.map((value) => 
                     <div className="defi">
                         <li>{value}</li>
-                        {Array.from(Array(parseInt(this.props.data.numLines) - 1), () =>{
+                        {Array.from(Array(this.props.data.numLines - 1), () =>{
                             if(this.props.data.extraspace){
                                 return <div className="lineDefi extraspace-linesDefi"></div>
                             }

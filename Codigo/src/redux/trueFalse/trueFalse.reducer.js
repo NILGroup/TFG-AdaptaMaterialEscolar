@@ -35,7 +35,7 @@ const trueFalseReducer = (state = INITIAL_STATE, action) => {
         case TrueFalseActionTypes.ADD_MORE_TRUEFALSE:
             return{
                 ...state,
-                text: [...state.text.slice(0,state.text.length), "", ...state.text.slice(state.text.length)]
+                text: [...state.text.slice(0,state.text.length), "", ...state.text.slice(state.text.length + 1)]
             };
         case TrueFalseActionTypes.DELETE_TRUEFALSE:
             return{

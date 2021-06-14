@@ -125,7 +125,7 @@ const wordSearchReducer = (state = INITIAL_STATE, action) => {
         case WordSearchActionTypes.ADD_MORE_DICTIONARY:
             return{
                 ...state,
-                dictionary: [...state.dictionary.slice(0,state.dictionary.length), "", ...state.dictionary.slice(state.dictionary.length)]
+                dictionary: [...state.dictionary.slice(0,state.dictionary.length), "", ...state.dictionary.slice(state.dictionary.length + 1)]
             };
         case WordSearchActionTypes.DELETE_DICTIONARY:
             return{
