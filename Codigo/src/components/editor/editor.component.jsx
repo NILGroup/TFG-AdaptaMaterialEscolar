@@ -40,7 +40,7 @@ import TrueFalsePlugin from '../../ckeditor/plugins/trueFalse/trueFalsePlugin';
 import DevelopPlugin from '../../ckeditor/plugins/develop/developPlugin';
 import PageBreak from '@ckeditor/ckeditor5-page-break/src/pagebreak';
 //import FillWords from '../rellenarPalabrasPlugin/fillWords';
-
+import '@ckeditor/ckeditor5-build-decoupled-document/build/translations/es.js'
 import {getColors} from "./colors";
 import FillGapsPlugin from '../../ckeditor/plugins/fillblanks/trueFillGapsPlugin';
 import {token} from '../../ckeditor/license'
@@ -55,7 +55,9 @@ class Editor extends React.Component{
             cloudServices: {
                 tokenUrl: token
             },
-            language: 'es',
+            language: {
+                ui: 'es'
+            },
             plugins: [ExportPdf, Essentials, Heading, Bold, Italic, Underline, Paragraph, Table, TableToolbar, PictogramEditing, Alignment, WordSearchPlugin, 
                     DefinitionsPlugin, TrueFalsePlugin, DevelopPlugin, FontFamily, FontSize, FontColor, FontBackgroundColor, Indent, IndentBlock, ListStyle, 
                     TodoList, BlockQuote, Image, ImageInsert, ImageToolbar, ImageStyle, ImageResize, ImageEditing, FillGapsPlugin, PageBreak
