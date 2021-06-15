@@ -25,6 +25,7 @@ import { selectDevelopModalIsDisplayed } from "../../redux/develop/develop.selec
 
 class Toolbar extends React.Component{
     
+    /* Manages modal opening */
     handleClick = (e) =>{
         this.closeModal();
         this.props.updateLastOpened(e.target.name);
@@ -52,6 +53,7 @@ class Toolbar extends React.Component{
         }
     }
 
+    /* Manages modal closing */
     closeModal(){
         switch(this.props.lastOpened){
             case "pictograms":
@@ -88,7 +90,7 @@ class Toolbar extends React.Component{
         <div className="toolbar">
             <div className="toolbar-self">
                 <button name="pictograms" className={this.props.showPictogramsModal ? "pictograms-active" : null} onClick={this.handleClick}>Pictogramas</button>
-                <button name="fillGaps" className={this.props.showFillGapsModal ? "fillGaps-active" : null} onClick={this.handleClick}>Rellenar huecos</button>
+                <button name="fillGaps" className={this.props.showFillGapsModal ? "fillGaps-active" : null} onClick={this.handleClick}>Completar huecos</button>
                 <button name="definitions" className={this.props.showDefinitionsModal ? "definitions-active" : null} onClick={this.handleClick}>Definiciones</button>
                 <button name="develop" className={this.props.showDevelopModal ? "develop-active" : null} onClick={this.handleClick}>Desarrollo</button>
                 <button name="wordsearch" className={this.props.showWordSearchModal ? "wordsearch-active" : null} onClick={this.handleClick}>Sopa de letras</button>
@@ -106,6 +108,7 @@ class Toolbar extends React.Component{
     }
 }
 
+/* Functions to execute (modify redux) */
 const mapDispatchToProps = (dispatch) => ({
     openPictogramFinder: () => dispatch(openPictogramFinder()),
     openWordSearchModal: () => dispatch(openWordSearchModal()),
@@ -122,6 +125,7 @@ const mapDispatchToProps = (dispatch) => ({
     closeFillGapsModal: () => dispatch(closeFillGapsModal())
 });
 
+/* Data (read redux) */
 const mapStateToProps = createStructuredSelector({
     showPictogramsModal: selectModalIsDisplayed,
     showWordSearchModal: selectWordSearchModalIsDisplayed,
