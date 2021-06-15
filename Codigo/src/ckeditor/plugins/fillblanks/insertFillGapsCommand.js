@@ -5,6 +5,7 @@ export default class InsertFillGapsCommand extends Command {
         const selection = this.editor.model.document.selection;
         this.editor.model.change( writer => {
             let attributes = Object.fromEntries( selection.getAttributes());
+            let fontType = attributes.fontFamily;
             this.editor.model.insertContent(writer.createElement('paragraph'));
             let title = "Completa los huecos con las siguientes palabras:";
             fillgapsData.words.forEach((w,i) =>{
@@ -16,8 +17,6 @@ export default class InsertFillGapsCommand extends Command {
             fillgapsData.text.forEach(t => {
                 text+= t + " ";
             })
-            
-            let fontType = attributes.fontFamily;
             
             let enunciado = writer.createElement('paragraph');
             writer.insertText(title, enunciado);

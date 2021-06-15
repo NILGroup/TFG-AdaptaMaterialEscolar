@@ -151,7 +151,7 @@ class Editor extends React.Component{
             exportPdf: {
                 stylesheets: [
                     'EDITOR_STYLES',
-                    'editorStyles.css'
+                     '/tfg/2021/adapta/editorStyles.css'
                 ],
                 fileName: 'my-file.pdf',
                 converterOptions: {
@@ -198,7 +198,7 @@ class Editor extends React.Component{
                         editor.ui.getEditableElement()
                     );
                     this.props.setEditor(editor);
-                    editor.execute( 'fontFamily', { value: 'Arial' } );
+                    editor.execute( 'fontFamily', { value: 'Arial, Helvetica, sans-serif' } );
             } }/>
         </div>
     </div>);

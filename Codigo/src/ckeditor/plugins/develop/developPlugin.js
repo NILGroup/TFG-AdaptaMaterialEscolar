@@ -23,16 +23,13 @@ export default class DevelopPlugin extends Plugin {
         const schema = this.editor.model.schema;
 
         schema.register( 'developPreview', {
-            // Behaves like a self-contained object (e.g. an image).
+
             isObject: true,
 
-            // Allow in places where other blocks are allowed (e.g. directly in the root).
             allowWhere: '$text',
 
             isInline: false,
 
-            // Each product preview has an ID. A unique ID tells the application which
-            // product it represents and makes it possible to render it inside a widget.
             allowAttributes: [ 'develop' ]
         } );
     }
@@ -41,58 +38,45 @@ export default class DevelopPlugin extends Plugin {
         const editor = this.editor;
         const conversion = editor.conversion;
 
-        // <productPreview> converters ((data) view → model)
         conversion.for( 'upcast' ).elementToElement( {
             view: {
                 name: 'div',
                 classes: 'div'
             },
             model: ( viewElement, { writer: modelWriter } ) => {
-                // Read the "data-id" attribute from the view and set it as the "id" in the model.
                 return modelWriter.createElement( 'developPreview', {
                     id: parseInt( viewElement.getAttribute( 'data-develop' ) )
                 } );
             }
         } );
 
-        // <productPreview> converters (model → data view)
+
         conversion.for( 'dataDowncast' ).elementToElement( {
             model: 'developPreview',
             view: ( modelElement, { writer: viewWriter } ) => {
-                // In the data view, the model <productPreview> corresponds to:
-                //
-                // <section class="product" data-id="..."></section>
+
                 return viewWriter.createEmptyElement( 'div', {
                     class: 'develop'
                 } );
             }
         } );
 
-        // <productPreview> converters (model → editing view)
+
         conversion.for( 'editingDowncast' ).elementToElement( {
             model: 'developPreview',
             view: ( modelElement, { writer: viewWriter } ) => {
-                // In the editing view, the model <productPreview> corresponds to:
-                //
-                // <section class="product" data-id="...">
-                //     <div class="product__react-wrapper">
-                //         <ProductPreview /> (React component)
-                //     </div>
-                // </section>
+
                 const id = modelElement.getAttribute( 'develop' );
 
-                // The outermost <section class="product" data-id="..."></section> element.
+
                 const section = viewWriter.createContainerElement( 'div', {
                     class: 'develop'
                 } );
 
-                // The inner <div class="product__react-wrapper"></div> element.
-                // This element will host a React <ProductPreview /> component.
                 const reactWrapper = viewWriter.createRawElement( 'div', {
                     class: 'develop__react-wrapper'
                 }, function( domElement ) {
-                    // This the place where React renders the actual product preview hosted
-                    // by a UIElement in the view. You are using a function (renderer) passed
+
                     ReactDOM.render(
                         <Provider store={ store }>
                             <Develop data={id}/>

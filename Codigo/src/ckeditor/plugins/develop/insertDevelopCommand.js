@@ -13,24 +13,32 @@ export default class InsertDevelopCommand extends Command {
             writer.insertText(develop.text, enunciado);
             this.editor.model.insertContent(enunciado);
             let linea = undefined;
-            for(let i = 0; i < develop.numLines; i++){
+            if(!develop.extraspace)
+                    linea = writer.createElement('definitionsLine');
+            else
+                linea = writer.createElement('definitionsLineMore');
+            this.editor.model.insertContent(linea);
+            let aux = linea;
+            for(let i = 1; i < develop.numLines; i++){
                 if(!develop.extraspace)
                     linea = writer.createElement('definitionsLine');
                 else
                     linea = writer.createElement('definitionsLineMore');
-                this.editor.model.insertContent(linea);
+                writer.insert(linea, aux, "after");
+                aux = linea;
             }
             const howTo = writer.createElement('paragraph');
             let endText = " ";
             if(develop.addHowToSolve){
-                endText = "Escribe en las líneas la definición.";
+                endText = "Escribe en las líneas de arriba la definición.";
             }
             writer.insertText(endText, howTo, "end");
-            this.editor.model.insertContent(howTo,  writer.createPositionAt( linea, "after"));
+            writer.insert(howTo, linea, "after");
+         //   this.editor.model.insertContent(howTo,  writer.createPositionAt( linea, "after"));
             const range = writer.createRange( writer.createPositionBefore(enunciado), writer.createPositionAfter(howTo) );
             writer.setSelection( range );
             this.editor.execute('fontFamily', {value: fontType});
-            writer.setSelection(howTo, 'in');
+            writer.setSelection(howTo, "after");
         } );
     }
 

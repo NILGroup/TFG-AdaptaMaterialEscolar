@@ -48,3 +48,7 @@ hr {
   height: 50px;
   border: 1px solid black;
 }
+
+li{
+  margin-top: 10px;
+}

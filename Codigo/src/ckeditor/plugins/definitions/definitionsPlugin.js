@@ -3,7 +3,9 @@ import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 import InsertDefinitionsCommand from './insertDefinitionsCommand';
 
-
+/**
+ * Defines the CKEditor schema for a definitions line
+ * */
 export default class DefinitionsPlugin extends Plugin {
     static get requires() {
         return [ Widget ];
@@ -20,37 +22,32 @@ export default class DefinitionsPlugin extends Plugin {
         const schema = this.editor.model.schema;
 
         schema.register( 'definitionsPreview', {
-            // Behaves like a self-contained object (e.g. an image).
+            
             isObject: true,
 
-            // Allow in places where other blocks are allowed (e.g. directly in the root).
+            
             allowWhere: '$text',
 
             isInline: false,
 
-            // Each product preview has an ID. A unique ID tells the application which
-            // product it represents and makes it possible to render it inside a widget.
             allowAttributes: [ 'definitions' ]
         } );
 
         schema.register( 'definitionsText', {
-            // Behaves like a self-contained object (e.g. an image).
+            
             isObject: true,
 
-            // Allow in places where other blocks are allowed (e.g. directly in the root).
+           
             allowWhere: '$text',
 
             isBlock: true
 
-            // Each product preview has an ID. A unique ID tells the application which
-            // product it represents and makes it possible to render it inside a widget.
         } );
 
         schema.register( 'definitionsSameLine', {
-            // Behaves like a self-contained object (e.g. an image).
+
             isObject: true,
 
-            // Allow in places where other blocks are allowed (e.g. directly in the root).
             allowWhere: '$text',
 
             isInline: true
@@ -58,7 +55,7 @@ export default class DefinitionsPlugin extends Plugin {
         } );
 
         schema.register( 'definitionsLine', {
-            // Behaves like a self-contained object (e.g. an image).
+
             isObject: true,
 
             allowWhere: '$text',
@@ -73,7 +70,7 @@ export default class DefinitionsPlugin extends Plugin {
         } );
 
         schema.register( 'definitionsLineMore', {
-            // Behaves like a self-contained object (e.g. an image).
+
             isObject: true,
 
             allowWhere: '$text',

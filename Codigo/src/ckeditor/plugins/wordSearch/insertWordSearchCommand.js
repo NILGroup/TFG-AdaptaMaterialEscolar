@@ -1,12 +1,14 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
 
+/**
+ * Inserts a wordsearch puzzle into the Editor using the Ckeditor table 
+ * */
 export default class InsertWordSearchCommand extends Command {
     execute(characters) {
         const selection = this.editor.model.document.selection;
         this.editor.model.change( writer => {
             let attributes = Object.fromEntries( selection.getAttributes());
             let fontType = attributes.fontFamily;
- //           this.editor.model.insertContent(writer.createElement('paragraph'));
             let enumPhrase = "Encuentra " + characters.words.length + " palabras escondidas en la sopa de letras.";
             if(characters.showWords){
                 enumPhrase = "Busca en la sopa de letras las siguientes palabras: ";
@@ -18,7 +20,6 @@ export default class InsertWordSearchCommand extends Command {
                 });
             }
             const tableUtils = this.editor.plugins.get( 'TableUtils' );
-        //    let insertPosition = this.editor.model.document.selection.getFirstPosition();
             const enunciado = writer.createElement('paragraph', {...attributes});
             
             writer.insertText(enumPhrase, enunciado);
@@ -30,12 +31,10 @@ export default class InsertWordSearchCommand extends Command {
                 let dataRow = table.getChild( i );
                 let j = 0;
                 for ( const tableCell of dataRow.getChildren()) {
-                    // Each created table cell have an empty paragraph as a child.
                     const paragraph = tableCell.getChild( 0 );
 
                     const text = writer.createText( characters.grid[i][j] );
-                
-                    // Insert text to a paragraph.
+
                     const insertPosition = writer.createPositionAt( paragraph, 0 );
                     writer.insert( text, insertPosition );
                     j++;
@@ -43,17 +42,7 @@ export default class InsertWordSearchCommand extends Command {
             }
             
             
-          /*  characters.grid.forEach(row => {
-                let simpleBoxTitle = writer.createElement( 'table' );
-               /* row.forEach(cell =>{
-                    let simpleBoxCell = writer.createElement( 'wordSearchCell' );
-                    writer.append( simpleBoxCell, simpleBoxTitle );
-                });
-                writer.append( simpleBoxTitle, simpleBox );
-            });
-              */
             this.editor.model.insertContent(table);
-           // writer.insert(table, enunciado, 'after');
             const howTo = writer.createElement('paragraph');
             let endText = "";
             if(characters.addHowToSolve){
