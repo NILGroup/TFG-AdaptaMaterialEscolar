@@ -1,14 +1,19 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
 
 export default class InsertFillGapsCommand extends Command {
-    execute( truefalse ) {
+    execute( fillgapsData ) {
         const selection = this.editor.model.document.selection;
         this.editor.model.change( writer => {
             let attributes = Object.fromEntries( selection.getAttributes());
             this.editor.model.insertContent(writer.createElement('paragraph'));
-            let title = "Rellena los huecos:";
+            let title = "Completa los huecos con las siguientes palabras:";
+            fillgapsData.words.forEach((w,i) =>{
+                if(i !== fillgapsData.words.length - 1)
+                    title += " " + w.word.toUpperCase() + ",";
+                else title += " " + w.word.toUpperCase();
+            })
             let text = "";
-            truefalse.text.forEach(t => {
+            fillgapsData.text.forEach(t => {
                 text+= t + " ";
             })
             
@@ -23,13 +28,11 @@ export default class InsertFillGapsCommand extends Command {
             this.editor.model.insertContent(phrase);
 
             this.editor.execute('enter');
-        //    this.editor.execute( 'fontFamily', hola.fontFamily);
-         //   writer.setSelection( enunciado, 'in');
-       //     this.editor.execute( 'fontFamily' );
-       const howTo = writer.createElement('paragraph');
-       let endText = "";
-            if(truefalse.addHowToSolve){
-                endText = "Cómo resolver el ejercicio: introduce las palabras correctas dentro de los huecos subrayados.";
+            
+            const howTo = writer.createElement('paragraph');
+            let endText = "";
+            if(fillgapsData.addHowToSolve){
+                endText = "Cómo resolver el ejercicio: Primero lee cada palabra. Después lee detenidamente el texto y completa los huecos subrayados con la palabra correcta.";
             }
             writer.insertText(endText, howTo, "end");
             this.editor.model.insertContent(howTo);

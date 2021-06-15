@@ -1,6 +1,3 @@
-export const openingSymbol = "((";
-export const closingSymbol = "))";
-
 export const createUnders = (word) =>{
     var under = "______";
     for(let i = 0; i < word.length; ++i){

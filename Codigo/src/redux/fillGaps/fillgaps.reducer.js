@@ -13,17 +13,17 @@ const INITIAL_STATE = {
 
 const fillGapsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type){
-        case FillGapsActionTypes.OPEN_FILLWORDS_MODAL: 
+        case FillGapsActionTypes.OPEN_FILLGAPS_MODAL: 
            return {
                 ...state,
                 showModal: true
             };
-        case FillGapsActionTypes.CLOSE_FILLWORDS_MODAL: 
+        case FillGapsActionTypes.CLOSE_FILLGAPS_MODAL: 
             return {
                  ...state,
                  showModal: false
              };
-        case FillGapsActionTypes.RESET_FILLWORDS:
+        case FillGapsActionTypes.RESET_FILLGAPS:
             return{
                 ...state,
                 text: '',
@@ -32,40 +32,40 @@ const fillGapsReducer = (state = INITIAL_STATE, action) => {
                 textSelection: [],
                 wordsSelected: []
             };
-        case FillGapsActionTypes.UPDATE_FILLWORDS_TEXT:
+        case FillGapsActionTypes.UPDATE_FILLGAPS_TEXT:
             return{
                 ...state,
                 text: action.payload
             };
-        case FillGapsActionTypes.UPDATE_FILLWORDS_ADDHOWTOSOLVE:
+        case FillGapsActionTypes.UPDATE_FILLGAPS_ADDHOWTOSOLVE:
             return{
                 ...state,
                 addHowToSolve: action.payload
             };
-        case FillGapsActionTypes.UPDATE_FILLWORDS_MODE:
+        case FillGapsActionTypes.UPDATE_FILLGAPS_MODE:
             return{
                 ...state,
                 mode: action.payload
             };
-        case FillGapsActionTypes.UPDATE_FILLWORDS_TEXTSELECTION:
+        case FillGapsActionTypes.UPDATE_FILLGAPS_TEXTSELECTION:
             return{
                 ...state,
                 textSelection: state.text.split(" ").map(item => item.trim())
             };
-        case FillGapsActionTypes.UPDATE_FILLWORDS_ADDSELECTED:
+        case FillGapsActionTypes.UPDATE_FILLGAPS_ADDSELECTED:
             return{
                 ...state,
                 wordsSelected: [...state.wordsSelected.slice(0, state.wordsSelected.length), {word: action.payload.word, index: action.payload.index}, ...state.wordsSelected.slice(state.wordsSelected.length + 1)],
                 textSelection: update(state.textSelection, {[action.payload.index]: {$set: createUnders(action.payload.word)}})
             };
-        case FillGapsActionTypes.UPDATE_FILLWORDS_DELETESELECTED:
+        case FillGapsActionTypes.UPDATE_FILLGAPS_DELETESELECTED:
             var index = returnIndexOfWord(state.wordsSelected, action.payload);
             return{
                 ...state,
                 textSelection: update(state.textSelection, {[action.payload]: {$set: returnWord(state.wordsSelected, action.payload)}}),
                 wordsSelected: [...state.wordsSelected.slice(0,index), ...state.wordsSelected.slice(index + 1)]
             };
-        case FillGapsActionTypes.RESET_FILLWORDS_WORDSSELECTED:
+        case FillGapsActionTypes.RESET_FILLGAPS_WORDSSELECTED:
             return{
                 ...state,
                 wordsSelected:[]

@@ -7,9 +7,10 @@ import Heading from '@ckeditor/ckeditor5-heading/src/heading';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
-//import Link from '@ckeditor/ckeditor5-link/src/link';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import TableProperties from "@ckeditor/ckeditor5-table/src/tableproperties";
+import TableCellProperties from "@ckeditor/ckeditor5-table/src/tablecellproperties";
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import ExportPdf from '@ckeditor/ckeditor5-export-pdf/src/exportpdf';
@@ -26,7 +27,6 @@ import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert';
 import Image from '@ckeditor/ckeditor5-image/src/image';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageEditing from '@ckeditor/ckeditor5-image/src/image/imageediting';
-//import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 import PictogramEditing from '../../ckeditor/plugins/pictograms/pictogramEditing';
@@ -39,7 +39,6 @@ import DefinitionsPlugin from '../../ckeditor/plugins/definitions/definitionsPlu
 import TrueFalsePlugin from '../../ckeditor/plugins/trueFalse/trueFalsePlugin';
 import DevelopPlugin from '../../ckeditor/plugins/develop/developPlugin';
 import PageBreak from '@ckeditor/ckeditor5-page-break/src/pagebreak';
-//import FillWords from '../rellenarPalabrasPlugin/fillWords';
 import '@ckeditor/ckeditor5-build-decoupled-document/build/translations/es.js'
 import {getColors} from "./colors";
 import FillGapsPlugin from '../../ckeditor/plugins/fillblanks/trueFillGapsPlugin';
@@ -58,7 +57,8 @@ class Editor extends React.Component{
             language: 'es',
             plugins: [ExportPdf, Essentials, Heading, Bold, Italic, Underline, Paragraph, Table, TableToolbar, PictogramEditing, Alignment, WordSearchPlugin, 
                     DefinitionsPlugin, TrueFalsePlugin, DevelopPlugin, FontFamily, FontSize, FontColor, FontBackgroundColor, Indent, IndentBlock, ListStyle, 
-                    TodoList, BlockQuote, Image, ImageInsert, ImageToolbar, ImageStyle, ImageResize, ImageEditing, FillGapsPlugin, PageBreak
+                    TodoList, BlockQuote, Image, ImageInsert, ImageToolbar, ImageStyle, ImageResize, ImageEditing, FillGapsPlugin, PageBreak, TableCellProperties,
+                    TableProperties
                 ],
             
             toolbar: [  'exportPdf', '|',
@@ -135,8 +135,18 @@ class Editor extends React.Component{
                 contentToolbar: [
                     'tableColumn',
                     'tableRow',
-                    'mergeTableCells'
-                ]
+                    'mergeTableCells',
+                    'tableProperties',
+                    'tablecellProperties'
+                ],
+                tableProperties: {
+                    borderColors: getColors(),
+                    backgroundColors: getColors()
+                },
+                tableCellProperties: {
+                    borderColors: getColors(),
+                    backgroundColors: getColors()
+                }
             },
             exportPdf: {
                 stylesheets: [

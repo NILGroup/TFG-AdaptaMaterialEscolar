@@ -32,13 +32,7 @@ class FillGapsModal extends React.Component{
     }
       
     accept = () => {
-      /*this.props.editor.execute( 'insertTrueFalse', {text: this.props.text, addHowToSolve: this.props.addHowToSolve, listType: this.props.listType});
-      this.props.editor.editing.view.focus();
-      this.props.resetTrueFalseModal();
-      this.props.closeTrueFalseModal();*/
-
-      //coger las cosas del array wordsSelected y ensamblarlo. el espacio es &nbsp;
-      this.props.editor.execute('insertFillGaps', {text: this.props.textSelection, addHowToSolve: this.props.addHowToSolve});
+      this.props.editor.execute('insertFillGaps', {text: this.props.textSelection, addHowToSolve: this.props.addHowToSolve, words: this.props.wordsSelected});
       this.props.editor.editing.view.focus();
       this.props.resetFillGaps();
       this.props.closeModal();
