@@ -15,7 +15,6 @@ import { selectWordSearchModalRows, selectWordSearchModalCols, selectWordSearchM
 
 import WordSearch from "../wordSearch/wordSearch";
 import { selectEditorClass } from "../../redux/editor/editor.selectors";
-
 //Icons
 import { IoMdClose } from "react-icons/io";
 import {GoPlus, GoDash} from 'react-icons/go';
@@ -31,16 +30,19 @@ class WordSearchModal extends React.Component{
         }
 
         this.dragRef = React.createRef();
+        /* To manage the focus in the inputs */
         this.nameInputs = [];
         this.focus = null;
     }
 
+    /* Disables the hint when the user has hovered the mouse over the modal header */
     disableTip = () =>{
         this.setState({
             disableTip: true
         });
     }
 
+    /* Activates the drag function only when the user holds down the left-click on the modal header */
     toggleDisableDrag = () =>{
         this.setState({
             disableDrag: !this.state.disableDrag
@@ -81,6 +83,7 @@ class WordSearchModal extends React.Component{
         }
     }
 
+    /* Manages calls to the dispatcher to update data */
     onChange(e){
         switch(e.target.name){
             case "rows":
@@ -118,6 +121,7 @@ class WordSearchModal extends React.Component{
         }
     }
 
+    /* Manages call to the dispatcher to update dictionary data */
     handleChangeDictionary(e, i){
         this.props.updateDictionary(e.target.value, i);
     }
@@ -128,6 +132,7 @@ class WordSearchModal extends React.Component{
         }
     }
 
+    /* Manages row removal and input focus on deletion */
     handleRemoveRow = (i) =>{
         if(!this.focus.name.startsWith("text")){
             this.focus = this.nameInputs[i-1];
@@ -135,16 +140,17 @@ class WordSearchModal extends React.Component{
         else{
             if(this.focus.name > this.nameInputs[i].name)
             this.focus = this.nameInputs[this.focus.name.charAt(this.focus.name.length - 1)-1];
-          else {
+            else {
             if(this.focus.name === this.nameInputs[i].name && i === this.nameInputs.length - 1)
-              this.focus = this.nameInputs[i-1];
-          }
+                this.focus = this.nameInputs[i-1];
+            }
         }
         
         this.props.deleteDictionary(i);
         this.nameInputs = [...this.nameInputs.slice(0,i), ...this.nameInputs.slice(i+1)];
-      }
+    }
     
+    /* Manages the focus of the inputs when there is a change in the dictionary */
     componentDidUpdate(prevProps){
         this.nameInputs = this.nameInputs.filter(item => item !== null); //HACK: after removing, there is a null at last pos
         if(this.props.dictionary.length > prevProps.dictionary.length){
@@ -161,11 +167,11 @@ class WordSearchModal extends React.Component{
 
     componentDidMount(){
         this.nameRows.focus();
-      }
+    }
     
-      handleFocus = (i) =>{
+    handleFocus = (i) =>{
         this.focus = this.nameInputs[i];
-      }
+    }
 
     render(){
         return(
@@ -269,7 +275,7 @@ class WordSearchModal extends React.Component{
     }
 }
 
-//funciones a ejecutar (modificar redux)
+/* Functions to execute (modify redux) */
 const mapDispatchToProps = (dispatch) => ({
     closeModal: () => dispatch(closeWordSearchModal()),
     updateRows: (rows) => dispatch(updateWordSearchRows(rows)),
@@ -292,7 +298,7 @@ const mapDispatchToProps = (dispatch) => ({
     updateForceReadyToPreview: (force) => dispatch(updateWordSearchReadyToPreviewForce(force))
 });
 
-//datos (lectura)
+/* Data (read redux) */
 const mapStateToProps = createStructuredSelector({
     file: selectCurrentDocument,
     rows: selectWordSearchModalRows,

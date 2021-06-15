@@ -6,8 +6,7 @@ import {selectDefinitionsAddHowToSolve, selectDefinitionsChooseListType, selectD
 import './definitions.scss'
 import ReactTooltip from "react-tooltip";
 import Draggable from 'react-draggable';
-
-//Iconos
+//Icons
 import {GoPlus, GoDash} from 'react-icons/go';
 import { FcInfo } from 'react-icons/fc';
 import { IoMdClose } from "react-icons/io";
@@ -22,16 +21,19 @@ class DefinitionsModal extends React.Component {
       disableDrag: true
     }
     this.dragRef = React.createRef();
+    /* To manage the focus in the inputs */
     this.nameInputs = [];
     this.focus = null;
   }
 
+  /* Disables the hint when the user has hovered the mouse over the modal header */
   disableTip = () =>{
     this.setState({
         disableTip: true
     });
   }
 
+  /* Activates the drag function only when the user holds down the left-click on the modal header */  
   toggleDisableDrag = () =>{
     this.setState({
         disableDrag: !this.state.disableDrag
@@ -43,8 +45,9 @@ class DefinitionsModal extends React.Component {
     this.props.editor.editing.view.focus();
     this.props.resetDefinitionsModal();
     this.props.closeDefinitionsModal();
-}
-    
+  }
+  
+  /* Manages calls to the dispatcher to update data */
   handleChange(e) {
     switch(e.target.name){
       case "numLines":
@@ -64,6 +67,7 @@ class DefinitionsModal extends React.Component {
     }
   }
 
+  /* Manages call to the dispatcher to update definition data */
   handleChangeText(e, i){
     this.props.updateDefinitionsText(e.target.value, i);
   }
@@ -74,6 +78,7 @@ class DefinitionsModal extends React.Component {
     }
   }
 
+  /* Manages row removal and input focus on deletion */
   handleRemoveRow = (i) =>{
     if(this.focus.name > this.nameInputs[i].name)
       this.focus = this.nameInputs[this.focus.name.charAt(this.focus.name.length - 1)-1];
@@ -85,6 +90,7 @@ class DefinitionsModal extends React.Component {
     this.nameInputs = [...this.nameInputs.slice(0,i), ...this.nameInputs.slice(i+1)];
   }
 
+  /* Manages the focus of the inputs when there is a change in input (definition) */
   componentDidUpdate(prevProps){
     this.nameInputs = this.nameInputs.filter(item => item !== null); //HACK: after removing, there is a null at last pos
     if(this.props.text.length > prevProps.text.length){
@@ -156,6 +162,7 @@ class DefinitionsModal extends React.Component {
   }
 }
 
+/* Functions to execute (modify redux) */
 const mapDispatchToProps = (dispatch) => ({
   closeDefinitionsModal: () => dispatch(closeDefinitionsModal()),
   resetDefinitionsModal: () => dispatch(resetDefinitionsModal()),
@@ -168,6 +175,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateListType: (type) => dispatch(updateChooseListType(type))
 });
 
+/* Data (read redux) */
 const mapStateToProps = createStructuredSelector({
   numLines: selectDefinitionsNumLines,
   text: selectDefinitionsText,

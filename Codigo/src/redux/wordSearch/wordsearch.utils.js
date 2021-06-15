@@ -1,5 +1,6 @@
 const WordSearch = require("@blex41/word-search");
 
+/* Manages backwardsProbability */
 export const backwardsProb = (backwardsProbability, activateBackwards) =>{
     if(activateBackwards === true){
         backwardsProbability = 0.3;
@@ -9,6 +10,7 @@ export const backwardsProb = (backwardsProbability, activateBackwards) =>{
     return backwardsProbability;
 }
 
+/* Manages vertical directions */
 export const verticalDirs = (disabledDirections, vertical) =>{
     if(vertical === false){
         disabledDirections.push("N", "S");
@@ -22,6 +24,7 @@ export const verticalDirs = (disabledDirections, vertical) =>{
     return disabledDirections;
 }
 
+/* Manages horizontal directions */
 export const horizontalDirs = (disabledDirections, horizontal) =>{
     if(horizontal === false){
         disabledDirections.push("W", "E");
@@ -35,6 +38,7 @@ export const horizontalDirs = (disabledDirections, horizontal) =>{
     return disabledDirections;
 }
 
+/* Manages diagonal directions */
 export const diagonalDirs = (disabledDirections, diagonal) =>{
     if(diagonal === false){
         disabledDirections.push("NW", "NE", "SW", "SE");
@@ -48,7 +52,7 @@ export const diagonalDirs = (disabledDirections, diagonal) =>{
     return disabledDirections;
 }
 
-
+/* Creates the wordsearch object. If there is an error or exception, it returns null */
 export const createWordSearch = (wordSearchObject, options) =>{
     try{
         options ={
@@ -72,6 +76,7 @@ export const createWordSearch = (wordSearchObject, options) =>{
     }
 }
 
+/* Manages errors */
 export const manageError = (error, wordSearchObject, dictionaryLength) =>{
     if(wordSearchObject !== null){
         if(wordSearchObject.words.length < dictionaryLength){
@@ -88,6 +93,7 @@ export const manageError = (error, wordSearchObject, dictionaryLength) =>{
     return error;
 }
 
+/* Manages readyToPreview variable */
 export const manageReadyToPreview = (readyToPreview, wordSearchObject, error) =>{
     if((error === '' || error.startsWith('N')) && wordSearchObject !== null){
         readyToPreview = true;

@@ -4,10 +4,11 @@ import { connect } from "react-redux";
 import { closeDevelopModal, resetDevelopModal, updateDevelopAddHowToSolve, updateDevelopExtraSpace, updateDevelopNumLines, updateDevelopText } from '../../redux/develop/develop.actions';
 import { selectDevelopAddHowToSolve, selectDevelopExtraSpace, selectDevelopNumLines, selectDevelopText} from "../../redux/develop/develop.selectors";
 import './develop.scss'
-import { IoMdClose } from "react-icons/io";
 import Draggable from 'react-draggable';
 import ReactTooltip from "react-tooltip";
 import { selectEditorClass } from '../../redux/editor/editor.selectors';
+//Icons
+import { IoMdClose } from "react-icons/io";
 
 class DevelopModal extends React.Component {
   constructor(props) {
@@ -20,12 +21,14 @@ class DevelopModal extends React.Component {
     this.dragRef = React.createRef();
   }
   
+  /* Disables the hint when the user has hovered the mouse over the modal header */
   disableTip = () =>{
     this.setState({
         disableTip: true
     });
   }
 
+  /* Activates the drag function only when the user holds down the left-click on the modal header */
   toggleDisableDrag = () =>{
     this.setState({
         disableDrag: !this.state.disableDrag
@@ -37,8 +40,9 @@ class DevelopModal extends React.Component {
     this.props.editor.editing.view.focus();
     this.props.resetDevelopModal();
     this.props.closeDevelopModal();
-}
+  }
 
+  /* Manages calls to the dispatcher to update data */
   handleChange(e) {
     switch(e.target.name){
       case "text":
@@ -58,6 +62,7 @@ class DevelopModal extends React.Component {
     }
   }
 
+  /* Manages the focus of the textarea */
   componentDidUpdate(prevProps){
     if(this.props.text !== prevProps.text && this.props.text === ""){
       this.nameTextarea.focus();
@@ -108,21 +113,23 @@ class DevelopModal extends React.Component {
   }
 }
 
-  const mapDispatchToProps = (dispatch) => ({
-    closeDevelopModal: () => dispatch(closeDevelopModal()),
-    resetDevelopModal: () => dispatch(resetDevelopModal()),
-    updateDevelopNumLines: (numLines) => dispatch(updateDevelopNumLines(numLines)),
-    updateDevelopText: (text) => dispatch(updateDevelopText(text)),
-    updateDevelopExtraSpace: (extraspace) => dispatch(updateDevelopExtraSpace(extraspace)),
-    updateDevelopAddHowToSolve: (add) => dispatch(updateDevelopAddHowToSolve(add))
-  });
-  
-  const mapStateToProps = createStructuredSelector({
-    numLines: selectDevelopNumLines,
-    text: selectDevelopText,
-    extraspace: selectDevelopExtraSpace,
-    addHowToSolve: selectDevelopAddHowToSolve,
-    editor: selectEditorClass
-  });
+/* Functions to execute (modify redux) */
+const mapDispatchToProps = (dispatch) => ({
+  closeDevelopModal: () => dispatch(closeDevelopModal()),
+  resetDevelopModal: () => dispatch(resetDevelopModal()),
+  updateDevelopNumLines: (numLines) => dispatch(updateDevelopNumLines(numLines)),
+  updateDevelopText: (text) => dispatch(updateDevelopText(text)),
+  updateDevelopExtraSpace: (extraspace) => dispatch(updateDevelopExtraSpace(extraspace)),
+  updateDevelopAddHowToSolve: (add) => dispatch(updateDevelopAddHowToSolve(add))
+});
+
+/* Data (read redux) */
+const mapStateToProps = createStructuredSelector({
+  numLines: selectDevelopNumLines,
+  text: selectDevelopText,
+  extraspace: selectDevelopExtraSpace,
+  addHowToSolve: selectDevelopAddHowToSolve,
+  editor: selectEditorClass
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(DevelopModal);
