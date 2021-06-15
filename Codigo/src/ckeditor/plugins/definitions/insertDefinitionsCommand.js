@@ -2,13 +2,16 @@ import Command from '@ckeditor/ckeditor5-core/src/command';
 
 export default class InsertDefinitionsCommand extends Command {
     execute(definitions) {
+        const selection = this.editor.model.document.selection;
         this.editor.model.change( writer => {
+            let attributes = Object.fromEntries( selection.getAttributes());
+            let fontType = attributes.fontFamily;
             let insertPosition = this.editor.model.document.selection.getFirstPosition();
             let enunciado = writer.createElement('paragraph', insertPosition);
             let listType = definitions.listType === 'ul' ? 'bulletedList' : 'numberedList';
 
             writer.insertText("Define los siguientes conceptos: ", enunciado);
-            
+            let aux = enunciado;
             this.editor.model.insertContent(enunciado);
 
             let definition;
@@ -36,6 +39,9 @@ export default class InsertDefinitionsCommand extends Command {
                 writer.insertText("Cómo resolver el ejercicio: Primero busca una de las palabras en la sopa de letras. Ten en cuenta que las palabras pueden estar escondidas en vertical, horizontal y/o diagonal, y es posible que algunas estén escritas al revés. Cuando hayas encontrado la palabra, rodéala.", howTo, "end");
             }
             writer.insert(howTo, enunciado, 'after');
+            const range = writer.createRange( writer.createPositionBefore(aux), writer.createPositionAfter(howTo) );
+            writer.setSelection( range );
+            this.editor.execute('fontFamily', {value: fontType});
             writer.setSelection(howTo, 'end');
         } );
     }

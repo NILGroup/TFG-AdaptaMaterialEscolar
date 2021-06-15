@@ -2,14 +2,16 @@ import Command from '@ckeditor/ckeditor5-core/src/command';
 
 export default class InsertTrueFalseCommand extends Command {
     execute( truefalse ) {
+        const selection = this.editor.model.document.selection;
         this.editor.model.change( writer => {
      
-
+            let attributes = Object.fromEntries( selection.getAttributes());
+            let fontType = attributes.fontFamily;
             let insertPosition = this.editor.model.document.selection.getFirstPosition();
             let enunciado = writer.createElement('paragraph', insertPosition);
             let listType = truefalse.listType === 'ul' ? 'bulletedList' : 'numberedList';
             writer.insertText("Responde con V si es verdadero o con F si es falso las siguientes frases: ", enunciado);
-            
+            let aux = enunciado;
             this.editor.model.insertContent(enunciado);
             
             let trueFalseLine = undefined;
@@ -30,7 +32,11 @@ export default class InsertTrueFalseCommand extends Command {
                 writer.insertText("Cómo resolver el ejercicio: Primero lee detenidamente cada frase. Después escribe en el recuadro una V si crees que la frase es verdadera o una F si crees que es falsa.", howTo, "end");
             }
             writer.insert(howTo, enunciado, 'after');
+            const range = writer.createRange( writer.createPositionBefore(aux), writer.createPositionAfter(howTo) );
+            writer.setSelection( range );
+            this.editor.execute('fontFamily', {value: fontType});
             writer.setSelection(howTo, 'end');
+            this.editor.execute('fontFamily', {value: fontType});
         } );
     }
 

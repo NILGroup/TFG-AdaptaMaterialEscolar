@@ -5,29 +5,41 @@ export default class InsertFillGapsCommand extends Command {
     execute( truefalse ) {
         const selection = this.editor.model.document.selection;
         this.editor.model.change( writer => {
-     
+            let attributes = Object.fromEntries( selection.getAttributes());
+            this.editor.model.insertContent(writer.createElement('paragraph'));
+            let title = "Rellena los huecos:";
             let text = "";
             truefalse.text.forEach(t => {
                 text+= t + " ";
             })
+            
+            let fontType = attributes.fontFamily;
             let insertPosition = this.editor.model.document.selection.getFirstPosition();
-            let hola = Object.fromEntries( selection.getAttributes())
+            
             let enunciado = writer.createElement('paragraph');
-        
-            writer.insertText(text, enunciado);
-            
+            writer.insertText(title, enunciado);
             this.editor.model.insertContent(enunciado);
-            writer.setSelection( enunciado, 'on' );
+            this.editor.execute('enter');
+            let phrase = writer.createElement('paragraph');
+            writer.insertText(text, phrase);
+            this.editor.model.insertContent(phrase);
 
-            
+            this.editor.execute('enter');
         //    this.editor.execute( 'fontFamily', hola.fontFamily);
          //   writer.setSelection( enunciado, 'in');
        //     this.editor.execute( 'fontFamily' );
+       const howTo = writer.createElement('paragraph');
+       let endText = "";
             if(truefalse.addHowToSolve){
-                const howTo = writer.createElement('paragraph');
-                writer.insertText("Cómo resolver: rellenar los huecos....", howTo, "end");
+                endText = "Cómo resolver el ejercicio: introduce las palabras correctas dentro de los huecos subrayados.";
             }
-       //     this.editor.execute('shiftEnter');
+            writer.insertText(endText, howTo, "end");
+            this.editor.model.insertContent(howTo);
+            const range = writer.createRange( writer.createPositionBefore(enunciado), writer.createPositionAfter(howTo) );
+            writer.setSelection( range );
+            this.editor.execute('fontFamily', {value: fontType});
+            writer.setSelection(howTo, 'end');
+            this.editor.execute('fontFamily', {value: fontType});
         } );
     }
 

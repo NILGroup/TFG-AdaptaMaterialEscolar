@@ -14,6 +14,7 @@
     "@ckeditor/ckeditor5-essentials": "^25.0.0",
     "@ckeditor/ckeditor5-export-pdf": "^25.0.0",
     "@ckeditor/ckeditor5-font": "^25.0.0",
+    "@ckeditor/ckeditor5-page-break": "^25.0.0",
     "@ckeditor/ckeditor5-paragraph": "^25.0.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
     "@ckeditor/ckeditor5-theme-lark": "^25.0.0",

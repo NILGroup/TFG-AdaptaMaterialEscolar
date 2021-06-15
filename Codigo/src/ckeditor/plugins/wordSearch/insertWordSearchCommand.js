@@ -3,9 +3,12 @@ import TableUtils from '@ckeditor/ckeditor5-table/src/tableutils';
 
 export default class InsertWordSearchCommand extends Command {
     execute(characters) {
+        const selection = this.editor.model.document.selection;
         this.editor.model.change( writer => {
             // Insert <productPreview id="...">*</productPreview> at the current selection position
             // in a way which will result in creating a valid model structure.
+            let attributes = Object.fromEntries( selection.getAttributes())
+            this.editor.model.insertContent(writer.createElement('paragraph'));
             let enumPhrase = "Encuentra " + characters.words.length + " palabras escondidas en la sopa de letras.";
             if(characters.showWords){
                 enumPhrase = "Busca en la sopa de letras las siguientes palabras: ";
@@ -24,7 +27,7 @@ export default class InsertWordSearchCommand extends Command {
             writer.insertText(enumPhrase, enunciado);
             
             this.editor.model.insertContent(enunciado);
-
+            this.editor.execute('enter');
             let table = tableUtils.createTable( writer, { rows: characters.rows, columns: characters.columns } );
             
             for(let i = 0; i < characters.rows; i++){
@@ -53,7 +56,7 @@ export default class InsertWordSearchCommand extends Command {
                 writer.append( simpleBoxTitle, simpleBox );
             });
               */
-            this.editor.model.insertContent(table,  writer.createPositionAt( enunciado, "after"));
+            this.editor.model.insertContent(table);
            // writer.insert(table, enunciado, 'after');
             const howTo = writer.createElement('paragraph');
             let endText = " ";
@@ -62,6 +65,11 @@ export default class InsertWordSearchCommand extends Command {
             }
             writer.insertText(endText, howTo, "end");
             this.editor.model.insertContent(howTo,  writer.createPositionAt( table, "after"));
+            const range = writer.createRange( writer.createPositionBefore(enunciado), writer.createPositionAfter(howTo) );
+            writer.setSelection( range );
+            this.editor.execute('fontFamily', {value: attributes.fontFamily});
+            writer.setSelection(howTo, 'end');
+            
         } );
 
 
