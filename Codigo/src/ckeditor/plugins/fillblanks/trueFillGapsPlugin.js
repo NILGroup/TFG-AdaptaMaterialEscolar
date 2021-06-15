@@ -4,7 +4,7 @@ import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 import { store } from '../../../redux/store';
-import InsertFillGapsCommand from './insertTrueFalseCommand';
+import InsertFillGapsCommand from './insertFillGapsCommand';
 import TrueFalse from '../../../components/exerciseTrueFalse/trueFalse';
 
 export default class FillGapsPlugin extends Plugin {

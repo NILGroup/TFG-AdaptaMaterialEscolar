@@ -41,7 +41,7 @@ export default class PictogramEditing extends Plugin {
     _defineConverters() {
         const editor = this.editor;
         const conversion = editor.conversion;
-
+        conversion.attributeToAttribute( { model: 'source', view: 'src' } );
         // <productPreview> converters ((data) view → model)
         conversion.for( 'upcast' ).elementToElement( {
             view: {
@@ -63,7 +63,7 @@ export default class PictogramEditing extends Plugin {
                 // In the data view, the model <productPreview> corresponds to:
                 //
                 // <section class="product" data-id="..."></section>
-                return viewWriter.createEmptyElement( 'img', {
+                return viewWriter.createContainerElement( 'img', {
                     class: 'pictogram',
                     src: modelElement.getAttribute( 'url' )
                 } );

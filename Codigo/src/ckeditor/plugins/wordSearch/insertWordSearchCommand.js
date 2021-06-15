@@ -16,9 +16,10 @@ export default class InsertWordSearchCommand extends Command {
                     enumPhrase += " " + value.clean;
                 });
             }
+           // this.editor.execute('shiftEnter');
             const tableUtils = this.editor.plugins.get( 'TableUtils' );
-            let insertPosition = this.editor.model.document.selection.getFirstPosition();
-            const enunciado = writer.createElement('paragraph', insertPosition);
+        //    let insertPosition = this.editor.model.document.selection.getFirstPosition();
+            const enunciado = writer.createElement('paragraph');
             
             writer.insertText(enumPhrase, enunciado);
             
@@ -52,7 +53,8 @@ export default class InsertWordSearchCommand extends Command {
                 writer.append( simpleBoxTitle, simpleBox );
             });
               */
-            writer.insert(table, enunciado, 'after');
+            this.editor.model.insertContent(table,  writer.createPositionAt( enunciado, "after"));
+           // writer.insert(table, enunciado, 'after');
             const howTo = writer.createElement('paragraph');
             let endText = " ";
             if(characters.addHowToSolve){

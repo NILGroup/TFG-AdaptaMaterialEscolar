@@ -41,7 +41,7 @@ import DevelopPlugin from '../../ckeditor/plugins/develop/developPlugin';
 //import FillWords from '../rellenarPalabrasPlugin/fillWords';
 
 import {getColors} from "./colors";
-import FillGapsPlugin from '../../ckeditor/plugins/fillblanks/trueFalsePlugin';
+import FillGapsPlugin from '../../ckeditor/plugins/fillblanks/trueFillGapsPlugin';
 
 class Editor extends React.Component{
     
