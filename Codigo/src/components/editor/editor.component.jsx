@@ -55,9 +55,7 @@ class Editor extends React.Component{
             cloudServices: {
                 tokenUrl: token
             },
-            language: {
-                ui: 'es'
-            },
+            language: 'es',
             plugins: [ExportPdf, Essentials, Heading, Bold, Italic, Underline, Paragraph, Table, TableToolbar, PictogramEditing, Alignment, WordSearchPlugin, 
                     DefinitionsPlugin, TrueFalsePlugin, DevelopPlugin, FontFamily, FontSize, FontColor, FontBackgroundColor, Indent, IndentBlock, ListStyle, 
                     TodoList, BlockQuote, Image, ImageInsert, ImageToolbar, ImageStyle, ImageResize, ImageEditing, FillGapsPlugin, PageBreak

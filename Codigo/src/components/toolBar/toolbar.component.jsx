@@ -65,6 +65,7 @@ class Toolbar extends React.Component{
             case "develop":
                 if(this.props.showDevelopModal)
                     this.props.closeDevelopModal();
+                break;
             case "wordsearch":
                 if(this.props.showWordSearchModal)
                     this.props.closeWordSearchModal();

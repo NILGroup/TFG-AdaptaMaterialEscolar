@@ -1,5 +1,4 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
-import Range from '@ckeditor/ckeditor5-engine/src/view/range';
 
 export default class InsertFillGapsCommand extends Command {
     execute( truefalse ) {
@@ -14,7 +13,6 @@ export default class InsertFillGapsCommand extends Command {
             })
             
             let fontType = attributes.fontFamily;
-            let insertPosition = this.editor.model.document.selection.getFirstPosition();
             
             let enunciado = writer.createElement('paragraph');
             writer.insertText(title, enunciado);

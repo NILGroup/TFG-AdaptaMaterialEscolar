@@ -1,5 +1,4 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
-import TableUtils from '@ckeditor/ckeditor5-table/src/tableutils';
 
 export default class InsertWordSearchCommand extends Command {
     execute(characters) {

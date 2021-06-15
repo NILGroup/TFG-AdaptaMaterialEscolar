@@ -8,7 +8,7 @@ import {
 import Header from './components/header/header.component';
 import EditorPage from './pages/editorpage/editorpage.component'
 import HelpPage from './pages/helpPage/helppage.component';
-
+import ContactPage from './pages/contactpage/contactpage.component';
 function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
@@ -20,6 +20,9 @@ function App() {
           </Route>
           <Route path="/help">
               <HelpPage/>
+          </Route>
+          <Route path="/contact">
+              <ContactPage/>
           </Route>
         </Switch>
       </main>

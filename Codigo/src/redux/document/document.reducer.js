@@ -1,4 +1,3 @@
-import React from 'react';
 import DocumentActionTypes from './document.types';
 
 const INITIAL_STATE = {

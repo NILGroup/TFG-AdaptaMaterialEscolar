@@ -1,5 +1,4 @@
 import "./fillGaps.scss";
-import {openingSymbol, closingSymbol} from "../../redux/fillGaps/fillgaps.utils";
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
