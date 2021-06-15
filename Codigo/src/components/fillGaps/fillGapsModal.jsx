@@ -63,7 +63,8 @@ class FillGapsModal extends React.Component{
     }
   
     componentDidMount(){
-      this.nameTextarea.focus();
+      if(this.props.mode === "edition")
+        this.nameTextarea.focus();
     }
 
     /* Manages the selection of a word */
