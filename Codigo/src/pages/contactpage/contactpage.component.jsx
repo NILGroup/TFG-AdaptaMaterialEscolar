@@ -26,7 +26,7 @@ class ContactPage extends React.Component {
                 <div>Virginia San Francisco Gilmartín</div>    
                 <br/>
             <h5>Universidad Complutense de Madrid</h5>
-            
+            <img className="logo" src={UcmLogo}/>
             
         </div>
         );
