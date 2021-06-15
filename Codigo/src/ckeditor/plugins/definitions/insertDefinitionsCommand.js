@@ -6,16 +6,37 @@ export default class InsertDefinitionsCommand extends Command {
         this.editor.model.change( writer => {
             let attributes = Object.fromEntries( selection.getAttributes());
             let fontType = attributes.fontFamily;
-            let insertPosition = this.editor.model.document.selection.getFirstPosition();
-            let enunciado = writer.createElement('paragraph', insertPosition);
+         //   let insertPosition = this.editor.model.document.selection.getFirstPosition();
+            let enunciado = writer.createElement('paragraph');
             let listType = definitions.listType === 'ul' ? 'bulletedList' : 'numberedList';
 
             writer.insertText("Define los siguientes conceptos: ", enunciado);
             let aux = enunciado;
             this.editor.model.insertContent(enunciado);
-
-            let definition;
             let linea = undefined;
+
+            let definition = writer.createElement('paragraph');
+            writer.insertText(definitions.text[0], definition);
+            writer.insert(definition, enunciado, 'after');
+
+            for(let j = 1; j < definitions.text.size; j++){
+                definition = writer.createElement('paragraph');
+                writer.insertText(definitions.text[j], definition);
+                writer.insert(definition, enunciado, 'after');
+                
+                for(let i = 0; i < definitions.numLines; i++){
+                    if(definitions.extraspace){
+                        linea = writer.createElement('definitionsLineMore');
+                    }
+                    else
+                        linea = writer.createElement('definitionsLine');
+                    writer.append(linea, definition);
+                }
+
+                writer.setSelection( definition, 'in');
+                this.editor.execute( listType);
+                enunciado = definition;
+            }
             definitions.text.forEach(t => {
                 definition = writer.createElement('paragraph');
                 writer.insertText(t, definition);
